@@ -5,10 +5,10 @@ function Cart(props) {
 
     return(
         <>
-        <div>Cart</div>
+        <div>Cart 1</div>
         </>
 
-        
+
     )
 }
 
