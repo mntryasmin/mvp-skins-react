@@ -13,7 +13,6 @@ function Footer(props) {
 
     return(
         <>
-        <h1>TESTEEEEE</h1>
         {/* inicio footer */}
         <footer className="footer">
         <Container className="p-0">
