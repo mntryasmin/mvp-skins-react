@@ -13,7 +13,6 @@ function Home(props) {
 
     return(
         <>
-
         {/* BANNERS  */}
         <p className="title-banner">Destaques</p>
         <Banners/>
@@ -30,7 +29,6 @@ function Home(props) {
 
         <p className="title-carousel">Top facas</p>
         <CarouselProducts/>
-
         </>
     )
 }
