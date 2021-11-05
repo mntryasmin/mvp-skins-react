@@ -1,0 +1,18 @@
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+li {
+    text-align: center;
+}
+
+.requestItems-title {
+    border-bottom: 1px solid #28004f52;
+    font-weight: 500;
+}
+
+.requestItems-style {
+    /* border-bottom: 1px solid #28004f52; */
+}

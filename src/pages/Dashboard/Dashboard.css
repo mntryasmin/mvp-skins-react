@@ -1,52 +1,11 @@
 .dashboard-container {
     background-color: #28004f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
-
-.menu-dashboard {
-    background-color: #efefef;
-    border-radius: 0 6px 6px 0;
-    font-size: 0.9rem;
-    line-height: 1.8rem;
-}
-
-.menu-title-items {
-    background-color: white;
-    border-top: .5px solid #28004F;
-    border-bottom: .5px solid #28004F;
-    color: #28004f;
-    font-weight: 600;
-}
-
-.menu-text {
-    text-align: center;
-}
-
-/* --------------------------------------------------------- */
-/* DASHBOARD  */
 
 .dashboard {
     background-color: #efefef;
     border-radius: 6px;
-}
-
-.dashboard h1 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #28004F;
-    text-align: center;
-}
-
-.card-title, .form-title {
-    font-weight: 600;
-    color: #28004F;
-}
-
-.creditCard {
-    border-bottom: 2px solid #28004F;
-    height: 15vh;
-    align-content: center;
-}
-
-.button-form {
-    text-align: right;
 }
