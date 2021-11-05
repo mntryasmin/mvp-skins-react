@@ -1,0 +1,11 @@
+.dashboard-container {
+    background-color: #28004f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dashboard {
+    background-color: #efefef;
+    border-radius: 6px;
+}

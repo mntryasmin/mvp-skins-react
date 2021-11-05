@@ -1,0 +1,73 @@
+nav {
+    background-color: #EFEFEF;
+    color: #000000;
+    font-size: 14px;
+    margin-top:16px;
+    border-radius: 8px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+li {
+    display: flex;
+    justify-content: left;
+}
+
+li a {
+    color: #000000;
+    text-decoration: none;
+    text-align: left;
+
+}
+
+li a:hover {
+    color: #FD4712;
+}
+
+.sidebarIcon {
+    display: flex !important;
+    justify-content: left;
+}
+
+.sidebarIcon::before {
+    content:"";
+    background-size: 20px;
+    width:20px;
+    height:20px;
+    margin-right: 1vw;
+}
+
+.compras::before{
+    background-image: url(../../../../assets/images/icones/icon-sacola.png);
+}
+
+.dadosPessoais::before{
+    background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+}
+
+.imagem-nav{
+    margin: 15px 0;
+    width:50px;
+    height:50px;
+}
+
+.div-dashboard{
+    background-color: #c4c4c480;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.imagem-historico{
+    width:80px;
+    height:80px;
+}
+
+.nav-contato {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end
+}
