@@ -1,0 +1,16 @@
+ul {
+    text-align: center !important;
+    justify-content: space-around;
+}
+
+.request-style {
+    border-bottom: 2px solid #28004f;
+}
+
+.request-title {
+    font-weight: 500;
+}
+
+.arrow {
+    width: 28px;
+}

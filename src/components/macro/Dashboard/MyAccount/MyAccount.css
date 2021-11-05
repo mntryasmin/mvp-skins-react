@@ -1,0 +1,21 @@
+.myAccountForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+}
+
+.gender {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
