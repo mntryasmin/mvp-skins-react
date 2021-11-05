@@ -2,6 +2,17 @@
 
 * {
     box-sizing: border-box;
+    font-size: .9rem;
+    font-family: 'Saira', sans-serif
+}
+
+textarea, input, select {
+    box-shadow: none;
+    border: 0 none !important;
+    outline: 0 !important;
+    border-radius: 3px;
+    height: 1.8rem;
+
 }
 
 textarea:focus, input:focus, select:focus {
@@ -10,20 +21,23 @@ textarea:focus, input:focus, select:focus {
     outline: 0 !important;
 } 
 
-body {
-    font-family: 'Saira', sans-serif;
-    color: #EFEFEF;
-    padding: 0;
-    margin: 0;
-    font-size: .8rem;
+h1 {
+    font-size: 1.3rem !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: rgb(12, 12, 12);
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1rem !important;
+    font-weight: 500;
+    color: rgb(12, 12, 12);
 }
 
 h3 {
     font-size: .9rem;
+    font-weight: 500;
+    color: rgb(12, 12, 12);
 }
 
 ul {
