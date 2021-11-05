@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './LoginModal.css'
 import { Button, Modal, Form, FormLabel, FormGroup, FormControl } from 'react-bootstrap'
-import Collapse from '../Collapse/Collapse.js'
+import Collapse from './Collapse/Collapse.js'
 
 function LoginModal() {
 
