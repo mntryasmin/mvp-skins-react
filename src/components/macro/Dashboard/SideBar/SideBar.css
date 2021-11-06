@@ -1,9 +1,9 @@
-nav {
+.sidebar {
     background-color: #EFEFEF;
     color: #000000;
     font-size: 14px;
     margin-top:16px;
-    border-radius: 8px;
+    border-radius: 0 8px 8px 0;
     text-align: center;
 
     display: flex;
@@ -40,11 +40,11 @@ li a:hover {
     margin-right: 1vw;
 }
 
-.compras::before{
+.shop::before{
     background-image: url(../../../../assets/images/icones/icon-sacola.png);
 }
 
-.dadosPessoais::before{
+.my-account-tile::before{
     background-image: url(../../../../assets/images/icones/icon-pessoa.png);
 }
 
@@ -70,4 +70,42 @@ li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-end
+}
+
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .sidebar {
+        font-size: 14px;
+        margin-top:16px;
+        border-radius: 8px;
+        text-align: center;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+}
+
+/* SM */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* XL  */
+@media (min-width: 1200px) { 
+
 }
