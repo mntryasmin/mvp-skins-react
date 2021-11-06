@@ -1,0 +1,28 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.contact-icon {
+    width: 4vw;
+}
+
+.contact-h1 {
+    font-size: 1.8rem !important;
+}
+
+.contact-infos {
+    text-align: left;
+}
+
+.contact-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #181818;
+}
+
+.contact-link:hover {
+    color: #fd4712;
+}

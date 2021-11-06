@@ -3,7 +3,7 @@ import './Footer.css';
 import {Row, Col, Container} from "react-bootstrap";
 import Facebook from '../../../assets/images/icones/icon-facebook.png'
 import Twitter from '../../../assets/images/icones/icon-twitter.png'
-import Discord from '../../../assets/images/icones/icon-discord.png'
+import Discord from '../../../assets/images/icones/icon-discord-contato.png'
 import Instagram from '../../../assets/images/icones/icon-instagram.png'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
