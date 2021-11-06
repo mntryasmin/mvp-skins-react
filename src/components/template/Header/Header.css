@@ -82,6 +82,7 @@
 
 .link-header{
     color:black;
+    text-decoration: none;
 }
 .link-header:hover{
     color:#FD4712 !important;
