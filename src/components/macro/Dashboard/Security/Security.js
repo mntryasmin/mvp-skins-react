@@ -1,4 +1,8 @@
-import React from 'react'
+// REACT
+import React, { Component } from 'react'
+import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+
+// ESTILO
 import '../../../../assets/css/Style.css'
 import './Security.css'
 
@@ -6,29 +10,32 @@ function Security(props) {
 
     return (
         <>
-        <div className="security">
-            <h1>Segurança</h1>
-            <p></p>
+            <Container className="security pt-1">
+                <h1>Segurança</h1>
 
-            <form className="row SecurityForm">
-                <label className="col-4 py-2">Digite sua senha antiga</label>
-                <input className="col-4 py-2 px-3" type="password" name="password" />
+                <Form className="security-form">
+                    <Form.Group xs={12} sm={12} md={6} lg={6} xl={6} className="py-4 px-0">
+                            <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
+                            <Form.Control className="py-2 px-3" type="password" name="password" />
+                    </Form.Group>
 
-                <label className="col-4 py-2">Digite a senha nova</label>
-                <input className="col-4 py-2 px-3" type="password" name="password" />
+                    <Form.Group xs={12} sm={12} md={6} lg={6} xl={6} className="py-4 px-0">
+                            <Form.Label className="py-2">Digite a senha nova</Form.Label>
+                            <Form.Control className="py-2 px-3" type="password" name="password" />
+                            
+                            <Form.Label className="py-2">Repita a senha nova</Form.Label>
+                            <Form.Control className="py-2 px-3" type="password" name="password" />
+                    </Form.Group>
+            
+                    <Form.Group className="col-12 py-4 button-save">
+                        <Button>Salvar</Button>
+                    </Form.Group>
+                </Form>
 
-                <label className="col-4 py-2">Repita a senha nova</label>
-                <input className="col-4 py-2 px-3" type="password" name="password" />
-
-                <div className="col-4 py-4 px-0 button-save">
-                    <button className="m-0">Salvar</button>
-                </div>
-            </form>
-
-            <div className="row p-3 pt-4 mt-5 button-delete">
-                <button className="col-3">Excluir minha conta</button>
-            </div>
-            </div>
+                <Container className="p-3 pt-4 mt-5 button-delete">
+                    <Button>Excluir minha conta</Button>
+                </Container>
+            </Container>
         </>
     )
 }
