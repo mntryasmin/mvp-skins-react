@@ -1,18 +1,14 @@
-ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-li {
-    text-align: center;
-}
-
-.requestItems-title {
+.request-items-title {
     border-bottom: 1px solid #28004f52;
-    font-weight: 500;
+    font-weight: 400;
+    flex-direction: row !important;
+    justify-content: space-between;
+    text-align: center;
+
 }
 
-.requestItems-style {
-    /* border-bottom: 1px solid #28004f52; */
+.request-items-style {
+    flex-direction: row !important;
+    justify-content: space-between;
+    text-align: center;
 }

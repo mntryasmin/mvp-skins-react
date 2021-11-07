@@ -6,24 +6,27 @@
     border-radius: 0 8px 8px 0;
     text-align: center;
 
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-li {
+.nav-title {
+    justify-content: center;
+}
+
+.sidebar li {
     display: flex;
     justify-content: left;
 }
 
-li a {
+.sidebar .nav-link {
     color: #000000;
     text-decoration: none;
     text-align: left;
 
 }
 
-li a:hover {
+.sidebar .nav-link:hover {
     color: #FD4712;
 }
 
@@ -48,10 +51,12 @@ li a:hover {
     background-image: url(../../../../assets/images/icones/icon-pessoa.png);
 }
 
-.imagem-nav{
-    margin: 15px 0;
-    width:50px;
-    height:50px;
+.nav-image {
+    justify-content: center;
+}
+
+.nav-image img {
+    width: 6vw;
 }
 
 .div-dashboard{
@@ -60,12 +65,7 @@ li a:hover {
     font-size: 14px;
 }
 
-.imagem-historico{
-    width:80px;
-    height:80px;
-}
-
-.nav-contato {
+.nav-contact {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -78,26 +78,82 @@ li a:hover {
 /* XS */
 @media (max-width: 575.98px) {
     .sidebar {
-        font-size: 14px;
-        margin-top:16px;
         border-radius: 8px;
-        text-align: center;
-    
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
 
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
 }
 
 /* SM */
 @media (min-width: 576px) and (max-width: 767.98px) {
+    .sidebar {
+        border-radius: 8px;
+    }
 
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
 }
 
 /* MD  */
-@media (min-width: 768px) and (max-width: 991.98px) { 
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .sidebar {
+        border-radius: 8px;
+    }
 
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
 }
 
 /* LG  */
