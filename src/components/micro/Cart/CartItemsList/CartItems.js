@@ -4,7 +4,7 @@ import { Nav, Col, Container } from 'react-bootstrap'
 
 // ESTILO
 import '../../../../assets/css/Style.css'
-import './CartProductList.css'
+import './CartItems.css'
 
 // PÁGINAS/COMPONENTES
 import CartItemsList from './CartItemsList'

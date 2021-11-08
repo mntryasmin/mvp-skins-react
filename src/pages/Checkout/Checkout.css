@@ -1,0 +1,10 @@
+.checkout {
+    background-color: #28004f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.checkout-title {
+    color: #EFEFEF;
+}
