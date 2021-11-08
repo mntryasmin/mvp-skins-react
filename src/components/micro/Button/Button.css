@@ -1,25 +1,25 @@
-.btn-custom-default {
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-top:10px;
-    margin-right: 10px;
+
+.btn-mvp{
+    font-weight: 700;
     text-transform: uppercase;
-    border:none;
-    text-decoration: none;
-    display: inline-block
+    text-align: center;
+    font-size: 1rem;
+    color:#EFEFEF;
+}
+.btn-mvp:hover, .btn-mvp a:hover, .btn-mvp:focus, .btn-mvp a:focus-within {
+    box-shadow: none !important;  
+    transition: 0.5s;
+    background-color: transparent !important; 
+    color: #FD4712 !important;
+    border-color: #FD4712 !important;
+    border-width: 2px;
+}
+.btn-primario-mvp {
+    border-color: #FD4712;
+    background-color: #FD4712;
 }
 
-.btn-custom-default:hover {
-    opacity: 0.8;
-    color: #fff
-}
-
-.conversao {
-    background-color: green;
-    color: #fff;
-}
-
-.apoio {
-    background-color: #333;
-    color: #fff;
+.btn-secundario-mvp {
+    background-color: #FD4712 !important;
+    border-color: #FD4712;
 }

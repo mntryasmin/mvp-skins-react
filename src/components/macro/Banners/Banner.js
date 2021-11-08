@@ -1,8 +1,13 @@
 import React from 'react'
-import { Carousel } from 'react-bootstrap'
-import  Banner1  from '../../../assets/imgs/banners/banner-1.png'
-import  Banner2  from '../../../assets/imgs/banners/banner-2.png'
-import  Banner3  from '../../../assets/imgs/banners/banner-3.png'
+import { Carousel, CarouselItem,Container } from 'react-bootstrap'
+import Banner1 from '../../../assets/imgs/banners/banner-1.jpg'
+import Banner2 from '../../../assets/imgs/banners/banner-2.png'
+import Banner3 from '../../../assets/imgs/banners/banner-3.png'
+import BannerEventos1 from '../../../assets/imgs/banners/banner-eventos1.png'
+import BannerEventos2 from '../../../assets/imgs/banners/banner-eventos2.png'
+import BannerEventos3 from '../../../assets/imgs/banners/banner-eventos3.png'
+
+
 
 function Banner(props) {
 
@@ -31,6 +36,20 @@ function Banner(props) {
                     />
                 </Carousel.Item>
             </Carousel>
+            
+            <Container>
+            <Carousel variant="dark">
+                <CarouselItem>
+                    <img className="d-block w-100" src={BannerEventos1} alt="First slide"/>
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="d-block w-100" src={BannerEventos2} alt = "Second slide"/>
+                </CarouselItem>
+                <CarouselItem>
+                    <img className="d-block w-100" src={BannerEventos3} alt="Third slide"/>
+                </CarouselItem>
+            </Carousel>
+            </Container>
         </>
     )
 }
