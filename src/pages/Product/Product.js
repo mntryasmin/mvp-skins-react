@@ -41,7 +41,7 @@ function Product(props) {
                                 <div className="container-preco">
                                     <div className="preco-descricao">R$ 49,90</div>
                                     <Col xs={10}>
-                                        <Button label="COMPRAR" class="btn btn-primary btn-mvp btn-primario-mvp product-btn"></Button>
+                                        <Button label="COMPRAR" class="btn btn-primary btn-mvp btn-primario-mvp"></Button>
                                     </Col>
                                 </div>
                                 <div className="texto-descricao">Coleção: SUHAIHSADDAS</div>
@@ -49,6 +49,8 @@ function Product(props) {
                                 
                             </div>
                         </Col>
+
+                        
                     </Col>
                     
                 </Row>

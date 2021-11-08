@@ -58,10 +58,6 @@
     font-weight: 550;
 }
 
-.product-btn{
-    width: 100%;
-}
-
 @media screen and (min-width:768px){
     .container-produto{
     flex-direction: row;
