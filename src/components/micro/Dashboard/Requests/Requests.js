@@ -51,7 +51,7 @@ function Requests(props) {
 
     return (
         <>
-            <Nav className="list-group flex-row request-title py-2" defaultActiveKey="/home" as="ul">
+            <Nav className="list-group flex-row card-caption-mvp py-2" defaultActiveKey="/home" as="ul">
                 <Col className="col-2" >
                     <Nav.Item as="li" className=""> Pedido </Nav.Item>
                 </Col>

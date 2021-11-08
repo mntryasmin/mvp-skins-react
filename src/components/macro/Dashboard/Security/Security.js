@@ -11,7 +11,7 @@ function Security(props) {
     return (
         <>
             <Container className="security pt-1">
-                <h1>Segurança</h1>
+                <h1 className="card-title-mvp">Segurança</h1>
 
                 <Form className="security-form">
                     <Form.Group xs={12} sm={12} md={6} lg={6} xl={6} className="py-4 px-0">

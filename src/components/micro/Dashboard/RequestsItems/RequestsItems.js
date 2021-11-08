@@ -34,7 +34,7 @@ function RequestsItems(props) {
 
     return (
         <>
-            <Nav className="row list-group request-items-title py-2" defaultActiveKey="/home" as="ul">
+            <Nav className="row list-group py-2 card-caption-mvp" defaultActiveKey="/home" as="ul">
                 <Col className="col-4" >
                     <Nav.Item as="li"> Produto </Nav.Item>
                 </Col>
