@@ -8,7 +8,7 @@ import './Cart.css'
 
 // PÁGINAS/COMPONENTES
 import DiscountCoupon from '../../components/micro/Cart/DiscountCoupon/DiscountCoupon'
-import ProductListCart from '../../components/micro/Cart/ProductListCart/ProductListCart'
+import ProductListCart from '../../components/micro/Cart/CartProductList/CartProductList'
 import Button from '@restart/ui/esm/Button'
 
 function Cart(props) {

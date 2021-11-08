@@ -65,7 +65,7 @@
 
 .nav-options {
     background-color: #efefef;
-    border-radius: 0 8px 0 0;
+    border-radius: 8px;
     justify-content: center;
 }
 
@@ -73,7 +73,6 @@
     display: flex;
     align-items: bottom;
     background-color: #efefef;
-    border-radius: 0 0 8px 0;
     justify-content: center;
 }
 
@@ -84,6 +83,7 @@
 @media (max-width: 575.98px) {
     .sidebar {
         border-radius: 8px;
+        margin-bottom: 5vh !important;
     }
 
     .nav-contact {
@@ -108,9 +108,10 @@
 }
 
 /* SM */
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 540px) and (max-width: 767.98px) {
     .sidebar {
         border-radius: 8px;
+        margin-bottom: 5vh !important;
     }
 
     .nav-contact {
@@ -138,6 +139,7 @@
 @media (min-width: 768px) and (max-width: 991.98px) {
     .sidebar {
         border-radius: 8px;
+        margin-bottom: 5vh !important;
     }
 
     .nav-contact {
@@ -162,11 +164,40 @@
 }
 
 /* LG  */
-@media (min-width: 992px) and (max-width: 1199.98px) { 
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .sidebar {
+        margin-bottom: 0 !important;
+    }
+
+    .nav-options {
+        background-color: #efefef;
+        border-radius: 0 8px 0 0;
+        justify-content: center;
+    }
+    
+    .nav-contact {
+        display: flex;
+        align-items: bottom;
+        background-color: #efefef;
+        border-radius: 0 0 8px 0;
+        justify-content: center;
+    }
 
 }
 
 /* XL  */
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
+    .sidebar {
+        margin-bottom: 0 !important;
+    }
+
+    .nav-options {
+        border-radius: 0 8px 0 0;
+    }
+    
+    .nav-contact {
+        border-radius: 0 0 8px 0;
+        justify-content: center;
+    }
 
 }

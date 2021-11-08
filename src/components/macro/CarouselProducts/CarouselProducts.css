@@ -1,7 +1,16 @@
-/* MEDIAS QUERIES */
+.carousel-5cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly
+}
 
-/* XS */
-@media (max-width: 575.98px) {
+.carousel-control-prev {
+    width: 8% !important;
+}
+
+.carousel-control-next {
+    width: 8% !important;
 
 }
 
