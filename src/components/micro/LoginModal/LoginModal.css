@@ -1,0 +1,102 @@
+.caixas-de-insercao::placeholder {
+    color:black;
+}
+
+.caixas-de-insercao {
+    background-color: #EFEFEF;
+    opacity: 0.8;
+}
+
+.caixas-de-insercao:focus {
+    box-shadow: none;
+    border-color: black;
+}
+
+.login {
+    color: black;
+}
+
+.login::placeholder {
+    color:black;
+}
+
+.links-login {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+}
+
+.links-login:hover, .links-login:focus-within {
+    transition: 0.5s;
+    color: #FD4712;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.links-login:active:focus{
+    box-shadow: none;
+}
+
+.sem-conta {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Estilos dos botões principais */
+.btn-primario-mvp {
+    border-color: #FD4712;
+    background-color: #FD4712;
+}
+
+/* Estilo dos botões secundários */
+.btn-secundario-mvp {
+    background-color: rgba(1, 1, 1, 0);
+    border-color: #FD4712;
+    color:#FD4712;
+}
+
+.link-steam {
+    color: white;
+    text-decoration: none;
+}
+
+.link-steam:hover {
+    color: white;
+}
+
+.login-title {
+    color:#FD4712;
+    font-weight: bold;
+}
+
+.btn-steam {
+background-image: linear-gradient(to bottom, #0F1B45, #0f1b4575 );
+}
+
+.btn-logar:hover {
+    background-color: white !important;
+    border-color: #28004f !important;
+    color: #28004f !important;
+}
+
+.btn-cancelar:hover {
+    background-color: white !important;
+    border-color: #28004f !important;
+    color: #28004f !important;
+}
+
+.redefinir-senha {
+    color:black ;
+    height: auto;
+}
+
+@media(max-width:855px){
+    .categorias{
+        display:none;
+    }
+}

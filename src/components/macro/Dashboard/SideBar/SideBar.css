@@ -1,0 +1,165 @@
+.sidebar {
+    background-color: #EFEFEF;
+    color: #000000;
+    font-size: 14px;
+    border-radius: 0 8px 8px 0;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-title {
+    justify-content: center;
+}
+
+.sidebar li {
+    display: flex;
+    justify-content: left;
+}
+
+.sidebar .nav-link {
+    color: #000000;
+    text-decoration: none;
+    text-align: left;
+
+}
+
+.sidebar .nav-link:hover {
+    color: #FD4712;
+}
+
+.sidebarIcon {
+    display: flex !important;
+    justify-content: left;
+}
+
+.sidebarIcon::before {
+    content:"";
+    background-size: 20px;
+    width:20px;
+    height:20px;
+    margin-right: 1vw;
+}
+
+.shop::before{
+    background-image: url(../../../../assets/images/icones/icon-sacola.png);
+}
+
+.my-account-tile::before{
+    background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+}
+
+.nav-image {
+    justify-content: center;
+}
+
+.nav-image img {
+    width: 6vw;
+}
+
+.div-dashboard{
+    background-color: #c4c4c480;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.nav-contact {
+    display: flex;
+    align-items: bottom;
+}
+
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .sidebar {
+        border-radius: 8px;
+    }
+
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
+}
+
+/* SM */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .sidebar {
+        border-radius: 8px;
+    }
+
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .sidebar {
+        border-radius: 8px;
+    }
+
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* XL  */
+@media (min-width: 1200px) { 
+
+}

@@ -1,0 +1,42 @@
+.security-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.button-save {
+    text-align: right;
+}
+
+.button-delete {
+    justify-content: left;
+    border-top: 1px solid grey;
+}
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+
+}
+
+/* SM */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* XL  */
+@media (min-width: 1200px) { 
+
+}

@@ -1,4 +1,5 @@
 
+
 .btn-mvp{
     font-weight: 700;
     text-transform: uppercase;
@@ -6,7 +7,22 @@
     font-size: 1rem;
     color:#EFEFEF;
 }
-.btn-mvp:hover, .btn-mvp a:hover, .btn-mvp:focus, .btn-mvp a:focus-within {
+
+
+.btn-custom-default {
+    height: auto !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: .9rem;
+    color: #EFEFEF;
+    background-color: #FD4712;
+    border-color: #FD4712;
+    height: auto;
+}
+
+.btn-custom-default:hover {
+
     box-shadow: none !important;  
     transition: 0.5s;
     background-color: transparent !important; 

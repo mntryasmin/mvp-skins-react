@@ -1,9 +1,9 @@
 import React from 'react'
 import './Favorites.css'
 import {Row, Nav,ListGroupItem, ListGroup, Container, Col, BreadcrumbItem, Breadcrumb} from 'react-bootstrap'
-import Image1 from '../../assets/imgs/favorites/Image1.png'
-import Image2 from '../../assets/imgs/favorites/Image2.png'
-import Image3 from '../../assets/imgs/favorites/Image3.png'
+import Image1 from '../../assets/images/PRODUTOS/adaga-marcara-urbana.png'
+import Image2 from '../../assets/images/PRODUTOS/luva-abate.png'
+import Image3 from '../../assets/images/PRODUTOS/aug-momento.png'
 
 
 
@@ -15,7 +15,7 @@ function Favorites(props) {
             <div>Favorites</div>
             
             <Row>
-                <Container fluid = "md">
+                <Container>
                 <Nav className="row d-none d-lg-flex col-2 d-flex py-3 px-0 mx-0 h-100 nav-dashboard">
                     <div className="text-center titulo-nav">MINHA CONTA</div>
                     <ListGroupItem>

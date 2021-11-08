@@ -1,11 +1,12 @@
 import React from 'react'
 import { Carousel, CarouselItem,Container } from 'react-bootstrap'
-import Banner1 from '../../../assets/imgs/banners/banner-1.jpg'
-import Banner2 from '../../../assets/imgs/banners/banner-2.png'
-import Banner3 from '../../../assets/imgs/banners/banner-3.png'
-import BannerEventos1 from '../../../assets/imgs/banners/banner-eventos1.png'
-import BannerEventos2 from '../../../assets/imgs/banners/banner-eventos2.png'
-import BannerEventos3 from '../../../assets/imgs/banners/banner-eventos3.png'
+import Banner1 from '../../../assets/images/banners/banner-destaques-1.png'
+import Banner2 from '../../../assets/images/banners/banner-destaques-2.png'
+import Banner3 from '../../../assets/images/banners/banner-destaque-3.jpg'
+import BannerEventos1 from '../../../assets/images/banners/banner-eventos-1.png'
+import BannerEventos2 from '../../../assets/images/banners/banner-eventos-2.png'
+import BannerEventos3 from '../../../assets/images/banners/banner-eventos-3.png'
+
 
 
 
@@ -13,6 +14,7 @@ function Banner(props) {
 
     return (
         <>
+
             <Carousel variant="dark">
                 <Carousel.Item>
                     <img
@@ -50,6 +52,7 @@ function Banner(props) {
                 </CarouselItem>
             </Carousel>
             </Container>
+
         </>
     )
 }

@@ -1,0 +1,14 @@
+.request-items-title {
+    border-bottom: 1px solid #28004f52;
+    font-weight: 400;
+    flex-direction: row !important;
+    justify-content: space-between;
+    text-align: center;
+
+}
+
+.request-items-style {
+    flex-direction: row !important;
+    justify-content: space-between;
+    text-align: center;
+}

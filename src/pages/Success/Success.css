@@ -1,0 +1,26 @@
+.success-container {
+    background-color: #28004f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.success {
+    background-color: #efefef;
+    border-radius: 6px;
+}
+
+.sucess-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sucessImg {
+    display: flex;
+    justify-content: center;
+}
+
+.sucessImg img {
+    width: 7vw;
+}

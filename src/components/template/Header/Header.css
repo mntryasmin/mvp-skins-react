@@ -1,0 +1,219 @@
+.topo-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #181818;
+    width: 100vw;
+}
+
+.lupa{
+    background-color: white;
+    border-radius: 0px 3px 3px 0px;
+}
+
+.btn-mvp{
+    height: auto !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: .8rem;
+    color: #EFEFEF;
+    background-color: #FD4712;
+    border-color: #FD4712;
+    width: 40%;
+}
+
+.btn-mvp:hover, .btn-mvp a:hover, .btn-mvp:focus, .btn-mvp a:focus-within {
+    box-shadow: none !important;  
+    transition: 0.5s;
+    background-color: transparent !important; 
+    color: #FD4712 !important;
+    border-color: #FD4712 !important;
+    border-width: 2px;
+}
+
+.btn-menu{
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    align-content: center;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+}
+
+.barra-pesquisa {
+    border-radius: 3px 0px 0px 3px;
+    border: none;
+}
+
+.input-search{
+    height: 5vh;
+    border: none;
+    padding: 0.5vh 1vw;
+    border-radius: 4px;
+    width: 80%;
+}
+
+.botoes-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.btn-login {
+    margin-right: 3vw;
+    font-size: 10px;
+}
+
+.menu-lateral {
+    background-image: linear-gradient(to bottom, black, rgb(20, 20, 20));
+}
+
+.titulo-menu {
+    color:#FD4712 !important;
+}
+
+.link-header{
+    color:black;
+    text-decoration: none;
+}
+.link-header:hover{
+    color:#FD4712 !important;
+}
+
+.nav-principal{
+    background-color: #EFEFEF;
+}
+
+.botoes-header-d-flex{
+    display:flex;
+    flex-wrap: nowrap;
+}
+
+/* MEDIAS QUERIES  */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .topo-header {
+        padding: 2vh 0;
+        height: auto;
+    }
+
+    .barra-pesquisa {
+        padding: 0 5vw;
+    }
+
+    .input-search {
+        width: 100%;
+    }
+
+    .botoes-menu {
+        padding: 0 5vw;
+    }
+
+    .botoes-menu button {
+        width: 25vw;
+        height: 5vh;
+    }
+
+    .btn-login {
+        margin-right: 3vw;
+        font-size: 10px !important;
+    }
+
+    .btn-cadastrar {
+        font-size: 10px !important;
+    }
+
+    .logo img {
+        width: 75px;
+        height: 66px;
+    }
+    .categoria{
+        display: none;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .topo-header {
+        padding: 2vh 0;
+        height: auto;
+    }
+
+    .barra-pesquisa {
+        padding: 0 5vw;
+    }
+
+    .input-search {
+        width: 100%;
+    }
+
+    .botoes-menu {
+        padding: 0 5vw;
+    }
+
+    .botoes-menu button {
+        width: 25vw;
+        height: 5vh;
+    }
+
+    .btn-login {
+        margin-right: 3vw;
+        font-size: 13px !important;
+    }
+
+    .btn-cadastrar {
+        font-size: 13px !important;
+    }
+
+    .logo img {
+        width: 75px;
+        height: 66px;
+    }
+    .categoria{
+        display: none;
+    }
+    
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 994.98px) { 
+    .btn-login {
+        margin-right: 3vw;
+        font-size: 13px !important;
+    }
+
+    .btn-cadastrar {
+        font-size: 13px !important;
+    }
+
+    .btn-mvp {
+        width: auto;
+    }
+
+    .categoria{
+        display: none;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+}
+
+
+
+
