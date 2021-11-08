@@ -1,9 +1,11 @@
 import React from 'react'
 import './Product.css'
 import {Row, Col, Breadcrumb} from "react-bootstrap";
-import Produto from "../../assets/images/PRODUTOS/luvas-de-especialista.png"
+import Images from '../../components/micro/Images/Images';
+
 
 function Product(props) {
+
 
     return(
         <>
@@ -24,7 +26,7 @@ function Product(props) {
                     <Col xs={10} className="container-produto my-3 p-0">
                         <Col xs={12} md={7}>
                             <div className="container-imagem">
-                                <img src={Produto} alt="luva de especialista" className="imagem-descricao"/>
+                                <Images image={'agentefaquinha'}></Images>
                             </div>
                         </Col>
                         <Col xs={12} md={5} className="informacao-produto">
@@ -35,7 +37,10 @@ function Product(props) {
                                 <div className="texto-nome-produto">MAG-7 | COTA DE MALHA</div>
                                 <div className="container-preco">
                                     <div className="preco-descricao">R$ 49,90</div>
-                                    <button type="button" class="btn btn-primary btn-mvp btn-primario-mvp me-2">Comprar</button>
+                                    <Col xs={10} md={4}>
+                                        <button type="button" class="btn btn-primary btn-mvp btn-primario-mvp me-2">Comprar</button>
+                                    </Col>
+                                    
                                 </div>
                                 <div className="texto-descricao">Coleção: SUHAIHSADDAS</div>
                                 <div className="texto-descricao">Float: USAHDSDAS</div>
