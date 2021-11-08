@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Button, Collapse, Form, FormGroup, FormControl} from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Button, Collapse, Form, FormGroup, FormControl } from 'react-bootstrap'
 
 function Example() {
     const [open, setOpen] = useState(false);
@@ -20,12 +20,20 @@ function Example() {
                     <p></p>
                     <Form>
                         <FormGroup className="d-flex-justify-content-start">
-                            <FormControl type="email" placeholder="Digite seu e-mail" className="caixas-de-insercao login" />
+                            <Form.Floating className="mb-3">
+                                <Form.Control
+                                    id="floatingInputCustom"
+                                    type="email"
+                                    placeholder="name@example.com"
+                                    className='caixas-de-insercao login'
+                                />
+                                <label htmlFor="floatingInputCustom">Digite seu e-mail</label>
+                            </Form.Floating>
                             <Button variant="primary" className="btn-mvp">
                                 ENVIAR
                             </Button>
                         </FormGroup>
-                        
+
                     </Form>
                 </div>
             </Collapse>

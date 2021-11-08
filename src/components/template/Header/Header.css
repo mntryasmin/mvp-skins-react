@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: #181818;
-    width: 100vw;
+    width: 100%;
 }
 
 .lupa{
@@ -80,10 +80,16 @@
     color:#FD4712 !important;
 }
 
+.link-custom{
+    text-decoration: none;
+    color: white;
+}
+
 .link-header{
     color:black;
     text-decoration: none;
 }
+
 .link-header:hover{
     color:#FD4712 !important;
 }
@@ -104,10 +110,6 @@
     .topo-header {
         padding: 2vh 0;
         height: auto;
-    }
-
-    .barra-pesquisa {
-        padding: 0 5vw;
     }
 
     .input-search {
@@ -146,10 +148,6 @@
     .topo-header {
         padding: 2vh 0;
         height: auto;
-    }
-
-    .barra-pesquisa {
-        padding: 0 5vw;
     }
 
     .input-search {

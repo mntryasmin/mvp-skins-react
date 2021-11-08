@@ -1,0 +1,109 @@
+.card-product {
+    width: 170px !important;
+    height: 278px !important;
+    background-color: #766289 !important;
+    color: #EFEFEF;
+    border-radius: 8px;
+    box-shadow: 5px 4px 1px #FD4712;
+}
+
+.card-image {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.card-favorite {
+    width: 2vw;
+    height: 4vh;
+}
+
+.card-line {
+    background-color: #28004f;
+    width: 100%;
+    opacity: 1 !important;
+    border: 1.3px solid #28004f !important;
+}
+
+.card-price-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+}
+
+.card-description{
+    width: 100%;
+    font-weight: 500;
+    font-size: .7rem;
+}
+
+.card-price {
+    width: 100%;
+    font-weight: 300;
+    font-size: .6rem;
+    text-decoration: line-through;
+}
+
+.card-price-final {
+    width: 100%;
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .card-product {
+        width: 57px !important;
+        height: 125px !important;
+    }
+
+    .card-line {
+        margin: 0 !important;
+    }
+
+    .card-description{
+        font-weight: 200;
+        font-size: .3rem;
+    }
+    
+    .card-price {
+        font-weight: 0;
+        font-size: .2rem;
+        text-decoration: line-through;
+    }
+    
+    .card-price-final {
+        font-weight: 300;
+        font-size: .5rem;
+    }
+}
+
+/* SM */
+@media (min-width: 540px) and (max-width: 767.98px) {
+    .card-product {
+        width: 85px !important;
+        height: 150px !important;
+    }
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .card-product {
+        width: 120px !important;
+        height: 200px !important;
+    }
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* XL  */
+@media (min-width: 1200px) { 
+
+}

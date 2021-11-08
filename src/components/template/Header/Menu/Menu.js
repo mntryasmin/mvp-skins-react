@@ -21,7 +21,7 @@ function Menu() {
                 <Offcanvas.Body>
                     <ListGroup variant="flush">
                         <ListGroup.Item>
-                            <a href="#" className="link-header">PISTOLAS</a>
+                            <a href="#" className="link-header ">PISTOLAS</a>
                         </ListGroup.Item>
                         <ListGroup.Item >
                             <a href="#" className="link-header">SUBMETRALHADORAS</a>
@@ -37,6 +37,9 @@ function Menu() {
                         </ListGroup.Item>
                         <ListGroup.Item >
                             <a href="#" className="link-header">AGENTES</a>
+                        </ListGroup.Item>
+                        <ListGroup.Item >
+                            <a href="#" className="link-header">SEUS DADOS</a>
                         </ListGroup.Item>
                     </ListGroup>
                 </Offcanvas.Body>

@@ -27,7 +27,7 @@ export default class MyAccount extends Component {
         return (
             <>
                 <Container className="my-account pt-1">
-                    <h1>Minha conta</h1>
+                    <h1 className="card-title-mvp">Minha conta</h1>
                     <Form className="myAccountForm pt-3">
                         <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                             <Form.Label className="mt-3"> Nome </Form.Label>

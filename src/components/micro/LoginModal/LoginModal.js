@@ -30,21 +30,38 @@ function LoginModal() {
                             <FormLabel className="login-title">
                                 E-mail
                             </FormLabel>
-                            <FormControl type="email" placeholder="Digite seu e-mail" className="caixas-de-insercao login" />
+                            <Form.Floating className="mb-3">
+                                <Form.Control
+                                    id="floatingInputCustom"
+                                    type="email"
+                                    placeholder="name@example.com"
+                                    className='caixas-de-insercao login'
+                                />
+                                <label htmlFor="floatingInputCustom">Digite seu e-mail</label>
+                            </Form.Floating>
                             <FormLabel className="login-title">
                                 Senha
                             </FormLabel>
-                            <FormControl type="password" placeholder="Digite sua senha" className="caixas-de-insercao login" />
+                            <Form.Floating>
+                                <Form.Control
+                                    id="floatingPasswordCustom"
+                                    type="password"
+                                    placeholder="Password"
+                                    className='caixas-de-insercao login'
+                                />
+                                <label htmlFor="floatingPasswordCustom">Digite sua senha</label>
+                            </Form.Floating>
                         </FormGroup>
-                        <Collapse/>
+
+                        <Collapse />
                     </Form>
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" className="btn-mvp" onClick={handleClose}>
+                    <Button variant="primary" className="btn-mvp btn-secundario-mvp btn-cancelar" onClick={handleClose}>
                         Cancelar
                     </Button>
-                    <Button variant="primary" className="btn-mvp" >
+                    <Button variant="primary" className="btn-mvp btn-primario-mvp btn-logar" >
                         LOGIN
                     </Button>
                     <div className="sem-conta">

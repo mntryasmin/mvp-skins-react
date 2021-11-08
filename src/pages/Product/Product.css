@@ -1,6 +1,8 @@
 .div-produto{
     display:flex;
     justify-content: center;
+    background-color: #28004F;
+    color: #EFEFEF;
 }
 
 .container-produto{
@@ -10,6 +12,7 @@
     display: flex;
     flex-direction: column;
 }
+
 
 .informacao-produto{
     border-top: solid 1px #ffffff;
@@ -61,7 +64,7 @@
     }
 
     .informacao-produto{
-        border-left: solid 1px #ffffff;
+        border-left: solid 2px #28004F;
         border-top: none;
         padding: 20px 10px;
         display: block;

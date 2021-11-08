@@ -1,0 +1,15 @@
+.discount-coupon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+.discount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.discount-coupon-title {
+    font-size: 1.1rem;
+}

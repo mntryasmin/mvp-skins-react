@@ -10,6 +10,7 @@
 .caixas-de-insercao:focus {
     box-shadow: none;
     border-color: black;
+    background-color: #EFEFEF;
 }
 
 .login {
@@ -72,10 +73,6 @@
 .login-title {
     color:#FD4712;
     font-weight: bold;
-}
-
-.btn-steam {
-background-image: linear-gradient(to bottom, #0F1B45, #0f1b4575 );
 }
 
 .btn-logar:hover {
