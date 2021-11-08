@@ -15,12 +15,12 @@ function Cart(props) {
 
     return (
         <>
-            <Container fluid className="cart">
-                <Col lg={3} xl={3} className=" mx-4 my-5 cart-container cart-banner">
+            <Container fluid className="cart p-0">
+                <Col lg={3} xl={3} className="mx-4 my-5 cart-container cart-banner">
                     {/* <DiscountCoupon/> */}
                 </Col>
 
-                <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-3 my-5 pt-3 cart-container">
+                <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-4 my-5 pt-3 cart-container">
                     <ProductListCart />
 
                     <Container className="py-3 price">

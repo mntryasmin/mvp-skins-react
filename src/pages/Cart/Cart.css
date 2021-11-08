@@ -9,6 +9,13 @@
     border-radius: 6px;
 }
 
+.cart-banner {
+    background-image: url(/src/assets/images/ID/banner-cart.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .price {
     display: flex;
     flex-direction: row;

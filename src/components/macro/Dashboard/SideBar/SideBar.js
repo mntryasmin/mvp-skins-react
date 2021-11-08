@@ -28,12 +28,12 @@ export default class SideBar extends Component {
     render() {
         return (
             <>
-                <Col xs={9} sm={9} md={9} lg={2} xl={2} className="py-3 px-0 mb-5 sidebar">
-                    <Row>
+                <Col xs={9} sm={9} md={9} lg={2} xl={2} className="p-0 sidebar">
+                    <Row className="mx-0 nav-options">
                         <Row className="py-4 card-caption-mvp">Olá, {this.state.name}</Row>
 
-                        <Nav className="list-group flex-column nav-list p-1" defaultActiveKey="/home" as="ul">
-                            <Nav.Item as="li" className="sidebarIcon my-account-tile nav-list-title mt-4 mb-2 px-3">
+                        <Nav className="p-1 list-group flex-column nav-list" defaultActiveKey="/home" as="ul">
+                            <Nav.Item as="li" className="mt-4 mb-2 px-3 sidebarIcon my-account-tile nav-list-title">
                                 Dados Pessoais
                             </Nav.Item>
 
@@ -45,7 +45,7 @@ export default class SideBar extends Component {
                                 <Nav.Link eventKey="link-1" className="change-password sidebarIcon">Alterar senha</Nav.Link>
                             </Nav.Item>
 
-                            <Nav.Item as="li" className="mt-4 mb-2 sidebarIcon shop nav-list-title px-3">
+                            <Nav.Item as="li" className="mt-4 mb-2 px-3 sidebarIcon shop nav-list-title">
                                 Compras
                             </Nav.Item>
 
@@ -55,9 +55,9 @@ export default class SideBar extends Component {
                         </Nav>
                     </Row>
 
-                    <Row className="nav-contact">
-                        <Row>Preciso de ajuda com a minha conta</Row>
-                        <Row className="nav-image"><img src={contact} className="py-3" /></Row>
+                    <Row className="mx-0 px-0 py-3 nav-contact">
+                        <Row className="px-0">Preciso de ajuda com a minha conta</Row>
+                        <Row className="px-0 nav-image"><img src={contact} className="py-3" /></Row>
                     </Row>
 
                 </Col>

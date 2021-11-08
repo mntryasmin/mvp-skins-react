@@ -1,5 +1,4 @@
 .sidebar {
-    background-color: #EFEFEF;
     color: #000000;
     font-size: 14px;
     border-radius: 0 8px 8px 0;
@@ -8,6 +7,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    background-image: url(/src/assets/images/ID/sidebar-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .nav-title {
@@ -59,15 +63,18 @@
     width: 6vw;
 }
 
-.div-dashboard{
-    background-color: #c4c4c480;
-    border-radius: 8px;
-    font-size: 14px;
+.nav-options {
+    background-color: #efefef;
+    border-radius: 0 8px 0 0;
+    justify-content: center;
 }
 
 .nav-contact {
     display: flex;
     align-items: bottom;
+    background-color: #efefef;
+    border-radius: 0 0 8px 0;
+    justify-content: center;
 }
 
 
