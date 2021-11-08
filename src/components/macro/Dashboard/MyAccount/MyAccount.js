@@ -1,6 +1,12 @@
-import React, { Component, TextInput, Button } from 'react'
+// REACT
+import React, { Component } from 'react'
+import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+
+// ESTILO
 import '../../../../assets/css/Style.css'
 import './MyAccount.css'
+
+// PÁGINAS/COMPONENTES
 import AccountList from './AccountList'
 
 export default class MyAccount extends Component {
@@ -20,61 +26,69 @@ export default class MyAccount extends Component {
     render() {
         return (
             <>
-                <h1>Minha conta</h1>
-                <form className="myAccountForm px-3">
-                    <label className="col-8 my-2">
-                        Nome
-                        <input className="w-100 px-3" type="text" name="name" value={this.state.name}
-                            // onChange={(event) =>
-                                // this.setState({name:event.target.value})}
-                        />
-                    </label>
+                <Container className="my-account pt-1">
+                    <h1>Minha conta</h1>
+                    <Form className="myAccountForm pt-3">
+                        <Col xs={12} sm={12} md={12} lg={8} xl={8}>
+                            <Form.Label className="mt-3"> Nome </Form.Label>
+                            <Form.Control type="text" name="name" value={this.state.name} />
+                        </Col>
 
-                    <label className="col-3 my-2">
-                        Data de nascimento
-                        <input className="w-100 px-3" type="date" name="birthday" value={this.state.birthdate} />
-                    </label>
+                        <Col xs={12} sm={12} md={12} lg={3} xl={3}>
+                            <Form.Label className="mt-3"> Data de nascimento </Form.Label>
+                            <Form.Control type="date" name="birthday" value={this.state.birthdate} />
+                        </Col>
 
-                    <label className="col-8 my-2">
-                        E-mail
-                        <input className="w-100 px-3" type="email" name="email" value={this.state.email} />
-                    </label>
+                        <Col xs={12} sm={12} md={12} lg={8} xl={8}>
+                            <Form.Label className="mt-3"> E-mail </Form.Label>
+                            <Form.Control type="email" name="email" value={this.state.email} />
+                        </Col>
 
-                    <label className="col-3 my-2">
-                        Telefone
-                        <input className="w-100 px-3" type="tel" name="tel" value={this.state.tel} />
-                    </label>
+                        <Col xs={12} sm={12} md={12} lg={3} xl={3}>
+                            <Form.Label className="mt-3"> Telefone </Form.Label>
+                            <Form.Control type="tel" name="tel" value={this.state.tel} />
+                        </Col>
 
-                    <label className="col-12 my-2">
-                        Trade link
-                        <input className="w-100 px-3" type="url" name="tradeLink" value={this.state.tradeLink} />
-                    </label>
+                        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                            <Form.Label className="mt-3"> Trade link </Form.Label>
+                            <Form.Control type="url" name="tradeLink" value={this.state.tradeLink} />
+                        </Col>
 
-                    <div className="gender">
-                        <label className="col-12 my-2">
-                            Identidade de gênero
-                        </label>
+                        <Col xs={12} sm={12} md={12} lg={12} xl={12} className="mt-3">
+                            <p>Identidade de gênero</p>
+                        </Col>
 
-                        <div className="col-3 input" >
-                            <input type="checkbox" id="feminino" name="feminino" value="Feminino" />
-                            <label className="col-4" for="feminino">Feminino</label>
-                        </div>
+                        <Form className="gender">
+                            <Container key="inline-radio" className="mb-3 px-0">
+                                <Form.Check
+                                    inline
+                                    label="Feminino"
+                                    name="group1"
+                                    type="radio"
+                                    id="inline-radio-1"
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Masculino"
+                                    name="group1"
+                                    type="radio"
+                                    id="inline-radio-2"
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Prefiro não dizer"
+                                    name="group1"
+                                    type="radio"
+                                    id="inline-radio-3"
+                                />
+                            </Container>
+                        </Form>
 
-                        <div className="col-3 input" >
-                            <input type="checkbox" id="masculino" name="masculino" value="Masculino" />
-                            <label className="col-4" for="masculino">Masculino</label>
-                        </div>
-
-                        <div className="col-4 input" >
-                            <input className="mx-2" type="checkbox" id="prefiroNaoDizer" name="prefiroNaoDizer" value="prefiroNaoDizer" />
-                            <label for="prefiroNaoDizer">Prefiro não dizer</label>
-                        </div>
-                    </div>
-
-                    <div className="col-12 py-4 button">
-                        <button className="outline-primary">Salvar</button>
-                    </div>
-                </form>
+                        <Form.Group className="col-12 pt-2 pb-5 button">
+                            <Button className="outline-primary">Salvar</Button>
+                        </Form.Group>
+                    </Form>
+                </Container>
             </>
         )
     }
