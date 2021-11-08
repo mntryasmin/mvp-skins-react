@@ -1,17 +1,22 @@
 .btn-custom-default {
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-top:10px;
-    margin-right: 10px;
+    height: auto !important;
+    font-weight: 500;
     text-transform: uppercase;
-    border:none;
-    text-decoration: none;
-    display: inline-block
+    text-align: center;
+    font-size: .9rem;
+    color: #EFEFEF;
+    background-color: #FD4712;
+    border-color: #FD4712;
+    height: auto;
 }
 
 .btn-custom-default:hover {
-    opacity: 0.8;
-    color: #fff
+    box-shadow: none !important;  
+    transition: 0.5s;
+    background-color: transparent !important; 
+    color: #FD4712 !important;
+    border-color: #FD4712 !important;
+    border-width: 2px;
 }
 
 .conversao {

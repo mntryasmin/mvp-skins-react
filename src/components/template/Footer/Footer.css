@@ -2,7 +2,6 @@
     padding-top: 10px;
     background-color: #181818;
     color: #ffffff;
-    font-size: 12px;
     display: flex;
 }
 
@@ -32,6 +31,7 @@
 
 .texto-footer{
     text-align: center;
+    font-size: .1rem !important;
 }
 
 .icon-footer{
@@ -42,6 +42,7 @@
 .link-footer{
     color:#ffffff;
     text-decoration: none;
+    font-size: .1rem !important;
 }
 
 .link-footer:hover{
