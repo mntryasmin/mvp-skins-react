@@ -16,7 +16,7 @@ function Register(props) {
             <Input label="Telefone" type="tel"/>
             <Input label="Senha" type="password"/>
             <Input label="Confirmar Senha" type="password"/>
-            <Button label="Voltar" navigation route="login" class="apoio"/>
+            <Button label="Voltar" navigation route="home" class="apoio"/>
             <Button label="Cadastrar" onclick="null" class="conversao"/>
         </FormDefault>
         </>
