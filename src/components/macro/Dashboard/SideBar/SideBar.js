@@ -28,36 +28,36 @@ export default class SideBar extends Component {
     render() {
         return (
             <>
-                <Col xs={9} sm={9} md={9} lg={2} xl={2} className="py-3 px-0 mb-5 sidebar">
-                    <Row>
-                        <Row className="py-4 nav-title">Olá, {this.state.name}</Row>
+                <Col xs={9} sm={9} md={9} lg={2} xl={2} className="p-0 sidebar">
+                    <Row className="mx-0 nav-options">
+                        <Row className="pt-5 card-caption-mvp">Olá, {this.state.name}</Row>
 
-                        <Nav className="list-group flex-column nav-list p-1" defaultActiveKey="/home" as="ul">
-                            <Nav.Item as="li" className="sidebarIcon my-account-tile nav-list-title mt-4 mb-2 px-2">
+                        <Nav className="p-1 list-group flex-column nav-list" defaultActiveKey="/home" as="ul">
+                            <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon nav-list-title">
                                 Dados Pessoais
                             </Nav.Item>
 
-                            <Nav.Item className="px-1 py-0 nav-link">
-                                <Nav.Link eventKey="link-1" className="personal-data sidebarIcon">Dados da conta</Nav.Link>
+                            <Nav.Item className="p-0 nav-link">
+                                <Nav.Link eventKey="link-1" className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
                             </Nav.Item>
 
-                            <Nav.Item className="px-1 py-0 nav-link">
-                                <Nav.Link eventKey="link-1" className="change-password sidebarIcon">Alterar senha</Nav.Link>
+                            <Nav.Item className="p-0 nav-link">
+                                <Nav.Link eventKey="link-1" className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
                             </Nav.Item>
 
-                            <Nav.Item as="li" className="mt-4 mb-2 sidebarIcon shop nav-list-title px-2">
+                            <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon shop nav-list-title">
                                 Compras
                             </Nav.Item>
 
-                            <Nav.Item className="px-1 py-0 nav-link">
-                                <Nav.Link eventKey="link-1" className="purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
+                            <Nav.Item className="p-0 nav-link">
+                                <Nav.Link eventKey="link-1" className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Row>
 
-                    <Row className="nav-contact">
-                        <Row>Preciso de ajuda com a minha conta</Row>
-                        <Row className="nav-image"><img src={contact} className="py-3" /></Row>
+                    <Row className="mx-0 px-2 py-1 nav-contact">
+                        <Row className="px-0 pt-2">Preciso de ajuda com a minha conta</Row>
+                        <Row className="px-0 nav-image"><img src={contact} className="py-3" /></Row>
                     </Row>
 
                 </Col>
