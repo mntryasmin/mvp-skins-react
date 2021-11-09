@@ -40,12 +40,14 @@
     background-color: white !important;
     border-color: #28004f !important;
     color: #28004f !important;
+    text-align: center;
 }
 
 .btn-cancelar:hover {
     background-color: white !important;
     border-color: #28004f !important;
     color: #28004f !important;
+    text-align: center;
 }
 
 .caixas-de-insercao::placeholder {
@@ -56,6 +58,7 @@
     background-color: #EFEFEF;
     opacity: 0.8;
     color: black !important;
+    height: 45px !important;
     
 }
 

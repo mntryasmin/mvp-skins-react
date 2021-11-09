@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './LoginModal.css'
 import { Button, Modal, Form, FormLabel, FormGroup, FormControl } from 'react-bootstrap'
 import Collapse from './Collapse/Collapse.js'
+import LoginForm from '../../macro/Forms/Login/LoginForm'
 
 function LoginModal() {
 
@@ -27,30 +28,9 @@ function LoginModal() {
                 <Modal.Body >
                     <Form className="container d-flex- flex-column">
                         <FormGroup className="d-flex flex-column">
-                            <FormLabel className="login-title">
-                                E-mail
-                            </FormLabel>
-                            <Form.Floating className="mb-3">
-                                <Form.Control
-                                    id="floatingInputCustom"
-                                    type="email"
-                                    placeholder="name@example.com"
-                                    className='caixas-de-insercao login'
-                                />
-                                <label htmlFor="floatingInputCustom">Digite seu e-mail</label>
-                            </Form.Floating>
-                            <FormLabel className="login-title">
-                                Senha
-                            </FormLabel>
-                            <Form.Floating>
-                                <Form.Control
-                                    id="floatingPasswordCustom"
-                                    type="password"
-                                    placeholder="Password"
-                                    className='caixas-de-insercao login'
-                                />
-                                <label htmlFor="floatingPasswordCustom">Digite sua senha</label>
-                            </Form.Floating>
+                            <LoginForm Email/>
+                            <LoginForm Password/>
+                            
                         </FormGroup>
 
                         <Collapse />
