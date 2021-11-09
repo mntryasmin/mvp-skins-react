@@ -58,31 +58,29 @@ export default class MyAccount extends Component {
                             <p>Identidade de gênero</p>
                         </Col>
 
-                        <Form className="gender">
-                            <Container key="inline-radio" className="mb-3 px-0">
-                                <Form.Check
-                                    inline
-                                    label="Feminino"
-                                    name="group1"
-                                    type="radio"
-                                    id="inline-radio-1"
-                                />
-                                <Form.Check
-                                    inline
-                                    label="Masculino"
-                                    name="group1"
-                                    type="radio"
-                                    id="inline-radio-2"
-                                />
-                                <Form.Check
-                                    inline
-                                    label="Prefiro não dizer"
-                                    name="group1"
-                                    type="radio"
-                                    id="inline-radio-3"
-                                />
-                            </Container>
-                        </Form>
+                        <Container key="inline-radio" className="gender mb-3 px-0">
+                            <Form.Check
+                                inline
+                                label="Feminino"
+                                name="group1"
+                                type="radio"
+                                id="inline-radio-1"
+                            />
+                            <Form.Check
+                                inline
+                                label="Masculino"
+                                name="group1"
+                                type="radio"
+                                id="inline-radio-2"
+                            />
+                            <Form.Check
+                                inline
+                                label="Prefiro não dizer"
+                                name="group1"
+                                type="radio"
+                                id="inline-radio-3"
+                            />
+                        </Container>
 
                         <Form.Group className="col-12 pt-2 pb-5 button">
                             <Button className="outline-primary">Salvar</Button>

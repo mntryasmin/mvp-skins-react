@@ -1,0 +1,14 @@
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+.payment-form input, .payment-form select {
+    font-size: .8rem;
+}
+
+.payment-span {
+    display: flex;
+    justify-content: space-between;
+}

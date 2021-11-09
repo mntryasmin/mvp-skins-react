@@ -1,21 +1,61 @@
-.card-product {
+.card-link {
     width: 170px !important;
     height: 278px !important;
     background-color: #766289 !important;
     color: #EFEFEF;
     border-radius: 8px;
-    box-shadow: 5px 4px 1px #FD4712;
+    box-shadow: 5px 4px 1px #EFEFEF;
+    text-decoration: none !important;
+}
+
+.card-link:hover {
+    color: #EFEFEF;
+    box-shadow: 5px 4px 1px #fd4712;
+    color: #28004f;
+}
+
+.card-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 170px !important;
+    height: 278px !important;
+    border-radius: 8px;
+}
+
+.card-hover {
+    position: absolute;
+    width: 169px !important;
+    height: 277px !important;
+    border-radius: 5px;
+    opacity: 0.0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card-hover:hover {
+    display: flex;
+    opacity: 1;
+    box-shadow: inset 0px 0px 300px 200px rgba(239,239,239,0.4);
+}
+
+.card-icons a {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.card-icon {
+    width: 45px;
+    z-index: 2;
+    opacity: 1 !important;
 }
 
 .card-image {
     display: flex;
     justify-content: right;
     align-items: center;
-}
-
-.card-favorite {
-    width: 2vw;
-    height: 4vh;
 }
 
 .card-line {
