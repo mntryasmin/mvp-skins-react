@@ -16,11 +16,11 @@ function Register(props) {
                             <Row >
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Nome</FormLabel>
-                                    <FormControl type="text" placeholder="Digite seu nome" className='caixas-de-insercao'></FormControl>
+                                    <FormControl type="text" placeholder="Digite seu nome" className='caixas-de-insercao py-3'></FormControl>
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>E-mail</FormLabel>
-                                    <FormControl type="email" placeholder="Digite seu e-mail" className='caixas-de-insercao'></FormControl>
+                                    <FormControl type="email" placeholder="Digite seu e-mail" className='caixas-de-insercao py-3'></FormControl>
                                 </Col>
                             </Row>
                             <Row>
@@ -40,8 +40,8 @@ function Register(props) {
                             <Row>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Gênero</FormLabel>
-                                    <Form.Select size='sm' aria-label="Default select example" className="caixas-de-insercao">
-                                        <option>Selecione o gênero</option>
+                                    <Form.Select  aria-label="Default select example" className="caixas-de-insercao d-flex">
+                                        <option >Selecione o gênero</option>
                                         <option value="1">Masculino</option>
                                         <option value="2">Feminino</option>
                                         <option value="3">Prefiro não informar</option>
@@ -49,25 +49,25 @@ function Register(props) {
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Data de Nascimento</FormLabel>
-                                    <FormControl type="date" className='caixas-de-insercao py-4'></FormControl>
+                                    <FormControl type="date" className='caixas-de-insercao'></FormControl>
                                 </Col>
                             </Row>
                             <Row >
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Crie uma senha</FormLabel>
-                                    <FormControl type="password" placeholder="Digite a senha" className='caixas-de-insercao py-4'></FormControl>
+                                    <FormControl type="password" placeholder="Digite a senha" className='caixas-de-insercao '></FormControl>
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Repita a senha</FormLabel>
-                                    <FormControl type="password" placeholder="Digite a senha" className='caixas-de-insercao py-4'></FormControl>
+                                    <FormControl type="password" placeholder="Digite a senha" className='caixas-de-insercao'></FormControl>
                                 </Col>
                             </Row>
                             <Row >
-                                <Col xs={6} className="mb-3 p-3 d-flex ">
-                                    <Button type='reset' className='btn-mvp btn-secundario-mvp btn-cancelar'>Cancelar</Button>
+                                <Col xs={6} className="mb-3 p-3 ">
+                                    <Button type='reset' className='btn-mvp btn-secundario-mvp btn-cancelar d-flex justify-content-center'>Cancelar</Button>
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3 d-flex justify-content-end">
-                                    <Button type='submit' className='btn-mvp btn-primario-mvp btn-cancelar'>Cadastrar</Button>
+                                    <Button type='submit' className='btn-mvp btn-primario-mvp btn-cancelar d-flex justify-content-center'>Cadastrar</Button>
                                 </Col>
                             </Row>
                         </Container>
