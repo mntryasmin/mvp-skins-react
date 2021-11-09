@@ -1,6 +1,7 @@
 import React from 'react'
 import './Register.css'
-import { Container, FormGroup, Form, Col, FormLabel, FormControl, Row, Button } from 'react-bootstrap'
+import { Container, FormGroup, Form, Col, FormLabel, Row, Button } from 'react-bootstrap'
+import RegisterForm from '../../components/macro/Forms/Register/RegisterForm'
 
 function Register(props) {
 
@@ -16,21 +17,21 @@ function Register(props) {
                             <Row >
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Nome</FormLabel>
-                                    <FormControl type="text" placeholder="Digite seu nome" className='caixas-de-insercao py-3'></FormControl>
+                                    <RegisterForm name/>
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>E-mail</FormLabel>
-                                    <FormControl type="email" placeholder="Digite seu e-mail" className='caixas-de-insercao py-3'></FormControl>
+                                    <RegisterForm email/>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>CPF</FormLabel>
-                                    <FormControl type="text" placeholder="Digite seu CPF" className='caixas-de-insercao'></FormControl>
+                                    <RegisterForm cpf/>
                                 </Col>
                                 <Col xs={6} className="p-3">
                                     <FormLabel>Trade-Link</FormLabel>
-                                    <FormControl type="text" placeholder="Digite seu trade-link da steam" className='caixas-de-insercao'></FormControl>
+                                    <RegisterForm trade/>
                                     <a href='https://www.techtudo.com.br/noticias/2016/02/como-gerar-um-steam-trade-link-para-troca-de-itens-na-plataforma.ghtml'
                                         className='link-custom'>
                                         Onde obtenho o trade-link?
@@ -40,26 +41,21 @@ function Register(props) {
                             <Row>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Gênero</FormLabel>
-                                    <Form.Select  aria-label="Default select example" className="caixas-de-insercao d-flex">
-                                        <option >Selecione o gênero</option>
-                                        <option value="1">Masculino</option>
-                                        <option value="2">Feminino</option>
-                                        <option value="3">Prefiro não informar</option>
-                                    </Form.Select>
+                                    <RegisterForm gener/>
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Data de Nascimento</FormLabel>
-                                    <FormControl type="date" className='caixas-de-insercao'></FormControl>
+                                    <RegisterForm date/>
                                 </Col>
                             </Row>
                             <Row >
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Crie uma senha</FormLabel>
-                                    <FormControl type="password" placeholder="Digite a senha" className='caixas-de-insercao '></FormControl>
+                                    <RegisterForm password/>
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3">
                                     <FormLabel>Repita a senha</FormLabel>
-                                    <FormControl type="password" placeholder="Digite a senha" className='caixas-de-insercao'></FormControl>
+                                    <RegisterForm password/>
                                 </Col>
                             </Row>
                             <Row >
