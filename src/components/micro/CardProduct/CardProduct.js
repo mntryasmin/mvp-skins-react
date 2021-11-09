@@ -18,10 +18,10 @@ function CardProduct(props) {
             <Container className="col-2 p-0 mx-0 card-container">
                 <a href="" className="p-0 mx-0 card card-link">
                     <Container className="p-1 my-0 card-hover">
-                        <Container className="px-1 m-0 card-icons">
+                        {/* <Container className="px-1 m-0 card-icons"> */}
                             <a href=""><img className="card-icon" src={favorite} alt="Favoritar produto" /></a>
                             <a href=""><img className="card-icon" src={addCart} alt="Favoritar produto" /></a>
-                        </Container>
+                        {/* </Container> */}
                     </Container>
 
                     <Container className="p-1 my-2 card-product">
