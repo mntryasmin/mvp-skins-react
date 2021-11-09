@@ -3,6 +3,7 @@ import './Product.css'
 import {Row, Col, Breadcrumb} from "react-bootstrap";
 import Images from '../../components/micro/Images/Images';
 import Button from '../../components/micro/Button/Button';
+import Title from '../../components/micro/Title/Title';
 
 
 function Product(props) {
@@ -14,7 +15,7 @@ function Product(props) {
         <div className="div-produto">
             {/* inicio produto */}
             <Col xs={11} md={10} className="m-0">
-            
+            <Title title="PRODUTO"/>
                 <Row className="justify-content-center">
                     <div className="mt-2">
                     <Breadcrumb bsPrefix="">
