@@ -13,15 +13,15 @@ import imagem from '../../../../assets/images/PRODUTOS/luvas-de-especialista.png
 function CheckoutItems(props) {
         return CheckoutItemsList.map(items => {
             return (
-                <Nav className="checkout-items" defaultActiveKey="/home" as="ul">
+                <Nav className="my-1 p-3 checkout-items" defaultActiveKey="/home" as="ul">
                     <Col className="col-6 checkout-items-img" >
                         <Nav.Item as="li"> {items.imagem} </Nav.Item>
                     </Col>
 
                     <Col className="col-6" >
-                        <Nav.Item as="li"> {items.descricao} </Nav.Item>
-                        <Nav.Item as="li"> Quantidade: 1 </Nav.Item>
-                        <Nav.Item as="li"> R$ {items.preco} </Nav.Item>
+                        <Nav.Item as="li" className="py-1"> {items.descricao} </Nav.Item>
+                        <Nav.Item as="li" className="py-1"> Quantidade: 1 </Nav.Item>
+                        <Nav.Item as="li" className="py-1 checkout-items-price"> R$ {items.preco} </Nav.Item>
                     </Col>
                 </Nav>
             )
