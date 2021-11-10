@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import { Col, Form, Button, Container, Navbar, Nav, Row } from 'react-bootstrap'
+import { Col, Form, Button, Container, Navbar, Nav } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
@@ -11,6 +11,7 @@ import Luva from '../../../assets/images/icones/icon-luva.png'
 import Agente from '../../../assets/images/icones/icon-agente.png'
 import Fav from '../../../assets/images/icones/icon-coracao.png'
 import Car from '../../../assets/images/icones/icon-carrinho.png'
+import { Link } from 'react-router-dom'
 
 function Header(props) {
 
@@ -19,10 +20,12 @@ function Header(props) {
             <header className="">
                 {/* PARTE DE CIMA DO HEADER */}
                 <Container fluid className="topo-header m-0 p-0">
-                    
+
                     {/* LOGO */}
                     <Col xs={4} md={2} className="logo my-0 d-flex justify-content-center">
-                        <img src={logoClean} alt="MVP" />
+                        <Link to='/home'>
+                            <img src={logoClean} alt="MVP" />
+                        </Link>
                     </Col>
                     {/* FIM DO LOGO */}
 
@@ -45,18 +48,18 @@ function Header(props) {
                         {/* FIM DO BOTÃO DE LOGIN */}
 
                         {/* BOTÃO DE CADASTRO */}
-                        <Button href='./Register/Register.js' className="btn-mvp">
-                           CADASTRE-SE
-                        </Button>
-                        
+                        <Link to='/register' className='btn-mvp'>
+                            CADASTRE-SE
+                        </Link>
+
                         {/* FIM DO BOTÃO DE CADASTRO */}
                     </Col>
-                    
+
                 </Container>
 
                 {/* NAVBAR */}
-                <Navbar bg="light" variant="light" >
-                    <Container className="d-flex justify-content-around">
+                <Navbar bg="light" variant="light" className='nav-principal' >
+                    <Container fluid className="d-flex justify-content-around ">
                         <Navbar.Brand href="#" className="link-header">
                             <Menu />
                         </Navbar.Brand>
