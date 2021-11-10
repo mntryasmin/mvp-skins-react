@@ -7,7 +7,7 @@ function Button(props) {
     const typeButton = () => {
         if (props.navigation) {
             return (
-                <Link to={props.route} className={"btn-custom-default " + props.class}>
+                <Link to={props.route} className={"btn-mvp " + props.class}>
                     {props.label}
                 </Link>
                 )

@@ -1,3 +1,14 @@
+
+
+.btn-mvp{
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    color:#EFEFEF;
+}
+
+
 .btn-custom-default {
     height: auto !important;
     font-weight: 500;
@@ -11,6 +22,7 @@
 }
 
 .btn-custom-default:hover {
+
     box-shadow: none !important;  
     transition: 0.5s;
     background-color: transparent !important; 
@@ -18,13 +30,12 @@
     border-color: #FD4712 !important;
     border-width: 2px;
 }
-
-.conversao {
-    background-color: green;
-    color: #fff;
+.btn-primario-mvp {
+    border-color: #FD4712;
+    background-color: #FD4712;
 }
 
-.apoio {
-    background-color: #333;
-    color: #fff;
+.btn-secundario-mvp {
+    background-color: #FD4712 !important;
+    border-color: #FD4712;
 }

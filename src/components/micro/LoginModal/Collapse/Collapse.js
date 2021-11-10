@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Collapse, Form, FormGroup, FormControl } from 'react-bootstrap'
+import LoginForm from '../../../macro/Forms/Login/LoginForm';
 
 function Example() {
     const [open, setOpen] = useState(false);
@@ -16,19 +17,11 @@ function Example() {
             <Collapse in={open}>
                 <div id="example-collapse-text" className="card card-body redefinir-senha">
                     Esqueceu sua senha? Fique tranquilo, digite seu e-mail aqui em baixo para te
-                    enviarmos um e-mail com o link pra redefinição da sua senha:
+                    enviarmos um e-mail com o link para redefinição da sua senha:
                     <p></p>
                     <Form>
                         <FormGroup className="d-flex-justify-content-start">
-                            <Form.Floating className="mb-3">
-                                <Form.Control
-                                    id="floatingInputCustom"
-                                    type="email"
-                                    placeholder="name@example.com"
-                                    className='caixas-de-insercao login'
-                                />
-                                <label htmlFor="floatingInputCustom">Digite seu e-mail</label>
-                            </Form.Floating>
+                            <LoginForm Email/>
                             <Button variant="primary" className="btn-mvp">
                                 ENVIAR
                             </Button>
