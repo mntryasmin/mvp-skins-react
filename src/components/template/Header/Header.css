@@ -18,10 +18,13 @@
     text-transform: uppercase;
     text-align: center;
     font-size: .8rem;
-    color: #EFEFEF;
     background-color: #FD4712;
     border-color: #FD4712;
     width: 40%;
+}
+
+.btn-mvp a {
+    color: #EFEFEF !important;
 }
 
 .btn-mvp:hover, .btn-mvp a:hover, .btn-mvp:focus, .btn-mvp a:focus-within {

@@ -24,8 +24,8 @@ function Dashboard(props) {
             {/* DASHBOARD  */}
             <Container className="col-9 my-0 p-5 dashboard">
                 <MyAccount/>
-                {/* <OrderHistory/> */}
-                {/* <Security/> */}
+                <OrderHistory/>
+                <Security/>
             </Container>
         </Container>
         </>

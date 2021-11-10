@@ -19,7 +19,9 @@ export const Routes = () => {
             <Route path="/" component={Home} exact/>
             <Route path="/home" component={Home}/>
             <Route path="/cart" component={Cart}/>
+            <Route path="/favorites" component={Favorites}/>
             <Route path="/category" component={Category}/>
+            <Route path="/category/:id" component={Category}/>
             <Route path="/checkout" component={Checkout}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/product" component={Product}/>

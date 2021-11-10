@@ -1,6 +1,7 @@
 import React from 'react'
 import './Header.css'
 import { Col, Form, Button, Container, Navbar, Nav, Row } from 'react-bootstrap'
+import { Router, Link } from 'react-router-dom';
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
@@ -19,10 +20,12 @@ function Header(props) {
             <header className="">
                 {/* PARTE DE CIMA DO HEADER */}
                 <Container fluid className="topo-header m-0 p-0">
-                    
+
                     {/* LOGO */}
                     <Col xs={4} md={2} className="logo my-0 d-flex justify-content-center">
-                        <img src={logoClean} alt="MVP" />
+                        <a href="/">
+                            <img src={logoClean} alt="MVP" />
+                        </a>
                     </Col>
                     {/* FIM DO LOGO */}
 
@@ -45,13 +48,15 @@ function Header(props) {
                         {/* FIM DO BOTÃO DE LOGIN */}
 
                         {/* BOTÃO DE CADASTRO */}
-                        <Button href='./Register/Register.js' className="btn-mvp">
-                           CADASTRE-SE
+                        <Button className="btn-mvp">
+                            <a href="/register">
+                            CADASTRE-SE
+                            </a>
                         </Button>
-                        
+
                         {/* FIM DO BOTÃO DE CADASTRO */}
                     </Col>
-                    
+
                 </Container>
 
                 {/* NAVBAR */}
@@ -61,29 +66,29 @@ function Header(props) {
                             <Menu />
                         </Navbar.Brand>
                         <Nav>
-                            <Nav.Link href="#" className="link-header categoria">
+                            <Nav.Link href="/category/:id" className="link-header categoria">
                                 <img src={Arma} width="30" height="30" />
                                 Armas
                             </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 categoria">
+                            <Nav.Link href="/category/:id" className="link-header ms-5 categoria">
                                 <img src={Faca} width="30" height="30" />
                                 Facas
                             </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 categoria">
+                            <Nav.Link href="/category/:id" className="link-header ms-5 categoria">
                                 <img src={Luva} width="30" height="30" />
                                 Luvas
                             </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 categoria">
+                            <Nav.Link href="/category/:id" className="link-header ms-5 categoria">
                                 <img src={Agente} width="30" height="30" />
                                 Agentes
                             </Nav.Link>
 
 
-                            <Nav.Link href="#" className="link-header ms-5">
+                            <Nav.Link href="/product/favorites" className="link-header ms-5">
                                 Favoritos
                                 <img src={Fav} width="30" height="30" />
                             </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5">
+                            <Nav.Link href="/cart" className="link-header ms-5">
                                 Carrinho
                                 <img src={Car} width="30" height="30" />
                             </Nav.Link>
