@@ -7,9 +7,8 @@ import Title from '../../components/micro/Title/Title';
 import ProductContainer from '../../components/macro/Product/ProductContainer';
 import ProductPrice from '../../components/micro/Product/ProductPrice/ProductPrice';
 import ProductText from  '../../components/micro/Product/ProductText/ProductText';
-import ProductName from  '../../components/micro/Product/ProductName/ProductName';
 import Button from '../../components/micro/Button/Button'
-import { propTypes } from 'react-bootstrap/esm/Image';
+import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts';
 
 export default function Product() {
 
@@ -39,21 +38,27 @@ export default function Product() {
                 <Row className="justify-content-center">
                     <Breadcrumb bsPrefix="" className="mt-2">
                         <Breadcrumb.Item href="http://localhost:3000/">Home</Breadcrumb.Item>
-                        <Breadcrumb.Item href="#">Categoria</Breadcrumb.Item>
-                        <Breadcrumb.Item href="#">Subcategoria</Breadcrumb.Item>
+                        <Breadcrumb.Item href="/category">Categoria</Breadcrumb.Item>
+                        <Breadcrumb.Item href="/category">Subcategoria</Breadcrumb.Item>
                         <Breadcrumb.Item active>Produto</Breadcrumb.Item>
                     </Breadcrumb>
                     <ProductContainer urlImagem="pistola-visoes-ancestrais">
-                        <ProductText category="PISTOLAS"/>
+                        <ProductText category="PISTOLAS" class="product-text-category"/>
                         <ProductText category="EXTERIOR :" description="Bem desgastada (Well-Worn)"/>
                         <ProductText category="RARIDADE :" description="Azul"/>
-                        <ProductName name="Visões Ancestrais"/>
+                        <ProductText description="Visões Ancestrais" class="product-text-name"/>
                         <ProductPrice idProduto={id}/>
-                        <Button label="COMPRAR" class="btn btn-primary btn-mvp btn-primario-mvp mb-3"/>
+                        <Button label="COMPRAR" class="btn btn-primary btn-mvp btn-primario-mvp mb-3"
+                        route="/cart" navigation/>
                         <ProductText category="Coleção :" description="A Coleção Ancient"/>
                         <ProductText category="Float :" description="0.44"/>
                     </ProductContainer>
                 </Row>
+                <ProductText description="Veja também:" class="product-text-carousel"/>
+                <CarouselProducts/>
+                <ProductText description="Veja também:" class="product-text-carousel"/>
+                <CarouselProducts/>
+                <div className="mb-5"></div>
             </Col>
         </div>
         

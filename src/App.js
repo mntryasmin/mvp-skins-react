@@ -18,7 +18,6 @@ function App() {
       <Router>
         <Routes/>
       </Router>
-     <Favorites/>
       <Footer/>
     </React.Fragment>
   );
