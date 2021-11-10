@@ -7,7 +7,7 @@ function RegisterForm(props) {
     const name = () => {
         return (
             <>
-                <FormControl type="text" placeholder="Digite seu nome" className='caixas-de-insercao py-3'></FormControl>
+                <FormControl type="text" placeholder="Digite seu nome" className='box-insert py-3'></FormControl>
             </>
         )
     }
@@ -15,7 +15,7 @@ function RegisterForm(props) {
     const email = () => {
         return (
             <>
-                <FormControl type="email" placeholder="Digite seu e-mail" className='caixas-de-insercao py-3'></FormControl>
+                <FormControl type="email" placeholder="Digite seu e-mail" className='box-insert py-3'></FormControl>
             </>
         )
     }
@@ -23,7 +23,7 @@ function RegisterForm(props) {
     const cpf = () => {
         return (
             <>
-                <FormControl type="text" placeholder="Digite seu CPF" className='caixas-de-insercao'></FormControl>
+                <FormControl type="text" placeholder="Digite seu CPF" className='box-insert'></FormControl>
             </>
         )
     }
@@ -31,7 +31,7 @@ function RegisterForm(props) {
     const tradeLink = () => {
         return (
             <>
-                <FormControl type="text" placeholder="Digite seu trade-link da steam" className='caixas-de-insercao'></FormControl>
+                <FormControl type="text" placeholder="Digite seu trade-link da steam" className='box-insert'></FormControl>
             </>
         )
     }
@@ -39,7 +39,7 @@ function RegisterForm(props) {
     const gener = () => {
         return (
             <>
-                <Form.Select aria-label="Default select example" className="caixas-de-insercao d-flex">
+                <Form.Select aria-label="Default select example" className="box-insert d-flex">
                     <option >Selecione o gênero</option>
                     <option value="1">Masculino</option>
                     <option value="2">Feminino</option>
@@ -52,7 +52,7 @@ function RegisterForm(props) {
     const date = () => {
         return (
             <>
-                <FormControl type="date" className='caixas-de-insercao'></FormControl>
+                <FormControl type="date" className='box-insert'></FormControl>
             </>
         )
     }
@@ -60,7 +60,7 @@ function RegisterForm(props) {
     const password = () => {
         return (
             <>
-                <FormControl type="password" placeholder="Digite a senha" className='caixas-de-insercao '></FormControl>
+                <FormControl type="password" placeholder="Digite a senha" className='box-insert '></FormControl>
             </>
         )
     }

@@ -15,7 +15,7 @@ function LoginForm(props) {
                         id="floatingInputCustom"
                         type="email"
                         placeholder="name@example.com"
-                        className='caixas-de-insercao login'
+                        className='box-insert login'
                     />
                     <label htmlFor="floatingInputCustom">Digite seu e-mail</label>
                 </Form.Floating>
@@ -34,7 +34,7 @@ function LoginForm(props) {
                         id="floatingPasswordCustom"
                         type="password"
                         placeholder="Password"
-                        className='caixas-de-insercao login'
+                        className='box-insert login'
                     />
                     <label htmlFor="floatingPasswordCustom">Digite sua senha</label>
                 </Form.Floating>

@@ -1,26 +1,3 @@
-.caixas-de-insercao::placeholder {
-    color:black;
-}
-
-.caixas-de-insercao {
-    background-color: #EFEFEF;
-    opacity: 0.8;
-}
-
-.caixas-de-insercao:focus {
-    box-shadow: none;
-    border-color: black;
-    background-color: #EFEFEF;
-}
-
-.login {
-    color: black;
-}
-
-.login::placeholder {
-    color:black;
-}
-
 .links-login {
     text-decoration: none;
     color: black;
@@ -41,32 +18,9 @@
     box-shadow: none;
 }
 
-.sem-conta {
-    text-decoration: none;
-    color: black;
+.no-account {
     font-size: 14px;
-    text-align: left;
-}
-
-/* Estilos dos botões principais */
-.btn-primario-mvp {
-    border-color: #FD4712;
-    background-color: #FD4712;
-}
-
-/* Estilo dos botões secundários */
-.btn-secundario-mvp {
-    background-color: rgba(1, 1, 1, 0);
-    border-color: #FD4712;
-}
-
-.link-steam {
-    color: white;
-    text-decoration: none;
-}
-
-.link-steam:hover {
-    color: white;
+    text-align: right;
 }
 
 .login-title {
@@ -74,25 +28,6 @@
     font-weight: bold;
 }
 
-.btn-logar:hover {
-    background-color: white !important;
-    border-color: #28004f !important;
-    color: #28004f !important;
-}
-
-.btn-cancelar:hover {
-    background-color: white !important;
-    border-color: #28004f !important;
-    color: #28004f !important;
-}
-
-.redefinir-senha {
-    color:black ;
-    height: auto;
-}
-
-@media(max-width:855px){
-    .categorias{
-        display:none;
-    }
+.layout-button{
+    width: 100%;
 }

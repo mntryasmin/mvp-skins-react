@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import { Col, Form, Button, Container, Navbar, Nav } from 'react-bootstrap'
+import { Col, Form, Container, Navbar, Nav } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
@@ -12,6 +12,7 @@ import Agente from '../../../assets/images/icones/icon-agente.png'
 import Fav from '../../../assets/images/icones/icon-coracao.png'
 import Car from '../../../assets/images/icones/icon-carrinho.png'
 import { Link } from 'react-router-dom'
+import Button from '../../micro/Button/Button.js'
 
 function Header(props) {
 
@@ -19,7 +20,7 @@ function Header(props) {
         <>
             <header className="">
                 {/* PARTE DE CIMA DO HEADER */}
-                <Container fluid className="topo-header m-0 p-0">
+                <Container fluid className="top-header m-0 p-0">
 
                     {/* LOGO */}
                     <Col xs={4} md={2} className="logo my-0 d-flex justify-content-center">
@@ -42,15 +43,13 @@ function Header(props) {
                     </Col>
                     {/* FIM DA BARRA DE PESQUISA */}
 
-                    <Col xs={12} md={4} className="btn-menu p-0">
+                    <Col xs={12} md={4} className="btn-top-header p-0">
                         {/* BOTÃO DE LOGIN */}
                         <LoginModal />
                         {/* FIM DO BOTÃO DE LOGIN */}
 
                         {/* BOTÃO DE CADASTRO */}
-                        <Link to='/register' className='btn-mvp'>
-                            CADASTRE-SE
-                        </Link>
+                        <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE'/>
 
                         {/* FIM DO BOTÃO DE CADASTRO */}
                     </Col>
@@ -58,25 +57,25 @@ function Header(props) {
                 </Container>
 
                 {/* NAVBAR */}
-                <Navbar bg="light" variant="light" className='nav-principal' >
+                <Navbar bg="light" variant="light" className='nav-main' >
                     <Container fluid className="d-flex justify-content-around ">
                         <Navbar.Brand href="#" className="link-header">
                             <Menu />
                         </Navbar.Brand>
                         <Nav>
-                            <Nav.Link href="#" className="link-header categoria">
+                            <Nav.Link href="#" className="link-header category">
                                 <img src={Arma} width="30" height="30" />
                                 Armas
                             </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 categoria">
+                            <Nav.Link href="#" className="link-header ms-5 category">
                                 <img src={Faca} width="30" height="30" />
                                 Facas
                             </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 categoria">
+                            <Nav.Link href="#" className="link-header ms-5 category">
                                 <img src={Luva} width="30" height="30" />
                                 Luvas
                             </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 categoria">
+                            <Nav.Link href="#" className="link-header ms-5 category">
                                 <img src={Agente} width="30" height="30" />
                                 Agentes
                             </Nav.Link>

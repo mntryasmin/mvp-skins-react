@@ -1,14 +1,9 @@
-.esquecido {
-    text-decoration: none;
-    color: grey;
-}
-
-.cadastro {
+.registration {
     background-color: #28004F;
     color: white;
 }
 
-.titulo-cadastro {
+.title-registration {
     text-align: center;
     font-size: 25px;
     margin: 20px;
@@ -23,99 +18,8 @@
     color:#FD4712 !important;
 }
 
-/* Estilos dos botões principais */
-.btn-primario-mvp {
-    border-color: #FD4712;
-    background-color: #FD4712;
-}
-
-/* Estilo dos botões secundários */
-.btn-secundario-mvp {
-    background-color: rgba(1, 1, 1, 0);
-    border-color: #FD4712;
-    color:#FD4712;
-}
-
-.btn-logar:hover {
-    background-color: white !important;
-    border-color: #28004f !important;
-    color: #28004f !important;
-    text-align: center;
-}
-
-.btn-cancelar:hover {
-    background-color: white !important;
-    border-color: #28004f !important;
-    color: #28004f !important;
-    text-align: center;
-}
-
-.caixas-de-insercao::placeholder {
-    color:black;
-}
-
-.caixas-de-insercao {
-    background-color: #EFEFEF;
-    opacity: 0.8;
-    color: black !important;
-    height: 45px !important;
-    
-}
-
-.caixas-de-insercao:focus {
-    box-shadow: none;
-    border-color: black;
-}
-
-.login {
-    color: black;
-}
-
-.login::placeholder {
-    color:black;
-}
-
-.selecao {
-    color: white;
-    background-color: #28004F;
-}
-
-.caixa-forma-pagamento {
-    background-color: #28004F;
-}
-
-.forma-pagamento {
-    background-color: #EFEFEF;
-    opacity: 0.8;
-    color:black;
-    border-radius: 8px;
-}
-
-.radio-forma-pagamento {
-    background-color: #28004F;  
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
-}
-
-.radio-forma-pagamento:checked {
-    background-color: #FD4712;
-}
-
-.caixa-cadastro-cartao {
-    background-color: #EFEFEF;
-    opacity: 0.9;
-    border: none;
-    border-radius: 0%;
-    border-bottom: 1px solid black;
-}
-
-.caixa-cadastro-cartao:focus {
-    box-shadow: none;
-    background-color: #EFEFEF;
-    border-color: black;
-}
-
-.caixa-cadastro-cartao::placeholder {
-    color: black;
+.layout-btn{
+    width: 50%;
 }
 
 

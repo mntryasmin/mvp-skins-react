@@ -1,41 +1,40 @@
-
-
 .btn-mvp{
+    height: auto !important;
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
     font-size: 1rem;
-    color:#EFEFEF;
-}
-
-
-.btn-custom-default {
-    height: auto !important;
-    font-weight: 500;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: .9rem;
     color: #EFEFEF;
-    background-color: #FD4712;
-    border-color: #FD4712;
-    height: auto;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border: 3px solid;
 }
 
-.btn-custom-default:hover {
+.btn-primary-mvp {
+    border-color: #FD4712;
+    background-color: #FD4712;
+}
 
+.btn-primary-mvp:hover {
     box-shadow: none !important;  
     transition: 0.5s;
     background-color: transparent !important; 
     color: #FD4712 !important;
     border-color: #FD4712 !important;
-    border-width: 2px;
-}
-.btn-primario-mvp {
-    border-color: #FD4712;
-    background-color: #FD4712;
 }
 
-.btn-secundario-mvp {
-    background-color: #FD4712 !important;
+.btn-secundary-mvp {
+    background-color: transparent !important;
     border-color: #FD4712;
+    color: #FD4712;
+}
+
+.btn-secundary-mvp:hover{
+    box-shadow: none !important;  
+    transition: 0.5s;
+    background-color: #EFEFEF !important; 
+    color: #28004f !important;
+    border-color: #28004f;
 }
