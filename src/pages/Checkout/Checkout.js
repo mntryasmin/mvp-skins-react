@@ -26,11 +26,13 @@ function Checkout(props) {
                             <Products />
                         </Row>
 
-                        <Row>
+                        <Row className="p-2 mt-3 checkout-price-container">
                             <Col className="col-3 checkout-price-title"><p> Produtos </p></Col>
                             <Col className="col-9 checkout-price"><p> R$ 1.000,00</p></Col>
+                            <hr className="p-0 mx-0 my-2 checkout-price-line" />
                             <Col className="col-3 checkout-price-title"><p> Desconto </p></Col>
-                            <Col className="col-9 checkout-price"><p >R$ -100,00 </p></Col>
+                            <Col className="col-9 checkout-price coupon-value"><p >R$ -100,00 </p></Col>
+                            <hr className="p-0 mx-0 my-2 checkout-price-line" />
                             <Col className="col-3 checkout-price-title checkout-price-sum"><p> Total </p></Col>
                             <Col className="col-9 checkout-price checkout-price-sum"><p> R$900,00 </p></Col>
                         </Row>
