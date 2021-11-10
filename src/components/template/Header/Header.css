@@ -22,6 +22,12 @@
     background-color: #FD4712;
     border-color: #FD4712;
     width: 40%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #FD4712;
+    border-radius: 3px;
 }
 
 .btn-mvp:hover, .btn-mvp a:hover, .btn-mvp:focus, .btn-mvp a:focus-within {
@@ -30,7 +36,6 @@
     background-color: transparent !important; 
     color: #FD4712 !important;
     border-color: #FD4712 !important;
-    border-width: 2px;
 }
 
 .btn-menu{
@@ -95,7 +100,7 @@
 }
 
 .nav-principal{
-    background-color: #EFEFEF;
+    background-color: #EFEFEF !important;
 }
 
 .botoes-header-d-flex{

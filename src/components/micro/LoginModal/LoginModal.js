@@ -3,6 +3,7 @@ import './LoginModal.css'
 import { Button, Modal, Form, FormLabel, FormGroup, FormControl } from 'react-bootstrap'
 import Collapse from './Collapse/Collapse.js'
 import LoginForm from '../../macro/Forms/Login/LoginForm'
+import {Link} from 'react-router-dom'
 
 function LoginModal() {
 
@@ -39,16 +40,16 @@ function LoginModal() {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" className="btn-mvp btn-secundario-mvp btn-cancelar" onClick={handleClose}>
-                        Cancelar
+                        CANCELAR
                     </Button>
                     <Button variant="primary" className="btn-mvp btn-primario-mvp btn-logar" >
                         LOGIN
                     </Button>
                     <div className="sem-conta">
                         Não possui conta?
-                        <a href="#" className="links-login">
+                        <Link to='/register' className="links-login" onClick={handleClose}>
                             Cadastre-se
-                        </a>
+                        </Link>
                     </div>
                 </Modal.Footer>
             </Modal>

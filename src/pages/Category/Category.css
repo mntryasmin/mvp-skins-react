@@ -1,0 +1,43 @@
+.background{
+    background-color: #28004f;
+}
+
+.filter-column{
+    background-color: #EFEFEF;
+    margin-top: 200px;
+}
+
+.filter-title{
+    color: #FD4712;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.form-check-input:checked{
+    background-color: #FD4712 !important;
+}
+
+.form-check-input{
+    background-color: #28004f !important;
+}
+
+.filter-list{
+    margin-top: 20px;
+}
+
+.title-category{
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+}
+
+.card{
+    padding: 0px !important;
+    margin-right: 20px;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
