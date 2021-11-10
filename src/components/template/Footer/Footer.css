@@ -31,7 +31,7 @@
 
 .texto-footer{
     text-align: center;
-    font-size: .1rem !important;
+    font-size: 10px !important;
 }
 
 .icon-footer{
@@ -42,7 +42,7 @@
 .link-footer{
     color:#ffffff;
     text-decoration: none;
-    font-size: .1rem !important;
+    font-size: 10px !important;
 }
 
 .link-footer:hover{
