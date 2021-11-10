@@ -9,8 +9,9 @@ import Product from './pages/Product/Product'
 import Favorites from './pages/Favorites/Favorites'
 import Register from './pages/Register/Register'
 import Success from './pages/Success/Success'
-import NotFound from "./pages/NotFound/NotFound"
+import NotFound from "./pages/NotFound/Error"
 import Contact from "./pages/Contact/Contact"
+
 
 
 export const Routes = () => {

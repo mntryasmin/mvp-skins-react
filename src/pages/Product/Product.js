@@ -30,7 +30,7 @@ function Product(props) {
                     <Col xs={10} className="container-produto my-3 p-0">
                         <Col xs={12} md={7}>
                             <div className="container-imagem">
-                                <Images image={'agentefaquinha'}></Images>
+                                <Images url={'adaga-marcara-urbana'}></Images>
                             </div>
                         </Col>
                         <Col xs={12} md={5} className="informacao-produto">

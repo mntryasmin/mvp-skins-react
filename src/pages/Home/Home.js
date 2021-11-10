@@ -18,8 +18,7 @@ function Home(props) {
             <Container fluid className="px-0 py-4 mx-0 home">
                 {/* BANNERS  */}
                 <p className="mt-0 mb-0 pt-3 pb-1 title-banner card-caption-mvp">Destaques</p>
-                <Card/>
-                <Banners />
+                <Banners banner/>
 
                 <p className="mt-5 mb-0 title-banner card-caption-mvp">Eventos</p>
                 <Banners />
