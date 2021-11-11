@@ -14,8 +14,8 @@ function Register(props) {
     return (
         <>
             <Container fluid className='d-flex flex-column registration'>
-                <Form className='d-flex flex-column'>
-                    <Title title="CADASTRO" class="mt-3"/>
+                <Form className='d-flex flex-column' onSubmit="">
+                    <Title title="CADASTRO" class="mt-3" h1/>
                     
                     <FormGroup className='d-flex justify-content-around' controlId="FormRegisterClient">
                         <Container className="justify-content-center">
