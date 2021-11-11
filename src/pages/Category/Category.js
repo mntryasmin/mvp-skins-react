@@ -7,7 +7,7 @@ function Category(props) {
 
     return (
         <>
-            <Container fluid className='background'>
+            <Container fluid className='background content-container'>
                 <Row>
                     <Col md={2} className='filter-column'>
                         <div className='filter-title'>

@@ -9,7 +9,7 @@ function Favorites(props) {
     return (
         <React.Fragment>
 
-            <Container fluid className="favoritos">
+            <Container fluid className="favoritos content-container">
                 <Row className="pt-4">
 
                     <Col lg={12} className="coluna-favoritos">

@@ -13,7 +13,7 @@ function Register(props) {
 
     return (
         <>
-            <Container fluid className='d-flex flex-column registration'>
+            <Container fluid className='d-flex flex-column registration content-container'>
                 <Form className='d-flex flex-column' onSubmit="">
                     <Title title="CADASTRO" class="mt-3" h1/>
                     
