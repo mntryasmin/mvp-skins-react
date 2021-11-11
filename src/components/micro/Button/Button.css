@@ -1,5 +1,4 @@
 .btn-mvp{
-    width: auto !important;
     height: auto !important;
     font-weight: 700;
     text-transform: uppercase;
@@ -13,22 +12,12 @@
     border: 3px solid;
 }
 
-.btn-custom-default {
-    height: auto !important;
-    font-weight: 500;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: .9rem;
-    color: #EFEFEF;
-    background-color: #FD4712;
-}
-  
 .btn-primary-mvp {
     border-color: #FD4712;
     background-color: #FD4712;
 }
 
-.btn-custom-default:hover {
+.btn-primary-mvp:hover {
     box-shadow: none !important;  
     transition: 0.5s;
     background-color: transparent !important; 
@@ -36,11 +25,6 @@
     border-color: #FD4712 !important;
 }
 
-.btn-primario-mvp, .btn-secundario-mvp {
-    border-color: #FD4712;
-    background-color: #FD4712;
-}
-  
 .btn-secundary-mvp {
     background-color: transparent !important;
     border-color: #FD4712;

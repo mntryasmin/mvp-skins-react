@@ -3,12 +3,8 @@ import './LoginModal.css'
 import { Modal, Form, FormLabel, FormGroup, FormControl, Col } from 'react-bootstrap'
 import Collapse from './Collapse/Collapse.js'
 import LoginForm from '../../macro/Forms/Login/LoginForm'
-<<<<<<< chris
 import {Link} from 'react-router-dom'
-=======
-import { Link } from 'react-router-dom'
 import Button from '../Button/Button.js'
->>>>>>> juncao
 
 function LoginModal() {
 
@@ -32,30 +28,31 @@ function LoginModal() {
                 <Modal.Body >
                     <Form className="container d-flex- flex-column">
                         <FormGroup className="d-flex flex-column">
-                            <LoginForm Email />
-                            <LoginForm Password />
-
+                            <LoginForm Email/>
+                            <LoginForm Password/>
+                            
                         </FormGroup>
 
                         <Collapse />
                     </Form>
 
                 </Modal.Body>
+                <Modal.Footer className='d-flex justify-content-between'>
+                    <Col sm={5} className='d-flex'>
+                        <Button onclick={handleClose} class='btn-secundary-mvp mx-3 layou-button layout-button' label='cancelar'/>
+                    </Col>
 
-                <Modal.Footer>
-                    <Button variant="primary" className="btn-mvp btn-secundario-mvp btn-cancelar" onClick={handleClose}>
-                        CANCELAR
-                    </Button>
-                    <Button variant="primary" className="btn-mvp btn-primario-mvp btn-logar" >
-                        LOGIN
-                    </Button>
-                    <div className="sem-conta">
+                    <Col sm={6} className='d-flex'>
+                        <Button navigation route='/' class='btn-primary-mvp mx-3 layout-button' label='fazer login'/>
+                    </Col>
+                    <Col sm={12} >
+                    <div className="no-account mx-4">
                         Não possui conta?
                         <Link to='/register' className="links-login" onClick={handleClose}>
                             Cadastre-se
                         </Link>
                     </div>
-
+                    </Col>
                 </Modal.Footer>
             </Modal>
         </>
