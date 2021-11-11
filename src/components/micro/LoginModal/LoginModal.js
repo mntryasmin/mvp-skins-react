@@ -6,19 +6,30 @@ import LoginForm from '../../macro/Forms/Login/LoginForm'
 import {Link} from 'react-router-dom'
 import Button from '../Button/Button.js'
 
-function LoginModal() {
+function LoginModal(props) {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const typeButton = () => {
+        if (props.link){
+            return (
+                <Button onclick={handleShow} class='footer-link' label='LOGIN'></Button>
+            )
+        }
+        return (
+            <Button onclick={handleShow} class='btn-primary-mvp layout-btn-login' label='login'></Button>
+        )
+    }
+
     return (
         <>
-            <Button onclick={handleShow} class='btn-primary-mvp layout-btn-login' label='login'></Button>
+            {typeButton()}
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+            <Modal show={show} onHide={handleClose} >
+                <Modal.Header closeButton >
                     <Modal.Title>
                         <h5 className="login-title">
                             FAÇA LOGIN

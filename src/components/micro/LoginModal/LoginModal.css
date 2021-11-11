@@ -6,6 +6,19 @@
     border: none;
 }
 
+.footer-link{
+    color:#ffffff;
+    text-decoration: none;
+    font-size: 12px !important;
+    font-weight: normal;
+}
+
+.footer-link:hover{
+    color:#ffffff;
+    opacity: 0.75;
+    cursor: pointer;
+}
+
 .links-login:hover, .links-login:focus-within {
     transition: 0.5s;
     color: #FD4712;

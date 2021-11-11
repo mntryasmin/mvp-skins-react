@@ -9,6 +9,7 @@ import Discord from '../../../assets/images/icones/icon-discord-contato.png'
 import Instagram from '../../../assets/images/icones/icon-instagram.png'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
+import LoginModal from '../../micro/LoginModal/LoginModal';
 
 function Footer(props) {
 
@@ -36,8 +37,8 @@ function Footer(props) {
                         <FooterText text="F.A.Q"/>
                     </Col>
                     {/* terceira coluna */}
-                    <Col lg={4}>
-                        <FooterLink label="LOGIN" route="/"/>
+                    <Col lg={4} className='text-center'>
+                        <LoginModal link/>
                         <FooterLink label="CADASTRE-SE" route="/register"/>
                         <FooterLink label="RECUPERAR SENHA" route="/"/>
                         <FooterLink label="FALE CONOSCO" route="/contact"/>
@@ -104,8 +105,8 @@ function Footer(props) {
                     </Container>
 
                     <Container>
-                        <Row className="d-lg-none">
-                            <FooterLink label="LOGIN" route="/"/>
+                        <Row className="d-lg-none text-center">
+                            <LoginModal link/>
                             <FooterLink label="CADASTRE-SE" route="/register"/>
                             <FooterLink label="RECUPERAR SENHA" route="/"/>
                             <FooterLink label="FALE CONOSCO" route="/contact"/>

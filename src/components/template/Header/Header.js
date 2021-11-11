@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import { Col, Form, Container, Navbar, Nav } from 'react-bootstrap'
+import { Col, Form, Container, Navbar, Nav, Row } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
@@ -20,78 +20,111 @@ function Header(props) {
         <>
             <header className="">
                 {/* PARTE DE CIMA DO HEADER */}
-                <Container fluid className="top-header m-0 p-0">
+                <Container fluid className="m-0 p-0">
+                    <Row className='d-flex justify-content-around align-items-center top-header'>
+                        {/* LOGO */}
+                        <Col xs={4} md={2} className="logo my-0 ">
+                            <Link to='/home'>
+                                <img src={logoClean} alt="MVP" />
+                            </Link>
+                        </Col>
+                        {/* FIM DO LOGO */}
 
-                    {/* LOGO */}
-                    <Col xs={4} md={2} className="logo my-0 d-flex justify-content-center">
-                        <Link to='/home'>
-                            <img src={logoClean} alt="MVP" />
-                        </Link>
-                    </Col>
-                    {/* FIM DO LOGO */}
+                        {/* BARRA DE PESQUISA */}
+                        <Col xs={8} md={6} >
+                            <Form >
+                                <Form.Group >
+                                    <div className='d-flex flex-row input-box'>
+                                        <Form.Control type="text" placeholder="O que você procura?" className="search-bar" />
+                                        <a href="#" >
+                                            <img src={Lupa} className="lupa" />
+                                        </a>
+                                    </div>
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                        {/* FIM DA BARRA DE PESQUISA */}
 
-                    {/* BARRA DE PESQUISA */}
-                    <Col xs={8} md={6} >
-                        <Form >
-                            <Form.Group className="d-flex justify-content-center">
-                                <Form.Control type="text" placeholder="O que você procura?" className="barra-pesquisa" />
-                                <a href="#" >
-                                    <img src={Lupa} height="25.5" className="lupa" />
-                                </a>
-                            </Form.Group>
-                        </Form>
-                    </Col>
-                    {/* FIM DA BARRA DE PESQUISA */}
-
-                    <Col xs={6} md={2} className="btn-top-header p-0">
-                        {/* BOTÃO DE LOGIN */}
-                        <LoginModal />
-                    </Col>
+                        <Col xs={6} md={2} className="p-0 d-flex justify-content-center">
+                            {/* BOTÃO DE LOGIN */}
+                            <LoginModal />
+                        </Col>
                         {/* FIM DO BOTÃO DE LOGIN */}
-                    <Col xs={6} md={2} className="btn-top-header p-0">
-                        {/* BOTÃO DE CADASTRO */}
-                        <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE'/>
-                        {/* FIM DO BOTÃO DE CADASTRO */}
-                    </Col>
-
+                        <Col xs={6} md={2} className="p-0 d-flex justify-content-center">
+                            {/* BOTÃO DE CADASTRO */}
+                            <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE' />
+                            {/* FIM DO BOTÃO DE CADASTRO */}
+                        </Col>
+                    </Row>
                 </Container>
 
                 {/* NAVBAR */}
-                <Navbar bg="light" variant="light" className='nav-main' >
-                    <Container fluid className="d-flex justify-content-around ">
-                        <Navbar.Brand href="#" className="link-header">
-                            <Menu />
-                        </Navbar.Brand>
-                        <Nav>
-                            <Nav.Link href="#" className="link-header category">
-                                <img src={Arma} width="30" height="30" />
-                                Armas
-                            </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 category">
-                                <img src={Faca} width="30" height="30" />
-                                Facas
-                            </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 category">
-                                <img src={Luva} width="30" height="30" />
-                                Luvas
-                            </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5 category">
-                                <img src={Agente} width="30" height="30" />
-                                Agentes
-                            </Nav.Link>
+                <Container fluid className='box-navbar'>
+                    <Row className="d-flex justify-content-between row-navbar">
 
+                        <Navbar bg="light" variant="light" className='nav-main' >
+                            <Col md={2} xs={2}>
+                                <Navbar.Brand href="#" className="link-header">
+                                    <Menu />
+                                </Navbar.Brand>
+                            </Col>
+                            <Col md={10} xs={10} className='mx-1'>
+                                <Nav>
+                                    <Col md={2}>
+                                        <Nav.Link href="#" className="link-header category">
+                                            <div className='d-flex align-items-center items-nav'>
+                                                <img src={Arma} width="30" height="30" />
+                                                Armas
+                                            </div>
+                                        </Nav.Link>
+                                    </Col>
+                                    <Col md={2} >
+                                        <Nav.Link href="#" className="link-header category">
+                                            <div className='d-flex align-items-center items-nav '>
+                                                <img src={Faca} width="30" height="30" />
+                                                Facas
+                                            </div>
+                                        </Nav.Link>
+                                    </Col>
+                                    <Col md={2}>
+                                        <Nav.Link href="#" className="link-header category">
+                                            <div className='d-flex align-items-center justify-content-center'>
+                                                <img src={Luva} width="30" height="30" />
+                                                Luvas
+                                            </div>
+                                        </Nav.Link>
+                                    </Col>
+                                    <Col md={2} >
+                                        <Nav.Link href="#" className="link-header category">
+                                            <div className='d-flex align-items-center justify-content-center'>
+                                                <img src={Agente} width="30" height="30" />
+                                                Agentes
+                                            </div>
+                                        </Nav.Link>
+                                    </Col>
 
-                            <Nav.Link href="#" className="link-header ms-5">
-                                Favoritos
-                                <img src={Fav} width="30" height="30" />
-                            </Nav.Link>
-                            <Nav.Link href="#" className="link-header ms-5">
-                                Carrinho
-                                <img src={Car} width="30" height="30" />
-                            </Nav.Link>
-                        </Nav>
-                    </Container>
-                </Navbar>
+                                    <Col md={2} xs={6}>
+                                        <Nav.Link href="#" className="link-header">
+                                            <div className='d-flex align-items-center justify-content-center'>
+                                                Favoritos
+                                                <img src={Fav} width="30" height="30" />
+                                            </div>
+                                        </Nav.Link>
+                                    </Col>
+                                    <Col md={2} xs={6}>
+                                        <Nav.Link href="#" className="link-header">
+                                            <div className='d-flex align-items-center justify-content-center'>
+                                                Carrinho
+                                                <img src={Car} width="30" height="30" />
+                                            </div>
+                                        </Nav.Link>
+                                    </Col>
+                                </Nav>
+                            </Col>
+                        </Navbar>
+                    </Row>
+                </Container>
+
                 {/* FIM DO NAVBAR */}
 
             </header>
