@@ -1,6 +1,5 @@
 import React from 'react'
 import './Footer.css';
-
 import {Row, Col, Container} from "react-bootstrap";
 import FooterText from './FooterText/FooterText'
 import FooterLink from './FooterLink/FooterLink'
