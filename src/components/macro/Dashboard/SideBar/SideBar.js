@@ -30,10 +30,10 @@ export default class SideBar extends Component {
             <>
                 <Col xs={9} sm={9} md={9} lg={2} xl={2} className="p-0 sidebar">
                     <Row className="mx-0 nav-options">
-                        <Row className="pt-5 card-caption-mvp">Olá, {this.state.name}</Row>
+                        <Row className="pt-5 card-caption-mvp">Olá, Cliente da Silva Santos</Row>
 
                         <Nav className="p-1 list-group flex-column nav-list" defaultActiveKey="/home" as="ul">
-                            <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon nav-list-title">
+                            <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon my-account-tile">
                                 Dados Pessoais
                             </Nav.Item>
 
@@ -56,8 +56,10 @@ export default class SideBar extends Component {
                     </Row>
 
                     <Row className="mx-0 px-2 py-1 nav-contact">
-                        <Row className="px-0 pt-2">Preciso de ajuda com a minha conta</Row>
-                        <Row className="px-0 nav-image"><img src={contact} className="py-3" /></Row>
+                        <a href="/contact">
+                            <Row className="px-0 pt-2">Preciso de ajuda com a minha conta</Row>
+                            <Row className="px-0 nav-image"><img src={contact} className="py-3" /></Row>
+                        </a>
                     </Row>
 
                 </Col>

@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .button-save {
@@ -12,6 +12,14 @@
 .button-delete {
     justify-content: left;
     border-top: 1px solid grey;
+}
+
+.security-form label {
+    width: 90%;
+}
+
+.security-form-org  {
+    width: 30vw;
 }
 
 /* MEDIAS QUERIES */

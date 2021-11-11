@@ -1,7 +1,14 @@
+.discount-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
 .discount-coupon {
     display: flex;
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .discount {
@@ -12,4 +19,9 @@
 
 .discount-coupon-title {
     font-size: 1.1rem;
+}
+
+.coupon-value {
+    color: rgb(6, 107, 6);
+    font-weight: 500;
 }

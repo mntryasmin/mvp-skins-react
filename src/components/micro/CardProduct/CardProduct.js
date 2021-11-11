@@ -15,13 +15,11 @@ function CardProduct(props) {
 
     return (
         <>
-            <Container className="col-2 p-0 mx-0 card-container">
+            <Container xs={4} sm={4} md={3} lg={2} xl={2} className="p-0 mx-0 card-container">
                 <a href="" className="p-0 mx-0 card card-link">
                     <Container className="p-1 my-0 card-hover">
-                        {/* <Container className="px-1 m-0 card-icons"> */}
-                            <a href=""><img className="card-icon" src={favorite} alt="Favoritar produto" /></a>
-                            <a href=""><img className="card-icon" src={addCart} alt="Favoritar produto" /></a>
-                        {/* </Container> */}
+                        <a href=""><img className="card-icon" src={favorite} alt="Favoritar produto" /></a>
+                        <a href=""><img className="card-icon" src={addCart} alt="Favoritar produto" /></a>
                     </Container>
 
                     <Container className="p-1 my-2 card-product">
@@ -35,7 +33,6 @@ function CardProduct(props) {
                             <p className="mb-2 card-description">AK-47 | LINHAS VERMELHAS {props.description}</p>
                             <p className="my-0 card-price">de R$450,00 {props.price}</p>
                             <p className="my-0 card-price-final">por R$399,99 {props.priceDiscount}</p>
-                            {/* <Button type="button" className="col-12 btn btn-primary">Comprar</Button> */}
                         </Col>
                     </Container>
                 </a>
