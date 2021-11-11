@@ -15,19 +15,11 @@
         width: 350px;
         height:350px;
     }
-
-    .product-image{
-        margin: 20px 10px 40px;
-    }
 }
 
 @media screen and (min-width:1200px){
     .product-image{
-        width: 400px;
-        height:400px;
-    }
-
-    .product-image{
-        margin: 20px 10px 40px;
+        width: 500px;
+        height:500px;
     }
 }
