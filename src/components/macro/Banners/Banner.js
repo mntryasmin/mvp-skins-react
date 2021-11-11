@@ -34,18 +34,18 @@ function Banner(props) {
                     />
                 </Carousel.Item>
             </Carousel>
-            <Container fluid className = "banner-eventos">
-            <Carousel variant="dark">
-                <Carousel.Item>
-                    <img className="d-block w-10" src={BannerEvento1} alt="First slide"/>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img className="d-block w-100"src={BannerEvento2} alt = "Second slide"/>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img className="d-block w-100" src={BannerEvento3} alt="Third slide"/>
-                </Carousel.Item>
-            </Carousel>
+            <Container fluid className="banner-eventos">
+                <Carousel variant="dark">
+                    <Carousel.Item>
+                        <img className="d-block w-10" src={BannerEventos1} alt="First slide" />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img className="d-block w-100" src={BannerEventos2} alt="Second slide" />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img className="d-block w-100" src={BannerEventos3} alt="Third slide" />
+                    </Carousel.Item>
+                </Carousel>
             </Container>
         </>
     )

@@ -22,9 +22,9 @@ function Requests() {
             let newStatus;
             if (requests.status == true) {
                 newStatus = "Finalizado"
-              } else {
+            } else {
                 newStatus = "Em andamento"
-              }
+            }
 
             return (
                 <>

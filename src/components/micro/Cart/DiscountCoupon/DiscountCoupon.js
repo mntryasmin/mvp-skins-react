@@ -36,7 +36,7 @@ class DiscountCoupon extends Component {
 
                         <Container className="discount px-0">
                             {/* value={this.state.value} */}
-                            <Form.Control className="col-6 mx-2 py-3"  onChange={this.verifiedCoupon} type="text" name="cupom" placeholder="Digite seu cupom" />
+                            <Form.Control className="col-6 mx-2 py-3" onChange={this.verifiedCoupon} type="text" name="cupom" placeholder="Digite seu cupom" />
                             <Button label="Aplicar" class="mx-2 btn btn-primary btn-mvp btn-secundario-mvp"></Button>
                         </Container>
                     </Form>

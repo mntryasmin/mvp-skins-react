@@ -24,7 +24,7 @@ function Cart(props) {
 
                     <Container className="py-1 my-4 price">
                         <Col className="col-8 py-2 px-1 discount-coupon-cart">
-                            <DiscountCoupon/>
+                            <DiscountCoupon />
                         </Col>
 
                         <Col className="col-3 p-2 price-cart">

@@ -10,25 +10,25 @@ function ButtonMVP(props) {
         if (props.route) {
             if (props.class == "btn-primario-mvp") {
                 return (
-                    <Link to={props.route}>
-                        <Button className="btn btn-mvp btn-primario-mvp">
+                    <Button className="btn btn-mvp btn-primario-mvp">
+                        <a href={props.route}>
                             {props.label}
-                        </Button>
-                    </Link>
+                        </a>
+                    </Button>
                 )
             } else {
                 return (
-                    <Link to={props.route}>
-                        <Button className="btn btn-mvp btn-secundario-mvp">
+                    <Button className="btn btn-mvp btn-secundario-mvp">
+                        <a href={props.route}>
                             {props.label}
-                        </Button>
-                    </Link>
+                        </a>
+                    </Button>
                 )
             }
         } else {
             return (
                 <button onClick={props.onclick} className={"btn-mvp " + props.class}>
-                   {props.label}
+                    {props.label}
                 </button>
             )
 

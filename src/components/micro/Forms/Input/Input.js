@@ -3,12 +3,12 @@ import './Input.css'
 
 function Input(props) {
 
-    return(
+    return (
         <>
-        <div className="input-container">
-            <label>{props.label}:</label>
-            <input type={props.type}/>
-        </div>
+            <div className="input-container">
+                <label>{props.label}:</label>
+                <input type={props.type} />
+            </div>
         </>
     )
 }

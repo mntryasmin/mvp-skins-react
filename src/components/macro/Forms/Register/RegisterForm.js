@@ -1,6 +1,6 @@
 import React from 'react'
 import './RegisterForm.css'
-import {FormControl, Form } from 'react-bootstrap'
+import { FormControl, Form } from 'react-bootstrap'
 
 function RegisterForm(props) {
 
@@ -78,15 +78,15 @@ function RegisterForm(props) {
     }
     if (props.trade) {
         return tradeLink()
- 
+
     }
     if (props.gener) {
         return gener()
-            
+
     }
     if (props.date) {
         return date()
-            
+
     }
     if (props.password) {
         return password()
