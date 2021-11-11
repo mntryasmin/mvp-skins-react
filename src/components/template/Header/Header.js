@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import { Col, Form, Button, Container, Navbar, Nav, Row } from 'react-bootstrap'
+import { Col, Form, Container, Navbar, Nav, Row } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
@@ -24,9 +24,9 @@ function Header(props) {
 
                     {/* LOGO */}
                     <Col xs={4} md={2} className="logo my-0 d-flex justify-content-center">
-                        <Link to='/home'>
+                        <a href='/home'>
                             <img src={logoClean} alt="MVP" />
-                        </Link>
+                        </a>
                     </Col>
                     {/* FIM DO LOGO */}
 
@@ -49,7 +49,7 @@ function Header(props) {
                         {/* FIM DO BOTÃO DE LOGIN */}
 
                         {/* BOTÃO DE CADASTRO */}
-                        <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE'/>
+                        <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE' />
                         {/* FIM DO BOTÃO DE CADASTRO */}
                     </Col>
 
@@ -58,7 +58,7 @@ function Header(props) {
                 {/* NAVBAR */}
                 <Navbar bg="light" variant="light" className='nav-main' >
                     <Container fluid className="d-flex justify-content-around ">
-                      
+
                         <Navbar.Brand href="#" className="link-header">
                             <Menu />
                         </Navbar.Brand>

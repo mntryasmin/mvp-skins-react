@@ -134,7 +134,7 @@ function Category(props) {
                                 <br />
                             </ListGroup>
                         </Form>
-                        
+
                     </Col>
                     <Col md={10} className='d-flex'>
                         <Container fluid>

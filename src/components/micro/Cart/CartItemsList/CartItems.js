@@ -18,7 +18,7 @@ function ProductListCart(props) {
             return (
                 <Nav className="py-2 px-0 product-list-cart" defaultActiveKey="/home" as="ul">
                     <Col className="col-3 cart-item-image" >
-                        <Nav.Item as="li"> <img src={imagem}/> </Nav.Item>
+                        <Nav.Item as="li"> <img src={imagem} /> </Nav.Item>
                     </Col>
 
                     <Col className="col-4" >

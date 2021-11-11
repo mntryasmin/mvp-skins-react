@@ -42,11 +42,11 @@ function Checkout(props) {
 
                 <Col xs={12} sm={12} md={4} lg={4} xl={4} className="px-5 py-4 mx-1 checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
-                    <PaymentCreditCard/>
+                    <PaymentCreditCard />
                 </Col>
 
 
-                <Col xs={12} sm={12} md={3} lg={3} xl={3}  className="py-4 px-4 mx-1 checkout-term checkout-containers checkout-respons">
+                <Col xs={12} sm={12} md={3} lg={3} xl={3} className="py-4 px-4 mx-1 checkout-term checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Termos de serviço </h1>
                     <p className="pt-3">Eu estou ciente de que a após a troca terei que aguardar por 7 (sete) dias para
                         realizar outra troca com a skin adquirida nessa transação.

@@ -35,7 +35,7 @@ function CarouselProducts() {
                     <Card />
                 </Container>
             </Carousel.Item>
-                        <Carousel.Item>
+            <Carousel.Item>
                 <Container className="py-2 carousel-cards">
                     <Card />
                     <Card />

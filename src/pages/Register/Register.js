@@ -18,21 +18,21 @@ function Register(props) {
                             <Row >
                                 <Col xs={12} md={6} className="mb-3 p-3">
                                     <FormLabel>Nome</FormLabel>
-                                    <RegisterForm name/>
+                                    <RegisterForm name />
                                 </Col>
                                 <Col xs={12} md={6} className="mb-3 p-3">
                                     <FormLabel>E-mail</FormLabel>
-                                    <RegisterForm email/>
+                                    <RegisterForm email />
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={12} md={6} className="mb-3 p-3">
                                     <FormLabel>CPF</FormLabel>
-                                    <RegisterForm cpf/>
+                                    <RegisterForm cpf />
                                 </Col>
                                 <Col xs={12} md={6} className="p-3">
                                     <FormLabel>Trade-Link</FormLabel>
-                                    <RegisterForm trade/>
+                                    <RegisterForm trade />
                                     <a href='https://www.techtudo.com.br/noticias/2016/02/como-gerar-um-steam-trade-link-para-troca-de-itens-na-plataforma.ghtml'
                                         className='link-custom'>
                                         Onde obtenho o trade-link?
@@ -42,29 +42,29 @@ function Register(props) {
                             <Row>
                                 <Col xs={12} md={6} className="mb-3 p-3">
                                     <FormLabel>Gênero</FormLabel>
-                                    <RegisterForm gener/>
+                                    <RegisterForm gener />
                                 </Col>
                                 <Col xs={12} md={6} className="mb-3 p-3">
                                     <FormLabel>Data de Nascimento</FormLabel>
-                                    <RegisterForm date/>
+                                    <RegisterForm date />
                                 </Col>
                             </Row>
                             <Row >
                                 <Col xs={12} md={6} className="mb-3 p-3">
                                     <FormLabel>Crie uma senha</FormLabel>
-                                    <RegisterForm password/>
+                                    <RegisterForm password />
                                 </Col>
                                 <Col xs={12} md={6} className="mb-3 p-3">
                                     <FormLabel>Repita a senha</FormLabel>
-                                    <RegisterForm password/>
+                                    <RegisterForm password />
                                 </Col>
                             </Row>
                             <Row >
-                                <Col xs={6}  className="mb-3 p-3 d-flex justify-content-start">
-                                    <ButtonCustom navigation route='/' class='btn-secundary-mvp layout-btn' label='cancelar'/>
+                                <Col xs={6} className="mb-3 p-3 d-flex justify-content-start">
+                                    <ButtonCustom navigation route='/' class='btn-secundary-mvp layout-btn' label='cancelar' />
                                 </Col>
                                 <Col xs={6} className="mb-3 p-3 d-flex justify-content-end">
-                                    <ButtonCustom class='btn-primary-mvp layout-btn' label='cadastrar'/>
+                                    <ButtonCustom class='btn-primary-mvp layout-btn' label='cadastrar' />
                                 </Col>
                             </Row>
                         </Container>

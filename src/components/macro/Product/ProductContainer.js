@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductContainer.css';
-import {Row, Col} from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Images from '../../micro/Images/Images';
 
 function ContainerProduto(props) {
-    
-    return(
+
+    return (
         <>
             <Col xs={10} className="container-produto my-3 p-0">
                 <Col xs={12} md={7}>

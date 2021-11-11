@@ -1,6 +1,6 @@
 // REACT
 import React from 'react'
-import {Container} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 // ESTILO
 import './../../assets/css/Style.css'
@@ -14,20 +14,20 @@ import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
 function Dashboard(props) {
 
-    return(
+    return (
         <>
-        <Container fluid className="row m-0 py-5 px-0 dashboard-container">
-            
-            {/* MENU LATERAL  */}
-            <SideBar/>
+            <Container fluid className="row m-0 py-5 px-0 dashboard-container">
 
-            {/* DASHBOARD  */}
-            <Container className="col-9 my-0 p-5 dashboard">
-                <MyAccount/>
-                <OrderHistory/>
-                <Security/>
+                {/* MENU LATERAL  */}
+                <SideBar />
+
+                {/* DASHBOARD  */}
+                <Container className="col-9 my-0 p-5 dashboard">
+                    <MyAccount />
+                    <OrderHistory />
+                    <Security />
+                </Container>
             </Container>
-        </Container>
         </>
     )
 }
