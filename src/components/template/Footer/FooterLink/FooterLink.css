@@ -5,10 +5,11 @@
 .footer-link{
     color:#ffffff;
     text-decoration: none;
-    font-size: 12px !important;
+    font-size: 13px !important;
     background-color: transparent;
     border: none;
     text-transform: none;
+    font-weight: 400;
 }
 
 .footer-link:hover{

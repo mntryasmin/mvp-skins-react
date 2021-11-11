@@ -16,7 +16,7 @@ function LoginModal(props) {
     const typeButton = () => {
         if (props.link){
             return (
-                <Button onclick={handleShow} class='footer-link' label='LOGIN'></Button>
+                <Button onclick={handleShow} class='footer-link' label='Login'></Button>
             )
         }
         return (

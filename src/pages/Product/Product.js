@@ -32,23 +32,23 @@ export default function Product() {
     return (
         <>
 
-            <div className="div-produto">
+            <div className="div-produto content-container">
                 <Col xs={11} md={10} className="m-0">
-                    <Title title="PRODUTO" />
+                    <Title title="PRODUTO" class="mt-5"/>
                     <Row className="justify-content-center">
-                        <Breadcrumb bsPrefix="" className="mt-2">
-                            <Breadcrumb.Item href="http://localhost:3000/">Home</Breadcrumb.Item>
-                            <Breadcrumb.Item href="/category">Categoria</Breadcrumb.Item>
-                            <Breadcrumb.Item href="/category">Subcategoria</Breadcrumb.Item>
+                        <Breadcrumb bsPrefix="breadcrumb" className="mt-2">
+                            <Breadcrumb.Item href="/" className="product-breadcrumb">Home</Breadcrumb.Item>
+                            <Breadcrumb.Item href="/category" className="product-breadcrumb">Categoria</Breadcrumb.Item>
+                            <Breadcrumb.Item href="/category" className="product-breadcrumb">Subcategoria</Breadcrumb.Item>
                             <Breadcrumb.Item active>Produto</Breadcrumb.Item>
                         </Breadcrumb>
                         <ProductContainer urlImagem="pistola-visoes-ancestrais">
                             <ProductText category="PISTOLAS" class="product-text-category" />
                             <ProductText category="EXTERIOR :" description="Bem desgastada (Well-Worn)" />
-                            <ProductText category="RARIDADE :" description="Azul" />
+                            <ProductText category="RARIDADE :" description="Azul" class="mb-4"/>
                             <ProductText description="Visões Ancestrais" class="product-text-name" />
                             <ProductPrice idProduto={id} />
-                            <Button label="COMPRAR" class=" btn-primary-mvp p-2 mt-2"
+                            <Button label="COMPRAR" class=" btn-primary-mvp p-2 mt-2 mb-5"
                                 route="/cart" navigation/>
                             <ProductText category="Coleção :" description="A Coleção Ancient" class="mt-4"/>
                             <ProductText category="Float :" description="0.44" />

@@ -13,7 +13,7 @@ function Sucess(props) {
 
     return (
         <>
-            <Container fluid className="row m-0 py-5 px-0 success-container">
+            <Container fluid className="row m-0 py-5 px-0 success-container  content-container">
 
                 <Row className="col-9 my-0 p-5 success">
                     <Row className="row py-1 sucessImg"><img src={iconSucess} /></Row>
