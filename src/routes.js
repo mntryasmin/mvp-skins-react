@@ -9,7 +9,7 @@ import Product from './pages/Product/Product'
 import Favorites from './pages/Favorites/Favorites'
 import Register from './pages/Register/Register'
 import Success from './pages/Success/Success'
-
+import NotFound from './pages/NotFound/NotFound'
 import Contact from './pages/Contact/Contact'
 
 
@@ -24,13 +24,11 @@ export const Routes = () => {
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/product" component={Product}/>
             <Route path="/product/:id" component={Product}/>
-            <Route path="/product/favorites" component={Favorites}/>
+            <Route path="/favorites" component={Favorites}/>
             <Route path="/register" component={Register}/>
             <Route path="/success" component={Success}/>
             <Route path="/contact" component={Contact}/>
-            
-
-    
+            <Route component={NotFound} />
         </Switch>
     )
 }

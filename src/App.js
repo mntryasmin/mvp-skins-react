@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './components/template/Header/Header'
 import Footer from './components/template/Footer/Footer'
-
 import React from "react";
+import Favorites from "./pages/Favorites/Favorites"
 
 
 
@@ -16,8 +16,8 @@ function App() {
     <React.Fragment>
       <Header/>
       <Router>
+        
         <Routes/>
-       
         </Router>
       <Footer/>
     </React.Fragment>

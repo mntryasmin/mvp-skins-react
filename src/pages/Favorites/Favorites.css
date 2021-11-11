@@ -7,8 +7,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    
-    
+    width: 100px;
 }
 
 .favorites-h1{
@@ -19,23 +18,43 @@
 
 .container-favoritos{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     text-align:center;
     background-color: #28004f;
-    margin-top: 2.0rem;
- 
+    
+   }
 
+.imagem-favoritos{
+    display:flex;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 4px 4px 1px #efefef;
+    text-decoration: none !important;
+    opacity:1 !important;
 }
+
+
 .favorites-info{
     text-align: left;
     color: #fff;
+
     }
 
 .favorite-icon{
     width:10vw;
     height: auto;
     padding-top: 1rem;
+    border-radius:8px;
+    display: flex;
+    flex-direction: column;
+}
+.div-favoritos{
+    display:flex;
+    justify-content: center;
+    background-color: #28004f;
+    color:#efefef;
+
 }
 
 

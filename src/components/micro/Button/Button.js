@@ -7,18 +7,21 @@ function Button(props) {
     const typeButton = () => {
         if (props.navigation) {
             return (
-                <Link to={props.route} className={"btn-primario-mvp" + props.class}>
+                <Link to={props.route} className={"btn-mvp" + props.class}>
                     {props.label}
                 </Link>
 
             ) 
+            
            
                 
          } else {
             return (
-                <button onClick={() => props.onclick} className={"btn-primario-mvp" + props.class}>
+                <button onClick={() => props.onclick} className={"btn-mvp" + props.class}>
                     {props.label}
                 </button>
+                
+                
                 
                 
             )
@@ -27,8 +30,6 @@ function Button(props) {
         
         
     }
-
-    
 
     return(
         <>

@@ -35,7 +35,8 @@ function Product(props) {
                                 <div className="texto-nome-produto">MAG-7 | COTA DE MALHA</div>
                                 <div className="container-preco">
                                     <div className="preco-descricao">R$ 49,90</div>
-                                    <button type="button" class="btn btn-primary btn-mvp btn-primario-mvp me-2">Comprar</button>
+                                    <button type="button" className="btn btn-primary btn-mvp btn-primario-mvp me-2">Comprar</button>
+                                   
                                 </div>
                                 <div className="texto-descricao">Coleção: SUHAIHSADDAS</div>
                                 <div className="texto-descricao">Float: USAHDSDAS</div>
