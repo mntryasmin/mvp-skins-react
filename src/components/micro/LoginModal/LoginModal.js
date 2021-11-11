@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import './LoginModal.css'
-import { Button, Modal, Form, FormLabel, FormGroup, FormControl } from 'react-bootstrap'
+import { Modal, Form, FormLabel, FormGroup, FormControl, Col } from 'react-bootstrap'
 import Collapse from './Collapse/Collapse.js'
+import LoginForm from '../../macro/Forms/Login/LoginForm'
+import {Link} from 'react-router-dom'
+import Button from '../Button/Button.js'
 
 function LoginModal() {
 
@@ -12,9 +15,7 @@ function LoginModal() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow} className="btn-mvp">
-                LOGIN
-            </Button>
+            <Button onclick={handleShow} class='btn-primary-mvp' label='login'></Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -27,32 +28,31 @@ function LoginModal() {
                 <Modal.Body >
                     <Form className="container d-flex- flex-column">
                         <FormGroup className="d-flex flex-column">
-                            <FormLabel className="login-title">
-                                E-mail
-                            </FormLabel>
-                            <FormControl type="email" placeholder="Digite seu e-mail" className="caixas-de-insercao login" />
-                            <FormLabel className="login-title">
-                                Senha
-                            </FormLabel>
-                            <FormControl type="password" placeholder="Digite sua senha" className="caixas-de-insercao login" />
+                            <LoginForm Email/>
+                            <LoginForm Password/>
+                            
                         </FormGroup>
-                        <Collapse/>
+
+                        <Collapse />
                     </Form>
 
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" className="btn-mvp" onClick={handleClose}>
-                        Cancelar
-                    </Button>
-                    <Button variant="primary" className="btn-mvp" >
-                        LOGIN
-                    </Button>
-                    <div className="sem-conta">
+                <Modal.Footer className='d-flex justify-content-between'>
+                    <Col sm={5} className='d-flex'>
+                        <Button onclick={handleClose} class='btn-secundary-mvp mx-3 layou-button layout-button' label='cancelar'/>
+                    </Col>
+
+                    <Col sm={6} className='d-flex'>
+                        <Button navigation route='/' class='btn-primary-mvp mx-3 layout-button' label='fazer login'/>
+                    </Col>
+                    <Col sm={12} >
+                    <div className="no-account mx-4">
                         Não possui conta?
-                        <a href="#" className="links-login">
+                        <Link to='/register' className="links-login" onClick={handleClose}>
                             Cadastre-se
-                        </a>
+                        </Link>
                     </div>
+                    </Col>
                 </Modal.Footer>
             </Modal>
         </>

@@ -1,0 +1,16 @@
+.box-insert::placeholder {
+    color:black;
+}
+
+.box-insert {
+    background-color: #EFEFEF;
+    opacity: 0.8;
+    color: black !important;
+    height: 45px !important;
+    
+}
+
+.box-insert:focus {
+    box-shadow: none;
+    border-color: black;
+}

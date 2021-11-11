@@ -1,0 +1,9 @@
+.product-list-cart {
+    justify-content: space-between !important;
+    text-align: center;
+    align-items: center;
+}
+
+.cart-item-image img {
+    width: 80px;
+}

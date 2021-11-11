@@ -1,6 +1,8 @@
-import { Button, Offcanvas, ListGroup } from 'react-bootstrap'
 import React, { useState } from 'react';
+import './Menu.css'
+import { Button, Offcanvas, ListGroup } from 'react-bootstrap'
 import BtnMenu from '../../../../assets/images/icones/icon-menu.png'
+import Categories from '../Categories/GetCategories.js'
 
 function Menu() {
     const [show, setShow] = useState(false);
@@ -16,27 +18,13 @@ function Menu() {
 
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Categorias</Offcanvas.Title>
+                    <Offcanvas.Title className='title-menu'>Categorias</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <ListGroup variant="flush">
+                        <Categories />
                         <ListGroup.Item>
-                            <a href="#" className="link-header">PISTOLAS</a>
-                        </ListGroup.Item>
-                        <ListGroup.Item >
-                            <a href="#" className="link-header">SUBMETRALHADORAS</a>
-                        </ListGroup.Item>
-                        <ListGroup.Item >
-                            <a href="#" className="link-header">RIFLES</a>
-                        </ListGroup.Item>
-                        <ListGroup.Item >
-                            <a href="#" className="link-header">PESADAS</a>
-                        </ListGroup.Item>
-                        <ListGroup.Item >
-                            <a href="#" className="link-header">FACAS</a>
-                        </ListGroup.Item>
-                        <ListGroup.Item >
-                            <a href="#" className="link-header">AGENTES</a>
+                            <a href="#" className="link-header ">SEUS DADOS</a>
                         </ListGroup.Item>
                     </ListGroup>
                 </Offcanvas.Body>

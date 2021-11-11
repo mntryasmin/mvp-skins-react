@@ -1,0 +1,25 @@
+.registration {
+    background-color: #28004F;
+    color: white;
+}
+
+.title-registration {
+    text-align: center;
+    font-size: 25px;
+    margin: 20px;
+}
+
+.link-custom{
+    color:white;
+    text-decoration: none;
+}
+
+.link-custom:hover{
+    color:#FD4712 !important;
+}
+
+.layout-btn{
+    width: 50%;
+}
+
+

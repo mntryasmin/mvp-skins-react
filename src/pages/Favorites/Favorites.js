@@ -5,13 +5,7 @@ import Image1 from '../../assets/images/PRODUTOS/adaga-marcara-urbana.png'
 import Image2 from '../../assets/images/PRODUTOS/luva-abate.png'
 import Image3 from '../../assets/images/PRODUTOS/aug-momento.png'
 
-
-
-
 function Favorites(props) {
-
-
-
     return (
         <React.Fragment>
             
@@ -42,8 +36,6 @@ function Favorites(props) {
                   
             </Row>
             </Container>
-            
-
     </React.Fragment>
     )
 }

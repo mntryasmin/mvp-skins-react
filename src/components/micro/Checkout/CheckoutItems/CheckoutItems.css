@@ -1,0 +1,23 @@
+.checkout-items {
+    color: #EFEFEF;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    border: 1px solid #EFEFEF;
+    border-radius: 6px;
+}
+
+.checkout-items li {
+    font-size: .8rem !important;
+}
+
+.checkout-items-img {
+    display: flex;
+    align-items: center;
+}
+
+.checkout-items-price {
+    font-weight: 600;
+}

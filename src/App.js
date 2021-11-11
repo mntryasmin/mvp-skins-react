@@ -6,19 +6,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './components/template/Header/Header'
 import Footer from './components/template/Footer/Footer'
+import React from "react";
+
+
 
 import React from "react";
 
 
 
 function App() {
+
+
   return (
     <React.Fragment>
       <Header/>
       <Router>
         <Routes/>
-       
-        </Router>
+      </Router>
       <Footer/>
     </React.Fragment>
   );
