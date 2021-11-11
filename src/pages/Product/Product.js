@@ -8,7 +8,7 @@ import ProductContainer from '../../components/macro/Product/ProductContainer';
 import ProductPrice from '../../components/micro/Product/ProductPrice/ProductPrice';
 import ProductText from '../../components/micro/Product/ProductText/ProductText';
 import Button from '../../components/micro/Button/Button'
-import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts-lg-xl';
+import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts';
 
 export default function Product() {
 

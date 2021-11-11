@@ -1,13 +1,5 @@
-.card-container {
-    display: flex;
-    justify-content: center;
-}
-
-.carousel-cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-
+.carousel-indicators {
+    display: none !important;
 }
 
 .carousel-control-prev {
@@ -16,25 +8,45 @@
 
 .carousel-control-next {
     width: 8% !important;
-
 }
+
+.carousel-cards {
+    display: flex !important;
+    justify-content: center;
+}
+
+/* XS */
+@media (max-width: 539.0px) {
+    .carousel-sm, .carousel-md, .carousel-lg-xl  {
+        display: none !important;
+    }
+}
+
 
 /* SM */
 @media (min-width: 540px) and (max-width: 767.98px) {
-
+    .carousel-xs, .carousel-md, .carousel-lg-xl  {
+        display: none !important;
+    }
 }
 
 /* MD  */
 @media (min-width: 768px) and (max-width: 991.98px) {
-
+    .carousel-xs, .carousel-sm, .carousel-lg-xl  {
+        display: none !important;
+    }
 }
 
 /* LG  */
 @media (min-width: 992px) and (max-width: 1199.98px) { 
-
+    .carousel-xs, .carousel-sm, .carousel-md  {
+        display: none !important;
+    }
 }
 
 /* XL  */
 @media (min-width: 1200px) { 
-
+    .carousel-xs, .carousel-sm, .carousel-md  {
+        display: none !important;
+    }
 }
