@@ -48,10 +48,12 @@ export default function Product() {
                             <ProductText category="RARIDADE :" description="Azul" />
                             <ProductText description="Visões Ancestrais" class="product-text-name" />
                             <ProductPrice idProduto={id} />
-                            <Button label="COMPRAR" class="btn btn-primary btn-mvp btn-primario-mvp mb-3"
-                                route="/cart" navigation />
-                            <ProductText category="Coleção :" description="A Coleção Ancient" />
+                            <Button label="COMPRAR" class=" btn-primary-mvp p-2 mt-2"
+                                route="/cart" navigation/>
+                            <ProductText category="Coleção :" description="A Coleção Ancient" class="mt-4"/>
                             <ProductText category="Float :" description="0.44" />
+                            <ProductText category="ATENÇÃO :" description="Visões Ancestrais é uma customização 
+                            de Item para o jogo online CS:GO, podendo ser utilizada apenas dentro do jogo CS:GO" class="mt-4"/>
                         </ProductContainer>
                     </Row>
                     <ProductText description="Veja também:" class="product-text-carousel" />
