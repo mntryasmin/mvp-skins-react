@@ -20,6 +20,12 @@
     background-color: #FD4712;
     border-color: #FD4712;
     width: 40%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #FD4712;
+    border-radius: 3px;
 }
 
 .btn-mvp a {
@@ -32,7 +38,6 @@
     background-color: transparent !important; 
     color: #FD4712 !important;
     border-color: #FD4712 !important;
-    border-width: 2px;
 }
 
 .btn-top-header{

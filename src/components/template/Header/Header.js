@@ -20,13 +20,14 @@ function Header(props) {
         <>
             <header className="">
                 {/* PARTE DE CIMA DO HEADER */}
-                <Container fluid className="top-header m-0 p-0">
+
+                <Container fluid className="topo-header m-0 p-0">
 
                     {/* LOGO */}
                     <Col xs={4} md={2} className="logo my-0 d-flex justify-content-center">
-                        <a href='/home'>
+                        <Link to='/home'>
                             <img src={logoClean} alt="MVP" />
-                        </a>
+                        </Link>
                     </Col>
                     {/* FIM DO LOGO */}
 
@@ -49,13 +50,16 @@ function Header(props) {
                         {/* FIM DO BOTÃO DE LOGIN */}
 
                         {/* BOTÃO DE CADASTRO */}
+
                         <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE' />
+
                         {/* FIM DO BOTÃO DE CADASTRO */}
                     </Col>
 
                 </Container>
 
                 {/* NAVBAR */}
+
                 <Navbar bg="light" variant="light" className='nav-main' >
                     <Container fluid className="d-flex justify-content-around ">
 

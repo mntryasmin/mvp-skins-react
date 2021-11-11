@@ -7,13 +7,15 @@ import Footer from './components/template/Footer/Footer'
 import React from "react"
 
 function App() {
+
+
   return (
     <React.Fragment>
-      <Header />
       <Router>
-        <Routes />
+        <Header/>
+          <Routes/>
+        <Footer/>
       </Router>
-      <Footer />
     </React.Fragment>
   );
 }

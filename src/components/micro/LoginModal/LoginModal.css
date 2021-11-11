@@ -20,7 +20,29 @@
 
 .no-account {
     font-size: 14px;
-    text-align: right;
+<
+    text-align: left;
+}
+
+/* Estilos dos botões principais */
+.btn-primario-mvp {
+    border-color: #FD4712;
+    background-color: #FD4712;
+}
+
+/* Estilo dos botões secundários */
+.btn-secundario-mvp {
+    background-color: rgba(1, 1, 1, 0);
+    border-color: #FD4712;
+}
+
+.link-steam {
+    color: white;
+    text-decoration: none;
+}
+
+.link-steam:hover {
+    color: white;
 }
 
 .login-title {
