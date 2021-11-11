@@ -16,11 +16,13 @@ function Favorites(props) {
         <React.Fragment>
             
             <div className = "div-favoritos">
-            <Col xs={11} md={5} className="m-0"></Col>
+            <Col xs={11} md={10} className="m-0"></Col>
             <Title title="FAVORITOS"/>
             <Row className="justify-content-center"></Row>
+            <div className = "mt - 2"></div>
+
             
-            <Breadcrumb>
+            <Breadcrumb bsPrefix = "">
             <Breadcrumb.Item href="http://localhost:3000/">Home</Breadcrumb.Item>
             <Breadcrumb.Item href="#">Categoria</Breadcrumb.Item>
             <Breadcrumb.Item href="#">Subcategoria</Breadcrumb.Item>
@@ -38,26 +40,26 @@ function Favorites(props) {
                 </Row>
                     
                   
-                    <Row className = "pb-5 container-favoritos">
-                        <div className="imagem-favoritos">
-                        <Col xs={4} sm={4} md={4} lg={4} xl={4} className="favorites-info px-3">
+                    <Row className = "pb-3 container-favoritos">
+                    <div className="imagem-favoritos row col-12 d-flex p-0 py-3 justify-content-center">
+                        <Col xs={4} sm={4} md={4} lg={4} xl={3} className="favorites-info px-3">
                             <img className ="py-2 favorite-icon" src={Image1} alt="favorite1"/>
                             <p className = "favorite-description">FACAS || ADAGA-MARCARÁ-URBANA</p>
                         </Col>
-                        </div>
-                        <div className="imagem-favoritos">
-                        <Col xs={4} sm={4} md={4} lg={4} xl={4} className = "favorites-info px-3">
+                       
+                        
+                        <Col xs={4} sm={4} md={4} lg={4} xl={3} className = "favorites-info px-3">
                         <img className = "py-2 favorite-icon" src={Image2} alt="favorite2"/>
                         <p className = "favorite-description">LUVAS || LUVA ABATE </p>
                         </Col>
-                        </div>
                         
-                        <div className="imagem-favoritos">
-                        <Col xs={4} sm={4} md={4} lg={4} xl={4} className = "favorites-info px-3">
+                        
+                       
+                        <Col xs={4} sm={4} md={4} lg={4} xl={3} className = "favorites-info px-3">
                         <img className = "py-2 favorite-icon" src={Image3} alt="favorite3"/>
                         <p className = "favorite-description">METRALHADORA || AUG MOMENTUM UMP-45 </p>
                         </Col>
-                        </div>
+                    </div>
                 </Row>
             </Container>
             

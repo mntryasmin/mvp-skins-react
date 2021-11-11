@@ -22,16 +22,14 @@
     justify-content: center;
     text-align:center;
     background-color: #28004f;
+  
     
    }
 
 .imagem-favoritos{
-    display:flex;
-    flex-direction: column;
-    border-radius: 8px;
-    box-shadow: 4px 4px 1px #efefef;
-    text-decoration: none !important;
-    opacity:1 !important;
+    text-align: center;
+    
+    
 }
 
 
