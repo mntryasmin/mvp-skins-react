@@ -9,8 +9,6 @@ import Discord from '../../../assets/images/icones/icon-discord-contato.png'
 import Instagram from '../../../assets/images/icones/icon-instagram.png'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
-import Pix from '../../../assets/images/icones/icon-pix.png'
-import LoginModal from '../../micro/LoginModal/LoginModal'
 
 function Footer(props) {
 

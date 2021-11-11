@@ -3,17 +3,21 @@ import './Register.css'
 import { Container, FormGroup, Form, Col, FormLabel, Row, Button } from 'react-bootstrap'
 import RegisterForm from '../../components/macro/Forms/Register/RegisterForm'
 import ButtonCustom from '../../components/micro/Button/Button.js'
+import Title from '../../components/micro/Title/Title'
 
 function Register(props) {
+
+    function validateForm(){
+        
+    }
 
     return (
         <>
             <Container fluid className='d-flex flex-column registration'>
                 <Form className='d-flex flex-column'>
-                    <div className='title-registration'>
-                        CADASTRO
-                    </div>
-                    <FormGroup className='d-flex justify-content-around'>
+                    <Title title="CADASTRO" class="mt-3"/>
+                    
+                    <FormGroup className='d-flex justify-content-around' controlId="FormRegisterClient">
                         <Container className="justify-content-center">
                             <Row >
                                 <Col xs={12} md={6} className="mb-3 p-3">
@@ -27,8 +31,8 @@ function Register(props) {
                             </Row>
                             <Row>
                                 <Col xs={12} md={6} className="mb-3 p-3">
-                                    <FormLabel>CPF</FormLabel>
-                                    <RegisterForm cpf />
+                                    <FormLabel>Telefone</FormLabel>
+                                    <RegisterForm phoneNumber />
                                 </Col>
                                 <Col xs={12} md={6} className="p-3">
                                     <FormLabel>Trade-Link</FormLabel>
