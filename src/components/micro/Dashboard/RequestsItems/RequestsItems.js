@@ -17,7 +17,7 @@ function RequestsItems(props) {
             return (
                 <Nav className="row list-group request-items-style py-1" defaultActiveKey="/home" as="ul">
                     <Col className="col-4" >
-                        <Nav.Item as="li"> {items.imagem} </Nav.Item>
+                        <Nav.Item as="li"> <img className="request-item-image" src={imagem}/> </Nav.Item>
                     </Col>
 
                     <Col className="col-5" >
@@ -34,7 +34,7 @@ function RequestsItems(props) {
 
     return (
         <>
-            <Nav className="row list-group request-items-title py-2" defaultActiveKey="/home" as="ul">
+            <Nav className="row list-group py-2 card-caption-mvp" defaultActiveKey="/home" as="ul">
                 <Col className="col-4" >
                     <Nav.Item as="li"> Produto </Nav.Item>
                 </Col>

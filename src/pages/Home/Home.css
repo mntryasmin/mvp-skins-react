@@ -1,14 +1,67 @@
-body {
-    background-color: #28004f;
+.home {
+    background-color: #28004f !important;
 }
 
 .title-banner, .title-carousel {
-    text-align: center;
-    padding: 5vh 0 .5vh 0;
-    margin: 0;
+    color: #EFEFEF !important;
+}
 
-    color: #EFEFEF;
-    text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: .15rem;
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .home-xs {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home-sm, .home-md, .home-respons-lg-xl {
+        display: none;
+    }
+}
+
+/* SM */
+@media (min-width: 530px) and (max-width: 767.98px) {
+    .home-xs, .home-md, .home-respons-lg-xl {
+        display: none;
+    }
+    
+    .home-sm {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .home-xs, .home-sm, .home-respons-lg-xl {
+        display: none;
+    }
+
+    .home-md {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .home-xs, .home-sm, .home-md {
+        display: none;
+    }
+
+    .home-respons-lg-xl {
+        display: contents;
+    }
+}
+
+/* XL  */
+@media (min-width: 1200px) {
+    .home-xs, .home-sm, .home-md  {
+        display: none;
+    }
+    
+    .home-respons-lg-xl {
+        display: contents;
+    }
 }

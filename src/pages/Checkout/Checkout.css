@@ -1,0 +1,103 @@
+.checkout {
+    background-color: #28004f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #EFEFEF;
+}
+
+.checkout-title {
+    color: #EFEFEF;
+    align-items: center;
+}
+
+.checkout-containers {
+    background-color: #766289;
+    border-radius: 8px;
+}
+
+.checkout-price-container {
+    background-color: #EFEFEF;
+    color: #181818;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.checkout-price, .checkout-price-title {
+    height: 5.5vh;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-price{ 
+    justify-content: right;
+}
+
+.checkout-price-title {
+    text-align: left;
+}
+
+.checkout-price-title p, .checkout-price p {
+    margin: 0;
+    padding: 0;
+}
+
+.checkout-price-sum {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.checkout-term {
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-checkbox {
+    text-align: left;
+}
+
+.checkout-price-line {
+    background-color: #28004f;
+    width: 100%;
+    opacity: .3 !important;
+}
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .checkout {
+        flex-direction: column;
+    }
+
+    .checkout-respons {
+        margin: 2vh 0 2vh 0;
+    }
+}
+
+/* SM */
+@media (min-width: 540px) and (max-width: 767.98px) {
+    .checkout {
+        flex-direction: column;
+    }
+
+    .checkout-respons {
+        margin: 2vh 0 2vh 0;
+    }
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* XL  */
+@media (min-width: 1200px) { 
+
+}

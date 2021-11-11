@@ -8,6 +8,8 @@ import Instagram from '../../../assets/images/icones/icon-instagram.png'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
 import Pix from '../../../assets/images/icones/icon-pix.png'
+import LoginModal from '../../micro/LoginModal/LoginModal'
+
 
 function Footer(props) {
 
@@ -38,9 +40,9 @@ function Footer(props) {
                     {/* terceira coluna */}
                     <Col lg={4}>
                         <div className="texto-footer"><a className="link-footer" href="">LOGIN</a></div>
-                        <div className="texto-footer"><a className="link-footer" href="">CADASTRE-SE</a></div>
+                        <div className="texto-footer"><a className="link-footer" href="/register">CADASTRE-SE</a></div>
                         <div className="texto-footer"><a className="link-footer" href="">RECUPERAR SENHA</a></div>
-                        <div className="texto-footer"><a className="link-footer" href="">FALE CONOSCO</a></div>
+                        <div className="texto-footer"><a className="link-footer" href="/contact">FALE CONOSCO</a></div>
                     </Col>
                         
                 </Col>
@@ -106,10 +108,10 @@ function Footer(props) {
                     
                     <Container>
                         <Row className="d-lg-none">
-                            <div className="texto-footer p-1"><a className="link-footer" href="">LOGIN</a></div><br/>
-                            <div className="texto-footer p-1"><a className="link-footer" href="">CADASTRE-SE</a></div><br/>
+                            <div className="texto-footer"><a className="link-footer" href="">LOGIN</a></div>
+                            <div className="texto-footer p-1"><a className="link-footer" href="/register">CADASTRE-SE</a></div><br/>
                             <div className="texto-footer p-1"><a className="link-footer" href="">RECUPERAR SENHA</a></div><br/>
-                            <div className="texto-footer p-1"><a className="link-footer" href="">FALE CONOSCO</a></div><br/>
+                            <div className="texto-footer"><a className="link-footer" href="/contact">FALE CONOSCO</a></div>
                             <div className="texto-footer p-1">© MVP SKINS 2021 | CNPJ: 61.585.865/0001-51 |  TODOS OS DIREITOS RESERVADOS</div>
                         </Row>
                     </Container>

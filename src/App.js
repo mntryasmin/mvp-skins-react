@@ -7,20 +7,20 @@ import './App.css';
 import Header from './components/template/Header/Header'
 import Footer from './components/template/Footer/Footer'
 import React from "react";
-import Favorites from "./pages/Favorites/Favorites"
 
 
 
 function App() {
+
+
   return (
-    <React.Fragment>
-      <Header/>
-      <Router>
-        
-        <Routes/>
-        </Router>
-      <Footer/>
-    </React.Fragment>
+   <>
+   <Header/>
+   <Router>
+     <Routes/>
+   </Router>
+   <Footer/>
+</> 
   );
 }
 
