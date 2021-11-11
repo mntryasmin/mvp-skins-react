@@ -28,7 +28,7 @@ function Footer(props) {
                         {/* segunda coluna */}
                         <Col lg={6}>
                             <FooterLink label="Login" route="/"/>
-                            <FooterLink label="Cadastra-se" route="/register"/>
+                            <FooterLink label="Cadastre-se" route="/register"/>
                             <FooterLink label="Fale conosco" route="/contact"/>
                         </Col>
                     </Col>
@@ -93,9 +93,9 @@ function Footer(props) {
 
                 <Container>
                     <Row className="d-lg-none">
-                        <FooterLink label="LOGIN" route="/"/>
-                        <FooterLink label="CADASTRE-SE" route="/register"/>
-                        <FooterLink label="FALE CONOSCO" route="/contact"/>
+                        <FooterLink label="Login" route="/"/>
+                        <FooterLink label="Cadastra-se" route="/register"/>
+                        <FooterLink label="Fale conosco" route="/contact"/>
                         <FooterText text="© MVP SKINS 2021 | CNPJ: 61.585.865/0001-51 |  TODOS OS DIREITOS RESERVADOS" class="p-3"/>
 
                     </Row>
