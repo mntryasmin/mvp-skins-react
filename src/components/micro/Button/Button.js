@@ -28,11 +28,11 @@ function ButtonMVP(props) {
         } else {
             return (
                 <button onClick={props.onclick} className={"btn-mvp " + props.class}>
-                    {props.label}
+                   {props.label}
                 </button>
             )
-        }
 
+        }
     }
 
     return (

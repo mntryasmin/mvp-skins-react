@@ -28,7 +28,7 @@
     background-color: #FD4712;
 }
 
-.btn-primary-mvp:hover {
+.btn-custom-default:hover {
     box-shadow: none !important;  
     transition: 0.5s;
     background-color: transparent !important; 

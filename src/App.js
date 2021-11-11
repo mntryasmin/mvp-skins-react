@@ -10,16 +10,18 @@ import React from "react";
 
 
 
+import React from "react";
+
+
+
 function App() {
 
 
   return (
     <React.Fragment>
-      
+      <Header/>
       <Router>
-        <Header/>
-          <Routes/>
-        <Footer/>
+        <Routes/>
       </Router>
       <Footer/>
     </React.Fragment>

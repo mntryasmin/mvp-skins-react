@@ -12,8 +12,6 @@ import Success from './pages/Success/Success'
 import NotFound from "./pages/NotFound/Error"
 import Contact from "./pages/Contact/Contact"
 
-
-
 export const Routes = () => {
     return (
         <Switch>
@@ -30,7 +28,6 @@ export const Routes = () => {
             <Route path="/register" component={Register}/>
             <Route path="/success" component={Success}/>
             <Route path="/contact" component={Contact}/>
-            <Route component={NotFound}/>
         </Switch>
     )
 }
