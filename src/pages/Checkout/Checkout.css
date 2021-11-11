@@ -8,6 +8,7 @@
 
 .checkout-title {
     color: #EFEFEF;
+    align-items: center;
 }
 
 .checkout-containers {
@@ -15,15 +16,30 @@
     border-radius: 8px;
 }
 
-.checkout-price{ 
-    text-align: right;
+.checkout-price-container {
+    background-color: #EFEFEF;
+    color: #181818;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.checkout-price, .checkout-price-title {
     height: 5.5vh;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-price{ 
+    justify-content: right;
 }
 
 .checkout-price-title {
     text-align: left;
-    height: 5.5vh;
+}
 
+.checkout-price-title p, .checkout-price p {
+    margin: 0;
+    padding: 0;
 }
 
 .checkout-price-sum {
@@ -39,6 +55,12 @@
 
 .checkout-checkbox {
     text-align: left;
+}
+
+.checkout-price-line {
+    background-color: #28004f;
+    width: 100%;
+    opacity: .3 !important;
 }
 
 /* MEDIAS QUERIES */

@@ -3,3 +3,7 @@
     text-align: center;
     align-items: center;
 }
+
+.cart-item-image img {
+    width: 80px;
+}

@@ -76,6 +76,18 @@
     justify-content: center;
 }
 
+.nav-contact a {
+    color: #181818;
+}
+
+.nav-contact a:hover {
+    color: #FD4712;
+}
+
+.form-check-input:checked {
+    background-color: #FD4712 !important;
+}
+
 
 /* MEDIAS QUERIES */
 

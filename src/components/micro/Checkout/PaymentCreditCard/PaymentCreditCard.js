@@ -46,7 +46,7 @@ function PaymentCreditCard(props) {
                     <option value="1">1 x de R$ XX,XX sem juros</option>
                     <option value="2">2 x de R$ XX,XX com juros</option>
                     <option value="3">3 x de R$ XX,XX com juros</option>
-                </Form.Select>  
+                </Form.Select>
             </Row>
         </Form>
     )

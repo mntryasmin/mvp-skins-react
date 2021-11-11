@@ -1,6 +1,6 @@
 // REACT
 import React, { Component } from 'react'
-import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+import { Container, Form, Col } from 'react-bootstrap'
 
 // ESTILO
 import '../../../../assets/css/Style.css'
@@ -8,20 +8,21 @@ import './MyAccount.css'
 
 // PÁGINAS/COMPONENTES
 import AccountList from './AccountList'
+import Button from '../../../micro/Button/Button'
 
 export default class MyAccount extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: AccountList.name,
-            email: AccountList.email,
-            birthdate: AccountList.birthdate,
-            tradeLink: AccountList.tradeLink,
-            tel: AccountList.tel,
-            gender: AccountList.gender
-        }
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         name: AccountList.name,
+    //         email: AccountList.email,
+    //         birthdate: AccountList.birthdate,
+    //         tradeLink: AccountList.tradeLink,
+    //         tel: AccountList.tel,
+    //         gender: AccountList.gender
+    //     }
+    // }
 
     render() {
         return (
@@ -31,31 +32,31 @@ export default class MyAccount extends Component {
                     <Form className="myAccountForm pt-3">
                         <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                             <Form.Label className="mt-3"> Nome </Form.Label>
-                            <Form.Control type="text" name="name" value={this.state.name} />
+                            <Form.Control type="text" name="name" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={3} xl={3}>
                             <Form.Label className="mt-3"> Data de nascimento </Form.Label>
-                            <Form.Control type="date" name="birthday" value={this.state.birthdate} />
+                            <Form.Control type="date" name="birthday" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                             <Form.Label className="mt-3"> E-mail </Form.Label>
-                            <Form.Control type="email" name="email" value={this.state.email} />
+                            <Form.Control type="email" name="email" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={3} xl={3}>
                             <Form.Label className="mt-3"> Telefone </Form.Label>
-                            <Form.Control type="tel" name="tel" value={this.state.tel} />
+                            <Form.Control type="tel" name="tel" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                             <Form.Label className="mt-3"> Trade link </Form.Label>
-                            <Form.Control type="url" name="tradeLink" value={this.state.tradeLink} />
+                            <Form.Control type="url" name="tradeLink" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={12} xl={12} className="mt-3">
-                            <p>Identidade de gênero</p>
+                            <Form.Label className="mt-3"> Identidade de gênero </Form.Label>
                         </Col>
 
                         <Container key="inline-radio" className="gender mb-3 px-0">
@@ -83,7 +84,7 @@ export default class MyAccount extends Component {
                         </Container>
 
                         <Form.Group className="col-12 pt-2 pb-5 button">
-                            <Button className="outline-primary">Salvar</Button>
+                            <Button label="Salvar" route="/home" class="btn-primario-mvp"></Button>
                         </Form.Group>
                     </Form>
                 </Container>

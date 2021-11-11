@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.css';
+
 import {Row, Col, Container} from "react-bootstrap";
 import FooterText from './FooterText/FooterText'
 import FooterLink from './FooterLink/FooterLink'
@@ -10,10 +11,11 @@ import Instagram from '../../../assets/images/icones/icon-instagram.png'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
 import Pix from '../../../assets/images/icones/icon-pix.png'
+import LoginModal from '../../micro/LoginModal/LoginModal'
 
 function Footer(props) {
 
-    return(
+    return (
         <>
         {/* inicio footer */}
         <footer className="footer">
@@ -51,14 +53,14 @@ function Footer(props) {
                     </Col>
             </Row>
         </Container>
-        
-                
+               
                 {/* quarta coluna */}
                 <Col xs={12} lg={4}>
                     {/* redes sociais */}
                     <FooterText text="SIGA A GENTE" class="mb-2"/>
                     <Container>
                         <Row className="justify-content-center">
+
                             <Col xs={2} lg={3} className="footer-image">
                                     <a className="link-footer" href="https://www.facebook.com/" target="_blank">
                                         <img src={Facebook} alt="ícone do facebook" className="icon-footer"/>
@@ -72,25 +74,28 @@ function Footer(props) {
                             </Col>
                                 
                             <Col xs={2} lg={3} className="footer-image">
+
                                 <a className="link-footer texto-footer" href="https://discord.com/" target="_blank">
-                                    <img src={Discord} alt="ícone do discord" className="icon-footer"/>
+                                    <img src={Discord} alt="ícone do discord" className="icon-footer" />
                                 </a>
                             </Col>
                                 
                             <Col xs={2} lg={3} className="footer-image">
+
                                 <a className="link-footer texto-footer" href="https://www.instagram.com/" target="_blank">
-                                        <img src={Instagram} alt="ícone do instagram" className="icon-footer"/>
-                                    </a>
+                                    <img src={Instagram} alt="ícone do instagram" className="icon-footer" />
+                                </a>
                             </Col>
                         </Row>
                     </Container>
-                    
-                    <hr className="linha-hr"/>
-                    
+
+                    <hr className="linha-hr" />
+
                     {/* <!-- metodos de pagamento --> */}
                     <FooterText text="MÉTODOS DE PAGAMENTO" class="div-lg mb-2"/>
                     <Container>
                         <Row className="footer-lg mb-1">
+
                             <Col lg={6} className="footer-image px-0">
                                     <img src={Mastercard} alt="ícone do mastercard" className="icon-footer"/>
                             </Col>
@@ -100,7 +105,7 @@ function Footer(props) {
                             </Col>  
                         </Row>
                     </Container>
-                    
+
                     <Container>
                         <Row className="d-lg-none">
                             <FooterLink label="LOGIN" route="/"/>
@@ -108,11 +113,12 @@ function Footer(props) {
                             <FooterLink label="RECUPERAR SENHA" route="/"/>
                             <FooterLink label="FALE CONOSCO" route="/contact"/>
                             <FooterText text="© MVP SKINS 2021 | CNPJ: 61.585.865/0001-51 |  TODOS OS DIREITOS RESERVADOS" class="p-3"/>
+
                         </Row>
                     </Container>
                 </Col>
-        </footer>
-        {/* fim footer */}
+            </footer>
+            {/* fim footer */}
         </>
     )
 }

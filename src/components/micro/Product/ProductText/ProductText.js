@@ -3,9 +3,9 @@ import './ProductText.css'
 
 function ProductText(props) {
 
-    return(
+    return (
         <>
-            <div className={"product-text-description "+props.class}>{props.category} {props.description}</div>
+            <div className={"product-text-description " + props.class}>{props.category} {props.description}</div>
         </>
     )
 }
