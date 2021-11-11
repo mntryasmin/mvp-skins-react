@@ -16,7 +16,7 @@ function Checkout(props) {
 
     return (
         <>
-            <Container fluid className="row px-2 py-5 mx-0 checkout">
+            <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
                 <h1 className="mb-3 card-title-mvp checkout-title"> Checkout </h1>
 
                 <Col xs={12} sm={12} md={4} lg={4} xl={4} className="py-4 mx-1 checkout-containers checkout-respons">

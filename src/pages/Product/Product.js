@@ -32,7 +32,7 @@ export default function Product() {
     return (
         <>
 
-            <div className="div-produto">
+            <div className="div-produto content-container">
                 <Col xs={11} md={10} className="m-0">
                     <Title title="PRODUTO" />
                     <Row className="justify-content-center">

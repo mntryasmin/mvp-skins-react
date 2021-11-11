@@ -16,7 +16,7 @@ function Dashboard(props) {
 
     return (
         <>
-            <Container fluid className="row m-0 py-5 px-0 dashboard-container">
+            <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
 
                 {/* MENU LATERAL  */}
                 <SideBar />

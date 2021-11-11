@@ -7,7 +7,7 @@ function Error() {
 
     return (
         <>
-            <Container fluid className="background-page">
+            <Container fluid className="background-page  content-container">
                 <Container className="d-flex justify-content-center text-center">
                     <Row>
                         <h1 className="title">

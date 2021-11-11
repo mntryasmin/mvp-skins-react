@@ -15,7 +15,7 @@ function Cart(props) {
 
     return (
         <>
-            <Container fluid className="cart p-0">
+            <Container fluid className="cart p-0 content-container">
                 <Col lg={3} xl={3} className="mx-4 my-5 cart-container cart-banner">
                 </Col>
 

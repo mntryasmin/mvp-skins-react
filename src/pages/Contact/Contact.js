@@ -16,7 +16,7 @@ function Contact(props) {
 
     return (
         <>
-            <Container className="contact">
+            <Container className="contact content-container">
                 <Row className="pt-5">
                     <h1 className="contact-h1">Como podemos te ajudar?</h1>
                     <p className="pb-5">Entre em contato por uma das redes abaixo</p>
