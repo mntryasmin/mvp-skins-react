@@ -43,14 +43,14 @@ function Header(props) {
                     </Col>
                     {/* FIM DA BARRA DE PESQUISA */}
 
-                    <Col xs={12} md={4} className="btn-top-header p-0">
+                    <Col xs={6} md={2} className="btn-top-header p-0">
                         {/* BOTÃO DE LOGIN */}
                         <LoginModal />
+                    </Col>
                         {/* FIM DO BOTÃO DE LOGIN */}
-
+                    <Col xs={6} md={2} className="btn-top-header p-0">
                         {/* BOTÃO DE CADASTRO */}
                         <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE'/>
-
                         {/* FIM DO BOTÃO DE CADASTRO */}
                     </Col>
 

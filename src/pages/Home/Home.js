@@ -1,6 +1,6 @@
 // REACT
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 
 // ESTILO
 import '../../assets/css/Style.css'
@@ -20,11 +20,14 @@ function Home(props) {
             <Container fluid className="px-2 py-4 mx-0 home">
                 {/* BANNERS  */}
                 <p className="mt-0 mb-0 pt-3 pb-1 title-banner card-caption-mvp">Destaques</p>
-
-                <Banners />
-
+                <Row className='row-banner'>
+                <Banners banner/>
+                </Row>
+                
                 <p className="mt-5 mb-0 title-banner card-caption-mvp">Eventos</p>
+                <Row>
                 <Banners />
+                </Row>
 
                 {/* CAROUSEL'S DE PRODUTOS  */}
                 <Container className="p-0 m-0 home-xs">

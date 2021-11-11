@@ -15,7 +15,7 @@ function LoginModal() {
 
     return (
         <>
-            <Button onclick={handleShow} class='btn-primary-mvp' label='login'></Button>
+            <Button onclick={handleShow} class='btn-primary-mvp layout-btn-login' label='login'></Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

@@ -1,4 +1,5 @@
 import React from 'react'
+import './Banner.css'
 import { Carousel, CarouselItem, Container } from 'react-bootstrap'
 import Banner1 from '../../../assets/images/banners/banner-destaques-1.png'
 import Banner2 from '../../../assets/images/banners/banner-destaques-2.png'
@@ -12,16 +13,16 @@ function Banner(props) {
     if (props.banner) {
         return (
             <>
-                 <Container>
-                    <Carousel variant="dark">
+                 <Container className='container-banner'>
+                    <Carousel variant="dark" >
                         <CarouselItem>
-                            <img className="d-block w-100" src={Banner1} alt="First slide" />
+                            <img className="d-block" src={Banner1} alt="First slide" className='banner'/>
                         </CarouselItem>
                         <CarouselItem>
-                            <img className="d-block w-100" src={Banner2} alt="Second slide" />
+                            <img className="d-block" src={Banner2} alt="Second slide" className='banner'/>
                         </CarouselItem>
                         <CarouselItem>
-                            <img className="d-block w-100" src={Banner3} alt="Third slide" />
+                            <img className="d-block" src={Banner3} alt="Third slide" className='banner'/>
                         </CarouselItem>
                     </Carousel>
                 </Container>
@@ -30,16 +31,16 @@ function Banner(props) {
     } else{
         return (
             <>
-                <Container>
+                <Container className='container-banner'>
                     <Carousel variant="dark">
                         <CarouselItem>
-                            <img className="d-block w-100" src={BannerEventos1} alt="First slide" />
+                            <img className="d-block w-100" src={BannerEventos1} alt="First slide" className='banner'/>
                         </CarouselItem>
                         <CarouselItem>
-                            <img className="d-block w-100" src={BannerEventos2} alt="Second slide" />
+                            <img className="d-block w-100" src={BannerEventos2} alt="Second slide" className='banner'/>
                         </CarouselItem>
                         <CarouselItem>
-                            <img className="d-block w-100" src={BannerEventos3} alt="Third slide" />
+                            <img className="d-block w-100" src={BannerEventos3} alt="Third slide" className='banner'/>
                         </CarouselItem>
                     </Carousel>
                 </Container>
