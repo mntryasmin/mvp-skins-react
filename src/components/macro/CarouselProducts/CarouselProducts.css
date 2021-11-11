@@ -1,8 +1,13 @@
-.carousel-5cards {
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-cards {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-evenly
+
 }
 
 .carousel-control-prev {

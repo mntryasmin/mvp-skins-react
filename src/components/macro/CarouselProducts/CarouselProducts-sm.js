@@ -15,28 +15,49 @@ function CarouselProducts() {
     return (
         <Carousel activeIndex={index} onSelect={handleSelect}>
             <Carousel.Item>
-                <Container className="py-2 carousel-5cards">
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                </Container>
-            </Carousel.Item>
-
-            <Carousel.Item>
-                <Container className="py-2 carousel-5cards">
-                    <Card />
-                    <Card />
+                <Container className="py-2 carousel-cards">
                     <Card />
                     <Card />
                     <Card />
                 </Container>
             </Carousel.Item>
             <Carousel.Item>
-                <Container className="py-2 carousel-5cards">
+                <Container className="py-2 carousel-cards">
                     <Card />
                     <Card />
+                    <Card />
+                </Container>
+            </Carousel.Item>
+            <Carousel.Item>
+                <Container className="py-2 carousel-cards">
+                    <Card />
+                    <Card />
+                    <Card />
+                </Container>
+            </Carousel.Item>
+            <Carousel.Item>
+                <Container className="py-2 carousel-cards">
+                    <Card />
+                    <Card />
+                    <Card />
+                </Container>
+            </Carousel.Item>
+            <Carousel.Item>
+                <Container className="py-2 carousel-cards">
+                    <Card />
+                    <Card />
+                    <Card />
+                </Container>
+            </Carousel.Item>
+            <Carousel.Item>
+                <Container className="py-2 carousel-cards">
+                    <Card />
+                    <Card />
+                    <Card />
+                </Container>
+            </Carousel.Item>
+            <Carousel.Item>
+                <Container className="py-2 carousel-cards">
                     <Card />
                     <Card />
                     <Card />

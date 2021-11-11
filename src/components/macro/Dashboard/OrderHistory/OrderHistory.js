@@ -1,6 +1,6 @@
 // REACT
 import React, { Component } from 'react'
-import { Container} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 // ESTILO
 import '../../../../assets/css/Style.css'

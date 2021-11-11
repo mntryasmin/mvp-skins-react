@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import './LoginModal.css'
-import { Button, Modal, Form, FormLabel, FormGroup, FormControl } from 'react-bootstrap'
+import { Modal, Form, FormLabel, FormGroup, FormControl, Col } from 'react-bootstrap'
 import Collapse from './Collapse/Collapse.js'
 import LoginForm from '../../macro/Forms/Login/LoginForm'
+<<<<<<< chris
 import {Link} from 'react-router-dom'
+=======
+import { Link } from 'react-router-dom'
+import Button from '../Button/Button.js'
+>>>>>>> juncao
 
 function LoginModal() {
 
@@ -14,9 +19,7 @@ function LoginModal() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow} className="btn-mvp">
-                LOGIN
-            </Button>
+            <Button onclick={handleShow} class='btn-primary-mvp' label='login'></Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -29,15 +32,16 @@ function LoginModal() {
                 <Modal.Body >
                     <Form className="container d-flex- flex-column">
                         <FormGroup className="d-flex flex-column">
-                            <LoginForm Email/>
-                            <LoginForm Password/>
-                            
+                            <LoginForm Email />
+                            <LoginForm Password />
+
                         </FormGroup>
 
                         <Collapse />
                     </Form>
 
                 </Modal.Body>
+
                 <Modal.Footer>
                     <Button variant="primary" className="btn-mvp btn-secundario-mvp btn-cancelar" onClick={handleClose}>
                         CANCELAR
@@ -51,6 +55,7 @@ function LoginModal() {
                             Cadastre-se
                         </Link>
                     </div>
+
                 </Modal.Footer>
             </Modal>
         </>

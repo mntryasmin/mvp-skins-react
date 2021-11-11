@@ -7,9 +7,6 @@ import BannerEventos1 from '../../../assets/images/banners/banner-eventos-1.png'
 import BannerEventos2 from '../../../assets/images/banners/banner-eventos-2.png'
 import BannerEventos3 from '../../../assets/images/banners/banner-eventos-3.png'
 
-
-
-
 function Banner(props) {
 
     if (props.banner) {
@@ -33,9 +30,6 @@ function Banner(props) {
     } else{
         return (
             <>
-    
-    
-    
                 <Container>
                     <Carousel variant="dark">
                         <CarouselItem>
@@ -54,7 +48,6 @@ function Banner(props) {
         )
     }
 
-    
 }
 
 export default Banner

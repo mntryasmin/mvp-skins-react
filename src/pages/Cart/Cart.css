@@ -24,12 +24,15 @@
 }
 
 .discount-coupon-cart {
-    border: 2px solid #28004f;
+    border: 3px solid white;
     border-radius: 6px;
+    display: flex;
+
 }
 
 .price-cart {
-    border: 3px solid #28004f;
+    border: 3px solid white;
+
     border-radius: 6px;
     text-align: center;
     display: flex;

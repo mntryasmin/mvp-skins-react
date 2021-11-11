@@ -9,6 +9,7 @@ import './CartItems.css'
 // PÁGINAS/COMPONENTES
 import CartItemsList from './CartItemsList'
 import trash from '../../../../assets/images/icones/delete.png'
+import imagem from '../../../../assets/images/PRODUTOS/rifle-vulcan.png'
 
 function ProductListCart(props) {
 
@@ -16,8 +17,8 @@ function ProductListCart(props) {
         return CartItemsList.map(items => {
             return (
                 <Nav className="py-2 px-0 product-list-cart" defaultActiveKey="/home" as="ul">
-                    <Col className="col-3" >
-                        <Nav.Item as="li"> {items.imagem} </Nav.Item>
+                    <Col className="col-3 cart-item-image" >
+                        <Nav.Item as="li"> <img src={imagem} /> </Nav.Item>
                     </Col>
 
                     <Col className="col-4" >
