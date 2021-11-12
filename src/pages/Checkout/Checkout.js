@@ -67,7 +67,7 @@ function Checkout(props) {
                         </Form.Group>
                     </Form>
 
-                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp"></Button>
+                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" navigation></Button>
                 </Col>
             </Container>
         </>
