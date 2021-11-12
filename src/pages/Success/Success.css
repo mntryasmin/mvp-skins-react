@@ -6,7 +6,8 @@
 }
 
 .success {
-    background-color: #efefef;
+    background-color: #c4c4c480;
+    opacity: 0.75;
     border-radius: 6px;
 }
 
@@ -16,6 +17,18 @@
     justify-content: space-around;
 }
 
+.success-button-dashboard{
+    display: flex;
+    margin: 40px 0;
+    justify-content: center;
+}
+
+.success-button-home{
+    display: flex;
+    margin: 40px 0;
+    justify-content: center;
+}
+
 .sucessImg {
     display: flex;
     justify-content: center;
@@ -23,4 +36,20 @@
 
 .sucessImg img {
     width: 7vw;
+    padding: 0;
+}
+
+.sucess-text{
+    color: #ffffff;
+    text-align: center;
+}
+
+@media screen and (min-width:768px){
+    .success-button-dashboard{
+        justify-content: flex-start;
+    }
+    
+    .success-button-home{
+        justify-content: flex-end;
+    }
 }

@@ -1,5 +1,5 @@
-@media screen and (min-width:992px){
+@media screen and (min-width:768px){
     .content-container{
-    min-height: 66vh;
+    min-height: 67vh;
     }
 }   

@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 import {ListGroup} from 'react-bootstrap'
 
 function Categories(props) {
@@ -16,12 +17,12 @@ function Categories(props) {
             setCategories(response.data)
         })
     }
-
+    
     return categories.map(item => {
         return (
         <>
             <ListGroup.Item key={item.codigoCategoria}>
-                <a href="#" className="link-header ">{item.descricao}</a>
+                <Link to={'/category/'+item.codigoCategoria}  className="link-header ">{item.descricao}</Link>
             </ListGroup.Item>
         </>
         )

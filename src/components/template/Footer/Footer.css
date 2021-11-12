@@ -38,6 +38,11 @@
     text-align: center;
 }
 
+.footer-login-modal{
+    display: block;
+}
+
+
 @media screen and (min-width:992px){
     .footer-lg{
         display:flex;
