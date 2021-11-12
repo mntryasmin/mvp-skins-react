@@ -21,8 +21,6 @@ function Favorites(props) {
                 <Row className="justify-content-center"></Row>
             </div>
 
-
-
             <div className="py-3 px-3 mb-0 fav container-fluid d-flex">
 
                 <Row className="fav-row">
@@ -42,10 +40,6 @@ function Favorites(props) {
                 </Row>
 
             </div>
-
-
-
-
 
         </React.Fragment >
     )
