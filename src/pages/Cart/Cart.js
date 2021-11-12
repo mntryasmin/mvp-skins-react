@@ -21,28 +21,29 @@ function Cart(props) {
 
                 <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-4 my-5 pt-3 cart-container">
                     <ProductListCart />
-
+{/* 
                     <Container className="py-1 my-4 price">
-                        <Col className="col-8 py-2 px-1 discount-coupon-cart">
+                        <Col className="col-7 py-2 px-1 mt-2 discount-coupon-cart">
                             <DiscountCoupon />
                         </Col>
 
-                        <Col className="col-3 p-2 price-cart">
-                            <Row className="p-0">
-                                <p className="card-caption-mvp"> Subtotal </p>
-                                <Col className="col-2 checkout-price-title checkout-coupon"><p> Cupom </p></Col>
-                                <Col className="col-9 checkout-price coupon-value"><p >R$ -100,00 </p></Col>
-                                <Col className="col-2 checkout-price-title checkout-price-sum"><p> Total </p></Col>
-                                <Col className="col-9 checkout-price checkout-price-sum"><p> R$900,00 </p></Col>
-                            </Row>
-                        </Col>
-                    </Container>
+                        <Row className="col-5 p-0 mt-2 price-cart">
+                            <Col className="cart-values">
+                                <p className="m-0"> Cupom </p>
+                                <p className="m-0 mt-1">R$ -100,00 </p>
+                            </Col>
+                            <Col className="cart-values">
+                                <p className="m-0"> Subtotal </p>
+                                <p className="m-0 mt-1"> R$900,00 </p>
+                            </Col>
+                        </Row>
+                    </Container> */}
 
 
                     <Container className="py-4 my-0 pb-5 cart-buttons">
-                        <Button label="Continuar comprando" route="/home" class="btn-secundario-mvp"></Button>
+                        <Button label="Continuar comprando" route="/home" class="btn-secundary-mvp"></Button>
 
-                        <Button label="Finalizar compra" route="/home" class="btn-primario-mvp"></Button>
+                        <Button label="Finalizar compra" route="/home" class="btn-primary-mvp"></Button>
                     </Container>
                 </Container>
             </Container>
