@@ -9,7 +9,7 @@ import Product from './pages/Product/Product'
 import Favorites from './pages/Favorites/Favorites'
 import Register from './pages/Register/Register'
 import Success from './pages/Success/Success'
-// import NotFound from './pages/NotFound/NotFound'
+// import NotFound from './pages/NotFound'
 import Contact from './pages/Contact/Contact'
 
 
@@ -30,7 +30,7 @@ export const Routes = () => {
             <Route path="/register" component={Register} />
             <Route path="/success" component={Success} />
             <Route path="/contact" component={Contact} />
-            <Route component={NotFound} />
+            {/* <Route component={NotFound} /> */}
         </Switch>
     )
 }
