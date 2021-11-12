@@ -7,7 +7,7 @@ function ContainerProduto(props) {
 
     return (
         <>
-            <Col xs={10} className="container-produto my-3 p-0">
+            <Col xs={10} className="container-produto my-3 p-0" key={props.id}>
                 <Col xs={12} md={7}>
                     <div className="container-imagem">
                         <Images url={props.urlImagem} class="product-image"></Images>
