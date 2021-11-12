@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import {Form} from 'react-bootstrap'
 
-function SelectDate(props) {
+function SelectGender(props) {
 
     const [gender, setGender] = useState('')
-    // PROCURAR UM JEITO DE COLOCAR SELECTED AQUI
+    
     const getGender = () => {
         return (
             <>
@@ -18,6 +18,7 @@ function SelectDate(props) {
                     <option value="2">Feminino</option>
                     <option value="3">Prefiro não informar</option>
                 </Form.Select>
+                {props.function("gender", gender)}
             </>
         )
     }
@@ -28,4 +29,4 @@ function SelectDate(props) {
     )
 }
 
-export default SelectDate;
+export default SelectGender;

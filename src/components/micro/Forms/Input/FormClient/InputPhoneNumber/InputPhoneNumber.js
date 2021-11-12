@@ -15,6 +15,7 @@ function Comp(props) {
                 className='box-insert'
                 onChange={(event) =>{setPhoneNumber(event.target.value)}}
                 value={phoneNumber}/>
+                {props.function("phoneNumber", phoneNumber)}
             </>
         )
     }

@@ -15,6 +15,7 @@ function InputName(props) {
                 className='box-insert py-3'
                 onChange={(event) =>{setEmail(event.target.value)}}
                 value={email}/>
+                {props.function("email", email)}
             </>
         )
     }
