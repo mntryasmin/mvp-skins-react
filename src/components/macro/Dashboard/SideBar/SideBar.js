@@ -30,19 +30,19 @@ export default class SideBar extends Component {
             <>
                 <Col xs={9} sm={9} md={9} lg={2} xl={2} className="p-0 sidebar">
                     <Row className="mx-0 nav-options">
-                        <Row className="pt-5 card-caption-mvp">Olá, Cliente da Silva Santos</Row>
+                        <Row className="card-caption-mvp name-client">Olá, Cliente da Silva Santos</Row>
 
-                        <Nav className="p-1 list-group flex-column nav-list" defaultActiveKey="/home" as="ul">
-                            <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon my-account-tile">
+                        <Nav className="list-group flex-column nav-list" defaultActiveKey="/home" as="ul">
+                            <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon my-account-tile nav-list-title">
                                 Dados Pessoais
                             </Nav.Item>
 
                             <Nav.Item className="p-0 nav-link">
-                                <Nav.Link eventKey="link-1" className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
+                                <Nav.Link eventKey="myAccount" className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item className="p-0 nav-link">
-                                <Nav.Link eventKey="link-1" className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
+                                <Nav.Link eventKey="security" className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon shop nav-list-title">
@@ -50,7 +50,7 @@ export default class SideBar extends Component {
                             </Nav.Item>
 
                             <Nav.Item className="p-0 nav-link">
-                                <Nav.Link eventKey="link-1" className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
+                                <Nav.Link eventKey="orderHistory" className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Row>

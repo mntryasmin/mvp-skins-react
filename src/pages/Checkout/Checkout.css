@@ -1,9 +1,14 @@
 .checkout {
+    height: 100vh;
     background-color: #28004f;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     color: #EFEFEF;
+}
+
+.checkout-items {
+    overflow-y: scroll;
 }
 
 .checkout-title {

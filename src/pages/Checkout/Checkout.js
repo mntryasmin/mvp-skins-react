@@ -1,6 +1,8 @@
 // REACT
 import React from 'react'
-import { Container, Col, Row, Form, Button } from 'react-bootstrap'
+import { Container, Col, Row, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+
 
 // ESTILO
 import './../../assets/css/Style.css'
@@ -9,7 +11,7 @@ import './Checkout.css'
 // PÁGINAS/COMPONENTES
 import Products from '../../components/micro/Checkout/CheckoutItems/CheckoutItems'
 import PaymentCreditCard from '../../components/micro/Checkout/PaymentCreditCard/PaymentCreditCard'
-
+import Button from '../../components/micro/Button/Button'
 
 
 function Checkout(props) {
@@ -58,7 +60,7 @@ function Checkout(props) {
                         </Form.Group>
                     </Form>
 
-                    <Button className="my-4">Finalizar a compra </Button>
+                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp"></Button>
                 </Col>
             </Container>
         </>
