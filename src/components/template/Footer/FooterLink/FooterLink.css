@@ -6,6 +6,9 @@
     color:#ffffff;
     text-decoration: none;
     font-size: 13px !important;
+    background-color: transparent;
+    border: none;
+    text-transform: none;
     font-weight: 400;
 }
 

@@ -1,9 +1,15 @@
 .home {
     background-color: #28004f !important;
+    padding: 0 !important;
 }
 
 .title-banner, .title-carousel {
     color: #EFEFEF !important;
+}
+
+.row-banner{
+    max-width: 100%;
+    margin: 0 !important;
 }
 
 .home-carousel {
