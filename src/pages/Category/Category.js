@@ -154,7 +154,7 @@ function Category(props) {
 
 
                     </Col>
-                    <Col sm={9} md={10} className='d-flex'>
+                    <Col sm={9} md={10} className='d-flex justify-content-center'>
                         <Container fluid>
                             <div className='title-category'>
                                 PISTOLAS
