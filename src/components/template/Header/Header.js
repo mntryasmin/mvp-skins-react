@@ -71,7 +71,7 @@ function Header(props) {
                             <Col md={10} xs={10} className='mx-1'>
                                 <Nav>
                                     <Col md={2}>
-                                        <Nav.Link href="#" className="link-header category">
+                                        <Nav.Link href="/category/1" className="link-header category">
                                             <div className='d-flex align-items-center items-nav'>
                                                 <img src={Arma} width="30" height="30" />
                                                 Armas
@@ -79,7 +79,7 @@ function Header(props) {
                                         </Nav.Link>
                                     </Col>
                                     <Col md={2} >
-                                        <Nav.Link href="#" className="link-header category">
+                                        <Nav.Link href="/category/6" className="link-header category">
                                             <div className='d-flex align-items-center items-nav '>
                                                 <img src={Faca} width="30" height="30" />
                                                 Facas
@@ -87,7 +87,7 @@ function Header(props) {
                                         </Nav.Link>
                                     </Col>
                                     <Col md={2}>
-                                        <Nav.Link href="#" className="link-header category">
+                                        <Nav.Link href="/category/7" className="link-header category">
                                             <div className='d-flex align-items-center justify-content-center'>
                                                 <img src={Luva} width="30" height="30" />
                                                 Luvas
@@ -95,7 +95,7 @@ function Header(props) {
                                         </Nav.Link>
                                     </Col>
                                     <Col md={2} >
-                                        <Nav.Link href="#" className="link-header category">
+                                        <Nav.Link href="/category/4" className="link-header category">
                                             <div className='d-flex align-items-center justify-content-center'>
                                                 <img src={Agente} width="30" height="30" />
                                                 Agentes
@@ -104,7 +104,7 @@ function Header(props) {
                                     </Col>
 
                                     <Col md={2} xs={6}>
-                                        <Nav.Link href="#" className="link-header">
+                                        <Nav.Link href="/favorites" className="link-header">
                                             <div className='d-flex align-items-center justify-content-center'>
                                                 Favoritos
                                                 <img src={Fav} width="30" height="30" />
@@ -112,7 +112,7 @@ function Header(props) {
                                         </Nav.Link>
                                     </Col>
                                     <Col md={2} xs={6}>
-                                        <Nav.Link href="#" className="link-header">
+                                        <Nav.Link href="/cart" className="link-header">
                                             <div className='d-flex align-items-center justify-content-center'>
                                                 Carrinho
                                                 <img src={Car} width="30" height="30" />
