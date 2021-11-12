@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import { Col, Form, Container, Navbar, Nav, Row } from 'react-bootstrap'
+import { Col, Form,  Container, Navbar, Nav, Row } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
