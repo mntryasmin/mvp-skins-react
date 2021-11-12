@@ -18,6 +18,10 @@
     align-items: center;
 }
 
+.checkout-items-img img {
+    width: 100px;
+}
+
 .checkout-items-price {
     font-weight: 600;
 }

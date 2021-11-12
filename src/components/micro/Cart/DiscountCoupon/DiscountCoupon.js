@@ -31,13 +31,12 @@ class DiscountCoupon extends Component {
         return (
             <>
                 <Container className="discount-container px-0">
-                    <Form className="discount-coupon" onSubmit={this.verifiedCoupon}>
-                        <p className="mx-3 card-caption-mvp"> Cupom de desconto </p>
+                    <Form className="py-2 discount-coupon" onSubmit={this.verifiedCoupon}>
+                        <p className="mx-3"> Cupom de desconto </p>
 
                         <Container className="discount px-0">
-                            {/* value={this.state.value} */}
-                            <Form.Control className="col-6 mx-2 py-3" onChange={this.verifiedCoupon} type="text" name="cupom" placeholder="Digite seu cupom" />
-                            <Button label="Aplicar" class="mx-2 btn btn-primary btn-mvp btn-secundario-mvp"></Button>
+                            <Form.Control className="discount-input mx-3 py-3" onChange={this.verifiedCoupon} type="text" name="cupom" placeholder="Digite seu cupom" />
+                            <Button label="Aplicar" class="mx-2 btn-secundary-mvp" route=""></Button>
                         </Container>
                     </Form>
                     <p>{this.response}</p>

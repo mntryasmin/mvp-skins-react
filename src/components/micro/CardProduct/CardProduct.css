@@ -2,13 +2,45 @@
     background-color: #766289 !important;
     color: #EFEFEF;
     border-radius: 8px;
-    box-shadow: 5px 4px 1px #EFEFEF;
+    box-shadow: 5px 4px 0px #EFEFEF;
     text-decoration: none !important;
 }
 
 .card-link:hover {
-    box-shadow: 5px 4px 1px #fd4712;
-    color: #28004f;
+    box-shadow: 5px 4px .2px #fd4712;
+    font-weight: 100;
+    color: #EFEFEF !important;
+}
+
+.card-link:hover .card-line {
+    background-color: transparent;
+    border: 1.3px solid transparent !important;
+}
+
+.card-hover {
+    height: 100%;
+    position: absolute;
+    border-radius: 3px;
+    opacity: 0.0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-around;
+}
+
+.card-link:hover .card-hover {
+    opacity: 1;
+    display: flex;
+    box-shadow: inset 0px 0px 300px 200px rgba(239, 239, 239, 0.219);
+}
+
+.card-icon {
+    width: 45px;
+}
+
+.card-hover a:hover {
+    box-shadow: inset 0px 0px 300px 200px #28004f3d;
+    border-radius: 60%;
 }
 
 .card-product {
@@ -16,31 +48,6 @@
     flex-direction: column;
     align-items: center;
     border-radius: 8px;
-}
-
-.card-hover {
-    position: absolute;
-    border-radius: 8px;
-    opacity: 0.0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.card-hover:hover {
-    display: flex;
-    opacity: 1;
-    box-shadow: inset 0px 0px 300px 200px rgba(239,239,239,0.4);
-}
-
-.card-icon {
-    width: 40px;
-}
-
-.card-icons a {
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
 }
 
 .card-image {
@@ -53,7 +60,7 @@
 
 .card-line {
     background-color: #28004f;
-    width: 100%;
+    width: 105%;
     opacity: 1 !important;
     border: 1.3px solid #28004f !important;
 }
@@ -71,7 +78,6 @@
 }
 
 .card-price {
-    color: #efefef93;
     font-weight: 200;
     font-size: .5rem;
     text-decoration: line-through;
@@ -87,45 +93,126 @@
 
 /* XS */
 @media (max-width: 575.98px) {
+    .card-hover {
+        opacity: 1;
+        display: flex;
+    }
 
+    .card-link:hover .card-hover {
+        box-shadow: none;
+    }
+
+    .card-link .card-line {
+        background-color: transparent;
+        border: 1.3px solid transparent !important;
+    }
+
+    .card-image img {
+        width: 250px;
+    }
+
+    .card-icon {
+        width: 33px;
+    }
+
+    .card-link, .card-product {
+        width: 125px !important;
+        height: 228px !important;
+    }
+
+    .card-description{
+        font-size: 10.4px;
+    }
+    
+    .card-price {
+        font-size: 8.8px;
+    }
+    
+    .card-price-final {
+        font-size: 13.6px;
+    }
 }
 
 /* SM */
 @media (min-width: 540px) and (max-width: 767.98px) {
+    .card-image img {
+        width: 300px;
+    }
 
+    .card-icon {
+        width: 35px;
+    }
+
+    .card-link, .card-product {
+        width: 125px !important;
+        height: 218px !important;
+    }
+
+    .card-description{
+        font-size: 10.4px;
+    }
+    
+    .card-price {
+        font-size: 8.8px;
+    }
+    
+    .card-price-final {
+        font-size: 13.6px;
+    }
 }
 
 /* MD  */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .card-link, .card-product, .card-hover {
-        width: 150px !important;
-        height: 258px !important;
+    .card-image img {
+        width: 300px;
+    }
+
+    .card-link, .card-product {
+        width: 130px !important;
+        height: 228px !important;
     }
 
     .card-description{
-        font-weight: 300;
-        font-size: 14.4px;
+        font-size: 11.4px;
     }
     
     .card-price {
-        font-size: 12.8px;
+        font-size: 9.8px;
     }
     
     .card-price-final {
-        font-weight: 400;
-        font-size: 17.6px;
+        font-size: 14.6px;
     }
 }
 
 /* LG  */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .card-link, .card-product, .card-hover {
-        width: 160px !important;
+    .card-link, .card-product {
+        width: 150px !important;
+        height: 248px !important;
+    }
+
+    .card-description{
+        font-size: 11.4px;
+    }
+    
+    .card-price {
+        font-size: 9.8px;
+    }
+    
+    .card-price-final {
+        font-size: 14.6px;
+    }
+}
+
+/* XL  */
+@media (min-width: 1200px) {
+    .card-link, .card-product {
+        width: 155px !important;
         height: 258px !important;
     }
 
     .card-description{
-        font-weight: 300;
         font-size: 12.4px;
     }
     
@@ -134,29 +221,6 @@
     }
     
     .card-price-final {
-        font-weight: 400;
-        font-size: 15.6px;
-    }
-}
-
-/* XL  */
-@media (min-width: 1200px) {
-    .card-link, .card-product, .card-hover {
-        width: 150px !important;
-        height: 258px !important;
-    }
-
-    .card-description{
-        font-weight: 300;
-        font-size: 14.4px;
-    }
-    
-    .card-price {
-        font-size: 12.8px;
-    }
-    
-    .card-price-final {
-        font-weight: 400;
-        font-size: 17.6px;
+        font-size: 14.6px;
     }
 }

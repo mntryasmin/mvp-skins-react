@@ -15,14 +15,17 @@ function Security(props) {
         <>
             <Container className="security pt-1">
                 <h1 className="card-title-mvp">Segurança</h1>
+                <p className="pt-3 px-3"> Para sua segurança, utilize senhas com mais de 6 
+                    caracteres e, se possível, com números, letras maiúsculas, 
+                    minúsculas e caracteres especiais (exemplo: @.$%). </p>
 
-                <Form className="col-12 security-form">
-                    <Form.Group xs={12} sm={12} md={6} lg={6} xl={6} className="security-form-org p-4">
+                <Form className="security-form">
+                    <Form.Group lg={6} xl={6} className="security-form-org ">
                         <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
                         <Form.Control className="py-2" type="password" name="password" />
                     </Form.Group>
 
-                    <Form.Group xs={12} sm={12} md={6} lg={6} xl={6} className="security-form-org p-4">
+                    <Form.Group lg={6} xl={6} className="security-form-org ">
                         <Form.Label className="py-2">Digite a senha nova</Form.Label>
                         <Form.Control className="py-2" type="password" name="password" />
 
@@ -30,7 +33,7 @@ function Security(props) {
                         <Form.Control className="py-2" type="password" name="password" />
                     </Form.Group>
 
-                    <Form.Group className="col-12 p-4 button-save">
+                    <Form.Group className="button-save">
                         <Button label="Salvar" route="/home" class="btn-primario-mvp"></Button>
                     </Form.Group>
                 </Form>
