@@ -9,18 +9,19 @@ import './Home.css'
 // PÁGINAS/COMPONENTES
 import Banners from '../../components/macro/Banners/Banner'
 import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts'
+import Title from '../../components/micro/Title/Title'
 function Home(props) {
 
     return (
         <>
             <Container fluid className="py-4 mx-0 home">
                 {/* BANNERS  */}
-                <p className="mt-0 mb-0 pt-3 pb-1 title-banner card-caption-mvp">Destaques</p>
+                <Title title="Destaques" class="mb-4" h1/>
                 <Row className='row-banner'>
                     <Banners banner/>
                 </Row>
                 
-                <p className="mt-5 mb-0 title-banner card-caption-mvp">Eventos</p>
+                <Title title="Eventos"  class="my-4" h1/>
                 <Row className='row-banner'>
                 <Banners />
                 </Row>

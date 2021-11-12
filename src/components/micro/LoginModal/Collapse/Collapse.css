@@ -1,6 +1,7 @@
 .redefinir-senha {
     color:black ;
     height: auto;
+    max-width: 500px !important;
 }
 
 .layout-btn-forgot-password{

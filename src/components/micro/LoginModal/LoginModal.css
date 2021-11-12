@@ -13,6 +13,11 @@
     font-weight: normal;
 }
 
+.modal-layout{
+    max-width: 500px !important;
+    
+}
+
 .footer-link:hover{
     color:#ffffff;
     opacity: 0.75;

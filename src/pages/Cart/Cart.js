@@ -41,9 +41,9 @@ function Cart(props) {
 
 
                     <Container className="py-4 my-0 pb-5 cart-buttons">
-                        <Button label="Continuar comprando" route="/home" class="btn-secundary-mvp"></Button>
+                        <Button label="Continuar comprando" route="/home" class="btn-secundary-mvp" navigation></Button>
 
-                        <Button label="Finalizar compra" route="/home" class="btn-primary-mvp"></Button>
+                        <Button label="Finalizar compra" route="/checkout" class="btn-primary-mvp" navigation></Button>
                     </Container>
                 </Container>
             </Container>

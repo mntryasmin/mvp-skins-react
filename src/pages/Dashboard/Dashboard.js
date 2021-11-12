@@ -15,9 +15,7 @@ import Security from '../../components/macro/Dashboard/Security/Security'
 import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
 function Dashboard(props) {
-
-    // const [section, setSection] = useState({});
-    // const { url } = onclick();
+    const section = props.section;
 
     return (
         <>
@@ -28,12 +26,12 @@ function Dashboard(props) {
 
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
+                    {/* {props.section} */}
 
-                    
-                    
-                    <MyAccount />
-                    <OrderHistory />
-                    <Security />
+                    <MyAccount/>
+                    <Security/>
+                    <OrderHistory/>
+
                 </Container>
             </Container>
         </>
