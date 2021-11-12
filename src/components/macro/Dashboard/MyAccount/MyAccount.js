@@ -32,7 +32,7 @@ export default class MyAccount extends Component {
                     <Form className="myAccountForm pt-3">
                         <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                             <Form.Label className="mt-3"> Nome </Form.Label>
-                            <Form.Control type="text" name="name"/>
+                            <Form.Control type="text" name="name" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={3} xl={3}>
@@ -42,17 +42,17 @@ export default class MyAccount extends Component {
 
                         <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                             <Form.Label className="mt-3"> E-mail </Form.Label>
-                            <Form.Control type="email" name="email"/>
+                            <Form.Control type="email" name="email" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={3} xl={3}>
                             <Form.Label className="mt-3"> Telefone </Form.Label>
-                            <Form.Control type="tel" name="tel"/>
+                            <Form.Control type="tel" name="tel" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                             <Form.Label className="mt-3"> Trade link </Form.Label>
-                            <Form.Control type="url" name="tradeLink"/>
+                            <Form.Control type="url" name="tradeLink" />
                         </Col>
 
                         <Col xs={12} sm={12} md={12} lg={12} xl={12} className="mt-3">

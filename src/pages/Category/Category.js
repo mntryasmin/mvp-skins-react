@@ -7,7 +7,7 @@ function Category(props) {
 
     return (
         <>
-            <Container fluid className='background'>
+            <Container fluid className='background content-container'>
                 <Row>
                     <Col md={2} className='filter-column'>
                         <div className='filter-title'>
@@ -134,7 +134,9 @@ function Category(props) {
                                 <br />
                             </ListGroup>
                         </Form>
-                        
+
+
+
                     </Col>
                     <Col md={10} className='d-flex'>
                         <Container fluid>

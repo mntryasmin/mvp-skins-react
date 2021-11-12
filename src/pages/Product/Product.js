@@ -1,35 +1,35 @@
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './Product.css';
-import {Row, Col, Breadcrumb} from "react-bootstrap";
+import { Row, Col, Breadcrumb } from "react-bootstrap";
 import Title from '../../components/micro/Title/Title';
 import ProductContainer from '../../components/macro/Product/ProductContainer';
 import ProductPrice from '../../components/micro/Product/ProductPrice/ProductPrice';
-import ProductText from  '../../components/micro/Product/ProductText/ProductText';
+import ProductText from '../../components/micro/Product/ProductText/ProductText';
 import Button from '../../components/micro/Button/Button'
 import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts';
 
 export default function Product() {
 
-    const[product, setProduct] = useState({});
-    const {id} = useParams();
+    const [product, setProduct] = useState({});
+    const { id } = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get(`http://localhost:8080/produtos/${id}`)
-        .then((response)=> {
-            setProduct(response.data)
-        })
-        .catch((erro)=>{
-            console.log("Ocorreu um erro "+ erro)
-        })
-    },[])
+            .then((response) => {
+                setProduct(response.data)
+            })
+            .catch((erro) => {
+                console.log("Ocorreu um erro " + erro)
+            })
+    }, [])
 
-    
+
 
     // const exterior = product.exterior.descricao;
 
-    return(
+    return (
         <>
         
         <div className="div-produto">
@@ -47,7 +47,7 @@ export default function Product() {
                     <Col xs={10} className="container-produto my-3 p-0">
                         <Col xs={12} md={7}>
                             <div className="container-imagem">
-                                <img src={Produto} alt="luva de especialista" className="imagem-descricao"/>
+                                <img src={Product} alt="luva de especialista" className="imagem-descricao"/>
                             </div>
                         </Col>
                         <Col xs={12} md={5} className="informacao-produto">
@@ -98,5 +98,5 @@ export default function Product() {
         </>
     )
 
-    
+
 }

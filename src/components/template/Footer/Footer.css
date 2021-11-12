@@ -29,26 +29,13 @@
     display: none;
 }
 
-.texto-footer{
-    text-align: center;
-    font-size: 10px !important;
-}
-
 .icon-footer{
     height:30px;
     width:30px;
 }
 
-.link-footer{
-    color:#ffffff;
-    text-decoration: none;
-    font-size: 10px !important;
-}
-
-.link-footer:hover{
-    color:#ffffff;
-    opacity: 0.75;
-    cursor: pointer;
+.footer-image{
+    text-align: center;
 }
 
 @media screen and (min-width:992px){
@@ -59,7 +46,7 @@
 
     .linha-hr{
         display: block;
-        margin: 5px 10px;
+        margin: 10px 10px;
     }
 
     .div-lg{

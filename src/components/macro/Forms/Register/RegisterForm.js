@@ -1,96 +1,63 @@
 import React from 'react'
 import './RegisterForm.css'
-import {FormControl, Form } from 'react-bootstrap'
+import InputName from '../../../micro/Forms/Input/FormClient/InputName/InputName';
+import InputPhone from '../../../micro/Forms/Input/FormClient/InputPhoneNumber/InputPhoneNumber';
+import InputEmail from '../../../micro/Forms/Input/FormClient/InputEmail/InputEmail';
+import InputTradeLink from '../../../micro/Forms/Input/FormClient/InputTradeLink/InputTradeLink';
+import InputPassword from '../../../micro/Forms/Input/FormClient/InputPassword/InputPassword';
+import InputDate from '../../../micro/Forms/Input/FormClient/InputDate/InputDate';
+import SelectDate from '../../../micro/Forms/Input/FormClient/SelectGender/SelectGender';
+
 
 function RegisterForm(props) {
 
+    // let regexCpf = /([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/i;
     const name = () => {
-        return (
-            <>
-                <FormControl type="text" placeholder="Digite seu nome" className='box-insert py-3'></FormControl>
-            </>
-        )
+        return <InputName/>
     }
 
     const email = () => {
-        return (
-            <>
-                <FormControl type="email" placeholder="Digite seu e-mail" className='box-insert py-3'></FormControl>
-            </>
-        )
+        return <InputEmail/>
     }
 
-    const cpf = () => {
-        return (
-            <>
-                <FormControl type="text" placeholder="Digite seu CPF" className='box-insert'></FormControl>
-            </>
-        )
+    const phoneNumber = () => {
+        return <InputPhone/>
     }
 
     const tradeLink = () => {
-        return (
-            <>
-                <FormControl type="text" placeholder="Digite seu trade-link da steam" className='box-insert'></FormControl>
-            </>
-        )
+        return <InputTradeLink/>
     }
 
     const gener = () => {
         return (
             <>
-                <Form.Select aria-label="Default select example" className="box-insert d-flex">
-                    <option >Selecione o gênero</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Feminino</option>
-                    <option value="3">Prefiro não informar</option>
-                </Form.Select>
+                <SelectDate/>
             </>
         )
     }
 
     const date = () => {
-        return (
-            <>
-                <FormControl type="date" className='box-insert'></FormControl>
-            </>
-        )
+        return  <InputDate/>
     }
 
     const password = () => {
-        return (
-            <>
-                <FormControl type="password" placeholder="Digite a senha" className='box-insert '></FormControl>
-            </>
-        )
+        return <InputPassword/>
     }
 
-    if (props.name) {
-        return name()
 
-    }
-    if (props.email) {
-        return email()
+    if (props.name) { return name() }
 
-    }
-    if (props.cpf) {
-        return cpf()
-    }
-    if (props.trade) {
-        return tradeLink()
- 
-    }
-    if (props.gener) {
-        return gener()
-            
-    }
-    if (props.date) {
-        return date()
-            
-    }
-    if (props.password) {
-        return password()
-    }
+    if (props.email) { return email() }
+
+    if (props.phoneNumber) { return phoneNumber() }
+
+    if (props.trade) { return tradeLink() }
+
+    if (props.gener) { return gener() }
+
+    if (props.date) { return date() }
+
+    if (props.password) { return password() }
 }
 
 export default RegisterForm

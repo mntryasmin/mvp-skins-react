@@ -1,13 +1,12 @@
 import React from 'react'
 import './Favorites.css'
 import {Row,  Container, Col, Breadcrumb, BreadcrumbItem}  from 'react-bootstrap'
-import Image1 from '../../assets/images/PRODUTOS/adaga-marcara-urbana.png'
-import Image2 from '../../assets/images/PRODUTOS/luva-abate.png'
-import Image3 from '../../assets/images/PRODUTOS/aug-momento.png'
-import CardProduct from '../../components/micro/CardProduct/CardProduct'
-import CardProduct2 from '../../components/micro/CardProduct/CardProduct'
-import CardProduct3 from '../../components/micro/CardProduct/CardProduct'
-
+import favorite from '../../assets/images/icones/icon-coracao-produto.png'
+import addCart from '../../assets/images/icones/icon-add-cart.png'
+import Card from '../../components/micro/CardProduct/CardProduct'
+import Title from '../../components/micro/Title/Title'
+import product from '../../assets/images/PRODUTOS/luva-abate.png'
+import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts'
 
 
 
@@ -20,10 +19,10 @@ function Favorites(props) {
                 <Col xs={11} md={10} className="m-0"></Col>
                 <Title title="FAVORITOS" />
                 <Row className="justify-content-center"></Row>
-                <div className="mt - 2"></div>
+                
 
 
-                <Breadcrumb bsPrefix="">
+                <Breadcrumb bsPrefix="" className="mt-2">
                     <Breadcrumb.Item href="http://localhost:3000/">Home</Breadcrumb.Item>
                     <Breadcrumb.Item href="#">Categoria</Breadcrumb.Item>
                     <Breadcrumb.Item href="#">Subcategoria</Breadcrumb.Item>

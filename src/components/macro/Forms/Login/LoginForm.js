@@ -1,6 +1,6 @@
 import React from 'react'
 import './LoginForm.css'
-import {Form, FormLabel} from 'react-bootstrap'
+import { Form, FormLabel } from 'react-bootstrap'
 
 function LoginForm(props) {
 
