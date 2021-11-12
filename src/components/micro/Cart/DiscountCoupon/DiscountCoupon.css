@@ -1,15 +1,86 @@
+.discount-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
 .discount-coupon {
     display: flex;
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
+    justify-content: space-between;
 }
+
+
 
 .discount {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
 }
 
-.discount-coupon-title {
-    font-size: 1.1rem;
+.coupon-value {
+    color: rgb(6, 107, 6);
+    font-weight: 500;
+}
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .discount {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .discount-input {
+        margin: 2vh 0 2vh 0;
+    }
+
+    .discount-coupon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* SM */
+@media (min-width: 540px) and (max-width: 767.98px) {
+    .discount {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .discount-input {
+        margin: 2vh 0 2vh 0;
+    }
+
+    .discount-coupon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* XL  */
+@media (min-width: 1200px) { 
+
 }

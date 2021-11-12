@@ -14,29 +14,29 @@ function PaymentCreditCard(props) {
         <Form className="payment-form p-0 m-0">
             <Row>
                 <Form.Label className="mt-3"> Nome do titular </Form.Label>
-                <Form.Control type="text" name="name" value="" />
+                <Form.Control type="text" name="name" />
             </Row>
 
             <Row>
                 <Form.Label className="mt-3"> Número do cartão </Form.Label>
-                <Form.Control type="text" name="number" value="" />
+                <Form.Control type="text" name="number" />
             </Row>
 
             <Row className="px-0 payment-span">
                 <Col className="mx-0 px-0 col-7">
                     <Form.Label className="px-2 mt-3"> Validade(MM/AA) </Form.Label>
-                    <Form.Control type="date" name="validade" value="" />
+                    <Form.Control type="date" name="validade" />
                 </Col>
 
                 <Col className="col-4">
                     <Form.Label className="mt-3"> CVV </Form.Label>
-                    <Form.Control type="text" name="cvv" value="" />
+                    <Form.Control type="text" name="cvv" />
                 </Col>
             </Row>
 
             <Row>
                 <Form.Label className="mt-3"> CPF do titular </Form.Label>
-                <Form.Control type="text" name="cpf" value="" />
+                <Form.Control type="text" name="cpf" />
             </Row>
 
             <Row>
@@ -46,7 +46,7 @@ function PaymentCreditCard(props) {
                     <option value="1">1 x de R$ XX,XX sem juros</option>
                     <option value="2">2 x de R$ XX,XX com juros</option>
                     <option value="3">3 x de R$ XX,XX com juros</option>
-                </Form.Select>  
+                </Form.Select>
             </Row>
         </Form>
     )

@@ -6,6 +6,7 @@
     justify-content: center;
 
     border: 1px solid #EFEFEF;
+    border-radius: 6px;
 }
 
 .checkout-items li {
@@ -15,6 +16,10 @@
 .checkout-items-img {
     display: flex;
     align-items: center;
+}
+
+.checkout-items-img img {
+    width: 100px;
 }
 
 .checkout-items-price {

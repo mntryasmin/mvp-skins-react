@@ -1,16 +1,18 @@
-.carousel-5cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly
-}
-
 .carousel-control-prev {
     width: 8% !important;
 }
 
 .carousel-control-next {
     width: 8% !important;
+}
+
+.carousel-cards {
+    display: flex !important;
+    justify-content: center;
+}
+
+/* XS */
+@media (max-width: 539.0px) {
 
 }
 

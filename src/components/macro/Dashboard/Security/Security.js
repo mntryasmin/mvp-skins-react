@@ -1,10 +1,13 @@
 // REACT
 import React, { Component } from 'react'
-import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+import { Container, Form } from 'react-bootstrap'
 
 // ESTILO
 import '../../../../assets/css/Style.css'
 import './Security.css'
+
+// COMPONENTES
+import Button from '../../../micro/Button/Button'
 
 function Security(props) {
 
@@ -12,28 +15,31 @@ function Security(props) {
         <>
             <Container className="security pt-1">
                 <h1 className="card-title-mvp">Segurança</h1>
+                <p className="pt-3 px-3"> Para sua segurança, utilize senhas com mais de 6 
+                    caracteres e, se possível, com números, letras maiúsculas, 
+                    minúsculas e caracteres especiais (exemplo: @.$%). </p>
 
                 <Form className="security-form">
-                    <Form.Group xs={12} sm={12} md={6} lg={6} xl={6} className="py-4 px-0">
-                            <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
-                            <Form.Control className="py-2 px-3" type="password" name="password" />
+                    <Form.Group lg={6} xl={6} className="security-form-org ">
+                        <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
+                        <Form.Control className="py-2" type="password" name="password" />
                     </Form.Group>
 
-                    <Form.Group xs={12} sm={12} md={6} lg={6} xl={6} className="py-4 px-0">
-                            <Form.Label className="py-2">Digite a senha nova</Form.Label>
-                            <Form.Control className="py-2 px-3" type="password" name="password" />
-                            
-                            <Form.Label className="py-2">Repita a senha nova</Form.Label>
-                            <Form.Control className="py-2 px-3" type="password" name="password" />
+                    <Form.Group lg={6} xl={6} className="security-form-org ">
+                        <Form.Label className="py-2">Digite a senha nova</Form.Label>
+                        <Form.Control className="py-2" type="password" name="password" />
+
+                        <Form.Label className="py-2">Repita a senha nova</Form.Label>
+                        <Form.Control className="py-2" type="password" name="password" />
                     </Form.Group>
-            
-                    <Form.Group className="col-12 py-4 button-save">
-                        <Button>Salvar</Button>
+
+                    <Form.Group className="button-save">
+                        <Button label="Salvar" route="/home" class="btn-primario-mvp"></Button>
                     </Form.Group>
                 </Form>
 
-                <Container className="p-3 pt-4 mt-5 button-delete">
-                    <Button>Excluir minha conta</Button>
+                <Container className="p-3 mt-2 button-delete">
+                    <Button label="Deletar minha conta" route="/home" class="btn-secundario-mvp"></Button>
                 </Container>
             </Container>
         </>

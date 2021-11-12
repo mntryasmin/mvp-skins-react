@@ -9,6 +9,25 @@
     width: 28px;
 }
 
+.request-button, .request-button:checked, .request-button::selection {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* .request-button {
+    border: 1.3px solid #fd4712 !important;
+} */
+
+.request-button:hover {
+    box-sizing: border-box !important;
+    box-shadow: 0px 0px 0px 1px #fd4712 !important;
+}
+
+.modal-dialog {
+    max-width: 900px !important;
+}
+
 /* MEDIAS QUERIES */
 
 /* XS */

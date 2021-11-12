@@ -5,8 +5,9 @@
 }
 
 .cart-container {
-    background-color: #efefef;
+    background-color: #766289;
     border-radius: 6px;
+    color: #EFEFEF
 }
 
 .cart-banner {
@@ -19,21 +20,25 @@
 .price {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
 
 }
 
 .discount-coupon-cart {
-    border: 2px solid #28004f;
+    border: 1.5px solid white;
     border-radius: 6px;
+    display: flex;
+
 }
 
 .price-cart {
-    border: 3px solid #28004f;
+    border: 1.5px solid white;
     border-radius: 6px;
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-content: center;
     justify-content: center;
 }
 

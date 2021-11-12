@@ -2,7 +2,28 @@ import React from 'react'
 import './Button.css'
 import { Link } from 'react-router-dom'
 
-function Button(props) {
+
+    // const typeButton = () => {
+    //     if (props.navigation) {
+    //         return (
+    //             <Link to={props.route} className={"btn-mvp" + props.class}>
+    //                 {props.label}
+    //             </Link>
+
+    //         ) 
+            
+           
+                
+    //      } else {
+    //         return (
+    //             <button onClick={() => props.onclick} className={"btn-mvp" + props.class}>
+    //                 {props.label}
+    //             </button>
+                
+                
+                
+                
+    function ButtonMVP(props) {
 
     const typeButton = () => {
         if (props.navigation) {
@@ -13,7 +34,7 @@ function Button(props) {
                 )
         } else {
             return (
-                <button onClick={() => props.onclick} className={"btn-custom-default " + props.class}>
+                <button onClick={props.onclick} className={"btn-mvp " + props.class}>
                     {props.label}
                 </button>
             )
@@ -21,11 +42,12 @@ function Button(props) {
         
     }
 
-    return(
+  
+    return (
         <>
             {typeButton()}
         </>
     )
 }
 
-export default Button
+export default ButtonMVP

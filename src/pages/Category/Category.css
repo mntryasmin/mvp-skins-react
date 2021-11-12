@@ -1,0 +1,53 @@
+.background{
+    background-color: #28004f;
+}
+
+.filter-column{
+    background-color: #EFEFEF;
+    margin-top: 200px;
+}
+
+.filter-title{
+    color: #FD4712;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.check-box{
+    margin-bottom: 10px !important;
+}
+
+.form-check-input:checked{
+    background-color: #FD4712 !important;
+}
+
+.form-check-input{
+    background-color: #28004f !important;
+}
+
+.filter-list{
+    margin-top: 20px;
+}
+
+.title-category{
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+}
+
+.item{
+    
+    background-color: transparent !important;
+    display: flex;
+}
+
+.box-card{
+    margin: 20px ;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

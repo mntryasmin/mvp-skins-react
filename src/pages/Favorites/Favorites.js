@@ -1,86 +1,148 @@
 import React from 'react'
 import './Favorites.css'
-import {Row, Nav,ListGroupItem, ListGroup, Container, Col, BreadcrumbItem, Breadcrumb} from 'react-bootstrap'
-import Image1 from '../../assets/images/PRODUTOS/adaga-marcara-urbana.png'
-import Image2 from '../../assets/images/PRODUTOS/luva-abate.png'
-import Image3 from '../../assets/images/PRODUTOS/aug-momento.png'
-
+import {Row,  Container, Col, Breadcrumb, BreadcrumbItem}  from 'react-bootstrap'
+import favorite from '../../assets/images/icones/icon-coracao-produto.png'
+import addCart from '../../assets/images/icones/icon-add-cart.png'
+import Card from '../../components/micro/CardProduct/CardProduct'
+import Title from '../../components/micro/Title/Title'
+import product from '../../assets/images/PRODUTOS/luva-abate.png'
+import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts'
 
 
 
 function Favorites(props) {
-
     return (
+
         <React.Fragment>
-            <div>Favorites</div>
-            
-            <Row>
-                <Container>
-                <Nav className="row d-none d-lg-flex col-2 d-flex py-3 px-0 mx-0 h-100 nav-dashboard">
-                    <div className="text-center titulo-nav">MINHA CONTA</div>
-                    <ListGroupItem>
-                        <Breadcrumb>
-                        <BreadcrumbItem href ="historico">Histórico de Compras</BreadcrumbItem>
-                        <ListGroup className="ps-4 itens-nav nav-dados">Meus dados
-                            <ListGroupItem className="ps-3">
-                                <ListGroupItem>Dados Pessoais</ListGroupItem>
-                                <BreadcrumbItem href ="cartoes-credito">Cartões de Credito</BreadcrumbItem>
-                                <BreadcrumbItem href ="dados-conta">Dados da conta</BreadcrumbItem>
-                                <BreadcrumbItem href ="seguranca">Alterar senha</BreadcrumbItem>
-                            </ListGroupItem>
-                        </ListGroup>
-                        </Breadcrumb>
-                    </ListGroupItem>
-                </Nav>
-                </Container>
-            </Row>
-            
-            <Container fluid = "md">
-                <Row className="justify-content-center"><Row>
-                    <Col xs={11} my={3} p={2}>
-                        <div id="historico" className="col-12 text-center titulo-div">Suas Skins Favoritas</div>
-                        <Row className="row col-12 d-flex mx-0 justify-content-center"></Row>
-                    </Col>
-                
-                </Row>
 
+            <div className="div-favoritos1">
+                <Col xs={2} md={2}  className="mb-1"></Col>
+                <Title title="SKINS FAVORITAS" />
+                <Row className="justify-content-center"></Row>
+            </div>
+
+         
                     
-                    <Col className="col-12 d-flex mx-0 justify-content-center"></Col>
-                    <Col className="col-12 d-flex flex-row px-0 texto-coluna"></Col>
-                    <Col className="d-none d-md-flex" md={2}><img className= "d-flex w-100" src={Image1} /></Col> 
-                    <Col className="d-none d-md-flex" md={3} md={4}>FACAS | ADAGA MARCARA </Col>
-                    <Col lg={3} md={2}>R$1.482,00</Col>
+                <div className= "py-3 px-3 mb-0 fav container-fluid d-flex">
+                <Container xs={2} sm={4} md={3} lg={3} xl={2} className="p-o mx-0 card-container">
+                    <a href="" className="p-0 mx-0 card card-link">
+                        <Container className="p-1 my-0 card-hover">
+                           
+                            <a href="">
+                                <img className="card-icon" src={addCart} alt="Favoritar produto" />
+                            </a>
+                        </Container>
 
-                </Row>
-            </Container>
+                        <Container className="p-1 my-2 card-product">
+                            <Container className="card-image"></Container>
+                            <img className="card-img-top" src={product} alt="Produto" />
+                        </Container>
+                        <hr className="p-0 mx-0 my-1 card-line" />
+                        <Col className="py-1 px-1 card-body card-price-container">
+                            <p className="mb-2 card-description">AK-47 | LINHAS VERMELHAS {props.description}</p>
+                            <p className="my-0 card-price"> de R$450,00 {props.price}</p>
+                            <p className="my-0 card-price-final"> por R$399,99 {props.priceDiscount}</p>
+                        </Col>
 
-            <Container fluid = "md">
-            <Row className="row col-12 d-flex mx-0 justify-content-center">
-                <div className="col-12 d-flex flex-row px-0 texto-coluna"></div>
-                <div className="col-12 d-flexnone d-md-flex col-md-2"><img className="d-flex w-100" src={Image2} /></div>
-                <Col lg={3} md={4}>ARMAS | BATRÁQUIO BRONZEADO</Col>
-                <Col lg={3} md={2}>R$1.482,00</Col>
+                    </a>
+                </Container>
 
-            </Row>
-            </Container>
+                
+                <Container xs={2} sm={4} md={3} lg={2} xl={2} className="p-o mx-0 card-container">
+                    <a href="" className="p-0 mx-0 card card-link">
+                        <Container className="p-1 my-0 card-hover">
+                            
+                            <a href="">
+                                <img className="card-icon" src={addCart} alt="Favoritar produto" />
+                            </a>
+                        </Container>
 
-            <Container fluid = "md">
+                        <Container className="p-1 my-2 card-product">
+                            <Container className="card-image"></Container>
+                            <img className="card-img-top" src={product} alt="Produto" />
+                        </Container>
+                        <hr className="p-0 mx-0 my-2 card-line" />
+                        <Col className="py-1 px-1 card-body card-price-container">
+                            <p className="mb-2 card-description">AK-47 | LINHAS VERMELHAS {props.description}</p>
+                            <p className="my-0 card-price"> de R$450,00 {props.price}</p>
+                            <p className="my-0 card-price-final"> por R$399,99 {props.priceDiscount}</p>
+                        </Col>
 
-            <Row className="row col-12 d-flex mx-0 justify-content-center"> </Row>
-            <Row className="col-12 d-flex flex-row px-0 texto-coluna"></Row>
-            <div className="d-none d-md-flex col-md-2"><img className="d-flex w-100"src={Image3} /></div>
-            <Col xs={3} md={4}>LUVAS ESPORTIVAS | BATRÁQUIO BRONZEADO</Col>
-            <Col xs={3} md={2}>R$1.482,00</Col>
-            </Container>
+                    </a>
+                </Container>
+                <Container xs={2} sm={4} md={3} lg={2} xl={2} className="p-o mx-0 card-container">
+                    <a href="" className="p-0 mx-0 card card-link">
+                        <Container className="p-1 my-0 card-hover">
+                            
+                            <a href="">
+                                <img className="card-icon" src={addCart} alt="Favoritar produto" />
+                            </a>
+                        </Container>
 
-          
+                        <Container className="p-1 my-2 card-product">
+                            <Container className="card-image"></Container>
+                            <img className="card-img-top" src={product} alt="Produto" />
+                        </Container>
+                        <hr className="p-0 mx-0 my-2 card-line" />
+                        <Col className="py-1 px-1 card-body card-price-container">
+                            <p className="mb-2 card-description">AK-47 | LINHAS VERMELHAS {props.description}</p>
+                            <p className="my-0 card-price"> de R$450,00 {props.price}</p>
+                            <p className="my-0 card-price-final"> por R$399,99 {props.priceDiscount}</p>
+                        </Col>
+
+                    </a>
+                </Container>
+                <Container xs={2} sm={4} md={3} lg={2} xl={2} className="p-o mx-0 card-container">
+                    <a href="" className="p-0 mx-0 card card-link">
+                        <Container className="p-1 my-0 card-hover">
+                            
+                            <a href="">
+                                <img className="card-icon" src={addCart} alt="Favoritar produto" />
+                            </a>
+                        </Container>
+
+                        <Container className="p-1 my-2 card-product">
+                            <Container className="card-image"></Container>
+                            <img className="card-img-top" src={product} alt="Produto" />
+                        </Container>
+                        <hr className="p-0 mx-0 my-2 card-line" />
+                        <Col className="py-1 px-1 card-body card-price-container">
+                            <p className="mb-2 card-description">AK-47 | LINHAS VERMELHAS {props.description}</p>
+                            <p className="my-0 card-price"> de R$450,00 {props.price}</p>
+                            <p className="my-0 card-price-final"> por R$399,99 {props.priceDiscount}</p>
+                        </Col>
+
+                    </a>
+                </Container>
+                <Container xs={2} sm={4} md={3} lg={2} xl={2} className="p-o mx-0 card-container">
+                    <a href="" className="p-0 mx-0 card card-link">
+                        <Container className="p-1 my-0 card-hover">
+                            
+                            <a href="">
+                                <img className="card-icon" src={addCart} alt="Favoritar produto" />
+                            </a>
+                        </Container>
+
+                        <Container className="p-1 my-2 card-product">
+                            <Container className="card-image"></Container>
+                            <img className="card-img-top" src={product} alt="Produto" />
+                        </Container>
+                        <hr className="p-0 mx-0 my-2 card-line" />
+                        <Col className="py-1 px-1 card-body card-price-container">
+                            <p className="mb-2 card-description">AK-47 | LINHAS VERMELHAS {props.description}</p>
+                            <p className="my-0 card-price"> de R$450,00 {props.price}</p>
+                            <p className="my-0 card-price-final"> por R$399,99 {props.priceDiscount}</p>
+                        </Col>
+
+                    </a>
+                </Container>
+                </div>
+                
 
 
-
-
-
-
-        </React.Fragment>
+               
+            
+    </React.Fragment >
     )
 }
 export default Favorites
