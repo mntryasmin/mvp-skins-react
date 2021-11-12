@@ -13,6 +13,10 @@
     font-size: 15px;
 }
 
+.check-box{
+    margin-bottom: 10px !important;
+}
+
 .form-check-input:checked{
     background-color: #FD4712 !important;
 }
@@ -31,13 +35,19 @@
     color: white;
 }
 
-.card{
-    padding: 0px !important;
-    margin-right: 20px;
+.item{
+    
+    background-color: transparent !important;
+    display: flex;
+}
+
+.box-card{
+    margin: 20px ;
 }
 
 .cards{
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
