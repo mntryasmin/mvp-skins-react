@@ -24,7 +24,7 @@ function Favorites(props) {
          
                     
                 <div className= "py-3 px-3 mb-0 fav container-fluid d-flex">
-                <Container xs={2} sm={4} md={3} lg={3} xl={2} className="p-o mx-0 card-container">
+                <Container xs={2} sm={4} md={3} lg={3} xl={2} className="p-o mx-0 card-container content-container">
                     <a href="" className="p-0 mx-0 card card-link">
                         <Container className="p-1 my-0 card-hover">
                            
