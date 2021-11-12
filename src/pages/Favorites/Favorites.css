@@ -1,58 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.favoritos{
-    
+
+
+
+.fav {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 100px;
-}
-
-.favorites-h1{
-    font-size: 1.8rem !important;
-
-
-}
-
-.container-favoritos{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align:center;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    text-align:justify;
     background-color: #28004f;
-  
-    
-   }
-
-.imagem-favoritos{
-    text-align: center;
-    
-    
+   
+ 
 }
 
-
-.favorites-info{
-    text-align: left;
-    color: #fff;
-
-    }
-
-.favorite-icon{
-    width:10vw;
-    height: auto;
-    padding-top: 1rem;
-    border-radius:8px;
-    display: flex;
-    flex-direction: column;
-}
-.div-favoritos{
-    display:flex;
+.div-favoritos1{
+    display:inline-block;
     justify-content: center;
     background-color: #28004f;
-    color:#efefef;
+    width: 100%;
+
+   
 
 }
+
 
 .respons{
     display: none;
@@ -151,6 +122,7 @@
 @media (min-width: 576px) and (max-width: 767.98px) {
     .contact-infos img {
         width: 7vw;
+        height: 7vh;
     }
 
 }

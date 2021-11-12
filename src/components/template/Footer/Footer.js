@@ -9,6 +9,7 @@ import Discord from '../../../assets/images/icones/icon-discord-contato.png'
 import Instagram from '../../../assets/images/icones/icon-instagram.png'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
+import LoginModal from '../../micro/LoginModal/LoginModal'
 
 function Footer(props) {
 
@@ -26,9 +27,9 @@ function Footer(props) {
                             <FooterLink label="Pagamentos" route="/"/>
                         </Col>
                         {/* segunda coluna */}
-                        <Col lg={6}>
-                            <FooterLink label="Login" route="/"/>
-                            <FooterLink label="Cadastra-se" route="/register"/>
+                        <Col lg={6} className='text-center'>
+                            <LoginModal link/>
+                            <FooterLink label="Cadastre-se" route="/register"/>
                             <FooterLink label="Fale conosco" route="/contact"/>
                         </Col>
                     </Col>
@@ -92,10 +93,10 @@ function Footer(props) {
                 </Container>
 
                 <Container>
-                    <Row className="d-lg-none">
-                        <FooterLink label="LOGIN" route="/"/>
-                        <FooterLink label="CADASTRE-SE" route="/register"/>
-                        <FooterLink label="FALE CONOSCO" route="/contact"/>
+                    <Row className="d-lg-none text-center">
+                        <LoginModal link/>
+                        <FooterLink label="Cadastre-se" route="/register"/>
+                        <FooterLink label="Fale conosco" route="/contact"/>
                         <FooterText text="© MVP SKINS 2021 | CNPJ: 61.585.865/0001-51 |  TODOS OS DIREITOS RESERVADOS" class="p-3"/>
 
                     </Row>

@@ -1,19 +1,28 @@
 .top-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: #181818;
     width: 100%;
+    margin: 0;
+}
+
+.input-box{
+    height: 2.5rem;
+    width: 100%;
+}
+
+.items-nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category{
+    display: block;
 }
 
 .lupa{
     background-color: white;
     border-radius: 0px 3px 3px 0px;
-}
-
-.btn-top-header{
-    display: flex;
-    justify-content: space-around;
+    height: 100%;
 }
 
 .logo {
@@ -26,14 +35,16 @@
     height: 100px;
 }
 
-.barra-pesquisa {
+.search-bar {
     border-radius: 3px 0px 0px 3px;
     border: none;
+    height: 100%;
 }
 
 .link-header{
     color:black;
     text-decoration: none;
+    margin: 0;
 }
 
 .link-header:hover{
@@ -83,17 +94,11 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 994.98px) { 
-    .btn-mvp {
-        width: auto;
-    }
-
-    .category{
-        display: none;
-    }
+    
 }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) { 
+@media (min-width: 1050px) and (max-width: 1199.98px) { 
 
 }
 

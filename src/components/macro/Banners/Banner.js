@@ -52,8 +52,8 @@ function Banner(props) {
     if (props.banner) {
         return (
             <>
-                 <Container className='container-banner'>
-                    <Carousel variant="dark" >
+                 
+                    <Carousel variant="dark" className='container-banner'>
                         <CarouselItem>
                             <img className="d-block" src={Banner1} alt="First slide" className='banner'/>
                         </CarouselItem>
@@ -64,14 +64,13 @@ function Banner(props) {
                             <img className="d-block" src={Banner3} alt="Third slide" className='banner'/>
                         </CarouselItem>
                     </Carousel>
-                </Container>
+                
             </>
         )
     } else{
         return (
             <>
-                <Container className='container-banner'>
-                    <Carousel variant="dark">
+                    <Carousel variant="dark" className='container-banner'>
                         <CarouselItem>
                             <img className="d-block w-100" src={BannerEventos1} alt="First slide" className='banner'/>
                         </CarouselItem>
@@ -82,7 +81,6 @@ function Banner(props) {
                             <img className="d-block w-100" src={BannerEventos3} alt="Third slide" className='banner'/>
                         </CarouselItem>
                     </Carousel>
-                </Container>
     
             </>
         )

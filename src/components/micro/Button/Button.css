@@ -42,3 +42,9 @@
     color: #28004f !important;
     border-color: #28004f;
 }
+
+@media (min-width: 768px) and (max-width: 994.98px) { 
+    .btn-mvp {
+        width: auto !important;
+    }
+}
