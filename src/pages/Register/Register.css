@@ -9,6 +9,28 @@
     margin: 20px;
 }
 
+.box-input{
+    flex-direction: column;
+}
+
+.row-input{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+}
+
+.form-group{
+    width: 100%;
+}
+
+.btn-submit{
+    justify-content: end !important;
+}
+
+.btn-cancel{
+    justify-content: start !important;
+}
+
 .link-custom{
     color:white;
     text-decoration: none;
@@ -22,4 +44,23 @@
     width: 50%;
 }
 
+@media (max-width: 810px){
+    .row-input{
+        flex-wrap: wrap !important;
+    }
+
+    .box-input{
+        width: 100% !important;
+    }
+
+    .btn-submit{
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .btn-cancel{
+        justify-content: center !important;
+        width: 100% !important;
+    }
+}
 
