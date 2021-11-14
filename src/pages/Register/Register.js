@@ -8,8 +8,9 @@ import Title from '../../components/micro/Title/Title'
 
 function Register(props) {
 
+    var validated = 0;
     const regexName = /^[a-zA-Z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/i;
-    let regexTelCel = /(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})/i;
+    const regexTelCel = /(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})/i;
 
 
     const client = {
@@ -54,12 +55,14 @@ function Register(props) {
 
     function validateForm(){
         if(regexName.test(client.nomeCliente) == false){
+            validated++;
             alert("NOME INVÁLIDO")
         }
         // if(regexName.test(client.emailCliente) == false){
         //     alert("EMAIL INVÁLIDO")
         // }
         if(regexTelCel.test(client.numeroTelefone) == false){
+            validated++;
             alert("TELEFONE INVÁLIDO")
         }
         // if(regexName.test(client.tradeLink) == false){
@@ -74,20 +77,20 @@ function Register(props) {
     }
 
     function submitClient(event) {
-        // if(){
-        //     event.preventDefault();
-        //     axios.post("http://localhost:8080/cliente", client)
-        //     .then((response)=>{console.log(response.data)})
-        //     .catch((erro)=>{
-        //         console.log("Ocorreu um erro "+erro)
-        //     })
-        // }
+        event.preventDefault();
+        if(validated==0){
+            axios.post("http://localhost:8080/cliente", client)
+            .then((response)=>{console.log(response.data)})
+            .catch((erro)=>{
+                console.log("Ocorreu um erro "+erro)
+            })
+        }
     }
 
     return (
         <>
             <Container fluid className='d-flex flex-column registration content-container'>
-                <Form className='d-flex flex-column' onSubmit={() => submitClient()}>
+                <Form className='d-flex flex-column' onSubmit={(event) => submitClient(event)}>
                     <Title title="CADASTRO" class="mt-3" h1 />
 
 
