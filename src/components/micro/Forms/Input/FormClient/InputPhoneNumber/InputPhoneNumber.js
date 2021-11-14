@@ -3,7 +3,7 @@ import {FormControl} from 'react-bootstrap'
 
 function Comp(props) {
 
-    let regexTelCel = /(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})/i;
+    
 
     const [phoneNumber, setPhoneNumber] = useState('');
     const getPhoneNumber = () => {

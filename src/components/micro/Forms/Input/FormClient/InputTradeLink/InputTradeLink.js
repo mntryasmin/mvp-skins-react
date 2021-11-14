@@ -3,7 +3,7 @@ import {FormControl} from 'react-bootstrap'
 
 function InputTradeLink(props) {
     
-    let regexTexto = /^[a-zA-Z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/i;
+    
     
     const [tradeLink, setTradelink] = useState('');
     const getTradelink = () => {

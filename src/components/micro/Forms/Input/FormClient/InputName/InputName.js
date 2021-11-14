@@ -3,7 +3,7 @@ import {FormControl} from 'react-bootstrap'
 
 function InputName(props) {
     
-    let regexTexto = /^[a-zA-Z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/i;
+    
     
     const [nameDescription, setNameDescription] = useState('');
     const getName = () => {
