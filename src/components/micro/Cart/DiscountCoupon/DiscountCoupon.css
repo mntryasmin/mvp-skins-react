@@ -2,7 +2,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 } 
+
+.response-coupon {
+    font-size: 0.4rem;
+    letter-spacing: 0.05rem;
+}
 
 .discount-coupon {
     display: flex;
