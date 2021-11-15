@@ -90,7 +90,7 @@ function Register(props) {
     return (
         <>
             <Container fluid className='d-flex flex-column registration content-container'>
-                <Form className='d-flex flex-column' onSubmit={(event) => submitClient(event)}>
+                <Form className='d-flex flex-column'>
                     <Title title="CADASTRO" class="mt-3" h1 />
 
 
@@ -146,7 +146,7 @@ function Register(props) {
                                     <ButtonCustom navigation route='/' class='btn-secundary-mvp layout-btn' label='cancelar' />
                                 </Col>
                                 <Col xs={12} sm={6} className="my-3 mx-5 p-3 d-flex btn-submit">
-                                    <ButtonCustom class='btn-primary-mvp layout-btn' label='cadastrar' onclick={validateForm}/>
+                                    <ButtonCustom class='btn-primary-mvp layout-btn' label='cadastrar' onclick={(event)=>submitClient(event)}/>
                                 </Col>
                             </Row>
                         </FormGroup>
