@@ -1,20 +1,36 @@
 import React, {useState} from 'react';
-import {FormControl} from 'react-bootstrap'
+import {FormControl} from 'react-bootstrap';
+import InputMask from 'react-input-mask';
 
 function InputName(props) {
     
-    let regexTexto = /^[a-zA-Z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/i;
-    
     const [email, setEmail] = useState('');
+
+    const formatChars = {
+        '9': '[0-9]',
+        "a": "[a-zA-Z]",
+        '*': '[A-Za-z0-9@._]'
+        }
+
     const getEmail = () => {
         return (
             <>
-                <FormControl 
+                {/* <FormControl 
                 type="email" 
                 placeholder="Digite seu e-mail" 
                 className='box-insert py-3'
                 onChange={(event) =>{setEmail(event.target.value)}}
                 value={email}/>
+                {props.function("email", email)} */}
+                <InputMask 
+                className='box-insert py-3'
+                formatChars={formatChars}
+                mask="****************************************************************************************************" 
+                maskChar=""
+                type="text"
+                value={email}
+                onChange={(event) =>{setEmail(event.target.value)}}
+                maskPlaceholder="Digite seu email"/>
                 {props.function("email", email)}
             </>
         )
