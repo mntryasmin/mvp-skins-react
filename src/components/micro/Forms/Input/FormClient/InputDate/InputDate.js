@@ -12,6 +12,7 @@ function InputDate(props) {
                 className='box-insert'
                 onChange={(event) =>{setDate(event.target.value)}}
                 value={date}/>
+                {props.function("date", date)}
             </>
         )
     }

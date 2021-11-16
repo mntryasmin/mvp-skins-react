@@ -9,64 +9,82 @@ import ProductPrice from '../../components/micro/Product/ProductPrice/ProductPri
 import ProductText from '../../components/micro/Product/ProductText/ProductText';
 import Button from '../../components/micro/Button/Button'
 import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts';
+import NotFound from '../NotFound/Error.js'
 
-export default function Product() {
 
-    const [product, setProduct] = useState({});
+
+function Product() {
+
     const { id } = useParams();
+    const URL = 'http://localhost:8080/produtos/'
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/produtos/${id}`)
+        axios.get(`${URL}` + id)
             .then((response) => {
                 setProduct(response.data)
+                console.log('carregay')
+                setTimeout(() => {
+                    console.log(product)
+                }, 5000)
+
             })
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)
             })
     }, [])
 
+    const charge = () => {
 
+        while (product.urlImagem == undefined) {
+            return (
+                <>
+                    <NotFound />
+                </>
+            )
+        }
 
-    // const exterior = product.exterior.descricao;
+        return (
+            <>
+                <div className="div-produto content-container">
+                    <Col xs={11} md={10} className="m-0">
+                        <Title title="PRODUTO" class="mt-5" />
+                        <Row className="justify-content-center">
+                            <Breadcrumb bsPrefix="breadcrumb" className="mt-2">
+                                <Breadcrumb.Item href="/" className="product-breadcrumb">Home</Breadcrumb.Item>
+                                <Breadcrumb.Item href="/category" className="product-breadcrumb">Categoria</Breadcrumb.Item>
+                                <Breadcrumb.Item href="/category" className="product-breadcrumb">Subcategoria</Breadcrumb.Item>
+                                <Breadcrumb.Item active>Produto</Breadcrumb.Item>
+                            </Breadcrumb>
+                            <ProductContainer id={product.id} urlImagem={product.urlImagem}>
+                                <ProductText category="CATEGORIA :" description={product.categoria.descricao} class="product-text-category" />
+                                <ProductText category="EXTERIOR :" description={product.exterior.descricao} />
+                                <ProductText category="RARIDADE :" description={product.raridade.descricao} class="mb-4" />
+                                <ProductText description={product.descricao} class="product-text-name" />
+                                <ProductPrice idProduto={id} />
+                                <Button label="COMPRAR" class=" btn-primary-mvp p-2 mt-2 mb-5"
+                                    route="/cart" navigation />
+                                <ProductText category="Coleção :" description={product.colecao.descricao} class="mt-4" />
+                                <ProductText category="Float :" description={product.desgaste} />
+                                <ProductText category="ATENÇÃO :" description="Esse item é uma customização 
+                                para o jogo online Counter Strike: GO (CS:GO), podendo ser utilizada apenas dentro do jogo CS:GO" class="mt-4" />
+                            </ProductContainer>
+                        </Row>
+                        <ProductText description="Veja também:" class="product-text-carousel" />
+                        <CarouselProducts />
+                        <ProductText description="Veja também:" class="product-text-carousel" />
+                        <CarouselProducts />
+                        <div className="mb-5"></div>
+                    </Col>
+                </div>
+            </>
+        )
+    }
 
     return (
         <>
-
-            <div className="div-produto content-container">
-                <Col xs={11} md={10} className="m-0">
-                    <Title title="PRODUTO" class="mt-5"/>
-                    <Row className="justify-content-center">
-                        <Breadcrumb bsPrefix="breadcrumb" className="mt-2">
-                            <Breadcrumb.Item href="/" className="product-breadcrumb">Home</Breadcrumb.Item>
-                            <Breadcrumb.Item href="/category" className="product-breadcrumb">Categoria</Breadcrumb.Item>
-                            <Breadcrumb.Item href="/category" className="product-breadcrumb">Subcategoria</Breadcrumb.Item>
-                            <Breadcrumb.Item active>Produto</Breadcrumb.Item>
-                        </Breadcrumb>
-                        <ProductContainer urlImagem="pistola-visoes-ancestrais">
-                            <ProductText category="PISTOLAS" class="product-text-category" />
-                            <ProductText category="EXTERIOR :" description="Bem desgastada (Well-Worn)" />
-                            <ProductText category="RARIDADE :" description="Azul" class="mb-4"/>
-                            <ProductText description="Visões Ancestrais" class="product-text-name" />
-                            <ProductPrice idProduto={id} />
-                            <Button label="COMPRAR" class=" btn-primary-mvp p-2 mt-2 mb-5"
-                                route="/cart" navigation/>
-                            <ProductText category="Coleção :" description="A Coleção Ancient" class="mt-4"/>
-                            <ProductText category="Float :" description="0.44" />
-                            <ProductText category="ATENÇÃO :" description="Visões Ancestrais é uma customização 
-                            de Item para o jogo online CS:GO, podendo ser utilizada apenas dentro do jogo CS:GO" class="mt-4"/>
-                        </ProductContainer>
-                    </Row>
-                    <ProductText description="Veja também:" class="product-text-carousel" />
-                    <CarouselProducts />
-                    <ProductText description="Veja também:" class="product-text-carousel" />
-                    <CarouselProducts />
-                    <div className="mb-5"></div>
-                </Col>
-            </div>
-
-
+            {charge()}
         </>
     )
-
-
 }
+export default Product

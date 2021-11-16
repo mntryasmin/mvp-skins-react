@@ -52,6 +52,7 @@
 
 .card-image {
     display: flex;
+    width: 350px;
 }
 
 .card-image img {

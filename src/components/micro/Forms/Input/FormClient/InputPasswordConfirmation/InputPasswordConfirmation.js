@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FormControl} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
 
-function InputPassword(props) {
+function InputPasswordConfirmation(props) {
     
     
     const [password, setPassword] = useState('');
@@ -13,7 +13,7 @@ function InputPassword(props) {
         '*': '[A-Za-z0-9@._]'
         }
 
-    const getPassword = () => {
+    const getPasswordConfirmation = () => {
         return (
             <>
             {/* <FormControl 
@@ -31,17 +31,17 @@ function InputPassword(props) {
             type="password"
             value={password}
             onChange={(event) =>{setPassword(event.target.value)}}
-            maskPlaceholder="Digite sua senha"/>
-            {props.function("password", password)}
+            maskPlaceholder="Repita sua senha"/>
+            {props.function(password)}
             </>
         )
     }
 
     return(
         <>
-            {getPassword()}
+            {getPasswordConfirmation()}
         </>
     )
 }
 
-export default InputPassword;
+export default InputPasswordConfirmation;

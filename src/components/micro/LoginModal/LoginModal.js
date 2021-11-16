@@ -27,8 +27,8 @@ function LoginModal(props) {
     return (
         <>
             {typeButton()}
-
-            <Modal show={show} onHide={handleClose} >
+            <div className='d-flex justify-content-center modal-layout'>
+            <Modal show={show} onHide={handleClose} className='d-flex'>
                 <Modal.Header closeButton >
                     <Modal.Title>
                         <h5 className="login-title">
@@ -66,6 +66,8 @@ function LoginModal(props) {
                     </Col>
                 </Modal.Footer>
             </Modal>
+            </div>
+            
         </>
     );
 }
