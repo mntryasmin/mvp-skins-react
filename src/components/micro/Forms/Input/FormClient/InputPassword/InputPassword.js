@@ -14,6 +14,7 @@ function InputPassword(props) {
             className='box-insert '
             onChange={(event) =>{setPassword(event.target.value)}}
             value={password}/>
+            {props.function("password", password)}
                 
             </>
         )

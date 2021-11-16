@@ -15,6 +15,7 @@ function InputTradeLink(props) {
                 className='box-insert'
                 onChange={(event) =>{setTradelink(event.target.value)}}
                 value={tradeLink}/>
+                {props.function("trade", tradeLink)}
             </>
         )
     }
