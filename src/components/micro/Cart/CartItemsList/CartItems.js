@@ -1,6 +1,7 @@
 // REACT
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Nav, Col, Container } from 'react-bootstrap'
+import { useParams } from 'react-router'
 
 // ESTILO
 import '../../../../assets/css/Style.css'
@@ -10,11 +11,29 @@ import './CartItems.css'
 import CartItemsList from './CartItemsList'
 import trash from '../../../../assets/images/icones/delete.png'
 import imagem from '../../../../assets/images/PRODUTOS/rifle-vulcan.png'
+import axios from 'axios'
+
 
 function ProductListCart(props) {
 
-    function getCartItemsList() {
-        return CartItemsList.map(items => {
+        const URL = 'http://localhost:8080/produtos/'
+        const [products, setProducts] = useState([]);
+        const [qtyCart, setQtyCart] = useState(0)
+        
+        useEffect(() => {
+            setProducts(JSON.parse(localStorage.getItem("cart")))
+            setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
+        },[])
+       
+          
+      
+    
+     function getCartItemsList() {
+       
+    return CartItemsList.map(items => {
+         
+   
+
             return (
                 <Nav className="py-2 px-0 product-list-cart" defaultActiveKey="/home" as="ul">
                     <Col className="col-3 cart-item-image" >
@@ -66,5 +85,8 @@ function ProductListCart(props) {
         </>
     )
 }
+    
+
+
 
 export default ProductListCart
