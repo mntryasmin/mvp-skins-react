@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header.css'
-import { Col, Form,  Container, Navbar, Nav, Row } from 'react-bootstrap'
+import { Col, Form, Container, Navbar, Nav, Row } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
@@ -13,8 +13,92 @@ import Fav from '../../../assets/images/icones/icon-coracao.png'
 import Car from '../../../assets/images/icones/icon-carrinho.png'
 import { Link } from 'react-router-dom'
 import Button from '../../micro/Button/Button.js'
+import axios from 'axios'
 
 function Header(props) {
+
+    const URL = "http://localhost:8080/cliente/token/"
+    const token = localStorage.getItem("Authorization")
+    const tokenToSearch = token.replace("Bearer ", "")
+    const [client, setClient] = useState({})
+
+
+
+    useEffect((() => {
+        if (localStorage.getItem("Authorization")) {
+
+            getClient()
+
+            return (true);
+
+        }
+        return (false);
+    }
+    ), [])
+
+    const getClient = () => {
+        axios.get(`${URL}` + tokenToSearch)
+            .then(async (response) => {
+                const cliente = await response.data
+                setClient(cliente)
+                console.log(cliente)
+
+            })
+    }
+
+    const btnCadastrar = () => {
+        if (localStorage.getItem("Authorization")) {
+
+            return (
+                <div className='welcome'>
+                    Olá {client.nomeCliente}
+                    <br />
+                    Seja bem-vindo!
+                </div>
+            )
+        } else {
+            return (
+                <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE' />
+            )
+        }
+    }
+
+    const btnFavorites = () => {
+        if (localStorage.getItem("Authorization")) {
+
+            return (
+                <Nav.Link href="/favorites" className="link-header">
+                    <div className='d-flex align-items-center justify-content-center'>
+                        Favoritos
+                        <img src={Fav} width="30" height="30" />
+                    </div>
+                </Nav.Link>
+            )
+        } else {
+            return (
+                <LoginModal linkFavorite />
+            )
+        }
+    }
+
+    const btnCart = () => {
+        if (localStorage.getItem("Authorization")) {
+
+            return (
+                <Nav.Link href="/cart" className="link-header">
+                    <div className='d-flex align-items-center justify-content-center'>
+                        Carrinho
+                        <img src={Car} width="30" height="30" />
+                    </div>
+                </Nav.Link>
+            )
+        } else {
+            return (
+                <LoginModal linkCart/>
+            )
+        }
+
+    }
 
     return (
         <>
@@ -52,7 +136,7 @@ function Header(props) {
                         {/* FIM DO BOTÃO DE LOGIN */}
                         <Col xs={6} md={2} className="p-0 d-flex justify-content-center">
                             {/* BOTÃO DE CADASTRO */}
-                            <Button navigation route='/register' class='btn-primary-mvp' label='CADASTRE-SE' />
+                            {btnCadastrar()}
                             {/* FIM DO BOTÃO DE CADASTRO */}
                         </Col>
                     </Row>
@@ -103,21 +187,11 @@ function Header(props) {
                                         </Nav.Link>
                                     </Col>
 
-                                    <Col md={2} xs={6}>
-                                        <Nav.Link href="/favorites" className="link-header">
-                                            <div className='d-flex align-items-center justify-content-center'>
-                                                Favoritos
-                                                <img src={Fav} width="30" height="30" />
-                                            </div>
-                                        </Nav.Link>
+                                    <Col md={2} xs={6} className='d-flex align-items-center justify-content-center'>
+                                        {btnFavorites()}
                                     </Col>
-                                    <Col md={2} xs={6}>
-                                        <Nav.Link href="/cart" className="link-header">
-                                            <div className='d-flex align-items-center justify-content-center'>
-                                                Carrinho
-                                                <img src={Car} width="30" height="30" />
-                                            </div>
-                                        </Nav.Link>
+                                    <Col md={2} xs={6} className='d-flex align-items-center justify-content-center'>
+                                        {btnCart()}
                                     </Col>
                                 </Nav>
                             </Col>
