@@ -1,17 +1,19 @@
 import React from 'react'
 import './Register.css'
 import axios from 'axios'
-import { Container, FormGroup, Form, Col, FormLabel, Row, Button } from 'react-bootstrap'
+import { Container, FormGroup, Form, Col, FormLabel, Row } from 'react-bootstrap'
 import RegisterForm from '../../components/macro/Forms/Register/RegisterForm'
 import ButtonCustom from '../../components/micro/Button/Button.js'
 import Title from '../../components/micro/Title/Title'
+import {Link} from 'react-router-dom';
+import If from '../../components/micro/If/If';
+import LoginModal from '../../components/micro/LoginModal/LoginModal';
 
 function Register(props) {
 
-    var validated = 0;
-    const regexName = /^[a-zA-Z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/i;
-    const regexTelCel = /(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})/i;
+    var confirmPassword = '';
 
+    var formValidated = false;
 
     const client = {
         nomeCliente : '',
@@ -23,6 +25,11 @@ function Register(props) {
         },
         dataNascimento : '',
         senhaCliente : ''
+    }
+
+    function setPasswordConfirmation(passwordConfirmation){
+        confirmPassword = passwordConfirmation;
+        console.log(confirmPassword)
     }
 
     function createClient(input, description){
@@ -54,36 +61,59 @@ function Register(props) {
     }
 
     function validateForm(){
-        if(regexName.test(client.nomeCliente) == false){
-            validated++;
+        if(client.nomeCliente == ''){
             alert("NOME INVÁLIDO")
+            return false;
         }
-        // if(regexName.test(client.emailCliente) == false){
-        //     alert("EMAIL INVÁLIDO")
-        // }
-        if(regexTelCel.test(client.numeroTelefone) == false){
-            validated++;
+        if(client.emailCliente == ''){
+            alert("EMAIL INVÁLIDO")
+            return false;
+        }
+        if(client.numeroTelefone == ''){
             alert("TELEFONE INVÁLIDO")
+            return false;
         }
-        // if(regexName.test(client.tradeLink) == false){
-        //     alert("NOME INVÁLIDO")
-        // }
-        // if(regexName.test(client.dataNascimento) == false){
-        //     alert("NOME INVÁLIDO")
-        // }
-        // if(regexName.test(client.senhaCliente) == false){
-        //     alert("NOME INVÁLIDO")
-        // }
+        if(client.tradeLink == ''){
+            alert("TRADELINK INVÁLIDO")
+            return false;
+        }
+        if(client.genero.codigoGenero == '' || client.genero.codigoGenero == 'Selecione o gênero'){
+            alert("GÊNERO DEVE SER PREENCHIDO")
+            return false;
+        }
+        if(client.dataNascimento == ''){
+            alert("DATA DE NASCIMENTO DEVE SER PREENCHIDA")
+            return false;
+        }
+        if(client.senhaCliente == ''){
+            alert("SENHA INVÁLIDA")
+            return false;
+        }
+        if(client.senhaCliente != confirmPassword){
+            alert("AS SENHAS DEVEM SER IGUAIS")
+            return false;
+        }
+        return true;
     }
 
     function submitClient(event) {
         event.preventDefault();
-        if(validated==0){
+        if(validateForm()){
             axios.post("http://localhost:8080/cliente", client)
             .then((response)=>{console.log(response.data)})
             .catch((erro)=>{
                 console.log("Ocorreu um erro "+erro)
             })
+            formValidated = true;
+            console.log(formValidated)
+            alert("CLIENTE CADASTRADO COM SUCESSO")
+            // return(
+            //     <>
+            //     <div>
+            //         {(onClick)=><LoginModal link/>}
+            //     </div>
+            //     </>
+            // )
         }
     }
 
@@ -138,7 +168,7 @@ function Register(props) {
                                 </Col>
                                 <Col xs={12} md={5} className="d-flex box-input my-3 mb-3 mx-5 p-3">
                                     <FormLabel>Repita a senha</FormLabel>
-                                    <RegisterForm password  function={createClient}/>
+                                    <RegisterForm passwordConfirmation  function={setPasswordConfirmation}/>
                                 </Col>
                             </Row>
                             <Row className='justify-content-center row-input '>

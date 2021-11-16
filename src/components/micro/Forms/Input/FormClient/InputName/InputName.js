@@ -9,7 +9,7 @@ function InputName(props) {
     const [nameDescription, setNameDescription] = useState('');
     const formatChars = {
         '9': '[0-9]',
-        "a": "[a-zA-Z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ']{1,200}",
+        "a": "[a-zA-Z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ']",
         '*': '[A-Za-z0-9]'
         }
     const getName = () => {
@@ -29,7 +29,7 @@ function InputName(props) {
                 type="text"
                 value={nameDescription} 
                 onChange={(event)=>{setNameDescription(event.target.value)}}
-                maskPlaceholder="Digite seu nome"/>
+                maskplaceholder="Digite seu nome"/>
                 {props.function("name", nameDescription)}
             </>
         )
