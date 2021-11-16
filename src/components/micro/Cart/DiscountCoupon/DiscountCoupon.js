@@ -1,6 +1,6 @@
 // REACT
 import React, { Component } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import { Container, Form, FormControl, Button } from 'react-bootstrap'
 
 // ESTILO

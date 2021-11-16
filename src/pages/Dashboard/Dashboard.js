@@ -1,7 +1,6 @@
 // REACT
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 // ESTILO
@@ -15,22 +14,36 @@ import Security from '../../components/macro/Dashboard/Security/Security'
 import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
 function Dashboard(props) {
-    const section = props.section;
+
+    function getSection(props) {
+        if (props = 1) {
+            return (
+                <MyAccount />
+            )
+        } else if (props = 2) {
+            return (
+                <Security />
+            )
+        } else if (props = 3) {
+            return (
+                <OrderHistory />
+            )
+        } else {
+            return (
+                <MyAccount />
+            )
+        }
+    }
 
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
-
                 {/* MENU LATERAL  */}
                 <SideBar />
-
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    {/* {props.section} */}
-                    <MyAccount/>
-                    <Security/>
-                    <OrderHistory/>
-
+                    {/* {getSection(props)} */}
+                    <OrderHistory />
                 </Container>
             </Container>
         </>

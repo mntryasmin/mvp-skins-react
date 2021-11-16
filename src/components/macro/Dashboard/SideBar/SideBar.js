@@ -1,5 +1,5 @@
 // REACT
-import React, { Component } from 'react'
+import React, { Component, LinkContainer } from 'react'
 import { Nav, Col, Row } from 'react-bootstrap'
 
 // ESTILO
@@ -9,9 +9,7 @@ import './SideBar.css'
 // PÁGINAS/COMPONENTES
 import contact from '../../../../assets/images/icones/icon-contato.png'
 import AccountList from '../MyAccount/AccountList'
-import MyAccount from '../MyAccount/MyAccount'
-import Security from '../Security/Security'
-import OrderHistory from '../OrderHistory/OrderHistory'
+import Dashboard from '../../../../pages/Dashboard/Dashboard'
 
 
 export default class SideBar extends Component {
@@ -19,9 +17,8 @@ export default class SideBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: AccountList.name,
+            name: '',
         }
-
     }
 
 
@@ -30,27 +27,27 @@ export default class SideBar extends Component {
             <>
                 <Col xs={9} sm={9} md={9} lg={2} xl={2} className="p-0 sidebar">
                     <Row className="mx-0 nav-options">
-                        <Row className="card-caption-mvp name-client">Olá, Cliente da Silva Santos</Row>
+                        <Row className="card-caption-mvp name-client">Olá, {this.props.name}</Row>
 
                         <Nav className="list-group flex-column nav-list" defaultActiveKey="/home" as="ul">
                             <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon my-account-tile nav-list-title">
                                 Dados Pessoais
                             </Nav.Item>
-
-                            <Nav.Item className="p-0 nav-link">
-                                <Nav.Link eventKey="myAccount" className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
+                            
+                            <Nav.Item  as="li"className="p-0 nav-link">
+                                <Nav.Link strict to="/" className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
                             </Nav.Item>
 
-                            <Nav.Item className="p-0 nav-link">
-                                <Nav.Link eventKey="security" className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
+                            <Nav.Item as="li" className="p-0 nav-link">
+                                <Nav.Link className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon shop nav-list-title">
                                 Compras
                             </Nav.Item>
 
-                            <Nav.Item className="p-0 nav-link">
-                                <Nav.Link eventKey="orderHistory" className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
+                            <Nav.Item as="li" className="p-0 nav-link">
+                                <Nav.Link className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Row>
