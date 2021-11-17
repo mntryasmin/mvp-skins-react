@@ -55,8 +55,7 @@ function Dashboard(props) {
                 <SideBar name={client.nomeCliente} />
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    {/* {getSection(props)} */}
-                    <OrderHistory idCLient={client.codigoCliente}/>
+                    <Security/>
                 </Container>
             </Container>
         </>

@@ -1,6 +1,7 @@
 // REACT
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { Nav, Col, Button, Container, Modal } from 'react-bootstrap'
 
 // ESTILO
@@ -11,12 +12,13 @@ import './Requests.css'
 import RequestsItems from './../RequestsItems/RequestsItems'
 import cursor from '../../../../assets/images/icones/icon-cursor.png'
 import Moment from 'react-moment';
+import { render } from 'react-dom'
 
 function Requests(props) {
+    const [requests, setRequests] = useState([]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [requests, setRequests] = useState([]);
 
     const client = JSON.parse(localStorage.getItem("client"))
 
@@ -33,8 +35,8 @@ function Requests(props) {
     }, []
     )
 
-    function Status(bool) {
-        if (bool == 0) {
+    function Status(statusRequest) {
+        if (statusRequest == 0) {
             return "Em andamento";
         } else {
             return "Finalizado";
@@ -45,40 +47,39 @@ function Requests(props) {
     function GetRequests() {
         return requests.map(
             (request, i) =>
-                <Nav key={i} className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
-                    <Col className="col-2" >
-                        <Nav.Item as="li"> {request.id} </Nav.Item>
-                    </Col>
+                <>
+                    <Nav key={i} className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
+                        <Col className="col-2" >
+                            <Nav.Item as="li"> {request.id} </Nav.Item>
+                        </Col>
 
-                    <Col className="col-2">
-                        <Nav.Item as="li">
-                            <Moment format="DD/MM/YYYY">
-                                {request.dataRegistro}
-                            </Moment>
-                        </Nav.Item>
-                    </Col>
+                        <Col className="col-2">
+                            <Nav.Item as="li">
+                                <Moment format="DD/MM/YYYY">
+                                    {request.dataRegistro}
+                                </Moment>
+                            </Nav.Item>
+                        </Col>
 
-                    <Col className="col-2 requests-resp" >
-                        <Nav.Item as="li"> R$ {(request.valorLiquido.toFixed(2)).toString().replace(".", ",")} </Nav.Item>
-                    </Col>
+                        <Col className="col-2 requests-resp" >
+                            <Nav.Item as="li"> R$ {(request.valorLiquido.toFixed(2)).toString().replace(".", ",")} </Nav.Item>
+                        </Col>
 
-                    <Col className="col-2 requests-resp" >
-                        <Nav.Item as="li"> {Status(request.status)} </Nav.Item>
-                    </Col>
+                        <Col className="col-2 requests-resp" >
+                            <Nav.Item as="li"> {Status(request.status)} </Nav.Item>
+                        </Col>
 
-                    <Col className="col-2" >
-                        <Button variant="primary" onClick={handleShow} className="me-2 request-button">
-                            <img className="arrow" src={cursor} />
-                        </Button>
-                    </Col>
-                    <Container className="col-9">
-                        <Modal className="request-modal" show={show} onHide={handleClose}>
-                            <RequestsItems id={request.id} />
+                        <Col className="col-2" >
+                            <Button variant="primary" onClick={handleShow} className="me-2 request-button">
+                                <img className="arrow" src={cursor} />
+                            </Button>
+                        </Col>
+                        <Modal className="col-9 request-modal" show={show} onHide={handleClose}>
+                            <RequestsItems idRequest={1} />
                         </Modal>
-                    </Container>
-                </Nav>
+                    </Nav>
+                </>
         )
-
     }
 
     // PEDIDOS - TÍTULO
@@ -105,6 +106,7 @@ function Requests(props) {
                     <Nav.Item as="li" className=""> Abrir </Nav.Item>
                 </Col>
             </Nav>
+            
             {GetRequests()}
         </>
     )
