@@ -12,19 +12,15 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "react-input-mask": "^2.0.4",
-    "react-moment": "^1.1.1",
-=======
+
+
     "react-moment": "^1.1.1",
     "react-input-mask": "^2.0.4",
->>>>>>> 5db4046da87a0349710a20bacb25a3d1f2db6a94
-=======
-    "react-hook-form": "^7.19.5",
-    "react-input-mask": "^2.0.4",
-    "react-moment": "^1.1.1",
->>>>>>> 695a6ea80b23890d5d541776c2338d2403f34b1c
+
+
+   
+
+
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
     "web-vitals": "^1.1.2"
