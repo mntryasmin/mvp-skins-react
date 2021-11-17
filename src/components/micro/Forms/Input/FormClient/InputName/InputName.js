@@ -17,7 +17,7 @@ function InputName(props) {
             <>
                 {/* <FormControl 
                 type="text" 
-                placeholder="Digite seu nome" 
+                 
                 className='box-insert py-3'
                 onChange={(event) =>{setNameDescription(event.target.value)}}
                 value={nameDescription}/> */}
@@ -29,7 +29,7 @@ function InputName(props) {
                 type="text"
                 value={nameDescription} 
                 onChange={(event)=>{setNameDescription(event.target.value)}}
-                maskplaceholder="Digite seu nome"/>
+                placeholder="Digite seu nome"/>
                 {props.function("name", nameDescription)}
             </>
         )

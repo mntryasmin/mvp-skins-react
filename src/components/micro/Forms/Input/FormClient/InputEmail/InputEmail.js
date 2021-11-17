@@ -17,7 +17,7 @@ function InputName(props) {
             <>
                 {/* <FormControl 
                 type="email" 
-                placeholder="Digite seu e-mail" 
+                 
                 className='box-insert py-3'
                 onChange={(event) =>{setEmail(event.target.value)}}
                 value={email}/>
@@ -30,7 +30,7 @@ function InputName(props) {
                 type="text"
                 value={email}
                 onChange={(event) =>{setEmail(event.target.value)}}
-                maskPlaceholder="Digite seu email"/>
+                placeholder="Digite seu e-mail"/>
                 {props.function("email", email)}
             </>
         )

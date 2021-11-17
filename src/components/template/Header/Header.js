@@ -19,20 +19,19 @@ function Header(props) {
 
     const URL = "http://localhost:8080/cliente/token/"
     const token = localStorage.getItem("Authorization")
-    const tokenToSearch = token.replace("Bearer ", "")
+    const [tokenToSearch, setTokenToSearch] = useState('')
     const [client, setClient] = useState({})
-
-
 
     useEffect((() => {
         if (localStorage.getItem("Authorization")) {
-
+            
+            setTokenToSearch(token.replace("Bearer ", ""))
             getClient()
-
-            return (true);
-
         }
-        return (false);
+        else {
+            localStorage.setItem("Authorization", '')
+        }
+        
     }
     ), [])
 

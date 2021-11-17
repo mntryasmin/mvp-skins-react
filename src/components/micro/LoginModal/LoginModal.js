@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './LoginModal.css'
-import { Modal, Form, FormLabel, FormGroup, FormControl, Col } from 'react-bootstrap'
+import { Modal, Form, FormGroup, Col } from 'react-bootstrap'
 import Collapse from './Collapse/Collapse.js'
 import LoginForm from '../../macro/Forms/Login/LoginForm'
 import { Link } from 'react-router-dom'
@@ -18,7 +18,6 @@ function LoginModal(props) {
     const [validation, setValidation] = useState('')
 
     const location = window.location.toString()
-    console.log(location)
 
     const [show, setShow] = useState(false);
 
@@ -55,7 +54,6 @@ function LoginModal(props) {
         if (props.linkDash) {
             return <Button onclick={handleShow} class='link-header link-menu ' label='Faça Login' />
         }
-
         if (props.link) {
             if (localStorage.getItem("Authorization")) {
                 return (<Button onclick={Logout} class='footer-link' label='Logout'></Button>)
@@ -107,13 +105,11 @@ function LoginModal(props) {
 
     const Logout = () => {
         localStorage.setItem("Authorization", '')
-        
+
         window.location.reload(true);
-        
-        
+
+
     }
-
-
 
     return (
         <>

@@ -18,7 +18,7 @@ function InputPassword(props) {
             <>
             {/* <FormControl 
             type="password" 
-            placeholder="Digite a senha" 
+             
             className='box-insert '
             onChange={(event) =>{setPassword(event.target.value)}}
             value={password}/>
@@ -31,7 +31,7 @@ function InputPassword(props) {
             type="password"
             value={password}
             onChange={(event) =>{setPassword(event.target.value)}}
-            maskPlaceholder="Digite sua senha"/>
+            placeholder="Digite a senha"/>
             {props.function("password", password)}
             </>
         )

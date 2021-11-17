@@ -3,12 +3,12 @@
 }
 
 .box-insert {
-    background-color: #EFEFEF;
-    opacity: 0.8;
+    background-color: #EFEFEF !important;
+    opacity: 0.8 !important;
 }
 
 .box-insert:focus {
-    box-shadow: none;
-    border-color: black;
-    background-color: #EFEFEF;
+    box-shadow: none !important;
+    border-color: black !important;
+    background-color: #EFEFEF !important;
 }

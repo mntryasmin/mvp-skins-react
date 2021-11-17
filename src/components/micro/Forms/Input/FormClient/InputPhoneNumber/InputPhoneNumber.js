@@ -12,7 +12,6 @@ function Comp(props) {
             <>
                 {/* <FormControl 
                 type="text" 
-                placeholder="Digite seu telefone" 
                 className='box-insert'
                 onChange={(event) =>{setPhoneNumber(event.target.value)}}
                 value={phoneNumber}/>
@@ -24,7 +23,8 @@ function Comp(props) {
                 type="text"
                 value={phoneNumber}
                 onChange={(event) =>{setPhoneNumber(event.target.value)}}
-                maskPlaceholder="Digite seu telefone"/>
+                placeholder="Digite seu telefone" 
+                />
                 {props.function("phoneNumber", phoneNumber)}
             </>
         )
