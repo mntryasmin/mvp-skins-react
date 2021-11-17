@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Modal } from 'react'
 import axios from 'axios'
 import { Nav, Col } from 'react-bootstrap'
 
@@ -9,15 +9,19 @@ import './RequestsItems.css'
 
 // PÁGINAS/COMPONENTES
 import Image from '../../Images/Images'
+import Button from '../../Button/Button'
 
 function RequestsItems(props) {
     const [products, setProducts] = useState([]);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/itens-pedido/${props.id}`)
+        axios.get(`http://localhost:8080/itens-pedido/${props.idRequest}`)
             .then((response) => {
-                console.log(response.data);
                 setProducts(response.data);
+                handleShow();
             })
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)
@@ -47,23 +51,25 @@ function RequestsItems(props) {
 
     return (
         <>
-            <Nav className="row list-group py-2 card-caption-mvp" defaultActiveKey="/home" as="ul">
-                <Col className="col-4" >
-                    <Nav.Item as="li"> Produto </Nav.Item>
-                </Col>
+            <Modal className="col-9 request-modal" show={show} onHide={handleClose}>
+                <Nav className="row list-group py-2 card-caption-mvp" defaultActiveKey="/home" as="ul">
+                    <Col className="col-4" >
+                        <Nav.Item as="li"> Produto </Nav.Item>
+                    </Col>
 
-                <Col className="col-5">
-                    <Nav.Item as="li"> Descrição </Nav.Item>
-                </Col>
+                    <Col className="col-5">
+                        <Nav.Item as="li"> Descrição </Nav.Item>
+                    </Col>
 
-                <Col className="col-3 requests-resp">
-                    <Nav.Item as="li"> Preço </Nav.Item>
-                </Col>
-            </Nav>
+                    <Col className="col-3 requests-resp">
+                        <Nav.Item as="li"> Preço </Nav.Item>
+                    </Col>
+                </Nav>
+                {getRequestsItems()}
+            </Modal>
 
-            {getRequestsItems()}
         </>
     )
 }
 
-export default RequestsItems
+export default RequestsItems;

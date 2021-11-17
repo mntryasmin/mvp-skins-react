@@ -8,7 +8,6 @@ import './SideBar.css'
 
 // PÁGINAS/COMPONENTES
 import contact from '../../../../assets/images/icones/icon-contato.png'
-import AccountList from '../MyAccount/AccountList'
 import Dashboard from '../../../../pages/Dashboard/Dashboard'
 
 
@@ -35,11 +34,11 @@ export default class SideBar extends Component {
                             </Nav.Item>
                             
                             <Nav.Item  as="li"className="p-0 nav-link">
-                                <Nav.Link strict to="/" className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
+                                <Nav.Link strict onClick={<Dashboard/>} className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item as="li" className="p-0 nav-link">
-                                <Nav.Link className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
+                                <Nav.Link onClick={<Dashboard/>} className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon shop nav-list-title">
@@ -47,7 +46,7 @@ export default class SideBar extends Component {
                             </Nav.Item>
 
                             <Nav.Item as="li" className="p-0 nav-link">
-                                <Nav.Link className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
+                                <Nav.Link onClick={<Dashboard/>} className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Row>
