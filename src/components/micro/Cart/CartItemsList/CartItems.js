@@ -12,6 +12,7 @@ import CartItemsList from './CartItemsList'
 import trash from '../../../../assets/images/icones/delete.png'
 import imagem from '../../../../assets/images/PRODUTOS/rifle-vulcan.png'
 import axios from 'axios'
+import Images from '../../../../components/micro/Images/Images'
 
 
 function ProductListCart(props) {
@@ -26,43 +27,30 @@ function ProductListCart(props) {
         
     }, [])
 
-    function Product(id){
-        setId(id) 
-        axios.get(`http://localhost:8080/produtos/${id}`)
-        .then((async response => {
-            const p = await response.data
-            products.add(p)
+    // function Product(id){
+    //     setId(id) 
+    //     axios.get(`http://localhost:8080/produtos/${id}`)
+    //     .then((async response => {
+    //         const p = await response.data
+    //         products.add(p)
             
             
-            console.log(p)
-        }))
+    //         console.log(p)
+            
+    //     }))
 
-    }
+    // }
     
     
-
-
-        
-    
-
     function getCartItemsList() {
-        const addToCart = (item) => {
-            let cartList = localStorage.getItem("cart") 
-                ? JSON.parse(localStorage.getItem("cart")) 
-                : []
-            cartList.push(item)
-            let cartString = JSON.stringify(cartList)
-            localStorage.setItem("cart", cartString)  
-            localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
-            props.setQtyCart(cartList.length)
-            
-        }
+       
 
-        return CartItemsList.map(items => {
+        return products.map(items => {
+            
             return (
                 <Nav className="py-2 px-0 product-list-cart" defaultActiveKey="/home" as="ul">
                     <Col className="col-3 cart-item-image" >
-                        <Nav.Item as="li"> <img src={imagem} /> </Nav.Item>
+                        <Nav.Item as="li"> <Images url={items.urlImagem}/> </Nav.Item>
                     </Col>
 
                     <Col className="col-4" >
@@ -70,7 +58,7 @@ function ProductListCart(props) {
                     </Col>
 
                     <Col className="col-3" >
-                        <Nav.Item as="li"> R$ {items.preco} </Nav.Item>
+                        <Nav.Item as="li"> R$ {getPrices(items.id)} </Nav.Item>
                     </Col>
 
                     <Col className="col-2" >
@@ -85,6 +73,19 @@ function ProductListCart(props) {
         })
     }
     
+    
+    function getPrices(idProduct) {
+        let price = 0 
+        axios.get(`http://localhost:8080/preco/recente/1/${idProduct}`)
+            .then((response) => {
+                price = (response.data)
+                console.log (response.data)
+            })
+            .catch((erro) => {
+                console.log("Ocorreu um erro " + erro)
+            })
+            return price;
+    }
 
      return (
          <>
