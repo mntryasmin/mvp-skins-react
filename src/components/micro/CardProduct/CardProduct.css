@@ -32,6 +32,7 @@
     opacity: 1;
     display: flex;
     box-shadow: inset 0px 0px 300px 200px rgba(239, 239, 239, 0.219);
+    cursor: pointer;
 }
 
 .card-icon {

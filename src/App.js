@@ -14,7 +14,7 @@ function App() {
   return (
    <>
     <Router>
-    {/* <Header/> */}
+    <Header/>
      <Routes/>
      <Footer/>
    </Router>
