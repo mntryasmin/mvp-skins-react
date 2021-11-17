@@ -64,8 +64,13 @@ function CardProduct(props) {
             <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-0 my-3 card card-link">
                 <Container className="py-2 px-0 card-hover">
                     <a href="/favorites" className="mb-2 mx-0"><img className="p-2 card-icon" src={favorite} alt="Favoritar produto" /></a>
+<<<<<<< HEAD
+                    <a  className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Favoritar produto" /></a>
+                    <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route="/products/1"></Button>
+=======
                     <a onClick={()=>addProductToCart(product)} className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Adicionar produto ao carrinho" /></a>
                     <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route={'/product/'+idProduct} navigation></Button>
+>>>>>>> 5db4046da87a0349710a20bacb25a3d1f2db6a94
                 </Container>
 
                 <Container className="p-1 my-2 card-product">
