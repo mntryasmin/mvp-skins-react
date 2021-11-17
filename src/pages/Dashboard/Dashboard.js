@@ -1,7 +1,6 @@
 // REACT
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 // ESTILO
@@ -15,23 +14,57 @@ import Security from '../../components/macro/Dashboard/Security/Security'
 import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
 function Dashboard(props) {
-    const section = props.section;
+
+    const token = localStorage.getItem("Authorization")
+    const tokenToSearch = token.replace("Bearer ", "")
+    const URL = "http://localhost:8080/cliente/token/"
+    const [client, setClient] = useState({})
+
+    function getSection(props) {
+        if (props = 1) {
+            return (
+                <MyAccount />
+            )
+        } else if (props = 2) {
+            return (
+                <Security />
+            )
+        } else if (props = 3) {
+            return (
+                <OrderHistory />
+            )
+        } else {
+            return (
+                <MyAccount />
+            )
+        }
+    }
+
+    const getPedido = (c) => {
+        axios.get(`http://localhost:8080/order-history/` + c.codigoCliente).then(async (response) => {
+            const p = await response.data
+            console.log(p)
+        })
+    }
+
+    useEffect(() => {
+        axios.get(`${URL}` + tokenToSearch).then(async (response) => {
+            const c = await response.data
+            setClient(c)
+            getPedido(c)
+        })
+
+    }, [])
 
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
-
                 {/* MENU LATERAL  */}
-                <SideBar />
-
+                <SideBar name={client.nomeCliente} />
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    {/* {props.section} */}
-
-                    <MyAccount/>
-                    <Security/>
-                    <OrderHistory/>
-
+                    {/* {getSection(props)} */}
+                    <OrderHistory />
                 </Container>
             </Container>
         </>

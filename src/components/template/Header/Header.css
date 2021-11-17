@@ -4,6 +4,14 @@
     margin: 0;
 }
 
+.welcome {
+    color: #FD4712;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .input-box{
     height: 2.5rem;
     width: 100%;

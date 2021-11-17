@@ -4,12 +4,21 @@ import { Button, Offcanvas, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import BtnMenu from '../../../../assets/images/icones/icon-menu.png'
 import Categories from '../Categories/GetCategories.js'
+import LoginModal from '../../../micro/LoginModal/LoginModal';
 
 function Menu() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const LinkDash = () => {
+        if(localStorage.getItem("Authorization")){
+            return  <Link to="/dashboard" className="link-header ">SEUS DADOS</Link>
+        }else {
+            return <LoginModal linkDash/>
+        }
+    }
 
     return (
         <>
@@ -24,8 +33,8 @@ function Menu() {
                 <Offcanvas.Body>
                     <ListGroup variant="flush">
                         <Categories />
-                        <ListGroup.Item>
-                            <Link to="/dashboard" className="link-header ">SEUS DADOS</Link>
+                        <ListGroup.Item className=''>
+                           {LinkDash()}
                         </ListGroup.Item>
                     </ListGroup>
                 </Offcanvas.Body>

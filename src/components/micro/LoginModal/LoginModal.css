@@ -1,9 +1,20 @@
 .links-login {
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-    background-color: transparent;
-    border: none;
+    text-decoration: none !important;
+    color: black !important;
+    font-size: 14px !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.validation{
+    color:#28004f;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.link-menu{
+    text-transform: uppercase;
+    padding: 0;
 }
 
 .footer-link{
@@ -25,11 +36,11 @@
 }
 
 .links-login:hover, .links-login:focus-within {
-    transition: 0.5s;
-    color: #FD4712;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
+    transition: 0.5s !important;
+    color: #FD4712 !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .links-login:active:focus{
