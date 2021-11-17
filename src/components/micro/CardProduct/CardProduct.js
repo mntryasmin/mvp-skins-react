@@ -19,7 +19,7 @@ function CardProduct(props) {
             <a xs={6} sm={4} md={3} lg={2} xl={2} href="/product/:id" className="p-0 my-3 card card-link">
                 <Container className="py-2 px-0 card-hover">
                     <a href="/favorites" className="mb-2 mx-0"><img className="p-2 card-icon" src={favorite} alt="Favoritar produto" /></a>
-                    <a href="/cart" className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Favoritar produto" /></a>
+                    <a  className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Favoritar produto" /></a>
                     <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route="/products/1"></Button>
                 </Container>
 
