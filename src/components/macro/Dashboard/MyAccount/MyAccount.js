@@ -7,22 +7,10 @@ import '../../../../assets/css/Style.css'
 import './MyAccount.css'
 
 // PÁGINAS/COMPONENTES
-import AccountList from './AccountList'
 import Button from '../../../micro/Button/Button'
 
 export default class MyAccount extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         name: AccountList.name,
-    //         email: AccountList.email,
-    //         birthdate: AccountList.birthdate,
-    //         tradeLink: AccountList.tradeLink,
-    //         tel: AccountList.tel,
-    //         gender: AccountList.gender
-    //     }
-    // }
 
     render() {
         return (
