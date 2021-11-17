@@ -6,6 +6,17 @@
     border: none;
 }
 
+.validation{
+    color:#28004f;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.link-menu{
+    text-transform: uppercase;
+    padding: 0;
+}
+
 .footer-link{
     color:#ffffff;
     text-decoration: none;
