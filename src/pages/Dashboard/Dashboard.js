@@ -40,18 +40,10 @@ function Dashboard(props) {
         }
     }
 
-    const getPedido = (c) => {
-        axios.get(`http://localhost:8080/order-history/` + c.codigoCliente).then(async (response) => {
-            const p = await response.data
-            console.log(p)
-        })
-    }
-
     useEffect(() => {
         axios.get(`${URL}` + tokenToSearch).then(async (response) => {
             const c = await response.data
             setClient(c)
-            getPedido(c)
         })
 
     }, [])
@@ -64,7 +56,7 @@ function Dashboard(props) {
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
                     {/* {getSection(props)} */}
-                    <OrderHistory />
+                    <OrderHistory idCLient={client.codigoCliente}/>
                 </Container>
             </Container>
         </>

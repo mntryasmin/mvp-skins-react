@@ -14,7 +14,7 @@ function OrderHistory(props) {
         <>
             <h1 className="mb-4 card-title-mvp">Histórico de compras</h1>
             <Container className="mx-0 pb-5">
-                <Requests/>
+                <Requests idClient={props.idClient}/>
             </Container>
         </>
     )

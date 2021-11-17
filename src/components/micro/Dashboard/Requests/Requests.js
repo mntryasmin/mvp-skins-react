@@ -12,16 +12,20 @@ import RequestsItems from './../RequestsItems/RequestsItems'
 import cursor from '../../../../assets/images/icones/icon-cursor.png'
 import Moment from 'react-moment';
 
-function Requests() {
+function Requests(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [requests, setRequests] = useState([]);
 
+    const client = JSON.parse(localStorage.getItem("client"))
+
     useEffect(() => {
-        axios.get(`http://localhost:8080/pedidos/order-history/2`)
-            .then((response) => {
-                setRequests(response.data);
+       
+
+        axios.get(`http://localhost:8080/pedidos/order-history/` + client.codigoCliente)
+            .then(async (response) => {
+                setRequests( response.data);
             })
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)
@@ -69,7 +73,7 @@ function Requests() {
                     </Col>
                     <Container className="col-9">
                         <Modal className="request-modal" show={show} onHide={handleClose}>
-                            <RequestsItems id={request.id}/>
+                            <RequestsItems id={request.id} />
                         </Modal>
                     </Container>
                 </Nav>

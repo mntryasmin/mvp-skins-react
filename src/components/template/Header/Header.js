@@ -19,14 +19,12 @@ function Header(props) {
 
     const URL = "http://localhost:8080/cliente/token/"
     const token = localStorage.getItem("Authorization")
-    const [tokenToSearch, setTokenToSearch] = useState('')
     const [client, setClient] = useState({})
 
     useEffect((() => {
         if (localStorage.getItem("Authorization")) {
-            
-            setTokenToSearch(token.replace("Bearer ", ""))
-            getClient()
+            const tokenToSearch = token.replace("Bearer ", "")
+            getClient(tokenToSearch)
         }
         else {
             localStorage.setItem("Authorization", '')
@@ -35,13 +33,12 @@ function Header(props) {
     }
     ), [])
 
-    const getClient = () => {
-        axios.get(`${URL}` + tokenToSearch)
+    const getClient = (token) => {
+        axios.get(`${URL}` + token)
             .then(async (response) => {
                 const cliente = await response.data
                 setClient(cliente)
-                console.log(cliente)
-
+                localStorage.setItem("client", JSON.stringify(response.data))
             })
     }
 
