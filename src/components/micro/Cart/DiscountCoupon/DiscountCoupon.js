@@ -20,7 +20,7 @@ export default class DiscountCoupon extends Component {
         };
     }
 
-    // LIDANDO COM OS EVENTOS DOS STATES INICIADOS
+    // LIDANDO COM OS EVENTOS NOS STATES INICIADOS
     handleChange = event => {
         this.setState({ coupon: event.target.value });
     }
