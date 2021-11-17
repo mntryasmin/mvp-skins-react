@@ -24,10 +24,10 @@ export const Routes = () => {
             <Route path="/category" component={Category} />
             <Route path="/category/:id" component={Category} />
             <Route path="/checkout" component={Checkout} />
-            <Route path="/dashboard/" component={Dashboard} exact />
-            <Route path="/dashboard/my-account" component={Dashboard} />
+            <Route path="/dashboard/" component={Dashboard} />
+            {/* <Route path="/dashboard/my-account" component={Dashboard} />
             <Route path="/dashboard/order-history" component={Dashboard} />
-            <Route path="/dashboard/security" component={Dashboard} />
+            <Route path="/dashboard/security" component={Dashboard} /> */}
             <Route path="/product/:id" component={Product} />
             <Route path="/favorites" component={Favorites} />
             <Route path="/register" component={Register} />

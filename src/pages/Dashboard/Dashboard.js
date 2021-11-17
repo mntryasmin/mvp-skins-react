@@ -15,26 +15,6 @@ import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
 function Dashboard(props) {
 
-    function getSection(props) {
-        if (props = 1) {
-            return (
-                <MyAccount />
-            )
-        } else if (props = 2) {
-            return (
-                <Security />
-            )
-        } else if (props = 3) {
-            return (
-                <OrderHistory />
-            )
-        } else {
-            return (
-                <MyAccount />
-            )
-        }
-    }
-
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
@@ -42,8 +22,7 @@ function Dashboard(props) {
                 <SideBar />
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    {/* {getSection(props)} */}
-                    <OrderHistory />
+                    <Security/>
                 </Container>
             </Container>
         </>
