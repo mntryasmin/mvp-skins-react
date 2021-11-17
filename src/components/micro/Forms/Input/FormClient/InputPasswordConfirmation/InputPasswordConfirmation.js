@@ -24,7 +24,7 @@ function InputPasswordConfirmation(props) {
             value={password}/>
             {props.function("password", password)} */}
             <InputMask 
-            className='box-insert py-3'
+            className='box-insert-register py-3'
             formatChars={formatChars}
             mask="****************************************************************************************************" 
             maskChar=""

@@ -17,7 +17,7 @@ function Comp(props) {
                 value={phoneNumber}/>
                 {props.function("phoneNumber", phoneNumber)} */}
                 <InputMask 
-                className='box-insert py-3'
+                className='box-insert-register py-3'
                 mask="99999999999" 
                 maskChar=""
                 type="text"

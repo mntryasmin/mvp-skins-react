@@ -41,10 +41,7 @@ function Dashboard(props) {
     }
 
     useEffect(() => {
-        axios.get(`${URL}` + tokenToSearch).then(async (response) => {
-            const c = await response.data
-            setClient(c)
-        })
+        setClient(JSON.parse(localStorage.getItem("client")))
 
     }, [])
 
@@ -55,7 +52,7 @@ function Dashboard(props) {
                 <SideBar name={client.nomeCliente} />
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    <Security/>
+                    <MyAccount/>
                 </Container>
             </Container>
         </>

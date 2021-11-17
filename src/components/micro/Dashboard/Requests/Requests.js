@@ -23,7 +23,6 @@ function Requests(props) {
     const client = JSON.parse(localStorage.getItem("client"))
 
     useEffect(() => {
-       
 
         axios.get(`http://localhost:8080/pedidos/order-history/` + client.codigoCliente)
             .then(async (response) => {
