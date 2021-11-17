@@ -100,7 +100,10 @@ function Register(props) {
         event.preventDefault();
         if(validateForm()){
             axios.post("http://localhost:8080/cliente", client)
-            .then((response)=>{console.log(response.data)})
+            .then((response)=>{
+                console.log(response.data)
+                window.location.href='http://localhost:3000'
+            })
             .catch((erro)=>{
                 console.log("Ocorreu um erro "+erro)
             })

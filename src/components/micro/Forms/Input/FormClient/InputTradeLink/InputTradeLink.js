@@ -16,7 +16,7 @@ function InputTradeLink(props) {
             <>
                 {/* <FormControl 
                 type="text" 
-                placeholder="Digite seu trade-link da steam" 
+                 
                 className='box-insert'
                 onChange={(event) =>{setTradelink(event.target.value)}}
                 value={tradeLink}/> */}
@@ -28,7 +28,7 @@ function InputTradeLink(props) {
                 type="text"
                 value={tradeLink}
                 onChange={(event) =>{setTradelink(event.target.value)}}
-                maskPlaceholder="Digite seu tradelink"/>
+                placeholder="Digite seu trade-link da steam"/>
                 {props.function("trade", tradeLink)}
             </>
         )

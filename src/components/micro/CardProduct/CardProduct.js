@@ -16,6 +16,7 @@ import Image from '../Images/Images'
 function CardProduct(props) {
 
     const idProduct = props.idProduct
+    //Função para recuperar produto ao carregar componente
     const [product, setProduct] = useState({})
     useEffect(()=>{
         axios.get(`http://localhost:8080/produtos/${idProduct}`)
@@ -27,8 +28,8 @@ function CardProduct(props) {
         })
     },[])
 
+    //Função para recuperar preço ao carregar componente
     const [preco, setPreco] = useState(0.0);
-
     useEffect(() => {
         axios.get(`http://localhost:8080/preco/recente/1/${idProduct}`)
             .then((response) => {
@@ -39,6 +40,7 @@ function CardProduct(props) {
             })
     })
 
+    //Enquanto o produto não for carregado, irá exibir uma div vazia
     while(product.id == undefined){
         return(
             <>
@@ -46,13 +48,24 @@ function CardProduct(props) {
             </>
         )
     }
+
+    //Adiciona o produto ao carrinho de compras
+    function addProductToCart(productCart){
+        let productCartList = localStorage.getItem("cart") ? 
+                                JSON.parse(localStorage.getItem("cart")) : 
+                                [];
+        productCartList.push(product);
+        let productCartString = JSON.stringify(productCartList)
+        localStorage.setItem("cart", productCartString)
+    }
+    // href={'/product/'+idProduct}
     return (
         <>
-            <a xs={6} sm={4} md={3} lg={2} xl={2} href={'/product/'+idProduct} className="p-0 my-3 card card-link">
+            <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-0 my-3 card card-link">
                 <Container className="py-2 px-0 card-hover">
                     <a href="/favorites" className="mb-2 mx-0"><img className="p-2 card-icon" src={favorite} alt="Favoritar produto" /></a>
-                    <a href="/cart" className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Favoritar produto" /></a>
-                    <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route="/products/1"></Button>
+                    <a onClick={()=>addProductToCart(product)} className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Adicionar produto ao carrinho" /></a>
+                    <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route={'/product/'+idProduct} navigation></Button>
                 </Container>
 
                 <Container className="p-1 my-2 card-product">
@@ -68,7 +81,7 @@ function CardProduct(props) {
                         <p className="my-0 card-price-final">por R${preco}</p>
                     </Col>
                 </Container>
-            </a>
+            </div>
         </>
     )
 }

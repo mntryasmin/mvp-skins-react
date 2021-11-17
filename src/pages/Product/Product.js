@@ -19,11 +19,12 @@ function Product() {
     const URL = 'http://localhost:8080/produtos/'
     const [product, setProduct] = useState({});
 
+    //Ao carregar a página irá recuperar o produto pelo ID
     useEffect(() => {
         axios.get(`${URL}` + id)
             .then((response) => {
                 setProduct(response.data)
-                console.log('carregay')
+                console.log('carregado')
                 setTimeout(() => {
                     console.log(product)
                 }, 5000)
@@ -34,6 +35,7 @@ function Product() {
             })
     }, [])
 
+    //Enquanto o produto estiver indefinido a página irá renderizar o NotFound
     const charge = () => {
 
         while (product.urlImagem == undefined) {
@@ -43,6 +45,16 @@ function Product() {
                 </>
             )
         }
+    
+    //Adiciona o produto ao carrinho de compras
+    function addProductToCart(productCart){
+        let productCartList = localStorage.getItem("cart") ? 
+                                JSON.parse(localStorage.getItem("cart")) : 
+                                [];
+        productCartList.push(product);
+        let productCartString = JSON.stringify(productCartList)
+        localStorage.setItem("cart", productCartString)
+    }
 
         return (
             <>
@@ -62,8 +74,12 @@ function Product() {
                                 <ProductText category="RARIDADE :" description={product.raridade.descricao} class="mb-4" />
                                 <ProductText description={product.descricao} class="product-text-name" />
                                 <ProductPrice idProduto={id} />
-                                <Button label="COMPRAR" class=" btn-primary-mvp p-2 mt-2 mb-5"
-                                    route="/cart" navigation />
+
+                                <Button label="COMPRAR" 
+                                    class=" btn-primary-mvp p-2 mt-2 mb-5"
+                                    route="/cart" 
+                                    onclick={()=>addProductToCart(product)} />
+
                                 <ProductText category="Coleção :" description={product.colecao.descricao} class="mt-4" />
                                 <ProductText category="Float :" description={product.desgaste} />
                                 <ProductText category="ATENÇÃO :" description="Esse item é uma customização 

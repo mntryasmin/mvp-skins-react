@@ -13,7 +13,7 @@ import SelectGender from '../../../micro/Forms/Input/FormClient/SelectGender/Sel
 function RegisterForm(props) {
 
     const name = () => {
-        return <InputName function={props.function}/>
+        return <InputName function={props.function} placeholder='digite'/>
     }
 
     const email = () => {
