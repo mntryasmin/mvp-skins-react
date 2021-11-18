@@ -79,20 +79,16 @@ function LoginModal(props) {
     }
 
     const authorize = (data) => {
-        if (data) {
-            localStorage.setItem("Authorization", data)
-            console.log(localStorage.getItem("Authorization"))
-            if (location == 'http://localhost:3000/register') {
-                window.location.href = 'http://localhost:3000/'
-            }
-            else {
-                window.location.reload(true)
-            }
 
+        localStorage.setItem("Authorization", data)
+        
+        if (location == 'http://localhost:3000/register') {
+            window.location.href = 'http://localhost:3000/'
         }
         else {
-            setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
+            window.location.reload(true)
         }
+
     }
 
     const Login = (email, password) => {
@@ -100,14 +96,16 @@ function LoginModal(props) {
             .then(async (response) => {
                 const token = await response.data.token
                 authorize(token)
+            }).catch((error) => {
+                setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
             })
     }
 
     const Logout = () => {
         localStorage.setItem("Authorization", '')
+        localStorage.removeItem("client")
 
-        window.location.reload(true);
-
+        window.location.href = 'http://localhost:3000/';
 
     }
 
