@@ -57,7 +57,7 @@ function ProductListCart(props) {
         })
     }
 
-    if(products.length==0){
+    if(products==null || products.length==0){
       return(
         <>
           <h1 className="card-title-mvp pt-4">Meus produtos</h1>
