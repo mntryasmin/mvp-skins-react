@@ -6,10 +6,17 @@
 
 .payment-form input, .payment-form select {
     font-size: .8rem;
+    background-color: #EFEFEF;
+    height: 45px;
 }
 
-.payment-form input {
-    background-color: #EFEFEF;
+.validation-card{
+    background-color: #28004f;
+    color: #FD4712;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
 }
 
 .payment-span {

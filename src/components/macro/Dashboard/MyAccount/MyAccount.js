@@ -88,7 +88,7 @@ export default function MyAccount() {
           .replace(/\D/g, "")
           .replace(/(\d{2})(\d)/, "($1) $2")
           .replace(/(\d{5})(\d{4})(\d)/, "$1-$2");
-      };
+    };
 
     const submit = (event) => {
         event.preventDefault()
@@ -166,7 +166,7 @@ export default function MyAccount() {
 
                     <Col xs={12} sm={12} md={12} lg={3} xl={3}>
                         <Form.Label className="mt-3 d-flex"> Telefone </Form.Label>
-                        <InputMask type='tel'  className="box-update" onClick={() => setValidation('')} onChange={(event) => { setPhone(maskPhone(event.target.value));  }} value={phone} />
+                        <InputMask type='tel' className="box-update" onClick={() => setValidation('')} onChange={(event) => { setPhone(maskPhone(event.target.value));  }} value={phone} />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={12} xl={12}>

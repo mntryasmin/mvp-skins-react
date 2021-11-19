@@ -17,6 +17,8 @@ import Button from '../../components/micro/Button/Button'
 
 function Checkout(props) {
 
+    
+
     const productListArray = [
         { id: 1, urlImagem: "agente-faquinha", descricao: 'Disruptor Fantasma FT', preco: 20.0 },
         { id: 2, urlImagem: "agente-faquinha", descricao: 'Disruptor Fantasma FT', preco: 40.0 },
@@ -74,6 +76,20 @@ function Checkout(props) {
         })
     }
 
+    const [validation, setValidation] = useState('')
+    
+
+    const GetCard = (cardReceiver) => {
+        const card = {name : cardReceiver.name,
+            cardNumber : cardReceiver.cardNumber,
+            cvv : cardReceiver.cvv,
+            cpf : cardReceiver.cpf,
+            installments : cardReceiver.installments
+        }
+
+        console.log(card)
+    }
+
     return (
         <>
             <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
@@ -82,10 +98,12 @@ function Checkout(props) {
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 mx-1 checkout-containers checkout-request checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
                     <Container >
+                        
                         <Row className="px-2 checkout-list-items-scroll">
                             <Products functionPrice={setTotalPrice} productList={productListArray}/>
                         </Row>
-
+                    
+                    <Container fluid className=' align-items-end container-price'>
                         <Row className="p-2 mt-3 checkout-price-container">
                             <Row className="my-1 py-1 checkout-price ">
                                 <p className="checkout-price-title"> Produtos </p>
@@ -103,12 +121,13 @@ function Checkout(props) {
                             </Row>
                         </Row>
                     </Container>
+                    </Container>
                 </Col>
 
 
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-5 py-4 mx-1 checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
-                    <PaymentCreditCard />
+                    <PaymentCreditCard val={validation} func={GetCard}/>
                 </Col>
 
 
