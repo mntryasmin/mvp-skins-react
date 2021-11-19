@@ -14,8 +14,36 @@ import Button from '../../components/micro/Button/Button';
 import Dashboard from '../Dashboard/Dashboard';
 
 function Sucess(props) {
-    const order = JSON.parse(localStorage.getItem('order'))
+    const[order, setOrder] = useState(JSON.parse(localStorage.getItem('order')))
+    const config = { headers: {
+            Authorization: localStorage.getItem('Authorization')
+            }
+        }
 
+    console.log(config)
+
+    useEffect(()=>{
+        sendOrderEmail()
+    })
+    
+    function sendOrderEmail(){
+        axios.post(`http://localhost:8080/pedidos/email/${order.id}`, {}, config)
+        .then((response)=>{
+            console.log(response.data)
+        })
+        .catch((error)=>{
+            console.log("Ocorreu um erro: "+error)
+        })
+        
+    }
+
+    function deleteOrder(){
+        localStorage.removeItem('order')
+    }
+
+    while(order==undefined){
+        return null;
+    }
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 success-container content-container">
