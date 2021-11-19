@@ -20,10 +20,13 @@ function Requests(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const client = JSON.parse(localStorage.getItem("client"))
+
     useEffect(() => {
-        axios.get(`http://localhost:8080/pedidos/order-history/2`)
-            .then((response) => {
-                setRequests(response.data);
+
+        axios.get(`http://localhost:8080/pedidos/order-history/` + client.codigoCliente)
+            .then(async (response) => {
+                setRequests( response.data);
             })
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)

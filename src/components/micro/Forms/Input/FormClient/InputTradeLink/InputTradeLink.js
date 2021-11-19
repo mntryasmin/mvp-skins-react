@@ -21,7 +21,7 @@ function InputTradeLink(props) {
                 onChange={(event) =>{setTradelink(event.target.value)}}
                 value={tradeLink}/> */}
                 <InputMask 
-                className='box-insert py-3'
+                className='box-insert-register py-3'
                 formatChars={formatChars}
                 mask="****************************************************************************************************" 
                 maskChar=""

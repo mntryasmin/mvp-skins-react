@@ -54,6 +54,7 @@ function Product() {
         productCartList.push(product);
         let productCartString = JSON.stringify(productCartList)
         localStorage.setItem("cart", productCartString)
+        window.location.href='http://localhost:3000/cart'
     }
 
         return (

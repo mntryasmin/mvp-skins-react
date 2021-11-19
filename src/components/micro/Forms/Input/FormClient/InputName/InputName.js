@@ -22,7 +22,7 @@ function InputName(props) {
                 onChange={(event) =>{setNameDescription(event.target.value)}}
                 value={nameDescription}/> */}
                 <InputMask 
-                className='box-insert py-3'
+                className='box-insert-register py-3'
                 formatChars={formatChars}
                 mask="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" 
                 maskChar=""

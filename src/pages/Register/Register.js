@@ -157,7 +157,7 @@ function Register(props) {
                             <Row className='row-input justify-content-center'>
                                 <Col xs={12} md={5} className="d-flex box-input my-3 mb-3 mx-5 p-3">
                                     <FormLabel>Gênero</FormLabel>
-                                    <RegisterForm gender  function={createClient}/>
+                                    <RegisterForm gender function={createClient}/>
                                 </Col>
                                 <Col xs={12} md={5} className="d-flex box-input my-3 mb-3 mx-5 p-3">
                                     <FormLabel>Data de Nascimento</FormLabel>

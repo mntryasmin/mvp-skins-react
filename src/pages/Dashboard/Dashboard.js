@@ -25,31 +25,27 @@ function Dashboard(props) {
             const p = await response.data
             console.log(p)
         })
-    }
 
-    useEffect(() => {
-        axios.get(`${URL}` + tokenToSearch).then(async (response) => {
-            const c = await response.data
-            setClient(c)
-            getPedido(c)
-        })
+        useEffect(() => {
+            setClient(JSON.parse(localStorage.getItem("client")))
 
-    }, [])
+        }, [])
 
-    return (
-        <>
-            <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
-                {/* MENU LATERAL  */}
-                <SideBar name={client.nomeCliente} />
-                {/* DASHBOARD  */}
-                <Container className="col-9 my-0 p-5 dashboard">
-                    <MyAccount/>
-                    <Security/>
-                    <OrderHistory/>
+        return (
+            <>
+                <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
+                    {/* MENU LATERAL  */}
+                    <SideBar name={client.nomeCliente} />
+                    {/* DASHBOARD  */}
+                    <Container className="col-9 my-0 p-5 dashboard">
+                        <MyAccount />
+                        <Security />
+                        <OrderHistory />
+                    </Container>
                 </Container>
-            </Container>
-        </>
-    )
+            </>
+        )
+    }
 }
 
-export default Dashboard
+export default Dashboard;

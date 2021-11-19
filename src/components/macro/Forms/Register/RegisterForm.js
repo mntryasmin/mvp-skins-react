@@ -13,39 +13,50 @@ import SelectGender from '../../../micro/Forms/Input/FormClient/SelectGender/Sel
 function RegisterForm(props) {
 
     const name = () => {
-        return <InputName function={props.function} placeholder='digite'/>
+        return <InputName function={props.function} placeholder='digite' />
     }
 
     const email = () => {
-        return <InputEmail function={props.function}/>
+        return <InputEmail function={props.function} />
     }
 
     const phoneNumber = () => {
-        return <InputPhone function={props.function}/>
+        return <InputPhone function={props.function} />
     }
 
     const tradeLink = () => {
-        return <InputTradeLink function={props.function}/>
+        return <InputTradeLink function={props.function} />
     }
 
     const gender = () => {
-        return (
-            <>
-                <SelectGender function={props.function}/>
-            </>
-        )
+
+        if (props.disabled) {
+            return (
+                <>
+                    <SelectGender function={props.function} className="box-insert" disabled />
+                </>
+            )
+        }
+        else {
+            return (
+                <>
+                    <SelectGender function={props.function} className="box-insert" />
+                </>
+            )
+        }
+
     }
 
     const date = () => {
-        return  <InputDate function={props.function}/>
+        return <InputDate function={props.function} />
     }
 
     const password = () => {
-        return <InputPassword function={props.function}/>
+        return <InputPassword function={props.function} />
     }
 
     const passwordConfirmation = () => {
-        return <InputPasswordConfirmation function={props.function}/>
+        return <InputPasswordConfirmation function={props.function} />
     }
 
 
