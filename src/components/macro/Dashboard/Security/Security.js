@@ -9,33 +9,33 @@ import './Security.css'
 
 // COMPONENTES
 // import Button from '../../../micro/Button/Button'
-import Header from '../../../template/Header/Header'
 
 export default class Security extends Component {
     constructor(props) {
         super(props);
         this.state = {
             // CLIENTE
-            client: {},
-            tokenToSearch: '',
+            client: JSON.parse(localStorage.getItem('client')),
+            update: {
+                senhaCliente: '',
+            },
             //SENHAS
             oldPassword: '',
             newPassword: '',
             newPasswordConfirm: '',
-            //VALIDAÇÕES
-            validOldPass: null,
-            validInput: null,
+            //VALIDAÇÃO
+            validInput: false,
+            validPass: false,
             //MENSAGENS DE VALIDAÇÕES DAS SENHAS
             messageInput1: '',
             messageInput2: '',
             messageInput3: '',
-        }
+        } 
 
         this.handleChangeOP = this.handleChangeOP.bind(this);
         this.handleChangeNP = this.handleChangeNP.bind(this);
         this.handleChangeNPC = this.handleChangeNPC.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.componentDidMount.bind(this);
         this.validationInput = this.validationInput.bind(this);
         this.validationPasswordOld = this.validationPasswordOld.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
@@ -53,87 +53,62 @@ export default class Security extends Component {
         this.setState({ newPasswordConfirm: event.target.value });
     }
 
-    componentDidMount() {
-        const URL = "http://localhost:8080/cliente/token/"
-        const token = localStorage.getItem("Authorization")
-
-        if (localStorage.getItem("Authorization")) {
-            this.setState({tokenToSearch: token.replace("Bearer ", "")});
-            axios.get(`${URL}` + this.state.tokenToSearch)
-            .then(async (response) => {
-                const cliente = await response.data;
-                this.setState({client: cliente});
-                console.log(cliente);
-
-            })
-        }
-        else {
-            localStorage.setItem("Authorization", '')
-        }
-    }
-
     //AÇÃO DO BOTÃO DE SALVAR
     handleSubmit(event) {
         event.preventDefault();
 
-        this.componentDidMount();
-
-        console.log(this.state.client);
         this.validationInput();
-        if (this.state.validInput != false) {
-            console.log("VALIDOU O INPUT!");
+        this.validationPasswordOld();
+        if (this.state.validInput == true && this.state.validPass == true) {
+            this.setState({update: {senhaCliente: this.state.newPassword}});
+            this.updatePassword();
 
-            this.validationPasswordOld();
-            if (this.validOldPass == true) {
-                console.log("VALIDOU A SENHA ANTIGA!");
-                this.setState({ invalidPassword: '' });
-
-                this.updatePassword();
-            } else {
-                this.setState({ invalidPassword: 'Senha incorreta!' });
-            }
+            console.log(this.state.oldPassword);
+            console.log(this.state.newPassword);
+            console.log(this.state.newPasswordConfirm);
         } else {
-            console.log("NÃO VALIDOU O INPUT");
+            console.log("ALGO ESTÁ ERRADO.");
         }
+
     }
 
     //VALIDAÇÃO DOS INPUTS DO FORMULÁRIO DE MUDANÇA DE SENHA
     validationInput() {
+        var count = 0;
         if (this.state.oldPassword == '') {
             this.setState({ messageInput1: 'Este campo não deve ficar vazio' });
-            this.setState({ validInput: false });
-            console.log('1');
         } else {
             this.setState({ messageInput1: '' });
+            count++;
         }
 
         if (this.state.newPassword == '') {
             this.setState({ messageInput2: 'Este campo não deve ficar vazio' });
-            this.setState({ validInput: false });
-            console.log('2');
-
         } else {
             this.setState({ messageInput2: '' });
+            count++;
         }
 
         if (this.state.newPasswordConfirm == '') {
             this.setState({ messageInput3: 'Este campo não deve ficar vazio' });
-            this.setState({ validInput: false });
-            console.log('3');
-
         } else {
             this.setState({ messageInput3: '' });
+            count++;
         }
 
-        if (this.state.newPassword != this.state.newPasswordConfirm) {
-            this.setState({ messageInput2: 'As senhas são divergentes' });
-            this.setState({ messageInput3: 'As senhas são divergentes' });
-            this.setState({ validInput: false });
-            console.log('4');
+        if (this.state.newPassword != '' && this.state.newPasswordConfirm != '') {
+            if (this.state.newPassword != this.state.newPasswordConfirm) {
+                this.setState({ messageInput2: 'As senhas são divergentes' });
+                this.setState({ messageInput3: 'As senhas são divergentes' });
+            } else {
+                this.setState({ messageInput2: '' });
+                this.setState({ messageInput3: '' });
+                count++;
+            }
+        }
 
-        } else {
-            this.setState({ messageInput2: '' });
-            this.setState({ messageInput3: '' });
+        if (count == 4) {
+            this.setState({ validInput: true });
         }
     }
 
@@ -142,24 +117,26 @@ export default class Security extends Component {
         axios.get(`http://localhost:8080/cliente/valid-password-client/${this.state.oldPassword}/${this.state.client.codigoCliente}`)
             .then((response) => {
                 if (response.data == true) {
-                    this.setState({ validOldPass: response.data });
+                    this.setState({ messageInput1: '' });
+                    return this.setState({ validPass: true });
+                } else {
+                    this.setState({ messageInput1: 'Senha inválida!' });
                 }
             })
             .catch((erro) => {
                 console.log("ERRO NA VALIDAÇÃO DA SENHA ANTIGA: " + erro)
             }
             );
-        return this.state.validOldPass;
     }
 
     //ATUALIZAÇÃO DA SENHA NO BANCO DE DADOS
     updatePassword() {
-        axios.put(`http://localhost:8080/cliente/${this.state.client.codigoCliente}`, this.state.client)
-            .then((response) => {
-                console.log("ATUALIZOU A SENHA DO CLIENTE! ");
-                console.log(response.data);
 
+        axios.put(`http://localhost:8080/cliente/${this.state.client.codigoCliente}`, this.state.update)
+            .then((response) => {
                 alert("Senha alterada com sucesso!");
+                this.setState({validInput: false});
+                this.setState({validPass: false});
             })
             .catch((erro) => {
                 console.log("NÃO ATUALIZOU A SENHA DO CLIENTE: " + erro)

@@ -36,7 +36,7 @@ function Header(props) {
     const getClient = (token) => {
         axios.get(`${URL}` + token)
             .then(async (response) => {
-                const cliente = await response.data
+                const cliente = await response.data;
                 setClient(cliente)
                 localStorage.setItem("client", JSON.stringify(response.data))
             })
