@@ -13,7 +13,6 @@ import './Checkout.css'
 import Products from '../../components/micro/Checkout/CheckoutItems/CheckoutItems'
 import PaymentCreditCard from '../../components/micro/Checkout/PaymentCreditCard/PaymentCreditCard'
 import Button from '../../components/micro/Button/Button'
-import axios from 'axios'
 
 
 function Checkout(props) {

@@ -20,26 +20,6 @@ function Dashboard(props) {
     const URL = "http://localhost:8080/cliente/token/"
     const [client, setClient] = useState({})
 
-    function getSection(props) {
-        if (props = 1) {
-            return (
-                <MyAccount />
-            )
-        } else if (props = 2) {
-            return (
-                <Security />
-            )
-        } else if (props = 3) {
-            return (
-                <OrderHistory />
-            )
-        } else {
-            return (
-                <MyAccount />
-            )
-        }
-    }
-
     const getPedido = (c) => {
         axios.get(`http://localhost:8080/order-history/` + c.codigoCliente).then(async (response) => {
             const p = await response.data
@@ -63,7 +43,9 @@ function Dashboard(props) {
                 <SideBar name={client.nomeCliente} />
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
+                    <MyAccount/>
                     <Security/>
+                    <OrderHistory/>
                 </Container>
             </Container>
         </>
