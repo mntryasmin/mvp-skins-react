@@ -17,62 +17,49 @@ import Button from '../../components/micro/Button/Button'
 
 function Checkout(props) {
 
-    
-
-    const productListArray = [
-        { id: 1, urlImagem: "agente-faquinha", descricao: 'Disruptor Fantasma FT', preco: 20.0 },
-        { id: 2, urlImagem: "agente-faquinha", descricao: 'Disruptor Fantasma FT', preco: 40.0 },
-        { id: 3, urlImagem: "agente-faquinha", descricao: 'Disruptor Fantasma FT', preco: 10.0 },
-        { id: 4, urlImagem: "agente-faquinha", descricao: 'Disruptor Fantasma FT', preco: 30.0 }
-    ]
-
-
-    let finalPrice = 0;
-    const[price, setPrice] = useState(0.0)
-
-    function setTotalPrice(totalPrice){
-        finalPrice = finalPrice+totalPrice;
-        //Está duplicando o valor total por algum motivo desconhecido
-        setPrice(finalPrice/2);
-    }
+    const [order, setOrder] = useState({});
+    const [orderItems, setOrderItems] = useState([])
+    useEffect(()=>{
+        setOrderItems(JSON.parse(localStorage.getItem("cart")))
+        setOrder(JSON.parse(localStorage.getItem("order")))
+    },[])
 
     function postOrder(){
-        const order = {
-            cliente : {
-                codigoCliente : 1
-            },
-            formaPagamento : {
-                id : 1
-            },
-            descontoProduto : price*0.1,
-            valorBruto : price
-        }
-        //Post do Pedido
+        const order = JSON.parse(localStorage.getItem("order"))
+
         axios.post(`http://localhost:8080/pedidos`, order)
         .then((response)=>{
-            //Ao realizar o post do pedido, irá fazer o post de cada ItemPedido
-            productListArray.forEach((product)=>{
-                axios.post(`http://localhost:8080/itens-pedido`,{
-                    id : {
-                        produto : {
-                            id: product.id
-                        },
-                        pedido : {
-                            id: response.data.id
-                        }
-                    }
-                })
-                .then((responseProduct)=>{
-                    console.log(responseProduct.data)
-                })
-                .catch((erro)=>{
-                    console.log("Ocorreu um erro: " + erro)
-                })
-            })
+            var orderString = JSON.stringify(response.data)
+            localStorage.setItem("order", orderString)
 
+            localStorage.removeItem("cart")
+            
+            sendOrderItems(orderItems, response.data)
+
+            window.location.href='http://localhost:3000/success'
         })
         .catch((error)=>{
-            console.log("Ocorreu um erro: "+ error)
+            console.log("Ocorreu um erro :"+error)
+        })
+    }
+
+    function sendOrderItems(orderItems, order){
+        orderItems.forEach((o)=>{
+            var orderItem = {
+                id : {
+                    produto : o,
+                    pedido : {
+                        id: order.id
+                    }
+                }
+            }
+            axios.post('http://localhost:8080/itens-pedido', orderItem)
+            .then((response)=>{
+                console.log(response.data)
+            })
+            .catch((error)=>{
+                console.log("Ocorreu um erro :"+error)
+            })
         })
     }
 
@@ -100,24 +87,24 @@ function Checkout(props) {
                     <Container >
                         
                         <Row className="px-2 checkout-list-items-scroll">
-                            <Products functionPrice={setTotalPrice} productList={productListArray}/>
+                            <Products productList={orderItems}/>
                         </Row>
                     
                     <Container fluid className=' align-items-end container-price'>
                         <Row className="p-2 mt-3 checkout-price-container">
                             <Row className="my-1 py-1 checkout-price ">
                                 <p className="checkout-price-title"> Produtos </p>
-                                <p> R$ {price}</p>
+                                <p> R$ {order.valorBruto}</p>
                             </Row>
 
                             <Row className="my-1 py-1 checkout-price checkout-line">
                                 <p className="checkout-price-title"> Desconto </p>
-                                <p> R$ {price*0.1}</p>
+                                <p> -</p>
                             </Row>
 
                             <Row className="my-1 py-1  checkout-price checkout-line">
                                 <p className="checkout-price-title"> Total </p>
-                                <p> R$ {price-(price*0.1)}</p>
+                                <p> R$ {order.valorBruto}</p>
                             </Row>
                         </Row>
                     </Container>

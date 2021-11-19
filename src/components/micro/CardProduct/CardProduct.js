@@ -40,6 +40,18 @@ function CardProduct(props) {
             })
     })
 
+    //Função para verificar estoque do produto
+    const [inventory, setInventory] = useState(false);
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/estoque/verificar-estoque/${idProduct}`)
+            .then((response) => {
+                setInventory(response.data)
+            })
+            .catch((erro) => {
+                console.log("Ocorreu um erro " + erro)
+            })
+    })
+
     //Enquanto o produto não for carregado, irá exibir uma div vazia
     while(product.id == undefined){
         return(
@@ -58,32 +70,39 @@ function CardProduct(props) {
         let productCartString = JSON.stringify(productCartList)
         localStorage.setItem("cart", productCartString)
     }
-    // href={'/product/'+idProduct}
-    return (
-        <>
-            <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-0 my-3 card card-link">
-                <Container className="py-2 px-0 card-hover">
-                    <a href="/favorites" className="mb-2 mx-0"><img className="p-2 card-icon" src={favorite} alt="Favoritar produto" /></a>
-                    <a onClick={()=>addProductToCart(product)} className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Adicionar produto ao carrinho" /></a>
-                    <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route={'/product/'+idProduct} navigation></Button>
-                </Container>
-
-                <Container className="p-1 my-2 card-product">
-                    <Container className="px-0 mx-0 card-image">
-                        <Image url={product.urlImagem} class="product-card-image"/>
+    
+    if(inventory==true){
+        return (
+            <>
+                <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-0 my-3 card card-link">
+                    <Container className="py-2 px-0 card-hover">
+                        <a href="/favorites" className="mb-2 mx-0"><img className="p-2 card-icon" src={favorite} alt="Favoritar produto" /></a>
+                        <a onClick={()=>addProductToCart(product)} className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Adicionar produto ao carrinho" /></a>
+                        <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route={'/product/'+idProduct} navigation></Button>
                     </Container>
+    
+                    <Container className="p-1 my-2 card-product">
+                        <Container className="px-0 mx-0 card-image">
+                            <Image url={product.urlImagem} class="product-card-image"/>
+                        </Container>
+    
+                        <hr className="p-0 mx-0 my-1 card-line" />
+    
+                        <Col className="px-1 card-body card-price-container">
+                            <p className="mb-2 card-description">{product.subcategoria.descricao} | {product.descricao}</p>
+                            <p className="my-0 card-price">de R${(preco*1.08).toFixed(2)}</p>
+                            <p className="my-0 card-price-final">por R${preco}</p>
+                        </Col>
+                    </Container>
+                </div>
+            </>
+        )
+    } else { 
+        return null
+    }
 
-                    <hr className="p-0 mx-0 my-1 card-line" />
 
-                    <Col className="px-1 card-body card-price-container">
-                        <p className="mb-2 card-description">{product.subcategoria.descricao} | {product.descricao}</p>
-                        <p className="my-0 card-price">de R${(preco*1.08).toFixed(2)}</p>
-                        <p className="my-0 card-price-final">por R${preco}</p>
-                    </Col>
-                </Container>
-            </div>
-        </>
-    )
+    
 }
 
 export default CardProduct

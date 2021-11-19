@@ -12,6 +12,8 @@
 
 
 .checkout-list-items-scroll {
+    display: flex;
+    align-content: flex-start;
     height: 45vh;
     overflow-y: scroll;
     
