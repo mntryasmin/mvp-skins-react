@@ -5,7 +5,10 @@
 }
 
 .button-save {
+    width: 100vw;
     text-align: right;
+    display: flex;
+    justify-content: right;
 }
 
 .button-delete {

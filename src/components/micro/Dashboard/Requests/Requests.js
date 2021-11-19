@@ -45,9 +45,9 @@ function Requests(props) {
     // LISTAR OS PEDIDOS DE UM CLIENTE
     function GetRequests() {
         return requests.map(
-            (request, i) =>
+            (request =>
                 <>
-                    <Nav key={i} className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
+                    <Nav key={request.id} name={request.id} className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
                         <Col className="col-2" >
                             <Nav.Item as="li"> {request.id} </Nav.Item>
                         </Col>
@@ -74,11 +74,11 @@ function Requests(props) {
                             </Button>
                         </Col>
                         <Modal className="col-9 request-modal" show={show} onHide={handleClose}>
-                            <RequestsItems idRequest={1} />
+                            <RequestsItems request={request.id}/>
                         </Modal>
                     </Nav>
                 </>
-        )
+        ))
     }
 
     // PEDIDOS - TÍTULO
