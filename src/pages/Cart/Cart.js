@@ -10,6 +10,7 @@ import './Cart.css'
 import DiscountCoupon from '../../components/micro/Cart/DiscountCoupon/DiscountCoupon'
 import ProductListCart from '../../components/micro/Cart/CartItemsList/CartItemsList'
 import Button from '../../components/micro/Button/Button'
+import axios from 'axios'
 
 function Cart(props) {
     const [price, setPrice] = useState(0.0)
@@ -21,6 +22,24 @@ function Cart(props) {
         setPrice(finalPrice);
     }
     console.log(price)
+
+    function createOrder(){
+        const client = JSON.parse(localStorage.getItem("client"))
+        const order = {
+            cliente : client,
+            formaPagamento : {
+                id : 1
+            },
+            descontoProduto : 0.0,
+            valorBruto : price/2
+        }
+
+        var orderString = JSON.stringify(order)
+        localStorage.setItem("order", orderString)
+        window.location.href='http://localhost:3000/checkout'
+    }
+    
+
     return (
         <>
             <Container fluid className="cart p-0 content-container">
@@ -50,7 +69,9 @@ function Cart(props) {
                     <Container className="py-4 my-0 pb-5 cart-buttons">
                         <Button label="Continuar comprando" route="/home" class="btn-secundary-mvp" navigation></Button>
 
-                        <Button label="Finalizar compra" route="/checkout" class="btn-primary-mvp" navigation></Button>
+                        <Button label="Finalizar compra"
+                        class="btn-primary-mvp" 
+                        onclick={()=>createOrder()}></Button>
                     </Container>
                 </Container>
             </Container>
