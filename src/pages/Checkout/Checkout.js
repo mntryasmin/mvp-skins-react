@@ -36,6 +36,8 @@ function Checkout(props) {
             var orderString = JSON.stringify(response.data)
             localStorage.setItem("order", orderString)
 
+            localStorage.removeItem("cart")
+            
             sendOrderItems(orderItems, response.data)
 
             window.location.href='http://localhost:3000/success'
