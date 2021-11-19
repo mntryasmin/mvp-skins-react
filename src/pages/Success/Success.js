@@ -14,19 +14,7 @@ import Button from '../../components/micro/Button/Button';
 import Dashboard from '../Dashboard/Dashboard';
 
 function Sucess(props) {
-    const [requestNumber, setRequestNumber] = useState([]);
-
-    useEffect(() => {
-        axios.get(`http://localhost:8080/pedidos/4`)
-            .then((response) => {
-                setRequestNumber(response.data);
-                console.log(requestNumber);
-            })
-            .catch((erro) => {
-                console.log("Ocorreu um erro no processamento do pedido: " + erro)
-            });
-    }, []
-    )
+    const order = JSON.parse(localStorage.getItem('order'))
 
     return (
         <>
@@ -35,7 +23,7 @@ function Sucess(props) {
                 <Row className="col-9 my-0 p-5 success justify-content-center">
                     <Row className="row py-1 sucessImg"><img src={iconSucess} /></Row>
                     <Title title="Pedido realizado com sucesso" class="py-3 " />
-                    <p className="py-3 px-3 sucess-text">O pedido <span>{requestNumber.id}</span> foi efetuado com sucesso. Após a confirmação do pagamento sua skin estará disponível em até 1 dia útil por meio de um Trade Link da Steam que você receberá em seu e-mail. </p>
+                    <p className="py-3 px-3 sucess-text">O pedido <span>{order.id}</span> foi efetuado com sucesso. Após a confirmação do pagamento sua skin estará disponível em até 1 dia útil por meio de um Trade Link da Steam que você receberá em seu e-mail. </p>
 
                     <Row className="py-3 sucess-button">
                         <Col md={6} lg={5} className="success-button-dashboard">
