@@ -59,6 +59,7 @@ function CartItems(props) {
                 </Col>
             </Nav>
             {props.totalPrice(price)}
+            {console.log(price)}
          </>
      )
 }
