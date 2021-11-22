@@ -159,14 +159,14 @@ function Category(props) {
                     </Col>
                     <Col sm={9} md={10} className='d-flex justify-content-center'>
 
-                        <CategoryContainer idCategory={id}/>
-                        <CategoryContainer idRarity={id}/>
+                        
+                        {/* <CategoryContainer idRarity={id}/>
                         <CategoryContainer idExterior={id}/>
-                        <CategoryContainer idColection={id}/>
+                        <CategoryContainer idColection={id}/> */}
 
                         {id.includes('search=')?
                         <CategoryContainer idCategory={id} search/> : 
-                        <></>}
+                        <CategoryContainer idCategory={id}/>}
 
                     </Col>
                 </Row>
