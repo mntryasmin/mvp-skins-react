@@ -158,7 +158,9 @@ function Category(props) {
 
                     </Col>
                     <Col sm={9} md={10} className='d-flex justify-content-center'>
-                        <CategoryContainer idCategory={id}/>
+                        {id.includes('search=')?
+                        <CategoryContainer idCategory={id} search/> : 
+                        <CategoryContainer idCategory={id}/>}
                     </Col>
                 </Row>
             </Container>

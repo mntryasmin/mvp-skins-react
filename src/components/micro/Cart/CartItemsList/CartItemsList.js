@@ -12,18 +12,25 @@ import CartItems from  '../CartItem/CartItems'
 
 
 function ProductListCart(props) {
+    //Ao renderizar irá pegar a lista de produtos do localStorage
     const [products, setProducts] = useState([])
-    const [qtyCart, setQtyCart] = useState(0)
-    
-    console.log(products)
     useEffect(() => {
         setProducts(JSON.parse(localStorage.getItem("cart")))
-        setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
         
     }, [])
     
+
+    const [price, setPrice] = useState(0.0)
+
+    let finalPrice = 0;
+    function getTotalPrice(totalPrice){
+        finalPrice = finalPrice+totalPrice;
+        //Está duplicando o valor total por algum motivo desconhecido
+        setPrice(finalPrice);
+    }
+
+    //Remove um produto do carrinho
     function removeItem(product){
-      console.log(products.indexOf(product))
       var productIndex = products.indexOf(product);
       products.splice(productIndex, 1)
 
@@ -32,6 +39,7 @@ function ProductListCart(props) {
       window.location.href='http://localhost:3000/cart'
     }
 
+    //Remove produtos com mesmo ID do carrinho
     function getCartItemsList() {
         products.forEach((p)=>{
             var num = products.indexOf(p);
@@ -46,6 +54,7 @@ function ProductListCart(props) {
         var productString = JSON.stringify(products);
         localStorage.setItem("cart", productString);
 
+        //Retorna um card para cada produto na lista
         return products.map((items) => {
             return (
                 <>
@@ -57,6 +66,7 @@ function ProductListCart(props) {
         })
     }
 
+    //Carrinho Vazio
     if(products==null || products.length==0){
       return(
         <>
@@ -82,6 +92,8 @@ function ProductListCart(props) {
         </>
       )
     }
+
+    //Carrinho com produtos
      return (
          <>
             <h1 className="card-title-mvp pt-4">Meus produtos</h1>
