@@ -23,13 +23,19 @@ function Sucess(props) {
     console.log(config)
 
     useEffect(()=>{
-        sendOrderEmail()
+        if(order!=null && order.id!=null){
+            sendOrderEmail()
+        } else {
+            alert("Não há um pedido para ser finalizado!")
+            window.location.href='http://localhost:3000'
+        }
+        
     })
     
     function sendOrderEmail(){
         axios.post(`http://localhost:8080/pedidos/email/${order.id}`, {}, config)
         .then((response)=>{
-            console.log(response.data)
+            deleteOrder()
         })
         .catch((error)=>{
             console.log("Ocorreu um erro: "+error)

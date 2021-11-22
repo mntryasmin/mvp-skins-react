@@ -26,7 +26,7 @@ function Contact(props) {
                     <Col xs={12} sm={8} md={4} lg={4} xl={3} className="contact-infos px-5">
                         <img className="py-2 contact-icon" src={email} alt="" />
                         <p>E-mail</p>
-                        <p className="contact-info-description">Tem alguma dúvida? Mande uma e-mail para a nossa equipe!</p>
+                        <p className="contact-info-description">Tem alguma dúvida? Mande um e-mail para a nossa equipe!</p>
                         <a href="#" className="contact-link"><p>mvpskins@gmail.com</p></a>
 
                     </Col>
@@ -42,7 +42,7 @@ function Contact(props) {
                         <img className="py-2 contact-icon" src={discord} alt="" />
                         <p>Discord</p>
                         <p className="contact-info-description">Entre em nosso servidor para ter acesso à mais informações.</p>
-                        <a href="#" className="contact-link"><p>Clique aqui</p></a>
+                        <a href="https://discord.com/" className="contact-link" target="_blank"><p>Clique aqui</p></a>
                     </Col>
                 </Row>
             </Container>

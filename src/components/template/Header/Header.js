@@ -4,7 +4,6 @@ import { Col, Form, Container, Navbar, Nav, Row } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-clean.png'
-import Lupa from '../../../assets/images/icones/icon-lupa.png'
 import Arma from '../../../assets/images/icones/icon-arma.png'
 import Faca from '../../../assets/images/icones/icon-faca.png'
 import Luva from '../../../assets/images/icones/icon-luva.png'
@@ -14,6 +13,7 @@ import Car from '../../../assets/images/icones/icon-carrinho.png'
 import { Link } from 'react-router-dom'
 import Button from '../../micro/Button/Button.js'
 import axios from 'axios'
+import SearchForm from '../../macro/Forms/Search/SearchForm'
 
 function Header(props) {
 
@@ -113,16 +113,7 @@ function Header(props) {
 
                         {/* BARRA DE PESQUISA */}
                         <Col xs={8} md={6} >
-                            <Form >
-                                <Form.Group >
-                                    <div className='d-flex flex-row input-box'>
-                                        <Form.Control type="text" placeholder="O que você procura?" className="search-bar" />
-                                        <a href="#" >
-                                            <img src={Lupa} className="lupa" />
-                                        </a>
-                                    </div>
-                                </Form.Group>
-                            </Form>
+                            <SearchForm/>
                         </Col>
                         {/* FIM DA BARRA DE PESQUISA */}
 

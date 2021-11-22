@@ -10,18 +10,17 @@ import './Cart.css'
 import DiscountCoupon from '../../components/micro/Cart/DiscountCoupon/DiscountCoupon'
 import ProductListCart from '../../components/micro/Cart/CartItemsList/CartItemsList'
 import Button from '../../components/micro/Button/Button'
-import axios from 'axios'
 
 function Cart(props) {
     const [price, setPrice] = useState(0.0)
 
     let finalPrice = 0;
     function getTotalPrice(totalPrice){
-        finalPrice = finalPrice+totalPrice;
+        finalPrice = (finalPrice+totalPrice);
         //Está duplicando o valor total por algum motivo desconhecido
-        setPrice(finalPrice);
+        setPrice(finalPrice/2);
+        console.log(finalPrice)
     }
-    console.log(price)
 
     function createOrder(){
         const client = JSON.parse(localStorage.getItem("client"))
@@ -31,7 +30,7 @@ function Cart(props) {
                 id : 1
             },
             descontoProduto : 0.0,
-            valorBruto : price/2
+            valorBruto : price
         }
 
         var orderString = JSON.stringify(order)
@@ -61,7 +60,7 @@ function Cart(props) {
                             </Col>
                             <Col className="cart-values">
                                 <p className="m-0"> Subtotal </p>
-                                <p className="m-0 mt-1"> R$ {(price/2).toFixed(2)} </p>
+                                <p className="m-0 mt-1"> R$ {(price).toFixed(2)} </p>
                             </Col>
                         </Row>
                     </Container>
