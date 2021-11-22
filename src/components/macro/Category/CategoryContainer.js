@@ -83,7 +83,7 @@ function CategoryContainer(props) {
             <>
                 <Container fluid>
                     <div className='search-category'>
-                        Resultados para "{idCategorySearch}" ...
+                        
                     </div>
                 </Container>
             </>
