@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Container, Form, Button } from 'react-bootstrap'
+import ReactDOM from "react-dom";
 
 // ESTILO
 import '../../../../assets/css/Style.css'
@@ -13,6 +14,9 @@ import './Security.css'
 export default class Security extends Component {
     constructor(props) {
         super(props);
+        //VALIDAÇÃO
+        this.validInput = false;
+        this.validPass = false;
         this.state = {
             // CLIENTE
             client: JSON.parse(localStorage.getItem('client')),
@@ -23,14 +27,11 @@ export default class Security extends Component {
             oldPassword: '',
             newPassword: '',
             newPasswordConfirm: '',
-            //VALIDAÇÃO
-            validInput: false,
-            validPass: false,
             //MENSAGENS DE VALIDAÇÕES DAS SENHAS
             messageInput1: '',
             messageInput2: '',
             messageInput3: '',
-        } 
+        }
 
         this.handleChangeOP = this.handleChangeOP.bind(this);
         this.handleChangeNP = this.handleChangeNP.bind(this);
@@ -57,19 +58,17 @@ export default class Security extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        this.validationInput();
         this.validationPasswordOld();
-        if (this.state.validInput == true && this.state.validPass == true) {
-            this.setState({update: {senhaCliente: this.state.newPassword}});
-            this.updatePassword();
+        this.validationInput();
+    }
 
-            console.log(this.state.oldPassword);
-            console.log(this.state.newPassword);
-            console.log(this.state.newPasswordConfirm);
+    handleFinalValidation(validPass) {
+        if (this.validInput == true && validPass == true) {
+            this.setState({ update: { senhaCliente: this.state.newPassword } });
+            this.updatePassword();
         } else {
             console.log("ALGO ESTÁ ERRADO.");
         }
-
     }
 
     //VALIDAÇÃO DOS INPUTS DO FORMULÁRIO DE MUDANÇA DE SENHA
@@ -108,40 +107,41 @@ export default class Security extends Component {
         }
 
         if (count == 4) {
-            this.setState({ validInput: true });
+            this.validInput = true;
         }
     }
 
     //VALIDAÇÃO DA SENHA ANTIGA VS. A INSERIDA PELO USUÁRIO
     validationPasswordOld() {
-        axios.get(`http://localhost:8080/cliente/valid-password-client/${this.state.oldPassword}/${this.state.client.codigoCliente}`)
-            .then((response) => {
-                if (response.data == true) {
-                    this.setState({ messageInput1: '' });
-                    return this.setState({ validPass: true });
-                } else {
-                    this.setState({ messageInput1: 'Senha inválida!' });
-                }
+        return (
+            axios.get(`http://localhost:8080/cliente/valid-password-client/${this.state.oldPassword}/${this.state.client.codigoCliente}`)
+            .then(async (response) => {
+                this.validPass = await response.data;
+
+                this.handleFinalValidation(this.validPass);
+                this.setState({messageInput1: 'Senha inválida'});
             })
             .catch((erro) => {
                 console.log("ERRO NA VALIDAÇÃO DA SENHA ANTIGA: " + erro)
             }
-            );
+            )
+        )
     }
 
     //ATUALIZAÇÃO DA SENHA NO BANCO DE DADOS
     updatePassword() {
-
-        axios.put(`http://localhost:8080/cliente/${this.state.client.codigoCliente}`, this.state.update)
-            .then((response) => {
-                alert("Senha alterada com sucesso!");
-                this.setState({validInput: false});
-                this.setState({validPass: false});
-            })
-            .catch((erro) => {
-                console.log("NÃO ATUALIZOU A SENHA DO CLIENTE: " + erro)
-            }
-            );
+        return (
+            axios.put(`http://localhost:8080/cliente/${this.state.client.codigoCliente}`, this.state.update)
+                .then((response) => {
+                    alert("Senha alterada com sucesso!");
+                    this.validInput = false;
+                    this.validPass = false;
+                })
+                .catch((erro) => {
+                    console.log("NÃO ATUALIZOU A SENHA DO CLIENTE: " + erro)
+                }
+                )
+        )
     }
 
 
@@ -155,7 +155,7 @@ export default class Security extends Component {
                         caracteres e, se possível, com números, letras maiúsculas,
                         minúsculas e caracteres especiais (exemplo: @.$%). </p>
 
-                    <Form className="security-form" onSubmit={this.handleSubmit}>
+                    <Form className="security-form">
                         <Form.Group lg={6} xl={6} className="security-form-org ">
                             <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
                             <Form.Control value={this.state.oldPassword} onChange={this.handleChangeOP} className="py-2" type="" name="oldPassword" />
@@ -173,13 +173,9 @@ export default class Security extends Component {
                         </Form.Group>
 
                         <Form.Group className="button-save">
-                            <Button type="submit" className="btn btn-mvp btn-primario-mvp">Salvar</Button>
+                            <Button onClick={this.handleSubmit} type="submit" className="btn btn-mvp btn-primario-mvp">Salvar</Button>
                         </Form.Group>
                     </Form>
-
-                    {/* <Container className="p-3 mt-2 button-delete">
-                        <Button className="btn btn-mvp btn-secundario-mvp">Deletar minha conta</Button>
-                    </Container> */}
                 </Container>
             </>
         )
