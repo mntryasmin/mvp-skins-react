@@ -47,9 +47,9 @@ export default class OrderHistory extends Component {
 
     showModal = () => {
         this.setState({ show: true });
-      };
-    
-      hideModal = () => {
+    };
+
+    hideModal = () => {
         this.setState({ show: false });
     };
 
@@ -59,10 +59,13 @@ export default class OrderHistory extends Component {
     }
 
     handleRequests() {
-        axios.get(`http://localhost:8080/pedidos/order-history/${this.client.codigoCliente}`, {headers: {
-            Authorization: localStorage.getItem('Authorization')}})
+        axios.get(`http://localhost:8080/pedidos/order-history/${this.client.codigoCliente}`, {
+            headers: {
+                Authorization: localStorage.getItem('Authorization')
+            }
+        })
             .then((response) => {
-                this.setState({requests: response.data});
+                this.setState({ requests: response.data });
             })
             .catch((erro) => {
                 console.log("Não foi possível buscar os pedidos do cliente: " + erro)
@@ -71,8 +74,11 @@ export default class OrderHistory extends Component {
     }
 
     handleProducts(id) {
-        axios.get(`http://localhost:8080/itens-pedido/${id}`, {headers: {
-            Authorization: localStorage.getItem('Authorization')}})
+        axios.get(`http://localhost:8080/itens-pedido/${id}`, {
+            headers: {
+                Authorization: localStorage.getItem('Authorization')
+            }
+        })
             .then((response) => {
                 this.setState({ products: response.data });
             })
@@ -91,9 +97,9 @@ export default class OrderHistory extends Component {
     }
 
     handleMapProducts(id) {
-        // this.handleProducts(id);
+
         console.log(this.state.products);
-        
+
         return this.state.products.map(
             (product) =>
                 <>
@@ -141,23 +147,26 @@ export default class OrderHistory extends Component {
                         </Col>
 
                         <Col className="col-2" >
-                            <Button variant="primary" onClick={() => {this.handleProducts(request.id)}} className="me-2 request-button">
+                            <Button variant="primary" onClick={() => { this.showModal(); this.handleProducts(request.id)}} className="me-2 request-button">
                                 <img className="arrow" src={cursor} />
                             </Button>
                         </Col>
                     </Nav>
-                    <Modal className="row list-group py-2 card-caption-mvp" defaultActiveKey="/home" as="ul">
-                        <Col className="col-4" >
-                            <Nav.Item as="li"> Produto </Nav.Item>
-                        </Col>
+                    <Modal show={this.state.show} onClick={this.hideModal}>
+                        <Nav className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
 
-                        <Col className="col-5">
-                            <Nav.Item as="li"> Descrição </Nav.Item>
-                        </Col>
+                            <Col className="col-4" >
+                                <Nav.Item as="li"> Produto </Nav.Item>
+                            </Col>
 
-                        <Col className="col-3 requests-resp">
-                            <Nav.Item as="li"> Preço </Nav.Item>
-                        </Col>
+                            <Col className="col-5">
+                                <Nav.Item as="li"> Descrição </Nav.Item>
+                            </Col>
+
+                            <Col className="col-3 requests-resp">
+                                <Nav.Item as="li"> Preço </Nav.Item>
+                            </Col>
+                        </Nav>
 
                         {this.handleMapProducts(request.id)}
                     </Modal>
@@ -192,7 +201,7 @@ export default class OrderHistory extends Component {
                         </Col>
                     </Nav>
 
-        {this.handleShowRequests()}
+                    {this.handleShowRequests()}
 
 
                 </Container>
