@@ -156,26 +156,16 @@ function Category(props) {
 
 
 
-                    </Col>
-                    <Col sm={9} md={10} className='d-flex justify-content-center'>
-
-<<<<<<< HEAD
-=======
-                        
->>>>>>> 667fb9ef7b4ef7ca80e9793149692675f10d338a
-                        {/* <CategoryContainer idRarity={id}/>
+                        <Col>
+                            {/* <CategoryContainer idRarity={id}/>
                         <CategoryContainer idExterior={id}/>
                         <CategoryContainer idColection={id}/> */}
 
-                        {id.includes('search=')?
-                        <CategoryContainer idCategory={id} search/> : 
-<<<<<<< HEAD
-                        <CategoryContainer idCategory={id}/>
-                        }
-=======
-                        <CategoryContainer idCategory={id}/>}
->>>>>>> 667fb9ef7b4ef7ca80e9793149692675f10d338a
-
+                            {id.includes('search=') ?
+                                <CategoryContainer idCategory={id} search /> :
+                                <CategoryContainer idCategory={id} />
+                            }
+                        </Col>
                     </Col>
                 </Row>
             </Container>
