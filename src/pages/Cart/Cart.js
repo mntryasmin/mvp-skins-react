@@ -60,7 +60,7 @@ function Cart(props) {
                             </Col>
                             <Col className="cart-values">
                                 <p className="m-0"> Subtotal </p>
-                                <p className="m-0 mt-1"> R$ {(price).toFixed(2)} </p>
+                                <p className="m-0 mt-1"> {price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </p>
                             </Col>
                         </Row>
                     </Container>

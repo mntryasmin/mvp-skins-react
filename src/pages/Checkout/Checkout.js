@@ -26,8 +26,11 @@ function Checkout(props) {
     const [orderItems, setOrderItems] = useState([])
     useEffect(() => {
         setOrderItems(JSON.parse(localStorage.getItem("cart")))
-        setOrder(JSON.parse(localStorage.getItem("order")))
     }, [])
+
+    useEffect(()=>{
+        setOrder(JSON.parse(localStorage.getItem("order")))
+    },[])
 
     const [validation, setValidation] = useState('')
 
@@ -118,6 +121,7 @@ function Checkout(props) {
         console.log(card)
 
     }
+    
 
     return (
         <>
@@ -136,17 +140,17 @@ function Checkout(props) {
                             <Row className="p-2 mt-3 checkout-price-container">
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
-                                    <p> R$ {order.valorBruto}</p>
+                                    <p> {JSON.parse(localStorage.getItem("order")).valorBruto.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
                                 </Row>
 
-                                <Row className="my-1 py-1 checkout-price checkout-line">
+                                {/* <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
                                     <p> -</p>
-                                </Row>
+                                </Row> */}
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
-                                    <p> R$ {order.valorBruto}</p>
+                                    <p> {JSON.parse(localStorage.getItem("order")).valorBruto.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
                                 </Row>
                             </Row>
                         </Container>

@@ -91,7 +91,7 @@ function CardProduct(props) {
                         <Col className="px-1 card-body card-price-container">
                             <p className="mb-2 card-description">{product.subcategoria.descricao} | {product.descricao}</p>
                             <p className="my-0 card-price">de R${(preco*1.08).toFixed(2)}</p>
-                            <p className="my-0 card-price-final">por R${preco}</p>
+                            <p className="my-0 card-price-final">por {preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
                         </Col>
                     </Container>
                 </div>
