@@ -12,6 +12,7 @@ import CheckoutItemsPrice from '../CheckoutItemsPrice/CheckoutItemsPrice'
 
 function CheckoutItems(props) {
     const itemsList = props.productList
+    
     return itemsList.map(items => {
         return (
             <>

@@ -17,63 +17,85 @@ import Button from '../../components/micro/Button/Button'
 
 function Checkout(props) {
 
+    const [card, setCard] = useState({})
+    const [termAcepted, setTermAcepted] = useState(false)
+    const [validationOfTerms, setValidationOfTerms] = useState('')
+
+
     const [order, setOrder] = useState({});
     const [orderItems, setOrderItems] = useState([])
-    useEffect(()=>{
+    useEffect(() => {
         setOrderItems(JSON.parse(localStorage.getItem("cart")))
         setOrder(JSON.parse(localStorage.getItem("order")))
-    },[])
+    }, [])
 
-    function postOrder(){
-        const order = JSON.parse(localStorage.getItem("order"))
+    function postOrder() {
+        ValideCard(card)
+        if (termAcepted) {
+            const order = JSON.parse(localStorage.getItem("order"))
 
-        axios.post(`http://localhost:8080/pedidos`, order)
-        .then((response)=>{
-            var orderString = JSON.stringify(response.data)
-            localStorage.setItem("order", orderString)
+            axios.post(`http://localhost:8080/pedidos`, order)
+                .then((response) => {
 
-            localStorage.removeItem("cart")
-            
-            sendOrderItems(orderItems, response.data)
+                    var orderString = JSON.stringify(response.data)
+                    localStorage.setItem("order", orderString)
 
-            window.location.href='http://localhost:3000/success'
-        })
-        .catch((error)=>{
-            console.log("Ocorreu um erro :"+error)
-        })
+                    localStorage.removeItem("cart")
+
+                    sendOrderItems(orderItems, response.data)
+
+                    window.location.href = 'http://localhost:3000/success'
+                    setValidation('CVV inválido, veja se a digitação está correta')
+
+                })
+                .catch((error) => {
+                    console.log("Ocorreu um erro :" + error)
+                })
+        } else {
+            setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
+        }
+
     }
 
-    function sendOrderItems(orderItems, order){
-        orderItems.forEach((o)=>{
+    function sendOrderItems(orderItems, order) {
+        orderItems.forEach((o) => {
             var orderItem = {
-                id : {
-                    produto : o,
-                    pedido : {
+                id: {
+                    produto: o,
+                    pedido: {
                         id: order.id
                     }
                 }
             }
             axios.post('http://localhost:8080/itens-pedido', orderItem)
-            .then((response)=>{
-                console.log(response.data)
-            })
-            .catch((error)=>{
-                console.log("Ocorreu um erro :"+error)
-            })
+                .then((response) => {
+                    console.log(response.data)
+                })
+                .catch((error) => {
+                    console.log("Ocorreu um erro :" + error)
+                })
         })
     }
 
     const [validation, setValidation] = useState('')
-    
+
+    const ValideCard = (value) => {
+        if (value.name){
+            setValidation('O campo nome está vazio')
+        }else {
+            setValidation('')
+        }
+    }
 
     const GetCard = (cardReceiver) => {
-        const card = {name : cardReceiver.name,
-            cardNumber : cardReceiver.cardNumber,
-            cvv : cardReceiver.cvv,
-            cpf : cardReceiver.cpf,
-            installments : cardReceiver.installments
-        }
-
+        setCard({
+            name: cardReceiver.name,
+            cardNumber: cardReceiver.cardNumber,
+            cvv: cardReceiver.cvv,
+            cpf: cardReceiver.cpf,
+            installments: cardReceiver.installments,
+            dtCard: cardReceiver.dtCard
+        })
         console.log(card)
     }
 
@@ -85,53 +107,65 @@ function Checkout(props) {
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 mx-1 checkout-containers checkout-request checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
                     <Container >
-                        
+
                         <Row className="px-2 checkout-list-items-scroll">
-                            <Products productList={orderItems}/>
+                            <Products productList={orderItems} />
                         </Row>
-                    
-                    <Container fluid className=' align-items-end container-price'>
-                        <Row className="p-2 mt-3 checkout-price-container">
-                            <Row className="my-1 py-1 checkout-price ">
-                                <p className="checkout-price-title"> Produtos </p>
-                                <p> R$ {order.valorBruto}</p>
-                            </Row>
 
-                            <Row className="my-1 py-1 checkout-price checkout-line">
-                                <p className="checkout-price-title"> Desconto </p>
-                                <p> -</p>
-                            </Row>
+                        <Container fluid className=' align-items-end container-price'>
+                            <Row className="p-2 mt-3 checkout-price-container">
+                                <Row className="my-1 py-1 checkout-price ">
+                                    <p className="checkout-price-title"> Produtos </p>
+                                    <p> R$ {order.valorBruto}</p>
+                                </Row>
 
-                            <Row className="my-1 py-1  checkout-price checkout-line">
-                                <p className="checkout-price-title"> Total </p>
-                                <p> R$ {order.valorBruto}</p>
+                                <Row className="my-1 py-1 checkout-price checkout-line">
+                                    <p className="checkout-price-title"> Desconto </p>
+                                    <p> -</p>
+                                </Row>
+
+                                <Row className="my-1 py-1  checkout-price checkout-line">
+                                    <p className="checkout-price-title"> Total </p>
+                                    <p> R$ {order.valorBruto}</p>
+                                </Row>
                             </Row>
-                        </Row>
-                    </Container>
+                        </Container>
                     </Container>
                 </Col>
 
 
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-5 py-4 mx-1 checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
-                    <PaymentCreditCard val={validation} func={GetCard}/>
+                    <PaymentCreditCard val={validation} func={GetCard} vlTotal={order.valorBruto} />
                 </Col>
 
 
                 <Col xs={12} sm={12} md={12} lg={3} xl={3} className="py-4 px-4 mx-1 checkout-term checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Termos de serviço </h1>
                     <p className="pt-3">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
-                        realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu 
-                        perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin. 
+                        realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
+                        perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.
                     </p>
 
                     <Form>
                         <Form.Group className="mb-3 checkout-checkbox" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Eu aceito os termos e condições." />
+                            <Form.Check type="checkbox" label="Eu aceito os termos e condições."
+                                value={termAcepted} onClick={() => {
+                                    if (termAcepted) {
+                                        setTermAcepted(false)
+                                    } else {
+                                        setTermAcepted(true)
+                                        setValidationOfTerms('')
+                                    }
+
+                                }} />
                         </Form.Group>
                     </Form>
+                    <div className='validation-card'>
+                        {validationOfTerms}
+                    </div>
 
-                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" onclick={()=>postOrder()}></Button>
+                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" onclick={() => postOrder()}></Button>
                 </Col>
             </Container>
         </>
