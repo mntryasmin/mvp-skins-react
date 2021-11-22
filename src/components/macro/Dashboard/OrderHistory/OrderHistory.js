@@ -20,6 +20,7 @@ export default class OrderHistory extends Component {
         this.state = {
             products: [],
             requests: [],
+            show: false,
         };
         this.client = {
             codigoCliente: '',
@@ -33,6 +34,9 @@ export default class OrderHistory extends Component {
             dataNascimento: '',
             senhaCliente: ''
         };
+
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +44,14 @@ export default class OrderHistory extends Component {
         this.handleRequests();
 
     }
+
+    showModal = () => {
+        this.setState({ show: true });
+      };
+    
+      hideModal = () => {
+        this.setState({ show: false });
+    };
 
     handleClient() {
         this.client = JSON.parse(localStorage.getItem("client"));
@@ -134,7 +146,7 @@ export default class OrderHistory extends Component {
                             </Button>
                         </Col>
                     </Nav>
-                    <Nav className="row list-group py-2 card-caption-mvp" defaultActiveKey="/home" as="ul">
+                    <Modal className="row list-group py-2 card-caption-mvp" defaultActiveKey="/home" as="ul">
                         <Col className="col-4" >
                             <Nav.Item as="li"> Produto </Nav.Item>
                         </Col>
@@ -148,7 +160,7 @@ export default class OrderHistory extends Component {
                         </Col>
 
                         {this.handleMapProducts(request.id)}
-                    </Nav>
+                    </Modal>
                 </>
         )
     }
