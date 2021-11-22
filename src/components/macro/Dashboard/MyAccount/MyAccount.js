@@ -9,10 +9,13 @@ import './MyAccount.css'
 // PÁGINAS/COMPONENTES
 import Button from '../../../micro/Button/Button'
 import RegisterForm from '../../Forms/Register/RegisterForm'
+import axios from 'axios'
+import InputMask from "react-input-mask"
 
 export default function MyAccount() {
 
     const client = JSON.parse(localStorage.getItem("client"))
+
     const [alterGender, setAlterGender] = useState(false)
     const [name, setName] = useState(client.nomeCliente)
     const [email, setEmail] = useState(client.emailCliente)
@@ -20,6 +23,18 @@ export default function MyAccount() {
     const [phone, setPhone] = useState(client.numeroTelefone)
     const [trade, setTrade] = useState(client.tradeLink)
     const [idGender, setIdGender] = useState('')
+
+    const clientUpdate = {
+        nomeCliente: name,
+        emailCliente: email,
+        numeroTelefone: phone,
+        tradeLink: trade,
+        genero: {
+            codigoGenero: idGender
+        }
+    }
+
+    const [validation, setValidation] = useState('')
 
     const selectGender = () => {
         if (alterGender) {
@@ -31,60 +46,142 @@ export default function MyAccount() {
     }
 
     const gender = (input, description) => {
-        if (input = "gender"){
-            setIdGender(description)
+        if (input = "gender") {
+            if (alterGender) {
+                setIdGender(description)
+            } else {
+                setIdGender(client.genero.codigoGenero)
+            }
         }
     }
 
-    const submit = (event) => {
+    const changeGender = (event) => {
         event.preventDefault()
-        if (alterGender){
+        if (alterGender) {
             setAlterGender(false)
-        }else{
+        } else {
             setAlterGender(true)
         }
+    }
+
+    const replacePhone = (phone) => {
+        var phoneInt = ""
+        for (let i = 0; i < phone.length; i++) {
+            var result = phone.charAt(i);
+            if (result == "(") {
+                phoneInt = phone.replace("(", "");
+            }
+            if (result == ")") {
+                phoneInt = phoneInt.replace(")", "")
+            }
+            if (result == " ") {
+                phoneInt = phoneInt.replace(" ", "")
+            }
+            if (result == "-") {
+                phoneInt = phoneInt.replace("-", "")
+            }
+        }
+        return phoneInt;
+    }
+    const maskPhone = value => {
+        return value
+          .replace(/\D/g, "")
+          .replace(/(\d{2})(\d)/, "($1) $2")
+          .replace(/(\d{5})(\d{4})(\d)/, "$1-$2");
+    };
+
+    const submit = (event) => {
+        event.preventDefault()
+
+        const regex = /[0-9]/;
+        const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         
+        const phoneInt = replacePhone(phone)
+        if (name == '') {
+            setValidation('O campo "Nome" deve ser preenchido!')
+        }
+        else if (name.length < 3 || regex.test(name)) {
+            setValidation('Nome inválido!')
+        }
+        else if (email == '') {
+            setValidation('O campo "E-mail" deve ser preenchido!')
+        }
+        else if (!regexEmail.test(email)) {
+            setValidation('E-mail invalido!')
+        }
+        else if (phoneInt == '') {
+            setValidation('O campo "Telefone" deve ser preenchido!')
+        }
+        else if (phoneInt.length < 10) {
+            console.log(phone.length)
+            setValidation('O campo "Telefone" deve ter 11 dígitos exatos!')
+        }
+        else if (trade == '') {
+            setValidation('O campo "Trade Link" deve ser preenchido!')
+        }
+        else if (idGender == 'Selecione o gênero') {
+            setValidation('Você deve selecionar um gênero caso queira altera-lo!')
+        }
+        else {
+            updateUser()
+        }
+    }
+
+    const updateUser = () => {
+        axios.put("http://localhost:8080/cliente/" + client.codigoCliente, clientUpdate)
+            .then((response) => {
+                localStorage.setItem("client", JSON.stringify(response.data))
+                window.location.reload(true)
+            }).catch((error) => {
+                console.log(clientUpdate)
+                console.log('deu ruim' + error)
+            })
     }
 
     return (
         <>
             <Container className="my-account pt-1">
                 <h1 className="card-title-mvp">Minha conta</h1>
-                <div className="text-center">Clique em algum campo de inserção para alterar seus dados.</div>
+                <div className="text-center">(Clique em algum campo de inserção para alterar seus dados.)</div>
+                <br />
+                <div className='error'>
+                    {validation}
+                </div>
                 <Form className="myAccountForm pt-3">
+
                     <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                         <Form.Label className="mt-3"> Nome </Form.Label>
-                        <Form.Control type="text" name="name" value={name} onChange={(event) => {setName(event.target.value); }} className="box-update" />
+                        <Form.Control type="text" name="name" value={name} onClick={() => setValidation('')} onChange={(event) => { setName(event.target.value); }} className="box-update" />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={3} xl={3}>
                         <Form.Label className="mt-3"> Data de nascimento </Form.Label>
-                        <Form.Control type="date" name="birthday" value={birthDate} readOnly className="box-update"/>
+                        <Form.Control type="date" name="birthday" onClick={() => setValidation('')} value={birthDate} readOnly className="box-update" />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                         <Form.Label className="mt-3"> E-mail </Form.Label>
-                        <Form.Control type="email" name="email" className="box-update" onChange={(event) => {setEmail(event.target.value); }} value={email}/>
+                        <Form.Control type="email" name="email" className="box-update" onClick={() => setValidation('')} onChange={(event) => { setEmail(event.target.value); }} value={email} />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={3} xl={3}>
-                        <Form.Label className="mt-3"> Telefone </Form.Label>
-                        <Form.Control type="tel" name="tel" className="box-update" onChange={(event) => {setPhone(event.target.value); }} value={phone}/>
+                        <Form.Label className="mt-3 d-flex"> Telefone </Form.Label>
+                        <InputMask type='tel' className="box-update" onClick={() => setValidation('')} onChange={(event) => { setPhone(maskPhone(event.target.value));  }} value={phone} />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                         <Form.Label className="mt-3"> Trade link </Form.Label>
-                        <Form.Control type="url" name="tradeLink" className="box-update" onChange={(event) => {setTrade(event.target.value); }} value={trade}/>
+                        <Form.Control type="url" name="tradeLink" className="box-update" onClick={() => setValidation('')} onChange={(event) => { setTrade(event.target.value); }} value={trade} />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={12} xl={12} className="mt-3">
                         <Form.Label className="mt-3"> Identidade de gênero </Form.Label>
                         {selectGender()}
-                        <Button label="Alterar gênero" onclick={(event) => submit(event)} class="alter-gender"></Button>
+                        <Button label="Alterar gênero" onclick={(event) => { changeGender(event); }} class="alter-gender"></Button>
                     </Col>
 
                     <Form.Group className="col-12 button">
-                        <Button label="Salvar" class="btn-primary-mvp mt-3"></Button>
+                        <Button label="Salvar" onclick={(event) => submit(event)} class="btn-primary-mvp mt-3"></Button>
                     </Form.Group>
                 </Form>
             </Container>
