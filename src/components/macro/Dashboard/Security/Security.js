@@ -66,6 +66,8 @@ export default class Security extends Component {
         if (this.validInput == true && validPass == true) {
             this.setState({ update: { senhaCliente: this.state.newPassword } });
             this.updatePassword();
+        } else if (this.validPass == false) {
+            this.setState({messageInput1: 'Senha inválida'});
         } else {
             console.log("ALGO ESTÁ ERRADO.");
         }
@@ -117,9 +119,7 @@ export default class Security extends Component {
             axios.get(`http://localhost:8080/cliente/valid-password-client/${this.state.oldPassword}/${this.state.client.codigoCliente}`)
             .then(async (response) => {
                 this.validPass = await response.data;
-
                 this.handleFinalValidation(this.validPass);
-                this.setState({messageInput1: 'Senha inválida'});
             })
             .catch((erro) => {
                 console.log("ERRO NA VALIDAÇÃO DA SENHA ANTIGA: " + erro)
