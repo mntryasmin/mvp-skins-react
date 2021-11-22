@@ -29,31 +29,37 @@ function Checkout(props) {
         setOrder(JSON.parse(localStorage.getItem("order")))
     }, [])
 
+    const [validation, setValidation] = useState('')
+
     function postOrder() {
-        ValideCard(card)
-        if (termAcepted) {
-            const order = JSON.parse(localStorage.getItem("order"))
+        if (ValideCard()) {
+            if (termAcepted) {
+                const order = JSON.parse(localStorage.getItem("order"))
 
-            axios.post(`http://localhost:8080/pedidos`, order)
-                .then((response) => {
+                axios.post(`http://localhost:8080/pedidos`, order)
+                    .then((response) => {
 
-                    var orderString = JSON.stringify(response.data)
-                    localStorage.setItem("order", orderString)
+                        var orderString = JSON.stringify(response.data)
+                        localStorage.setItem("order", orderString)
 
-                    localStorage.removeItem("cart")
+                        localStorage.removeItem("cart")
 
-                    sendOrderItems(orderItems, response.data)
+                        sendOrderItems(orderItems, response.data)
 
-                    window.location.href = 'http://localhost:3000/success'
-                    setValidation('CVV inválido, veja se a digitação está correta')
+                        window.location.href = 'http://localhost:3000/success'
+                        setValidation('CVV inválido, veja se a digitação está correta')
 
-                })
-                .catch((error) => {
-                    console.log("Ocorreu um erro :" + error)
-                })
+                    })
+                    .catch((error) => {
+                        console.log("Ocorreu um erro :" + error)
+                    })
+            } else {
+                setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
+            }
         } else {
-            setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
+            setValidation('Cartão inválido!')
         }
+
 
     }
 
@@ -77,14 +83,27 @@ function Checkout(props) {
         })
     }
 
-    const [validation, setValidation] = useState('')
+    
 
-    const ValideCard = (value) => {
-        if (value.name){
-            setValidation('O campo nome está vazio')
-        }else {
-            setValidation('')
+    const ValideCard = () => {
+        if (!card.name) {
+            return false
+        } if (!card.cardNumber) {
+            return false
         }
+        if (!card.cvv) {
+            return false
+        }
+        if (!card.cpf) {
+            return false
+        }
+        if (!card.installments) {
+            return false
+        }
+        if (!card.dtCard) {
+            return false
+        }
+        return true
     }
 
     const GetCard = (cardReceiver) => {
@@ -97,6 +116,7 @@ function Checkout(props) {
             dtCard: cardReceiver.dtCard
         })
         console.log(card)
+
     }
 
     return (

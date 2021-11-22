@@ -30,6 +30,7 @@ function PaymentCreditCard(props) {
         dtCard : dtCard
     }
 
+
     const maskOnlyLetters = (value) => {
         return value.replace(/[0-9!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
     };
@@ -78,7 +79,7 @@ function PaymentCreditCard(props) {
                 <Form.Label className="mt-3"> Nome do titular </Form.Label>
                 <Form.Control className="box-payment" type="text" name="name" value={name} onChange={(event) => {
                     setName(maskOnlyLetters(event.target.value));
-                    props.func(card)
+                    props.func(card);
                 }}
                     placeholder="Digite seu nome" />
             </Row>
