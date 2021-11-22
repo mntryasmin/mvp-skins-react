@@ -86,7 +86,7 @@ function CategoryContainer(props) {
         <>
             <Container fluid>
                 <div className='title-category'>
-                    {product[0].categoria.descricao}
+                    {idCategory==0?'SKINS':product[0].categoria.descricao}
                 </div>
                 <Row >
                     <ListGroup horizontal className='cards'>
