@@ -14,7 +14,9 @@ function CategoryContainer(props) {
     let url = '';
     if(idCategory==0){
         url = `http://localhost:8080/produtos`
-    } else if(idCategory.includes('search=')){
+    } 
+    
+    else if(idCategory.includes('search=')){
         var idCategorySearch = idCategory.substring('search='.length)
         url = 'http://localhost:8080/produtos/search/'+idCategorySearch
     }
