@@ -95,9 +95,11 @@ function LoginModal(props) {
         axios.post(`${URL}`, { username: email, password: password })
             .then(async (response) => {
                 const token = await response.data.token
-                authorize(token)
-            }).catch((error) => {
-                setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
+                if (token){
+                    authorize(token)
+                }else {
+                    setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
+                }
             })
     }
 

@@ -110,9 +110,9 @@ function PaymentCreditCard(props) {
                 <Form.Label className="mt-3"> Parcelas </Form.Label>
                 <Form.Select aria-label="parcelas" onChange={(event) => {setInstallments(event.target.value); props.func(card) }}>
                     <option value="0">Selecione as parcelas</option>
-                    <option value="1">1 x de R$ {(totalValue / 1).toFixed(2)} sem juros</option>
-                    <option value="2">2 x de R$ {(totalValue / 2).toFixed(2)} com juros</option>
-                    <option value="3">3 x de R$ {(totalValue / 3).toFixed(2)} com juros</option>
+                    <option value="1">1 x de R$ {(totalValue / 1).toFixed(2).replace(".", ",")} sem juros</option>
+                    <option value="2">2 x de R$ {(totalValue / 2).toFixed(2).replace(".", ",")} com juros</option>
+                    <option value="3">3 x de R$ {(totalValue / 3).toFixed(2).replace(".", ",")} com juros</option>
                 </Form.Select>
             </Row>
         </Form>

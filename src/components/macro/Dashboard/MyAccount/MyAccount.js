@@ -110,6 +110,7 @@ export default function MyAccount() {
             setValidation('E-mail invalido!')
         }
         else if (phoneInt == '') {
+            console.log(phone.length)  
             setValidation('O campo "Telefone" deve ser preenchido!')
         }
         else if (phoneInt.length < 10) {

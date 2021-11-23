@@ -17,7 +17,7 @@ function CheckoutItemsPrice(props) {
 
     return(
         <>
-        <Nav.Item as="li" className="py-1 checkout-items-price"> R$ {price} </Nav.Item>
+        <Nav.Item as="li" className="py-1 checkout-items-price"> R$ {(price / 1).toFixed(2).replace(".", ",")} </Nav.Item>
         </>
     )
 }
