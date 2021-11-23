@@ -50,7 +50,7 @@ function Checkout(props) {
 
                     sendOrderItems(orderItems, response.data)
 
-                    window.location.href = 'http://localhost:3000/success'
+                    window.location.replace('http://localhost:3000/success')
                     setValidation('CVV inválido, veja se a digitação está correta')
 
                 })

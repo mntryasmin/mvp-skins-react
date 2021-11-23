@@ -4,7 +4,7 @@ import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
 import Category from './pages/Category/Category'
 import Checkout from './pages/Checkout/Checkout'
-import Dashboard from './pages/Dashboard/Dashboard'
+import MyAccount from './pages/MyAccount/MyAccount'
 import Product from './pages/Product/Product'
 import Favorites from './pages/Favorites/Favorites'
 import Register from './pages/Register/Register'
@@ -24,7 +24,7 @@ export const Routes = () => {
             <Route path="/category" component={Category} exact/>
             <Route path="/category/:id" component={Category} />
             <Route path="/checkout" component={Checkout} />
-            <Route path="/dashboard/" component={Dashboard} />
+            <Route path="/myaccount/" component={MyAccount} />
             {/* <Route path="/dashboard/my-account" component={Dashboard} />
             <Route path="/dashboard/order-history" component={Dashboard} />
             <Route path="/dashboard/security" component={Dashboard} /> */}
