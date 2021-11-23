@@ -143,10 +143,10 @@ function Header(props) {
                             <Col md={10} xs={10} className='mx-1'>
                                 <Nav>
                                     <Col md={2}>
-                                        <Nav.Link href="/category/1" className="link-header category">
+                                        <Nav.Link href="/category/3 " className="link-header category">
                                             <div className='d-flex align-items-center items-nav'>
                                                 <img src={Arma} width="30" height="30" />
-                                                Armas
+                                                Rifles
                                             </div>
                                         </Nav.Link>
                                     </Col>
@@ -175,9 +175,9 @@ function Header(props) {
                                         </Nav.Link>
                                     </Col>
 
-                                    <Col md={2} xs={6} className='d-flex align-items-center justify-content-center'>
+                                    {/* <Col md={2} xs={6} className='d-flex align-items-center justify-content-center'>
                                         {btnFavorites()}
-                                    </Col>
+                                    </Col> */}
                                     <Col md={2} xs={6} className='d-flex align-items-center justify-content-center'>
                                         {btnCart()}
                                     </Col>

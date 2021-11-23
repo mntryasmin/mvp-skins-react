@@ -153,6 +153,7 @@ function Category(props) {
                                 <br />
                             </ListGroup>
                         </Form>
+                        </Col>
 
 
 
@@ -166,7 +167,7 @@ function Category(props) {
                                 <CategoryContainer idCategory={id} />
                             }
                         </Col>
-                    </Col>
+                    
                 </Row>
             </Container>
 

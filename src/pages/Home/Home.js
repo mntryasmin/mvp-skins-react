@@ -25,6 +25,30 @@ function Home(props) {
         })
     },[])
     
+    const [productSubcategoryB, setProductSubcategoryB] = useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/produtos/category/4`)
+        .then((response)=>{
+            setProductSubcategoryB(response.data)
+        })
+        .catch((error)=>{
+            console.log('Ocorreu um erro: '+error)
+        })
+    },[])
+
+    const [productSubcategoryC, setProductSubcategoryC] = useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/produtos/category/1`)
+        .then((response)=>{
+            setProductSubcategoryC(response.data)
+        })
+        .catch((error)=>{
+            console.log('Ocorreu um erro: '+error)
+        })
+    },[])
+
     while(productSubcategory[0] == undefined){
         return (
             <>
@@ -59,14 +83,14 @@ function Home(props) {
 
                 {/* CAROUSEL'S DE PRODUTOS  */}
                 <Container className="home-carousel">
-                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Skins mais vendidas</p>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Rifles</p>
                     <CarouselProducts productList={productSubcategory}/>
 
-                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Top armas</p>
-                    <CarouselProducts productList={productSubcategory}/>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Agentes</p>
+                    <CarouselProducts productList={productSubcategoryB}/>
 
-                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Top facas</p>
-                    <CarouselProducts productList={productSubcategory}/>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Pistolas</p>
+                    <CarouselProducts productList={productSubcategoryC}/>
                 </Container>
             </Container>
         </>

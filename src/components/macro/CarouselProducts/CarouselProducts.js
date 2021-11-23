@@ -17,7 +17,7 @@ export default function CarouselProducts(props) {
     }
     return (
         <Carousel>
-            <Carousel.Item>
+            {products.length>=5?<Carousel.Item>
                 <div  className="carousel-cards">
                     <Card idProduct={products[0].id}/>
                     <Card idProduct={products[1].id}/>
@@ -25,8 +25,9 @@ export default function CarouselProducts(props) {
                     <Card idProduct={products[3].id}/>
                     <Card idProduct={products[4].id}/>
                 </div>
-            </Carousel.Item>
-            <Carousel.Item>
+            </Carousel.Item>:
+            <></>}
+            {products.length>=10?<Carousel.Item>
                 <div  className="carousel-cards">
                     <Card idProduct={products[5].id}/>
                     <Card idProduct={products[6].id}/>
@@ -34,7 +35,8 @@ export default function CarouselProducts(props) {
                     <Card idProduct={products[8].id}/>
                     <Card idProduct={products[9].id}/>
                 </div>
-            </Carousel.Item>
+            </Carousel.Item>:
+            <></>}
             
             {/* <Carousel.Item>
             <div  className="carousel-cards">
