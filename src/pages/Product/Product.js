@@ -46,16 +46,6 @@ function Product() {
         })
     },[])
 
-    const [carouselB, setCarouselB] = useState([])
-    useEffect(()=>{
-        axios.get(`http://localhost:8080/produtos/category/2`)
-        .then((response)=>{
-            setCarouselB(response.data)
-        })
-        .catch((error)=>{
-            console.log('Ocorreu um erro: '+error)
-        })
-    },[])
     //Enquanto o produto estiver indefinido a página irá renderizar o NotFound
     const charge = () => {
 
@@ -110,8 +100,6 @@ function Product() {
                         </Row>
                         <ProductText description="Veja também:" class="product-text-carousel" />
                         <CarouselProducts productList={carouselA}/>
-                        <ProductText description="Veja também:" class="product-text-carousel" />
-                        <CarouselProducts productList={carouselB}/>
                         <div className="mb-5"></div>
                     </Col>
                 </div>
