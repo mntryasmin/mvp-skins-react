@@ -14,7 +14,7 @@ function Menu() {
 
     const LinkDash = () => {
         if(localStorage.getItem("Authorization")){
-            return  <Link to="/dashboard" className="link-header ">SEUS DADOS</Link>
+            return  <Link to="/myaccount" className="link-header ">SEUS DADOS</Link>
         }else {
             return <LoginModal linkDash/>
         }

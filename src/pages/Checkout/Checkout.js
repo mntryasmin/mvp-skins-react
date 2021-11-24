@@ -35,34 +35,34 @@ function Checkout(props) {
     const [validation, setValidation] = useState('')
 
     function postOrder() {
-        if (ValideCard()) {
-            if (termAcepted) {
-                const order = JSON.parse(localStorage.getItem("order"))
 
-                axios.post(`http://localhost:8080/pedidos`, order)
-                    .then((response) => {
+        if (termAcepted) {
+            if (ValideCard()) {
+            const order = JSON.parse(localStorage.getItem("order"))
 
-                        var orderString = JSON.stringify(response.data)
-                        localStorage.setItem("order", orderString)
+            axios.post(`http://localhost:8080/pedidos`, order)
+                .then((response) => {
 
-                        localStorage.removeItem("cart")
+                    var orderString = JSON.stringify(response.data)
+                    localStorage.setItem("order", orderString)
 
-                        sendOrderItems(orderItems, response.data)
+                    localStorage.removeItem("cart")
 
-                        window.location.href = 'http://localhost:3000/success'
-                        setValidation('CVV inválido, veja se a digitação está correta')
+                    sendOrderItems(orderItems, response.data)
 
-                    })
-                    .catch((error) => {
-                        console.log("Ocorreu um erro :" + error)
-                    })
+                    window.location.replace('http://localhost:3000/success')
+                    setValidation('CVV inválido, veja se a digitação está correta')
+
+                })
+                .catch((error) => {
+                    console.log("Ocorreu um erro :" + error)
+                })
             } else {
-                setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
+                setValidation('Cartão inválido!')
             }
         } else {
-            setValidation('Cartão inválido!')
+            setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
         }
-
 
     }
 
