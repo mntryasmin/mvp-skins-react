@@ -127,7 +127,7 @@ export default class OrderHistory extends Component {
                 <>
                     <Nav className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
                         <Col className="col-2" >
-                            <Nav.Item as="li"> {request.id} </Nav.Item>
+                            <Nav.Item as="li"> <h1>#{request.id}</h1> </Nav.Item>
                         </Col>
 
                         <Col className="col-2">

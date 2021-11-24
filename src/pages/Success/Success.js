@@ -11,7 +11,7 @@ import './Success.css'
 import iconSucess from '../../assets/images/icones/icon-sucess.png';
 import Title from '../../components/micro/Title/Title';
 import Button from '../../components/micro/Button/Button';
-import Dashboard from '../Dashboard/Dashboard';
+import Error from '../NotFound/Error'
 
 function Sucess(props) {
     const[order, setOrder] = useState(JSON.parse(localStorage.getItem('order')))
@@ -23,6 +23,7 @@ function Sucess(props) {
     console.log(config)
 
     useEffect(()=>{
+        
         if(order!=null && order.id!=null){
             sendOrderEmail()
         } else {
@@ -50,27 +51,39 @@ function Sucess(props) {
     while(order==undefined){
         return null;
     }
-    return (
-        <>
-            <Container fluid className="row m-0 py-5 px-0 success-container content-container">
 
-                <Row className="col-9 my-0 p-5 success justify-content-center">
-                    <Row className="row py-1 sucessImg"><img src={iconSucess} /></Row>
-                    <Title title="Pedido realizado com sucesso" class="py-3 " />
-                    <p className="py-3 px-3 sucess-text">O pedido <span>{order.id}</span> foi efetuado com sucesso. Após a confirmação do pagamento sua skin estará disponível em até 1 dia útil por meio de um Trade Link da Steam que você receberá em seu e-mail. </p>
-
-                    <Row className="py-3 sucess-button">
-                        <Col md={6} lg={5} className="success-button-dashboard">
-                            <Button route="/dashboard" label="Acompanhar pedido" class="btn-primary-mvp p-2 w-100" navigation />
-                        </Col>
-                        <Col md={6} lg={5} className="success-button-home">
-                            <Button route="/" label="Voltar para a home" class="btn-primary-mvp p-2 w-100" navigation />
-                        </Col>
+    const load = () => {
+        const token = localStorage.getItem("Authorization")
+        if (token) {
+            return (
+                <>
+                <Container fluid className="row m-0 py-5 px-0 success-container content-container">
+    
+                    <Row className="col-9 my-0 p-5 success justify-content-center">
+                        <Row className="row py-1 sucessImg"><img src={iconSucess} /></Row>
+                        <Title title="Pedido realizado com sucesso" class="py-3 " />
+                        <h1 className='order-num'>Numero do pedido: #{order.id}</h1>
+                        <p className="py-3 px-3 sucess-text">O pedido foi efetuado com sucesso. Após a confirmação do pagamento sua skin estará disponível em até 1 dia útil por meio de um Trade Link da Steam que você receberá em seu e-mail. </p>
+    
+                        <Row className="py-3 sucess-button">
+                            <Col md={6} lg={5} className="success-button-dashboard">
+                                <Button route="/myaccount" label="Acompanhar pedido" class="btn-primary-mvp p-2 w-100" navigation />
+                            </Col>
+                            <Col md={6} lg={5} className="success-button-home">
+                                <Button route="/" label="Voltar para a home" class="btn-primary-mvp p-2 w-100" navigation />
+                            </Col>
+                        </Row>
                     </Row>
-                </Row>
-            </Container>
-        </>
-    )
+                </Container>
+            </>
+            )
+        }else {
+            return <Error/>
+        }
+    }
+
+    return  load()
+    
 }
 
 export default Sucess

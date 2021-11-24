@@ -5,15 +5,15 @@ import axios from 'axios';
 
 // ESTILO
 import './../../assets/css/Style.css'
-import './Dashboard.css'
+import './MyAccount.css'
 
 // PÁGINAS/COMPONENTES
-import MyAccount from '../../components/macro/Dashboard/MyAccount/MyAccount'
-import OrderHistory from '../../components/macro/Dashboard/OrderHistory/OrderHistory'
-import Security from '../../components/macro/Dashboard/Security/Security'
-import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
+import Mycount from '../../components/macro/MyAccount/MyAccount/MyAccount'
+import OrderHistory from '../../components/macro/MyAccount/OrderHistory/OrderHistory'
+import Security from '../../components/macro/MyAccount/Security/Security'
+import SideBar from '../../components/macro/MyAccount/SideBar/SideBar'
 
-function Dashboard(props) {
+function MyAccount(props) {
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
@@ -22,7 +22,7 @@ function Dashboard(props) {
 
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    <MyAccount />
+                    <Mycount />
                     <Security />
                     <OrderHistory />
                 </Container>
@@ -31,4 +31,4 @@ function Dashboard(props) {
     )
 }
 
-export default Dashboard;
+export default MyAccount;

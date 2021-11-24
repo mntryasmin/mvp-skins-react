@@ -151,9 +151,9 @@ export default class Security extends Component {
             <>
                 <Container className="security pt-1">
                     <h1 className="card-title-mvp">Segurança</h1>
-                    <p className="pt-3 px-3"> Para sua segurança, utilize senhas com mais de 6
-                        caracteres e, se possível, com números, letras maiúsculas,
-                        minúsculas e caracteres especiais (exemplo: @.$%). </p>
+                    <p className="pt-3 px-3"> Para sua segurança, evite usar números repetitivos, datas de aniversário ou seu nome na criação da senha. 
+                    <br/>
+                    <a href="https://www.alura.com.br/artigos/como-criar-uma-boa-senha?gclid=CjwKCAiAv_KMBhAzEiwAs-rX1ABtLVaJNHAYEsJMdjZKvaV-mi2tRMQBjztVG9D3l9NdOYsia-S2fBoCB-oQAvD_BwE" target="_blank" className='link-password'>Como criar uma boa senha?</a> </p>
 
                     <Form className="security-form">
                         <Form.Group lg={6} xl={6} className="security-form-org ">
