@@ -12,10 +12,12 @@ import ProductListCart from '../../components/micro/Cart/CartItemsList/CartItems
 import Button from '../../components/micro/Button/Button'
 import LoginModal from '../../components/micro/LoginModal/LoginModal'
 
+
 function Cart(props) {
     const [price, setPrice] = useState(0.0)
 
     let finalPrice = 0;
+
     function getTotalPrice(totalPrice){
         finalPrice = (finalPrice+totalPrice);
         setPrice(finalPrice/2);
@@ -43,7 +45,7 @@ function Cart(props) {
             window.location.href='http://localhost:3000/checkout'
         } 
     }
-    
+
 
     return (
         <>
@@ -52,7 +54,7 @@ function Cart(props) {
                 </Col>
 
                 <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-4 my-5 pt-3 cart-container">
-                    <ProductListCart functionTotalPrice={getTotalPrice}/>
+                    <ProductListCart functionTotalPrice={getTotalPrice} />
 
                     <Container className="py-1 my-4 price">
                         <Col className="col-7 py-2 px-1 mt-2 discount-coupon-cart">
@@ -61,13 +63,13 @@ function Cart(props) {
 
                         <Row className="col-5 p-0 mt-2 price-cart">
                             <Col className="cart-values">
-                                <p className="m-0"> Cupom </p>
-                                <p className="m-0 mt-1">R$  </p>
+                                <DiscountCoupon boxDiscount price={price} />
                             </Col>
                             <Col className="cart-values">
                                 <p className="m-0"> Subtotal </p>
-                                <p className="m-0 mt-1"> {price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </p>
+                                <p className="m-0 mt-1"> {price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </p>
                             </Col>
+
                         </Row>
                     </Container>
 
@@ -80,7 +82,6 @@ function Cart(props) {
                         onclick={()=>createOrder()}></Button>:
                         <LoginModal linkCart/>
                         }
-                        
                     </Container>
                 </Container>
             </Container>
