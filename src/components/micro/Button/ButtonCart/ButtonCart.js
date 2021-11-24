@@ -20,7 +20,7 @@ function ButtonCart(props) {
         <>
             <Link to="/cart">
                 <div className='d-flex align-items-center justify-content-center'>
-                    <spam  className="link-header">Carrinho</spam>
+                    <span  className="link-header">Carrinho</span>
                     <img src={Cart} width="30" height="30"/>
                     {/* {qty>0?
                     <div className="header-qty-cart">{qty}</div>:
