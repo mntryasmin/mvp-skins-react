@@ -11,7 +11,7 @@ import Register from './pages/Register/Register'
 import Success from './pages/Success/Success'
 import NotFound from './pages/NotFound/Error'
 import Contact from './pages/Contact/Contact'
-
+import ResetPassword from './pages/ResetPassword/ResetPassword'
 
 
 export const Routes = () => {
@@ -33,6 +33,7 @@ export const Routes = () => {
             <Route path="/register" component={Register} />
             <Route path="/success" component={Success} />
             <Route path="/contact" component={Contact} />
+            <Route path="/resetpassword/:token" component={ResetPassword} />
             <Route component={NotFound} />
         </Switch>
     )

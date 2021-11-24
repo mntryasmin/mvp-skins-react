@@ -10,33 +10,40 @@ import './Cart.css'
 import DiscountCoupon from '../../components/micro/Cart/DiscountCoupon/DiscountCoupon'
 import ProductListCart from '../../components/micro/Cart/CartItemsList/CartItemsList'
 import Button from '../../components/micro/Button/Button'
-import axios from 'axios'
+import LoginModal from '../../components/micro/LoginModal/LoginModal'
+
 
 function Cart(props) {
     const [price, setPrice] = useState(0.0)
 
     let finalPrice = 0;
-    function getTotalPrice(totalPrice) {
-        finalPrice = (finalPrice + totalPrice);
-        //Está duplicando o valor total por algum motivo desconhecido
-        setPrice(finalPrice / 2);
+
+    function getTotalPrice(totalPrice){
+        finalPrice = (finalPrice+totalPrice);
+        setPrice(finalPrice/2);
         console.log(finalPrice)
     }
 
-    function createOrder() {
-        const client = JSON.parse(localStorage.getItem("client"))
-        const order = {
-            cliente: client,
-            formaPagamento: {
-                id: 1
-            },
-            descontoProduto: 0.0,
-            valorBruto: price
-        }
+    function createOrder(){
+        const cart = JSON.parse(localStorage.getItem('cart'))
 
-        var orderString = JSON.stringify(order)
-        localStorage.setItem("order", orderString)
-        window.location.href = 'http://localhost:3000/checkout'
+        if (localStorage.getItem("Authorization") &&
+        cart!=null && cart.length!=0) {
+
+            const client = JSON.parse(localStorage.getItem("client"))
+            const order = {
+                cliente : client,
+                formaPagamento : {
+                    id : 1
+                },
+                descontoProduto : 0.0,
+                valorBruto : price
+            }
+
+            var orderString = JSON.stringify(order)
+            localStorage.setItem("order", orderString)
+            window.location.href='http://localhost:3000/checkout'
+        } 
     }
 
 
@@ -69,9 +76,12 @@ function Cart(props) {
                     <Container className="py-4 my-0 pb-5 cart-buttons">
                         <Button label="Continuar comprando" route="/home" class="btn-secundary-mvp" navigation></Button>
 
+                        {localStorage.getItem("Authorization")?
                         <Button label="Finalizar compra"
-                            class="btn-primary-mvp"
-                            onclick={() => createOrder()}></Button>
+                        class="btn-primary-mvp" 
+                        onclick={()=>createOrder()}></Button>:
+                        <LoginModal linkCart/>
+                        }
                     </Container>
                 </Container>
             </Container>
