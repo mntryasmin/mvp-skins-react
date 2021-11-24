@@ -9,17 +9,18 @@ import Faca from '../../../assets/images/icones/icon-faca.png'
 import Luva from '../../../assets/images/icones/icon-luva.png'
 import Agente from '../../../assets/images/icones/icon-agente.png'
 import Fav from '../../../assets/images/icones/icon-coracao.png'
-import Car from '../../../assets/images/icones/icon-carrinho.png'
 import { Link } from 'react-router-dom'
 import Button from '../../micro/Button/Button.js'
 import axios from 'axios'
 import SearchForm from '../../macro/Forms/Search/SearchForm'
+import ButtonCart from '../../micro/Button/ButtonCart/ButtonCart'
 
 function Header(props) {
 
     const URL = "http://localhost:8080/cliente/token/"
     const token = localStorage.getItem("Authorization")
     const [client, setClient] = useState({})
+    
 
     useEffect((() => {
         if (localStorage.getItem("Authorization")) {
@@ -32,6 +33,7 @@ function Header(props) {
         
     }
     ), [])
+
 
     const getClient = (token) => {
         axios.get(`${URL}` + token)
@@ -76,25 +78,6 @@ function Header(props) {
                 <LoginModal linkFavorite />
             )
         }
-    }
-
-    const btnCart = () => {
-        if (localStorage.getItem("Authorization")) {
-
-            return (
-                <Nav.Link href="/cart" className="link-header">
-                    <div className='d-flex align-items-center justify-content-center'>
-                        Carrinho
-                        <img src={Car} width="30" height="30" />
-                    </div>
-                </Nav.Link>
-            )
-        } else {
-            return (
-                <LoginModal linkCart/>
-            )
-        }
-
     }
 
     return (
@@ -179,7 +162,7 @@ function Header(props) {
                                         {btnFavorites()}
                                     </Col> */}
                                     <Col md={2} xs={6} className='d-flex align-items-center justify-content-center'>
-                                        {btnCart()}
+                                        <ButtonCart/>
                                     </Col>
                                 </Nav>
                             </Col>

@@ -1,6 +1,6 @@
 // REACT
 import React, {useEffect, useState } from 'react'
-import { Container, Col, Row } from 'react-bootstrap'
+import { Container, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap'
 
 // ESTILO
 import '../../../assets/css/Style.css'
@@ -66,18 +66,73 @@ function CardProduct(props) {
         let productCartList = localStorage.getItem("cart") ? 
                                 JSON.parse(localStorage.getItem("cart")) : 
                                 [];
-        productCartList.push(product);
+
+        for(var i=0; i<productCartList.length; i++){
+            if(productCart.id == productCartList[i].id){
+                productCartList.splice((i), 1);
+            }
+        }            
+
+        productCartList.push(productCart);
         let productCartString = JSON.stringify(productCartList)
         localStorage.setItem("cart", productCartString)
+        
     }
     
+    // function messageAddCart(idProduct){
+    //     const products = JSON.parse(localStorage.getItem('cart'));
+    //     var result = products.find((p)=> p.id == idProduct)
+    //     console.log(result.id)
+    //     if(result != undefined){
+    //         return (
+                
+    //                 <Popover id="popover-basic">
+    //                     <Popover.Body>
+    //                     Item já está no carrinho!
+    //                     </Popover.Body>
+    //                 </Popover>
+                
+    //         )
+    //     } else {
+    //         return (
+    //             <Popover id="popover-basic">
+    //                 <Popover.Body>
+    //                 Item adicionado ao carrinho!
+    //                 </Popover.Body>
+    //             </Popover>
+    //             )
+    //     }
+        
+    // }
+
+    const messageAddCart = (
+        <Popover id="popover-basic">
+            <Popover.Body>
+            Item adicionado ao carrinho!
+            </Popover.Body>
+        </Popover>
+        )
+
     if(inventory==true){
         return (
             <>
                 <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-0 my-3 card card-link">
                     <Container className="py-2 px-0 card-hover">
                         {/* <a href="/favorites" className="mb-2 mx-0"><img className="p-2 card-icon" src={favorite} alt="Favoritar produto" /></a> */}
-                        <a onClick={()=>addProductToCart(product)} className="mb-2 mx-0"><img className="p-2 card-icon" src={addCart} alt="Adicionar produto ao carrinho" /></a>
+                        
+                        
+                            <a onClick={()=>addProductToCart(product)} 
+                            className="mb-2 mx-0">
+                                <OverlayTrigger trigger="click" 
+                                placement="top" 
+                                overlay={messageAddCart}
+                                rootClose>
+                                    {/* setTimeOut, setInterval */}
+                                    <img className="p-2 card-icon" 
+                                    src={addCart} 
+                                    alt="Adicionar produto ao carrinho" />
+                                </OverlayTrigger>
+                            </a>
                         <Button label="Ver mais" class="col-10 mt-5 btn-primary-mvp" route={'/product/'+idProduct} navigation></Button>
                     </Container>
     
