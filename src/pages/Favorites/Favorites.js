@@ -17,7 +17,7 @@ function Favorites(props) {
 
             <div className="div-favoritos1">
                 <Col xs={2} md={2} className="mb-1"></Col>
-                <Title title="SKINS FAVORITAS" />
+                <Title title="SUAS SKINS FAVORITAS" />
                 <Row className="justify-content-center"></Row>
             </div>
 

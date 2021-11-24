@@ -51,6 +51,7 @@ function Checkout(props) {
 
                         window.location.href = 'http://localhost:3000/success'
                         setValidation('CVV inválido, veja se a digitação está correta')
+                        
 
                     })
                     .catch((error) => {
@@ -78,7 +79,7 @@ function Checkout(props) {
             }
             axios.post('http://localhost:8080/itens-pedido', orderItem)
                 .then((response) => {
-                    console.log(response.data)
+                console.log(response.data)
                 })
                 .catch((error) => {
                     console.log("Ocorreu um erro :" + error)
@@ -106,6 +107,10 @@ function Checkout(props) {
         if (!card.dtCard) {
             return false
         }
+        if (!card.flag){
+            return false
+        }
+       
         return true
     }
 
@@ -116,7 +121,9 @@ function Checkout(props) {
             cvv: cardReceiver.cvv,
             cpf: cardReceiver.cpf,
             installments: cardReceiver.installments,
-            dtCard: cardReceiver.dtCard
+            dtCard: cardReceiver.dtCard,
+            flag: cardReceiver.flag
+            
         })
         console.log(card)
 
