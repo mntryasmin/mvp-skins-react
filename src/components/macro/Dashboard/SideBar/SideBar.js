@@ -8,18 +8,25 @@ import './SideBar.css'
 
 // PÁGINAS/COMPONENTES
 import contact from '../../../../assets/images/icones/icon-contato.png'
-import Dashboard from '../../../../pages/MyAccount/MyAccount'
+import Dashboard from '../../../../pages/Dashboard/Dashboard'
+
 
 export default class SideBar extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: '',
+        }
+    }
+
+
     render() {
-        const client = JSON.parse(localStorage.getItem("client"))
-        const nameClient = client.nomeCliente
         return (
             <>
                 <Col xs={9} sm={9} md={9} lg={2} xl={2} className="p-0 sidebar">
                     <Row className="mx-0 nav-options">
-                        <Row className="card-caption-mvp name-client">Olá, {client.nomeCliente}</Row>
+                        <Row className="card-caption-mvp name-client">Olá, {this.props.name}</Row>
 
                         <Nav className="list-group flex-column nav-list" defaultActiveKey="/home" as="ul">
                             <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon my-account-tile nav-list-title">

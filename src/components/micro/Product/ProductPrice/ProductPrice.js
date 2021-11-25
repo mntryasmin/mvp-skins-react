@@ -17,7 +17,7 @@ function ProductPrice(props) {
 
     return (
         <>
-            <div className="preco-descricao">{preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</div>
+            <div className="preco-descricao">R${preco.toFixed(2)}</div>
         </>
     )
 }

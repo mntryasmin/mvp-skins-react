@@ -22,7 +22,7 @@ export default function MyAccount() {
     const birthDate = client.dataNascimento
     const [phone, setPhone] = useState(client.numeroTelefone)
     const [trade, setTrade] = useState(client.tradeLink)
-    const [idGender, setIdGender] = useState('0')
+    const [idGender, setIdGender] = useState('')
 
     const clientUpdate = {
         nomeCliente: name,
@@ -47,7 +47,7 @@ export default function MyAccount() {
 
     const gender = (input, description) => {
         if (input = "gender") {
-            if (alterGender == true) {
+            if (alterGender) {
                 setIdGender(description)
             } else {
                 setIdGender(client.genero.codigoGenero)
@@ -58,18 +58,14 @@ export default function MyAccount() {
     const changeGender = (event) => {
         event.preventDefault()
         if (alterGender) {
-            console.log(idGender)
             setAlterGender(false)
-            
         } else {
-            console.log(idGender)
             setAlterGender(true)
-            
         }
     }
 
     const replacePhone = (phone) => {
-        var phoneInt = phone
+        var phoneInt = ""
         for (let i = 0; i < phone.length; i++) {
             var result = phone.charAt(i);
             if (result == "(") {
@@ -87,28 +83,24 @@ export default function MyAccount() {
         }
         return phoneInt;
     }
-    
     const maskPhone = value => {
         return value
-            .replace(/\D/g, "")
-            .replace(/(\d{2})(\d)/, "($1) $2")
-            .replace(/(\d{5})(\d{4})(\d)/, "$1-$2");
-    };
-
-    const maskOnlyLetters = value => {
-        return value.replace(/[0-9!@#¨}{º;,/:|"'¹²³£¢¬$%^&*)(+=._-]+/g, "");
+          .replace(/\D/g, "")
+          .replace(/(\d{2})(\d)/, "($1) $2")
+          .replace(/(\d{5})(\d{4})(\d)/, "$1-$2");
     };
 
     const submit = (event) => {
         event.preventDefault()
 
+        const regex = /[0-9]/;
         const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
+        
         const phoneInt = replacePhone(phone)
         if (name == '') {
             setValidation('O campo "Nome" deve ser preenchido!')
         }
-        else if (name.length < 3 ) {
+        else if (name.length < 3 || regex.test(name)) {
             setValidation('Nome inválido!')
         }
         else if (email == '') {
@@ -122,12 +114,12 @@ export default function MyAccount() {
         }
         else if (phoneInt.length < 10) {
             console.log(phone.length)
-            setValidation('O campo "Telefone" deve ter no mínimo 10 dígitos')
+            setValidation('O campo "Telefone" deve ter 11 dígitos exatos!')
         }
         else if (trade == '') {
             setValidation('O campo "Trade Link" deve ser preenchido!')
         }
-        else if (idGender == '' ) {
+        else if (idGender == 'Selecione o gênero') {
             setValidation('Você deve selecionar um gênero caso queira altera-lo!')
         }
         else {
@@ -139,7 +131,6 @@ export default function MyAccount() {
         axios.put("http://localhost:8080/cliente/" + client.codigoCliente, clientUpdate)
             .then((response) => {
                 localStorage.setItem("client", JSON.stringify(response.data))
-                alert("Dados Atualizados!");
                 window.location.reload(true)
             }).catch((error) => {
                 console.log(clientUpdate)
@@ -160,12 +151,12 @@ export default function MyAccount() {
 
                     <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                         <Form.Label className="mt-3"> Nome </Form.Label>
-                        <Form.Control type="text" name="name" value={name} onClick={() => setValidation('')} onChange={(event) => { setName(maskOnlyLetters(event.target.value)); }} className="box-update" />
+                        <Form.Control type="text" name="name" value={name} onClick={() => setValidation('')} onChange={(event) => { setName(event.target.value); }} className="box-update" />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={3} xl={3}>
                         <Form.Label className="mt-3"> Data de nascimento </Form.Label>
-                        <Form.Control type="date" name="birthday" onClick={() => setValidation('')} value={birthDate} readOnly className="box-to-read" />
+                        <Form.Control type="date" name="birthday" onClick={() => setValidation('')} value={birthDate} readOnly className="box-update" />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={8} xl={8}>
@@ -175,7 +166,7 @@ export default function MyAccount() {
 
                     <Col xs={12} sm={12} md={12} lg={3} xl={3}>
                         <Form.Label className="mt-3 d-flex"> Telefone </Form.Label>
-                        <InputMask type='tel' className="box-update" onClick={() => setValidation('')} onChange={(event) => { setPhone(maskPhone(event.target.value)); }} value={phone} />
+                        <InputMask type='tel' className="box-update" onClick={() => setValidation('')} onChange={(event) => { setPhone(maskPhone(event.target.value));  }} value={phone} />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -190,7 +181,7 @@ export default function MyAccount() {
                     </Col>
 
                     <Form.Group className="col-12 button">
-                        <Button label="Salvar" onclick={(event) => submit(event)} class="btn-primary-mvp mt-3"></Button>
+                        <Button label="Salvar" onclick={(event) => submit(event)} class="btn-mvp-orange-clean mt-3"></Button>
                     </Form.Group>
                 </Form>
             </Container>

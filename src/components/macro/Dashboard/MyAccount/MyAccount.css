@@ -29,16 +29,6 @@
     color: #FD4712;
 }
 
-.box-to-read{
-    background-color: transparent !important;
-    height: 45px !important;
-    width: 100% !important;
-}
-
-.form-select:disabled{
-    background-color: transparent !important;
-}
-
 .box-update{
     background-color: white !important;
     height: 45px;

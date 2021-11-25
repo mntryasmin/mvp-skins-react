@@ -7,11 +7,11 @@ function InputDate(props) {
     const getDate = () => {
         return (
             <>
-                <FormControl
-                    type="date"
-                    className='box-insert-register'
-                    onChange={(event) => { setDate(event.target.value) }}
-                    value={date} />
+                <FormControl 
+                type="date" 
+                className='box-insert-register'
+                onChange={(event) =>{setDate(event.target.value)}}
+                value={date}/>
                 {props.function("date", date)}
             </>
         )

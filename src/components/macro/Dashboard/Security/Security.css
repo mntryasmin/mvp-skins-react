@@ -11,14 +11,6 @@
     justify-content: right;
 }
 
-.link-password{
-    color: #28004f;
-}
-
-.link-password:hover{
-    color: #FD4712;
-}
-
 .button-delete {
     justify-content: left;
     border-top: 1px solid grey;
