@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {useParams} from 'react-router-dom'
 import './Favorites.css'
 import { Row, Container, Col, Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
 import favorite from '../../assets/images/icones/icon-coracao-produto.png'
@@ -7,10 +8,36 @@ import Card from '../../components/micro/CardProduct/CardProduct'
 import Title from '../../components/micro/Title/Title'
 import product from '../../assets/images/PRODUTOS/luva-abate.png'
 import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts'
+import axios from 'axios'
+
 
 
 
 function Favorites(props) {
+    const { id } = useParams();
+    const [favorite, setFavorite] = useState({});
+    const URL = 'http://localhost:8080/cliente/'
+
+    useEffect(() => {
+        axios.get(`${URL}` + id)
+            .then((response) => {
+                setFavorite(response.data)
+            })
+            .catch((error) => {
+                console.log("Ocorreu um erro" + error)
+            })
+
+    }, []);
+    //Funcao para adicionar o produto aos favoritos//
+    function addFavorite(productFavorite) {
+        let favoriteProductList = localStorage.getItem("favorite") ? JSON.parse(localStorage.getItem("favorite")) : [];
+        favoriteProductList.push(productFavorite);
+        let favoriteProductString = JSON.stringify(favoriteProductList)
+        localStorage.setItem("favorite", favoriteProductString)
+        window.location.href = 'http://localhost:3000/favorites'
+    }
+
+
     return (
 
         <React.Fragment>
@@ -29,6 +56,8 @@ function Favorites(props) {
                     <Card />
                     <Card />
                     <Card />
+                    
+                                    
                 </Row>
 
                 <Row className="fav-row">
@@ -40,6 +69,7 @@ function Favorites(props) {
                 </Row>
 
             </div>
+
 
         </React.Fragment >
     )
