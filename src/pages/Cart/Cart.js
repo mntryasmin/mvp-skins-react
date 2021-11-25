@@ -8,7 +8,6 @@ import './../../assets/css/Style.css'
 import './Cart.css'
 
 // PÁGINAS/COMPONENTES
-import DiscountCoupon from '../../components/micro/Cart/DiscountCoupon/DiscountCoupon'
 import ProductListCart from '../../components/micro/Cart/CartItemsList/CartItemsList'
 import Button from '../../components/micro/Button/Button'
 import LoginModal from '../../components/micro/LoginModal/LoginModal'
