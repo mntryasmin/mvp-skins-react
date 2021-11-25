@@ -3,7 +3,7 @@ import './Banner.css'
 import { Carousel, CarouselItem, Container } from 'react-bootstrap'
 import Banner1 from '../../../assets/images/banners/destaque_1.png'
 import Banner2 from '../../../assets/images/banners/destaque_2.png'
-import Banner3 from '../../../assets/images/banners/destaque_3.png'
+import Banner3 from '../../../assets/images/banners/destaque_3.gif'
 import BannerEventos1 from '../../../assets/images/banners/eventos_1.jpg'
 import BannerEventos2 from '../../../assets/images/banners/eventos_2.gif'
 
@@ -40,7 +40,7 @@ function Banner(props) {
                     <a href="https://www.twitch.tv/gaules"><img className="d-block w-100" src={BannerEventos1} alt="First slide" /></a>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img className="d-block w-100" src={BannerEventos2} alt="Second slide" />
+                    <a href="https://www.blastpremier.com/"><img className="d-block w-100" src={BannerEventos2} alt="Second slide" /></a>
                 </Carousel.Item>
             </Carousel>
         </Container>
@@ -72,7 +72,7 @@ function Banner(props) {
                         <a href="https://www.youtube.com/channel/UC5jpxDZx4yoBo324pMQ91Ww" target="_blank"><img className="d-block w-100" src={BannerEventos1} alt="First slide" className='banner' /></a>
                     </CarouselItem>
                     <CarouselItem>
-                        <img className="d-block w-100" src={BannerEventos2} alt="Second slide" className='banner' />
+                    <a href="https://www.blastpremier.com/"><img className="d-block w-100" src={BannerEventos2} alt="Second slide" /></a>
                     </CarouselItem>
                 </Carousel>
 
