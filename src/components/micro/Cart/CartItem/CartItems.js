@@ -47,7 +47,7 @@ function CartItems(props) {
                 </Col>
 
                 <Col className="col-3" >
-                    <Nav.Item as="li"> {price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </Nav.Item>
+                    <Nav.Item as="li"> R$ {price.toFixed(2).replace(".", ",")} </Nav.Item>
                 </Col>
 
                 <Col className="col-2" >

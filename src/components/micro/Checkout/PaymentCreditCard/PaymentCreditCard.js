@@ -11,8 +11,6 @@ import './PaymentCreditCard.css'
 
 function PaymentCreditCard(props) {
 
-    const [validation, setValidation] = useState(props.val)
-
     const [name, setName] = useState('')
     const [cardNumber, setCardNumber] = useState('')
     const [cvv, setCvv] = useState('')
@@ -33,8 +31,6 @@ function PaymentCreditCard(props) {
         dtCard : dtCard,
         flag:flag,
 
-    
-      
     }
 
 
@@ -78,16 +74,10 @@ function PaymentCreditCard(props) {
         .replace(/^5[1-5][0-9]{14}/)
     };
     
-    
-    
-  
-    
-   
-
     return (
         <Form className="payment-form p-0 m-0">
             <div className='validation-card'>
-                {validation}
+                {props.val}
             </div>
 
             <Row>

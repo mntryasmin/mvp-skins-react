@@ -28,36 +28,36 @@ function Checkout(props) {
         setOrderItems(JSON.parse(localStorage.getItem("cart")))
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         setOrder(JSON.parse(localStorage.getItem("order")))
-    },[])
+    }, [])
 
     const [validation, setValidation] = useState('')
 
     function postOrder() {
 
         if (termAcepted) {
-            if (ValideCard()) {
-            const order = JSON.parse(localStorage.getItem("order"))
+            if (ValideCard(card)) {
+                const order = JSON.parse(localStorage.getItem("order"))
 
-            axios.post(`http://localhost:8080/pedidos`, order)
-                .then((response) => {
+                axios.post(`http://localhost:8080/pedidos`, order)
+                    .then((response) => {
 
-                    var orderString = JSON.stringify(response.data)
-                    localStorage.setItem("order", orderString)
+                        var orderString = JSON.stringify(response.data)
+                        localStorage.setItem("order", orderString)
 
-                    localStorage.removeItem("cart")
+                        localStorage.removeItem("cart")
 
-                    sendOrderItems(orderItems, response.data)
+                        sendOrderItems(orderItems, response.data)
 
-                    window.location.replace('http://localhost:3000/success')
-                    setValidation('CVV inválido, veja se a digitação está correta')
+                        window.location.replace('http://localhost:3000/success')
+                        setValidation('CVV inválido, veja se a digitação está correta')
 
 
-                })
-                .catch((error) => {
-                    console.log("Ocorreu um erro :" + error)
-                })
+                    })
+                    .catch((error) => {
+                        console.log("Ocorreu um erro :" + error)
+                    })
             } else {
                 setValidation('Cartão inválido!')
             }
@@ -79,7 +79,7 @@ function Checkout(props) {
             }
             axios.post('http://localhost:8080/itens-pedido', orderItem)
                 .then((response) => {
-                console.log(response.data)
+                    console.log(response.data)
                 })
                 .catch((error) => {
                     console.log("Ocorreu um erro :" + error)
@@ -87,34 +87,35 @@ function Checkout(props) {
         })
     }
 
-    
 
-    const ValideCard = () => {
-        if (!card.name) {
+
+    const ValideCard = (card) => {
+        if (card.name == '') {
             return false
-        } if (!card.cardNumber) {
-            return false
-        }
-        if (!card.cvv) {
+        } if (card.cardNumber == "") {
             return false
         }
-        if (!card.cpf) {
+        if (card.cvv == '') {
             return false
         }
-        if (!card.installments) {
+        if (card.cpf == '') {
             return false
         }
-        if (!card.dtCard) {
+        if (card.installments == '') {
             return false
         }
-        if (!card.flag){
+        if (card.dtCard == '') {
             return false
         }
-       
+        if (card.flag == '') {
+            return false
+        }
+
         return true
     }
 
     const GetCard = (cardReceiver) => {
+
         setCard({
             name: cardReceiver.name,
             cardNumber: cardReceiver.cardNumber,
@@ -123,12 +124,14 @@ function Checkout(props) {
             installments: cardReceiver.installments,
             dtCard: cardReceiver.dtCard,
             flag: cardReceiver.flag
-            
+
         })
-        console.log(card)
 
     }
-    
+
+    const grossValue = (JSON.parse(localStorage.getItem("order")).valorBruto)
+    const discountValue = JSON.parse(localStorage.getItem("order")).descontoProduto
+    const totalValue = (grossValue - discountValue)
 
     return (
         <>
@@ -147,17 +150,17 @@ function Checkout(props) {
                             <Row className="p-2 mt-3 checkout-price-container">
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
-                                    <p> {JSON.parse(localStorage.getItem("order")).valorBruto.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                                    <p> R$ {(grossValue / 1).toFixed(2).replace(".", ",")}</p>
                                 </Row>
 
-                                {/* <Row className="my-1 py-1 checkout-price checkout-line">
+                                <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
-                                    <p> -</p>
-                                </Row> */}
+                                    <p> R$ {(discountValue/ 1).toFixed(2).replace(".", ",")}</p>
+                                </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
-                                    <p> {JSON.parse(localStorage.getItem("order")).valorBruto.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                                    <p> {totalValue.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
                                 </Row>
                             </Row>
                         </Container>
@@ -196,7 +199,7 @@ function Checkout(props) {
                         {validationOfTerms}
                     </div>
 
-                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" onclick={() => postOrder()}></Button>
+                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" onclick={() => postOrder(card)}></Button>
                 </Col>
             </Container>
         </>
