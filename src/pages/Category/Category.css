@@ -29,14 +29,9 @@
     margin-top: 20px;
 }
 
-.title-category{
-    margin-top: 20px;
-    text-align: center;
-    color: white;
-}
 
 .item{
-    
+    border: none !important;
     background-color: transparent !important;
     display: flex;
 }

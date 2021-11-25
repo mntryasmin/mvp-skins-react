@@ -3,7 +3,8 @@ import './ProductPrice.css';
 import axios from 'axios';
 
 function ProductPrice(props) {
-    const [preco, setPreco] = useState(0);
+    const [preco, setPreco] = useState(0.0);
+
     useEffect(() => {
         axios.get(`http://localhost:8080/preco/recente/1/${props.idProduto}`)
             .then((response) => {
@@ -16,7 +17,7 @@ function ProductPrice(props) {
 
     return (
         <>
-            <div className="preco-descricao">R$ 200</div>
+            <div className="preco-descricao">R${preco.toFixed(2)}</div>
         </>
     )
 }

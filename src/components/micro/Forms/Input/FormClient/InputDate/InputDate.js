@@ -9,9 +9,10 @@ function InputDate(props) {
             <>
                 <FormControl 
                 type="date" 
-                className='box-insert'
+                className='box-insert-register'
                 onChange={(event) =>{setDate(event.target.value)}}
                 value={date}/>
+                {props.function("date", date)}
             </>
         )
     }

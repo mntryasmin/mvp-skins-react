@@ -5,43 +5,58 @@ import InputPhone from '../../../micro/Forms/Input/FormClient/InputPhoneNumber/I
 import InputEmail from '../../../micro/Forms/Input/FormClient/InputEmail/InputEmail';
 import InputTradeLink from '../../../micro/Forms/Input/FormClient/InputTradeLink/InputTradeLink';
 import InputPassword from '../../../micro/Forms/Input/FormClient/InputPassword/InputPassword';
+import InputPasswordConfirmation from '../../../micro/Forms/Input/FormClient/InputPasswordConfirmation/InputPasswordConfirmation';
 import InputDate from '../../../micro/Forms/Input/FormClient/InputDate/InputDate';
-import SelectDate from '../../../micro/Forms/Input/FormClient/SelectGender/SelectGender';
+import SelectGender from '../../../micro/Forms/Input/FormClient/SelectGender/SelectGender';
 
 
 function RegisterForm(props) {
 
-    // let regexCpf = /([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/i;
     const name = () => {
-        return <InputName/>
+        return <InputName function={props.function} placeholder='digite' />
     }
 
     const email = () => {
-        return <InputEmail/>
+        return <InputEmail function={props.function} />
     }
 
     const phoneNumber = () => {
-        return <InputPhone/>
+        return <InputPhone function={props.function} />
     }
 
     const tradeLink = () => {
-        return <InputTradeLink/>
+        return <InputTradeLink function={props.function} />
     }
 
-    const gener = () => {
-        return (
-            <>
-                <SelectDate/>
-            </>
-        )
+    const gender = () => {
+
+        if (props.disabled) {
+            return (
+                <>
+                    <SelectGender function={props.function} className="box-insert" disabled />
+                </>
+            )
+        }
+        else {
+            return (
+                <>
+                    <SelectGender function={props.function} className="box-insert" />
+                </>
+            )
+        }
+
     }
 
     const date = () => {
-        return  <InputDate/>
+        return <InputDate function={props.function} />
     }
 
     const password = () => {
-        return <InputPassword/>
+        return <InputPassword function={props.function} />
+    }
+
+    const passwordConfirmation = () => {
+        return <InputPasswordConfirmation function={props.function} />
     }
 
 
@@ -53,11 +68,13 @@ function RegisterForm(props) {
 
     if (props.trade) { return tradeLink() }
 
-    if (props.gener) { return gener() }
+    if (props.gender) { return gender() }
 
     if (props.date) { return date() }
 
     if (props.password) { return password() }
+
+    if (props.passwordConfirmation) { return passwordConfirmation() }
 }
 
 export default RegisterForm

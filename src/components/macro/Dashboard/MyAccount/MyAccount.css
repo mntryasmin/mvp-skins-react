@@ -10,6 +10,32 @@
     justify-content: flex-end;
 }
 
+.error{
+    color: #FD4712;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.alter-gender{
+    background-color: transparent;
+    color: #28004f;
+    border: none;
+    text-transform: none;
+    font-weight: unset;
+}
+
+.alter-gender:hover{
+    outline: none;
+    color: #FD4712;
+}
+
+.box-update{
+    background-color: white !important;
+    height: 45px;
+    width: 100%;
+    
+}
+
 .input {
     display: flex;
     align-items: center;

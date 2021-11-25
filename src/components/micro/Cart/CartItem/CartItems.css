@@ -1,0 +1,23 @@
+.product-list-cart {
+    justify-content: space-between !important;
+    text-align: center;
+    align-items: center;
+}
+
+
+.cart-item-image img {
+    width: 80px;
+}
+
+.cart-trash:hover{
+    cursor: pointer;
+    opacity: 0.75;
+}
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .product-list-cart li {
+        font-size: .8rem !important;
+    }
+}

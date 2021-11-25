@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './LoginForm.css'
 import { Form, FormLabel } from 'react-bootstrap'
+import Button from '../../../micro/Button/Button'
 
 function LoginForm(props) {
 
@@ -12,10 +13,12 @@ function LoginForm(props) {
                 </FormLabel>
                 <Form.Floating className="mb-3">
                     <Form.Control
-                        id="floatingInputCustom"
                         type="email"
                         placeholder="name@example.com"
                         className='box-insert login'
+                        onClick={props.onclick}
+                        onChange={props.onchange}
+                        value={props.emailValue}
                     />
                     <label htmlFor="floatingInputCustom">Digite seu e-mail</label>
                 </Form.Floating>
@@ -31,10 +34,12 @@ function LoginForm(props) {
                 </FormLabel>
                 <Form.Floating>
                     <Form.Control
-                        id="floatingPasswordCustom"
                         type="password"
                         placeholder="Password"
                         className='box-insert login'
+                        onClick={props.onclick}
+                        onChange={props.onchange}
+                        value={props.passwordValue}
                     />
                     <label htmlFor="floatingPasswordCustom">Digite sua senha</label>
                 </Form.Floating>
@@ -42,19 +47,22 @@ function LoginForm(props) {
         )
     }
 
-    if (props.Email) {
+    
+
+    const ButtonLogin = () => {
         return (
-            <>
-                {Email()}
-            </>
+            <Button onclick={props.onclick} class='btn-mvp-orange-clean' label='fazer login' />
         )
     }
-    if (props.Password) {
-        return (
-            <>
-                {Password()}
-            </>
-        )
+
+    if (props.Email){
+        return (Email())
+    }
+    if (props.Password){
+        return (Password())
+    }
+    if (props.Button){
+        return (ButtonLogin())
     }
 }
 

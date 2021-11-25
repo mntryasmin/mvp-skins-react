@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Category.css'
-import CardProduct from '../../components/micro/CardProduct/CardProduct'
 import { Col, Container, ListGroup, Row, Form } from 'react-bootstrap'
+import CategoryContainer from '../../components/macro/Category/CategoryContainer'
+import { useParams } from 'react-router-dom';
 
 function Category(props) {
 
+    const { id } = useParams();
+    // console.log(id);
     return (
         <>
             <Container fluid className='background content-container'>
@@ -153,43 +156,16 @@ function Category(props) {
 
 
 
-                    </Col>
-                    <Col sm={9} md={10} className='d-flex'>
-                        <Container fluid>
-                            <div className='title-category'>
-                                PISTOLAS
-                            </div>
-                            <Row >
-                                <ListGroup horizontal className='cards'>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                    <ListGroup.Item className='item'><CardProduct /></ListGroup.Item>
-                                </ListGroup>
-                            </Row>
-                        </Container>
+                        <Col>
+                            {/* <CategoryContainer idRarity={id}/>
+                        <CategoryContainer idExterior={id}/>
+                        <CategoryContainer idColection={id}/> */}
 
+                            {id.includes('search=') ?
+                                <CategoryContainer idCategory={id} search /> :
+                                <CategoryContainer idCategory={id} />
+                            }
+                        </Col>
                     </Col>
                 </Row>
             </Container>

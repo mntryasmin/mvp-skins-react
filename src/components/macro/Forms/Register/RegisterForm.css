@@ -1,8 +1,8 @@
-.box-insert::placeholder {
+.box-insert-register::placeholder {
     color:black;
 }
 
-.box-insert {
+.box-insert-register {
     background-color: #EFEFEF;
     opacity: 0.8;
     color: black !important;
@@ -10,7 +10,7 @@
     
 }
 
-.box-insert:focus {
+.box-insert-register:focus {
     box-shadow: none;
     border-color: black;
 }

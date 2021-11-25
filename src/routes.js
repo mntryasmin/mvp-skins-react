@@ -21,10 +21,13 @@ export const Routes = () => {
             <Route path="/home" component={Home} />
             <Route path="/cart" component={Cart} />
             <Route path="/favorites" component={Favorites} />
-            <Route path="/category" component={Category} />
+            <Route path="/category" component={Category} exact/>
             <Route path="/category/:id" component={Category} />
             <Route path="/checkout" component={Checkout} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/dashboard/" component={Dashboard} />
+            {/* <Route path="/dashboard/my-account" component={Dashboard} />
+            <Route path="/dashboard/order-history" component={Dashboard} />
+            <Route path="/dashboard/security" component={Dashboard} /> */}
             <Route path="/product/:id" component={Product} />
             <Route path="/favorites" component={Favorites} />
             <Route path="/register" component={Register} />
