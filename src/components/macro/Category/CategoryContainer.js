@@ -13,14 +13,25 @@ function CategoryContainer(props) {
     // const idColection = props.idColection;
     let url = '';
     if(idCategory==0){
+
         url = `http://localhost:8080/produtos`
-    } 
-    
-    else if(idCategory.includes('search=')){
+
+    } else if (idCategory.includes('search=')){
+
         var idCategorySearch = idCategory.substring('search='.length)
         url = 'http://localhost:8080/produtos/search/'+idCategorySearch
-    }
-    else {
+
+    } else if(idCategory.includes('rarity=')){
+
+        var idRarity = idCategory.substring('rarity='.length)
+        url =`http://localhost:8080/produtos/rarity/${idRarity}`
+
+    } else if(idCategory.includes('exterior=')){
+
+        var idExterior = idCategory.substring('exterior='.length)
+        url = `http://localhost:8080/produtos/exterior/${idExterior}`
+
+    } else {
         url = `http://localhost:8080/produtos/category/${idCategory}`
     }
 
@@ -111,7 +122,9 @@ function CategoryContainer(props) {
         <>
             <Container fluid>
                 <div className='title-category'>
-                    {idCategory==0?'SKINS':product[0].categoria.descricao}
+                    {idCategory==0 || idCategory.includes('rarity=') ||idCategory.includes('exterior=') 
+                    ?'SKINS'
+                    :product[0].categoria.descricao}
                 </div>
                 <Row >
                     <ListGroup horizontal className='cards'>

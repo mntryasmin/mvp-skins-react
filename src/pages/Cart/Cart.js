@@ -13,7 +13,6 @@ import ProductListCart from '../../components/micro/Cart/CartItemsList/CartItems
 import Button from '../../components/micro/Button/Button'
 import LoginModal from '../../components/micro/LoginModal/LoginModal'
 
-
 function Cart(props) {
     const [price, setPrice] = useState(0.0)
     const [valueDiscount, setValueDiscount] = useState(0)
@@ -106,7 +105,7 @@ function Cart(props) {
                 </Col>
 
                 <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-4 my-5 pt-3 cart-container">
-                    <ProductListCart functionTotalPrice={getTotalPrice} />
+                    <ProductListCart functionTotalPrice={getTotalPrice}/>
 
                     <Container className="py-1 my-4 price">
                         <Col className="col-7 py-2 px-1 mt-2 discount-coupon-cart">
@@ -143,7 +142,6 @@ function Cart(props) {
                                 <p className="m-0"> Total </p>
                                 <p className="m-0 mt-1"> R$ {(price - valueDiscount).toFixed(2).replace(".", ",")} </p>
                             </Col>
-
                         </Row>
                     </Container>
 
@@ -156,6 +154,7 @@ function Cart(props) {
                                 onclick={() => createOrder()}></Button> :
                             <LoginModal linkCart />
                         }
+                        
                     </Container>
                 </Container>
             </Container>

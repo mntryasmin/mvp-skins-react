@@ -28,9 +28,6 @@ function CartItems(props) {
             })
     },[])
     
-    function removeItem(idProduct){
-        console.log(idProduct)
-    }
 
     while(price == undefined){
         return <div/>

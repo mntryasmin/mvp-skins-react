@@ -25,7 +25,6 @@ function ProductListCart(props) {
     let finalPrice = 0;
     function getTotalPrice(totalPrice){
         finalPrice = finalPrice+totalPrice;
-        //Está duplicando o valor total por algum motivo desconhecido
         setPrice(finalPrice);
     }
 

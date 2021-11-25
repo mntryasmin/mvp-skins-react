@@ -17,21 +17,15 @@ function PaymentCreditCard(props) {
     const [cpf, setCpf] = useState('')
     const [installments, setInstallments] = useState('')
     const [dtCard, setDtCard] = useState('')
-    const [flag, setFlag] = useState('')
-
-
-
+    
     const totalValue = props.vlTotal
-
-    const card = {
-        name: name,
-        cardNumber: cardNumber,
-        cvv: cvv,
-        cpf: cpf,
-        installments: installments,
-        dtCard: dtCard,
-        flag: flag,
-
+    
+    const card = {name : name,
+        cardNumber : cardNumber,
+        cvv : cvv,
+        cpf : cpf,
+        installments : installments,
+        dtCard : dtCard
     }
 
 
@@ -49,10 +43,11 @@ function PaymentCreditCard(props) {
 
     const maskDate = (value) => {
         return value
-            .replace(/\D/g, "")
-            .replace(/(\d{2})(\d)/, "$1/$2")
-            .replace(/(\d{4})(\d)/, "$1");
-    };
+          .replace(/\D/g, "")
+          .replace(/(\d{2})(\d)/, "$1/$2")
+          .replace(/(\d{2})(\d)/, "$1/$2")
+          .replace(/(\d{4})(\d)/, "$1");
+      };
 
     const maskCPF = (value) => {
         return value
@@ -65,15 +60,12 @@ function PaymentCreditCard(props) {
 
     const maskCVV = (value) => {
         return value
-            .replace(/\D/g, "")
-            .replace(/(\d{3})(\d{0})(\d)/, "$1")
-    };
+        .replace(/\D/g, "")
+        .replace(/(\d{3})(\d{0})(\d)/, "$1")
+    }
 
-    const maskFlag = (value) => {
-        return value
-            .replace(/^4[0-9]{12}(?:[0-9]{3})/)
-            .replace(/^5[1-5][0-9]{14}/)
-    };
+
+
 
     return (
         <Form className="payment-form p-0 m-0">
@@ -121,9 +113,8 @@ function PaymentCreditCard(props) {
 
             <Row className="px-0 payment-form">
                 <Form.Label className="mt-3"> Parcelas </Form.Label>
-                <Form.Select aria-label="parcelas" onClick={(event) => { setInstallments(event.target.value); props.func(card) }}>
+                <Form.Select aria-label="parcelas" onChange={(event) => {setInstallments(event.target.value); props.func(card) }}>
                     <option value="0">Selecione as parcelas</option>
-
                     <option value="1">1 x de R$ {(totalValue / 1).toFixed(2).replace(".", ",")} sem juros</option>
                     <option value="2">2 x de R$ {(totalValue / 2).toFixed(2).replace(".", ",")} sem juros</option>
                     <option value="3">3 x de R$ {(totalValue / 3).toFixed(2).replace(".", ",")} sem juros</option>

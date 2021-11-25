@@ -53,11 +53,10 @@ function Checkout(props) {
                         window.location.replace('http://localhost:3000/success')
                         setValidation('CVV inválido, veja se a digitação está correta')
 
-
-                    })
-                    .catch((error) => {
-                        console.log("Ocorreu um erro :" + error)
-                    })
+                })
+                .catch((error) => {
+                    console.log("Ocorreu um erro :" + error)
+                })
             } else {
                 setValidation('Cartão inválido!')
             }
