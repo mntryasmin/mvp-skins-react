@@ -8,24 +8,20 @@ function Comp(props) {
     return(
         <>
             <Form >
-                <Form.Group >
-                    <div className='d-flex flex-row input-box'>
-                        <Form.Control 
-                        type="text" 
-                        placeholder="O que você procura?" 
-                        className="search-bar" 
-                        onChange={(event)=>{setSearchText(event.target.value)}}/>
-                        <a onClick={()=>{
-                            if(searchText==''){
+                <Form.Control
+                    type="text"
+                    placeholder="O que você procura?"
+                    className="search-bar"
+                    onChange={(event) => { setSearchText(event.target.value) }} />
+                <a className="lupa" onClick={() => {
+                    if (searchText == '') {
 
-                            } else {
-                                window.location.href='http://localhost:3000/category/search='+searchText
-                            }
-                            }} >
-                            <img src={Lupa} className="lupa" />
-                        </a>
-                    </div>
-                </Form.Group>
+                    } else {
+                        window.location.href = 'http://localhost:3000/category/search=' + searchText
+                    }
+                }} >
+                    <img src={Lupa}/>
+                </a>
             </Form>
         </>
     )

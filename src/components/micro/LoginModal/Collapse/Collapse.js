@@ -23,7 +23,7 @@ function Example() {
     }
 
     const sendEmail = () => {
-        axios.post(`${URL}`, {email: email}).then((response) => {
+        axios.post(`${URL}`, { email: email }).then((response) => {
             setValidation('O e-mail foi enviado com sucesso. Cheque sua caixa de spam para prosseguir com a redefinição da sua senha')
         }).catch((error) => {
             setValidation('Esse e-mail não existe no nosso banco de dados, verifique se você digitou o e-mail corretamente')
@@ -42,7 +42,7 @@ function Example() {
 
             <Collapse in={open}>
 
-                <Container id="collapse-reset-password" className="card card-body redefinir-senha">
+                <Container id="collapse-reset-password" className="card card-body redefinir-senha my-3 py-1">
                     <div className='m-3'>
                         Esqueceu sua senha? Fique tranquilo, digite seu e-mail aqui em baixo para te
                         enviarmos um e-mail com o link para redefinição da sua senha:
@@ -52,9 +52,9 @@ function Example() {
                         </div>
                         <Form>
                             <FormGroup className="d-flex-justify-content-start">
-    
+
                                 <LoginForm Email emailValue={email} onclick={(event) => setValidation('')} onchange={(event) => { setEmail(event.target.value); }} />
-                                <ButtonCustom class='btn-primary-mvp layout-btn-forgot-password' label='enviar' onclick={(event) => { submit(event) }} />
+                                <ButtonCustom class='btn-mvp-purple-clean layout-btn-forgot-password' label='enviar' onclick={(event) => { submit(event) }} />
                             </FormGroup>
                         </Form>
                     </div>
