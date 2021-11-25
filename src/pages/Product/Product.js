@@ -56,7 +56,6 @@ function Product() {
         localStorage.setItem("cart", productCartString)
         window.location.href='http://localhost:3000/cart'
     }
-
         return (
             <>
                 <div className="div-produto content-container">

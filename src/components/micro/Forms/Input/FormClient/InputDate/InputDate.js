@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {FormControl} from 'react-bootstrap'
+import React, { useState } from 'react';
+import { FormControl } from 'react-bootstrap'
 
 function InputDate(props) {
-    
+
     const [date, setDate] = useState('');
     const getDate = () => {
         return (
@@ -17,7 +17,7 @@ function InputDate(props) {
         )
     }
 
-    return(
+    return (
         <>
             {getDate()}
         </>

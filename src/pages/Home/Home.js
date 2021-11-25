@@ -25,6 +25,30 @@ function Home(props) {
         })
     },[])
     
+    const [productSubcategoryB, setProductSubcategoryB] = useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/produtos/category/4`)
+        .then((response)=>{
+            setProductSubcategoryB(response.data)
+        })
+        .catch((error)=>{
+            console.log('Ocorreu um erro: '+error)
+        })
+    },[])
+
+    const [productSubcategoryC, setProductSubcategoryC] = useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/produtos/category/1`)
+        .then((response)=>{
+            setProductSubcategoryC(response.data)
+        })
+        .catch((error)=>{
+            console.log('Ocorreu um erro: '+error)
+        })
+    },[])
+
     while(productSubcategory[0] == undefined){
         return (
             <>

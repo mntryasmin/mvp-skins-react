@@ -1,7 +1,7 @@
 // REACT
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Container, Form, FormControl } from 'react-bootstrap'
+import { Container, Form, FormControl, } from 'react-bootstrap'
 
 // ESTILO
 import '../../../../assets/css/Style.css'

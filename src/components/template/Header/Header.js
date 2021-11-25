@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Header.css'
-import { Col, Form, Container, Navbar, Nav, Row } from 'react-bootstrap'
+import { Col, Navbar, Nav, Row } from 'react-bootstrap'
 import LoginModal from '../../micro/LoginModal/LoginModal'
 import Menu from './Menu/Menu.js'
 import logoClean from '../../../assets/images/ID/logo-maior.jpg'
@@ -29,7 +29,6 @@ function Header(props) {
         else {
             localStorage.setItem("Authorization", '')
         }
-
     }
     ), [])
 
@@ -92,7 +91,6 @@ function Header(props) {
         }
 
     }
-
     return (
         <>
             <header className="m-0 p-0">

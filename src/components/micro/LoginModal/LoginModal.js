@@ -62,7 +62,6 @@ function LoginModal(props) {
         }
         if (localStorage.getItem("Authorization")) {
             return (<Button onclick={Logout} class='btn-mvp-orange-clean col-4' label='logout'></Button>)
-
         }
         return (<Button onclick={handleShow} class='btn-mvp-orange-clean' label='login'></Button>)
 

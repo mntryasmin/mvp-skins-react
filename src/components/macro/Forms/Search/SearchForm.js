@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Lupa from '../../../../assets/images/icones/icon-lupa.png'
 import { Form } from 'react-bootstrap'
-
 function Comp(props) {
 
     const [searchText, setSearchText] = useState('')

@@ -3,9 +3,6 @@ import {FormControl} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
 
 function Comp(props) {
-
-    
-
     const [phoneNumber, setPhoneNumber] = useState('');
     const getPhoneNumber = () => {
         return (

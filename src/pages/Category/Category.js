@@ -153,19 +153,19 @@ function Category(props) {
                                 <br />
                             </ListGroup>
                         </Form>
+                    </Col>
 
 
 
-                        <Col>
-                            {/* <CategoryContainer idRarity={id}/>
+                    <Col>
+                        {/* <CategoryContainer idRarity={id}/>
                         <CategoryContainer idExterior={id}/>
                         <CategoryContainer idColection={id}/> */}
 
-                            {id.includes('search=') ?
-                                <CategoryContainer idCategory={id} search /> :
-                                <CategoryContainer idCategory={id} />
-                            }
-                        </Col>
+                        {id.includes('search=') ?
+                            <CategoryContainer idCategory={id} search /> :
+                            <CategoryContainer idCategory={id} />
+                        }
                     </Col>
                 </Row>
             </Container>

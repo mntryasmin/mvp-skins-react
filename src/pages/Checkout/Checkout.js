@@ -59,8 +59,6 @@ function Checkout(props) {
         } else {
             setValidation('Cartão inválido!')
         }
-
-
     }
 
     function sendOrderItems(orderItems, order) {
@@ -103,6 +101,9 @@ function Checkout(props) {
         if (!card.dtCard) {
             return false
         }
+        if (!card.flag){
+            return false
+        }
         return true
     }
 
@@ -113,10 +114,10 @@ function Checkout(props) {
             cvv: cardReceiver.cvv,
             cpf: cardReceiver.cpf,
             installments: cardReceiver.installments,
-            dtCard: cardReceiver.dtCard
+            dtCard: cardReceiver.dtCard,
+            flag: cardReceiver.flag
         })
         console.log(card)
-
     }
 
     return (
