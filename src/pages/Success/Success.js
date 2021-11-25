@@ -23,7 +23,6 @@ function Sucess(props) {
     console.log(config)
 
     useEffect(()=>{
-        
         if(order!=null && order.id!=null){
             sendOrderEmail()
         } else {

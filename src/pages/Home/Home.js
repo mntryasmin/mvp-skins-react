@@ -83,14 +83,14 @@ function Home(props) {
 
                 {/* CAROUSEL'S DE PRODUTOS  */}
                 <Container className="home-carousel">
-                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Rifles</p>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Skins mais vendidas</p>
                     <CarouselProducts productList={productSubcategory}/>
 
-                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Agentes</p>
-                    <CarouselProducts productList={productSubcategoryB}/>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Top armas</p>
+                    <CarouselProducts productList={productSubcategory}/>
 
-                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Pistolas</p>
-                    <CarouselProducts productList={productSubcategoryC}/>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Top facas</p>
+                    <CarouselProducts productList={productSubcategory}/>
                 </Container>
             </Container>
         </>

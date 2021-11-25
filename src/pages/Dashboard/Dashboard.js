@@ -5,24 +5,26 @@ import axios from 'axios';
 
 // ESTILO
 import './../../assets/css/Style.css'
-import './MyAccount.css'
+import './Dashboard.css'
 
 // PÁGINAS/COMPONENTES
-import Mycount from '../../components/macro/MyAccount/MyAccount/MyAccount'
-import OrderHistory from '../../components/macro/MyAccount/OrderHistory/OrderHistory'
-import Security from '../../components/macro/MyAccount/Security/Security'
-import SideBar from '../../components/macro/MyAccount/SideBar/SideBar'
+import MyAccount from '../../components/macro/Dashboard/MyAccount/MyAccount'
+import OrderHistory from '../../components/macro/Dashboard/OrderHistory/OrderHistory'
+import Security from '../../components/macro/Dashboard/Security/Security'
+import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
-function MyAccount(props) {
+function Dashboard() {
+    const client = JSON.parse(localStorage.getItem("client"));
+
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
                 {/* MENU LATERAL  */}
-                <SideBar />
+                <SideBar name={client.nomeCliente}/>
 
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    <Mycount />
+                    <MyAccount/>
                     <Security />
                     <OrderHistory />
                 </Container>
@@ -31,4 +33,4 @@ function MyAccount(props) {
     )
 }
 
-export default MyAccount;
+export default Dashboard;

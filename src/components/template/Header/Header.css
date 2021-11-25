@@ -1,7 +1,17 @@
 .top-header {
+    justify-content: space-between;
+    align-items: center;
     background-color: #181818;
-    width: 100%;
-    margin: 0;
+}
+
+.logo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 13vh;
 }
 
 .welcome {
@@ -13,34 +23,14 @@
 }
 
 .input-box{
-    height: 2.5rem;
-    width: 100%;
-}
-
-.items-nav{
     display: flex;
-    align-items: center;
     justify-content: center;
+    height: 7vh;
 }
 
-.category{
-    display: block;
-}
-
-.lupa{
-    background-color: white;
-    border-radius: 0px 3px 3px 0px;
-    height: 100%;
-}
-
-.logo {
+.input-box form{
     display: flex;
-    align-content: center;
-}
-
-.logo img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
 }
 
 .search-bar {
@@ -49,18 +39,74 @@
     height: 100%;
 }
 
-.link-header{
-    color:black;
-    text-decoration: none;
-    margin: 0;
+.lupa {
+    border: 1px solid #fd49123d;
+    border-radius: 0 3px 3px 0;
+    width: 4vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lupa:hover {
+    box-shadow: inset 0px 0px 50px 50px rgba(40,0,79,0.75);
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.lupa img{
+    height: 5vh;
+}
+
+.button-register {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button-login {
+    height: 14vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.welcome {
+    color: #FD4712;
+    text-align: center;
+}
+
+
+/* --------------------------------------------------- */
+
+.nav-main{
+    background-color: #EFEFEF !important;
+    height: 9vh;
+}
+
+.items-nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.items-nav img {
+    margin-right: 0.5vw;
+    height: 5vh;
+    width: auto;
 }
 
 .link-header:hover{
     color:#FD4712 !important;
 }
 
-.nav-main{
-    background-color: #EFEFEF !important;
+.favor-cart-header {
+    display: flex;
+    justify-content: space-around;
 }
 
 
@@ -115,6 +161,3 @@
 @media (min-width: 1200px) { 
 
 }
-
-
-

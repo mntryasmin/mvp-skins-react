@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './ProductContainer.css';
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import Images from '../../micro/Images/Images';
 
 function ContainerProduto(props) {

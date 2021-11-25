@@ -26,44 +26,39 @@ function Checkout(props) {
     const [orderItems, setOrderItems] = useState([])
     useEffect(() => {
         setOrderItems(JSON.parse(localStorage.getItem("cart")))
-    }, [])
-
-    useEffect(()=>{
         setOrder(JSON.parse(localStorage.getItem("order")))
-    },[])
+    }, [])
 
     const [validation, setValidation] = useState('')
 
     function postOrder() {
+        if (ValideCard()) {
+            if (termAcepted) {
+                const order = JSON.parse(localStorage.getItem("order"))
 
-        if (termAcepted) {
-            if (ValideCard()) {
-            const order = JSON.parse(localStorage.getItem("order"))
+                axios.post(`http://localhost:8080/pedidos`, order)
+                    .then((response) => {
 
-            axios.post(`http://localhost:8080/pedidos`, order)
-                .then((response) => {
+                        var orderString = JSON.stringify(response.data)
+                        localStorage.setItem("order", orderString)
 
-                    var orderString = JSON.stringify(response.data)
-                    localStorage.setItem("order", orderString)
+                        localStorage.removeItem("cart")
 
-                    localStorage.removeItem("cart")
+                        sendOrderItems(orderItems, response.data)
 
-                    sendOrderItems(orderItems, response.data)
+                        window.location.href = 'http://localhost:3000/success'
+                        setValidation('CVV inválido, veja se a digitação está correta')
 
-                    window.location.replace('http://localhost:3000/success')
-                    setValidation('CVV inválido, veja se a digitação está correta')
-
-                })
-                .catch((error) => {
-                    console.log("Ocorreu um erro :" + error)
-                })
+                    })
+                    .catch((error) => {
+                        console.log("Ocorreu um erro :" + error)
+                    })
             } else {
-                setValidation('Cartão inválido!')
+                setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
             }
         } else {
-            setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
+            setValidation('Cartão inválido!')
         }
-
     }
 
     function sendOrderItems(orderItems, order) {
@@ -106,6 +101,9 @@ function Checkout(props) {
         if (!card.dtCard) {
             return false
         }
+        if (!card.flag){
+            return false
+        }
         return true
     }
 
@@ -116,12 +114,11 @@ function Checkout(props) {
             cvv: cardReceiver.cvv,
             cpf: cardReceiver.cpf,
             installments: cardReceiver.installments,
-            dtCard: cardReceiver.dtCard
+            dtCard: cardReceiver.dtCard,
+            flag: cardReceiver.flag
         })
         console.log(card)
-
     }
-    
 
     return (
         <>
@@ -140,17 +137,17 @@ function Checkout(props) {
                             <Row className="p-2 mt-3 checkout-price-container">
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
-                                    <p> {JSON.parse(localStorage.getItem("order")).valorBruto.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                                    <p> R$ {order.valorBruto}</p>
                                 </Row>
 
-                                {/* <Row className="my-1 py-1 checkout-price checkout-line">
+                                <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
                                     <p> -</p>
-                                </Row> */}
+                                </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
-                                    <p> {JSON.parse(localStorage.getItem("order")).valorBruto.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                                    <p> R$ {order.valorBruto}</p>
                                 </Row>
                             </Row>
                         </Container>
