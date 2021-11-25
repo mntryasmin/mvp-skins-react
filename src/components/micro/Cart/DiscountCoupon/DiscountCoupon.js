@@ -1,14 +1,14 @@
 // REACT
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Container, Form, FormControl, Button } from 'react-bootstrap'
+import { Container, Form, FormControl } from 'react-bootstrap'
 
 // ESTILO
 import '../../../../assets/css/Style.css'
 import './DiscountCoupon.css'
 
 // PÁGINAS/COMPONENTES
-// import Button from '../../Button/Button'
+import Button from '../../Button/Button'
 
 export default class DiscountCoupon extends Component {
     constructor(props) {
@@ -68,7 +68,8 @@ export default class DiscountCoupon extends Component {
                                 onChange={this.handleChange}
                                 placeholder="Digite o código"
                             />
-                            <Button className="mx-2 btn btn-mvp btn-secundary-mvp" type="submit">Aplicar</Button>
+                            <Button class="mx-2 btn-mvp btn-mvp-purple-clean" type="submit" label="Aplicar"></Button>
+
                         </Container>
                     </Form>
                     <p className="response-coupon"> {this.state.validation}</p>

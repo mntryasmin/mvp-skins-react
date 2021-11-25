@@ -61,10 +61,10 @@ function Sucess(props) {
 
                     <Row className="py-3 sucess-button">
                         <Col md={6} lg={5} className="success-button-dashboard">
-                            <Button route="/dashboard" label="Acompanhar pedido" class="btn-primary-mvp p-2 w-100" navigation />
+                            <Button route="/dashboard" label="Acompanhar pedido" class="btn-mvp-orange-clean p-2 w-100" navigation />
                         </Col>
                         <Col md={6} lg={5} className="success-button-home">
-                            <Button route="/" label="Voltar para a home" class="btn-primary-mvp p-2 w-100" navigation />
+                            <Button route="/" label="Voltar para a home" class="btn-mvp-orange-clean p-2 w-100" navigation />
                         </Col>
                     </Row>
                 </Row>

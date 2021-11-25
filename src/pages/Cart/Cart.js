@@ -1,5 +1,5 @@
 // REACT
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 
 // ESTILO
@@ -66,10 +66,10 @@ function Cart(props) {
                     </Container>
 
                     <Container className="py-4 my-0 pb-5 cart-buttons">
-                        <Button label="Continuar comprando" route="/home" class="btn-secundary-mvp" navigation></Button>
+                        <Button label="Continuar comprando" route="/home" class="btn-mvp btn-mvp-orange-solid" navigation></Button>
 
                         <Button label="Finalizar compra"
-                        class="btn-primary-mvp" 
+                        class="btn-mvp btn-mvp-orange-solid" 
                         onclick={()=>createOrder()}></Button>
                     </Container>
                 </Container>

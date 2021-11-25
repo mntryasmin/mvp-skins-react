@@ -14,7 +14,10 @@ function Menu() {
 
     const LinkDash = () => {
         if(localStorage.getItem("Authorization")){
-            return  <Link to="/dashboard" className="link-header ">SEUS DADOS</Link>
+            return <Link to='/dashboard'
+                className='btn-mvp btn-mvp-orange-clean seus-dados-sidebar'>
+                Seus dados
+                </Link>
         }else {
             return <LoginModal linkDash/>
         }
@@ -22,20 +25,21 @@ function Menu() {
 
     return (
         <>
-            <Button variant="link" onClick={handleShow} >
+            <Button className="mx-3 sidebar-menu-icon" variant="link" onClick={handleShow} >
                 <img src={BtnMenu} width="30" height="30"></img>
             </Button>
 
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas show={show} onHide={handleClose} className="p-2 sidebar-menu">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title className='title-menu'>Categorias</Offcanvas.Title>
                 </Offcanvas.Header>
-                <Offcanvas.Body>
+                
+                <Offcanvas.Body className="sidebar-menu-body">
                     <ListGroup variant="flush">
                         <Categories />
-                        <ListGroup.Item className=''>
-                           {LinkDash()}
-                        </ListGroup.Item>
+                        <div className="py-3 button-login-sidebar">
+                        {LinkDash()}
+                        </div>
                     </ListGroup>
                 </Offcanvas.Body>
             </Offcanvas>

@@ -77,7 +77,7 @@ function Product() {
                                 <ProductPrice idProduto={id} />
 
                                 <Button label="COMPRAR" 
-                                    class=" btn-primary-mvp p-2 mt-2 mb-5"
+                                    class=" btn-mvp btn-mvp-orange-solid p-2 mt-2 mb-5"
                                     route="/cart" 
                                     onclick={()=>addProductToCart(product)} />
 

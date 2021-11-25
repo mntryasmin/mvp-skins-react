@@ -13,16 +13,17 @@ import OrderHistory from '../../components/macro/Dashboard/OrderHistory/OrderHis
 import Security from '../../components/macro/Dashboard/Security/Security'
 import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
-function Dashboard(props) {
+function Dashboard() {
+    const client = JSON.parse(localStorage.getItem("client"));
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">
                 {/* MENU LATERAL  */}
-                <SideBar />
+                <SideBar name={client.nomeCliente}/>
 
                 {/* DASHBOARD  */}
                 <Container className="col-9 my-0 p-5 dashboard">
-                    <MyAccount />
+                    <MyAccount/>
                     <Security />
                     <OrderHistory />
                 </Container>

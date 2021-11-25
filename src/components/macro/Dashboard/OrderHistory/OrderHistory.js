@@ -12,7 +12,6 @@ import './OrderHistory.css'
 import cursor from '../../../../assets/images/icones/icon-cursor.png'
 // import Button from '../../../Button/Button'
 import Image from '../../../micro/Images/Images'
-import ModalProducts from '../../../micro/Dashboard/ModalProducts';
 
 export default class OrderHistory extends Component {
     constructor(props) {
