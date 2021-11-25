@@ -2,34 +2,6 @@
     background-color: #28004f;
 }
 
-.filter-column{
-    background-color: #EFEFEF;
-    margin-top: 200px;
-}
-
-.filter-title{
-    color: #FD4712;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-.check-box{
-    margin-bottom: 10px !important;
-}
-
-.form-check-input:checked{
-    background-color: #FD4712 !important;
-}
-
-.form-check-input{
-    background-color: #28004f !important;
-}
-
-.filter-list{
-    margin-top: 20px;
-}
-
-
 .item{
     border: none !important;
     background-color: transparent !important;

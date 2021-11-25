@@ -98,7 +98,7 @@ export default class OrderHistory extends Component {
 
     handleMapProducts(id) {
 
-        console.log(this.state.products);
+        // console.log(this.state.products);
 
         return this.state.products.map(
             (product) =>
