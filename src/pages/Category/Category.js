@@ -3,15 +3,31 @@ import './Category.css'
 import { Col, Container, ListGroup, Row, Form } from 'react-bootstrap'
 import CategoryContainer from '../../components/macro/Category/CategoryContainer'
 import { useParams } from 'react-router-dom';
+import CategoryFilter from '../../components/macro/Category/CategoryFilter/CategoryFilter';
 
 function Category(props) {
 
     const { id } = useParams();
-    // console.log(id);
+    var idCategory = id
+
+    function setId(id){
+        idCategory = id;
+        console.log(idCategory)
+    }
+
     return (
         <>
             <Container fluid className='background content-container'>
                 <Row>
+<<<<<<< HEAD
+                    {id==0 || id.includes('rarity=') || id.includes('exterior')
+                    ?<CategoryFilter link={setId}/>
+                    :<></>}
+                    <Col>
+                        {id.includes('search=') ?
+                            <CategoryContainer idCategory={idCategory} search /> :
+                            <CategoryContainer idCategory={idCategory} />
+=======
                     <Col sm={3} md={2} className='filter-column'>
                         <div className='filter-title'>
                             FILTROS
@@ -165,6 +181,7 @@ function Category(props) {
                         {id.includes('search=') ?
                             <CategoryContainer idCategory={id} search /> :
                             <CategoryContainer idCategory={id} />
+>>>>>>> juncao
                         }
                     </Col>
                 </Row>
