@@ -1,37 +1,34 @@
-.registration-container {
-    background-color: #28004F;
-    display: flex;
-    justify-content: space-between
-}
-
-.registration-banner {
-    width: 100%;
-    background-image: url(/src/assets/images/banners/banner-register.jpg );
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 .registration {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    background-color: #28004F;
     color: white;
 }
 
-.row-input{
-    justify-content: space-around;
-    flex-wrap: nowrap !important;
+.title-registration {
+    text-align: center;
+    font-size: 25px;
+    margin: 20px;
 }
 
 .box-input{
-    display: flex;
     flex-direction: column;
 }
 
-.box-input input, .box-input select {
-    padding-left: 1.2vw;
+.row-input{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+}
+
+.form-group{
+    width: 100%;
+}
+
+.btn-submit{
+    justify-content: end !important;
+}
+
+.btn-cancel{
+    justify-content: start !important;
 }
 
 .link-custom{
@@ -43,16 +40,9 @@
     color:#FD4712 !important;
 }
 
-.btn-cancel  {
-    display: flex;
-    justify-content: left;
+.layout-btn{
+    width: 50%;
 }
-
-.btn-submit  {
-    display: flex;
-    justify-content: right;
-}
-
 
 @media (max-width: 810px){
     .row-input{

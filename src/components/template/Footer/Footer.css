@@ -3,7 +3,6 @@
     background-color: #181818;
     color: #ffffff;
     display: flex;
-    flex-direction: column;
 }
 
 .footer-lg{
@@ -21,52 +20,26 @@
     display:none;
 }
 
-.footer-links-container {
-    justify-content: space-between;
-}
-
-.footer-links{
+.coluna-footer{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    width: 100%;
 }
 
 .linha-hr{
     display: none;
 }
 
+.icon-footer{
+    height:30px;
+    width:30px;
+}
+
+.footer-image{
+    text-align: center;
+}
+
 .footer-login-modal{
     display: block;
-}
-
-.bandeiras-pagamento-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bandeiras-pagamento {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-}
-
-.icon-footer{
-    width: auto;
-    height:35px;
-}
-
-.dados-empresa {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.dados-empresa p {
-    text-align: center;
-    font-size: 4px !important;
 }
 
 

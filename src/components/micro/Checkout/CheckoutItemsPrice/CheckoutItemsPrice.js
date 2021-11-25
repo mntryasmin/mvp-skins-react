@@ -17,7 +17,7 @@ function CheckoutItemsPrice(props) {
 
     return(
         <>
-        <Nav.Item as="li" className="py-1 checkout-items-price"> R$ {price} </Nav.Item>
+        <Nav.Item as="li" className="py-1 checkout-items-price"> {price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </Nav.Item>
         </>
     )
 }

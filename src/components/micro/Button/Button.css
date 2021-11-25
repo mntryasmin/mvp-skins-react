@@ -1,22 +1,33 @@
 .btn-mvp{
-    height: 6vh;
-    font-weight: 600;
+    height: auto !important;
+    font-weight: 700;
     text-transform: uppercase;
     text-align: center;
-    font-size: .9rem;
-    border-radius: 3px;
+    font-size: 1rem;
+    color:#EFEFEF;
+    border-radius:0.30rem;
+    color: #EFEFEF;
     text-decoration: none;
-    border: 2px solid;
-    display: flex;
-    align-items: center;
     justify-content: center;
-}
-.btn-mvp:hover {
-    box-shadow: none !important;
-    transition: 0.5s;
+    align-items: center;
+    border-radius: 3px;
+    border: 3px solid;
 }
 
-.button-navigation {
+.btn-primary-mvp {
+    border-color: #FD4712;
+    background-color: #FD4712;
+}
+
+.btn-primary-mvp:hover {
+    box-shadow: none !important;  
+    transition: 0.5s;
+    background-color: transparent !important; 
+    color: #FD4712 !important;
+    border-color: #FD4712 !important;
+}
+
+.link-header{
     color:black;
     text-decoration: none;
     margin: 0;
@@ -27,53 +38,22 @@
     background-color: transparent;
 }
 
-/* BOTÃO LARANJA OUTLINE */
-.btn-mvp-orange-clean {
+.btn-secundary-mvp {
+    background-color: transparent !important;
     border-color: #FD4712;
-    background-color: #FD4712;
-    color:#EFEFEF;
+    color: #FD4712;
 }
 
-.btn-mvp-orange-clean:hover {
-    background-color: transparent !important; 
-    color: #FD4712 !important;
-    border-color: #FD4712 !important;
-}
-
-/* BOTÃO ROXO OUTLINE */
-.btn-mvp-purple-clean {
-    border-color: #28004f;
-    background-color: #28004f;
-    color: #EFEFEF !important; 
-}
-
-.btn-mvp-purple-clean:hover {
-    background-color: transparent !important; 
+.btn-secundary-mvp:hover{
+    box-shadow: none !important;  
+    transition: 0.5s;
+    background-color: #EFEFEF !important; 
     color: #28004f !important;
-    border-color: #28004f !important;
-}
-
-
-/* BOTÃO LARANJA SOLID */
-.btn-mvp-orange-solid {
-    border-color: #FD4712;
-    background-color: #FD4712;
-    color:#EFEFEF;
-}
-
-.btn-mvp-orange-solid:hover {
-    color: #EFEFEF !important;
-    border-color: #EFEFEF !important;
-}
-
-/* BOTÃO ROXO SOLID */
-.btn-mvp-purple-solid {
     border-color: #28004f;
-    background-color: #28004f;
-    color: #EFEFEF !important; 
 }
 
-.btn-mvp-purple-solid:hover {
-    color: #EFEFEF !important;
-    border-color: #EFEFEF !important;
+@media (min-width: 768px) and (max-width: 994.98px) { 
+    .btn-mvp {
+        width: auto !important;
+    }
 }
