@@ -129,7 +129,6 @@ function LoginModal(props) {
                                 <LoginForm Email emailValue={email} onclick={() => setValidation('')} onchange={(event) => { setEmail(event.target.value) }} />
                                 <LoginForm Password passwordValue={password} onclick={() => setValidation('')} onchange={(event) => { setPassword(event.target.value) }} />
                             </FormGroup>
-
                             <Collapse />
                         </Form>
 
