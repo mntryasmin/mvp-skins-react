@@ -11,6 +11,7 @@ import './Success.css'
 import iconSucess from '../../assets/images/icones/icon-sucess.png';
 import Title from '../../components/micro/Title/Title';
 import Button from '../../components/micro/Button/Button';
+import Dashboard from '../Dashboard/Dashboard';
 
 function Sucess(props) {
     const[order, setOrder] = useState(JSON.parse(localStorage.getItem('order')))

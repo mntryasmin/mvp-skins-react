@@ -69,6 +69,7 @@ export default class DiscountCoupon extends Component {
                                 placeholder="Digite o código"
                             />
                             <Button class="mx-2 btn-mvp btn-mvp-purple-clean" type="submit" label="Aplicar"></Button>
+
                         </Container>
                     </Form>
                     <p className="response-coupon"> {this.state.validation}</p>

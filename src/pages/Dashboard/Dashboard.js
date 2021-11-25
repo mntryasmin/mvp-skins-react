@@ -15,7 +15,6 @@ import SideBar from '../../components/macro/Dashboard/SideBar/SideBar'
 
 function Dashboard() {
     const client = JSON.parse(localStorage.getItem("client"));
-
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">

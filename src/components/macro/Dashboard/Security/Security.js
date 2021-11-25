@@ -169,6 +169,7 @@ export default class Security extends Component {
 
                             <Form.Label className="py-2">Repita a senha nova</Form.Label>
                             <Form.Control value={this.state.newPasswordConfirm} onChange={this.handleChangeNPC} className="py-2" type="password" name="newPasswordConfirm" />
+
                             <p> {this.state.messageInput3}</p>
                         </Form.Group>
 

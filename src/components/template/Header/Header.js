@@ -29,7 +29,6 @@ function Header(props) {
         else {
             localStorage.setItem("Authorization", '')
         }
-
     }
     ), [])
 
@@ -44,7 +43,6 @@ function Header(props) {
 
     const btnCadastrar = () => {
         if (localStorage.getItem("Authorization")) {
-
             return (
                 <>
                     <div className='welcome my-2 col-12'>
@@ -62,11 +60,11 @@ function Header(props) {
 
     const btnFavorites = () => {
         if (localStorage.getItem("Authorization")) {
-
             return (
                 <Nav.Link href="/favorites" className="link-header items-nav">
                     <img src={Fav} width="30" height="30" />
                     Favoritos
+
                 </Nav.Link>
             )
         } else {
@@ -90,7 +88,6 @@ function Header(props) {
                 <LoginModal linkCart />
             )
         }
-
     }
 
     return (
@@ -158,9 +155,7 @@ function Header(props) {
                         </Nav>
                     </Col>
                 </Navbar>
-
                 {/* FIM DO NAVBAR */}
-
             </header>
         </>
     )

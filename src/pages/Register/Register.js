@@ -12,7 +12,6 @@ import LoginModal from '../../components/micro/LoginModal/LoginModal';
 function Register(props) {
 
     var confirmPassword = '';
-
     var formValidated = false;
 
     const client = {
@@ -122,7 +121,6 @@ function Register(props) {
                 <Col className="py-5 col-10">
                     <Form className='registration'>
                         <Title title="CADASTRO" h1 />
-
                         <Row className='row-input'>
                             <Col xs={12} md={5} className="box-input">
                                 <FormLabel>Nome</FormLabel>

@@ -17,8 +17,7 @@ function Footer(props) {
                 <>
                 </>
             )
-        }
-        else {
+        } else {
             return <FooterLink label="Cadastre-se" route="/register" />
         }
     }
