@@ -17,6 +17,7 @@ function PaymentCreditCard(props) {
     const [cpf, setCpf] = useState('')
     const [installments, setInstallments] = useState('')
     const [dtCard, setDtCard] = useState('')
+    const [flag, setFlag] = useState('')
     
     const totalValue = props.vlTotal
     
