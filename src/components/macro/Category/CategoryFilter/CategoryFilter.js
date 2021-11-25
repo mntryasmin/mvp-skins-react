@@ -5,6 +5,7 @@ import './CategoryFilter.css'
 
 function Comp(props) {
 
+    const url = 'http://localhost:3000/category/'
     return(
         <>
             <Col sm={3} md={2} className='filter-column'>
@@ -14,16 +15,13 @@ function Comp(props) {
                 <Form>
                     <ListGroup variant="flush" className='filter-list'>
                         <ListGroup.Item >PREÇOS</ListGroup.Item>
-                        {/* <Link to="/category/exterior=1"> */}
                         <Form.Check
                             type="radio"
                             label="Todos"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios1"
-                            onClick={()=>props.link('1')}
                             className='check-box'
                         />
-                        {/* </Link> */}
                         <Form.Check
                             type="radio"
                             label="De R$100,00 à R$200,00"
@@ -56,18 +54,11 @@ function Comp(props) {
                         <ListGroup.Item>EXTERIOR</ListGroup.Item>
                         <Form.Check
                             type="radio"
-                            label="Todos"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios6"
-                            className='check-box'
-                            onClick={()=>{<Link to="/category/exterior=1"/>}}
-                        />
-                        <Form.Check
-                            type="radio"
                             label="Nova de Fábrica (Factory New)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios7"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'exterior=1'}}
                         />
                         <Form.Check
                             type="radio"
@@ -75,6 +66,7 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios8"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'exterior=2'}}
                         />
                         <Form.Check
                             type="radio"
@@ -82,6 +74,7 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios9"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'exterior=3'}}
                         />
                         <Form.Check
                             type="radio"
@@ -89,6 +82,7 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios10"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'exterior=4'}}
                         />
                         <Form.Check
                             type="radio"
@@ -96,22 +90,17 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios11"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'exterior=5'}}
                         />
                         <br />
                         <ListGroup.Item>RARIDADE</ListGroup.Item>
-                        <Form.Check
-                            type="radio"
-                            label="Todos"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios12"
-                            className='check-box'
-                        />
                         <Form.Check
                             type="radio"
                             label="Azul"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios13"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'rarity=1'}}
                         />
                         <Form.Check
                             type="radio"
@@ -119,6 +108,7 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios14"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'rarity=2'}}
                         />
                         <Form.Check
                             type="radio"
@@ -126,6 +116,7 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios15"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'rarity=3'}}
                         />
                         <Form.Check
                             type="radio"
@@ -133,6 +124,7 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios16"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'rarity=4'}}
                         />
                         <Form.Check
                             type="radio"
@@ -140,6 +132,7 @@ function Comp(props) {
                             name="formHorizontalRadios"
                             id="formHorizontalRadios17"
                             className='check-box'
+                            onClick={()=>{window.location.href=url+'rarity=5'}}
                         />
                         <br />
                     </ListGroup>
