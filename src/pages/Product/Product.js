@@ -35,6 +35,17 @@ function Product() {
             })
     }, [])
 
+    const [carouselA, setCarouselA] = useState([])
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/produtos/category/1`)
+        .then((response)=>{
+            setCarouselA(response.data)
+        })
+        .catch((error)=>{
+            console.log('Ocorreu um erro: '+error)
+        })
+    },[])
+
     //Enquanto o produto estiver indefinido a página irá renderizar o NotFound
     const charge = () => {
 
@@ -56,6 +67,7 @@ function Product() {
         localStorage.setItem("cart", productCartString)
         window.location.href='http://localhost:3000/cart'
     }
+
         return (
             <>
                 <div className="div-produto content-container">
@@ -76,7 +88,7 @@ function Product() {
                                 <ProductPrice idProduto={id} />
 
                                 <Button label="COMPRAR" 
-                                    class=" btn-mvp btn-mvp-orange-solid p-2 mt-2 mb-5"
+                                    class=" btn-primary-mvp p-2 mt-2 mb-5"
                                     route="/cart" 
                                     onclick={()=>addProductToCart(product)} />
 
@@ -87,9 +99,7 @@ function Product() {
                             </ProductContainer>
                         </Row>
                         <ProductText description="Veja também:" class="product-text-carousel" />
-                        <CarouselProducts />
-                        <ProductText description="Veja também:" class="product-text-carousel" />
-                        <CarouselProducts />
+                        <CarouselProducts productList={carouselA}/>
                         <div className="mb-5"></div>
                     </Col>
                 </div>

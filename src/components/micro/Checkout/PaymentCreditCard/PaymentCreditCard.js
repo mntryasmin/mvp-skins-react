@@ -8,15 +8,20 @@ import './PaymentCreditCard.css'
 
 // PÁGINAS/COMPONENTES
 
+
 function PaymentCreditCard(props) {
+
     const [validation, setValidation] = useState(props.val)
+
     const [name, setName] = useState('')
     const [cardNumber, setCardNumber] = useState('')
     const [cvv, setCvv] = useState('')
     const [cpf, setCpf] = useState('')
     const [installments, setInstallments] = useState('')
     const [dtCard, setDtCard] = useState('')
+    
     const totalValue = props.vlTotal
+    
     const card = {name : name,
         cardNumber : cardNumber,
         cvv : cvv,
@@ -24,6 +29,7 @@ function PaymentCreditCard(props) {
         installments : installments,
         dtCard : dtCard
     }
+
 
     const maskOnlyLetters = (value) => {
         return value.replace(/[0-9!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
@@ -59,6 +65,9 @@ function PaymentCreditCard(props) {
         .replace(/\D/g, "")
         .replace(/(\d{3})(\d{0})(\d)/, "$1")
     }
+
+
+
 
     return (
         <Form className="payment-form p-0 m-0">
@@ -99,11 +108,11 @@ function PaymentCreditCard(props) {
 
             <Row className="px-0 payment-form">
                 <Form.Label className="mt-3"> Parcelas </Form.Label>
-                <Form.Select aria-label="parcelas" onClick={(event) => {setInstallments(event.target.value); props.func(card) }}>
+                <Form.Select aria-label="parcelas" onChange={(event) => {setInstallments(event.target.value); props.func(card) }}>
                     <option value="0">Selecione as parcelas</option>
                     <option value="1">1 x de R$ {(totalValue / 1).toFixed(2).replace(".", ",")} sem juros</option>
-                    <option value="2">2 x de R$ {(totalValue / 2).toFixed(2).replace(".", ",")} sem juros</option>
-                    <option value="3">3 x de R$ {(totalValue / 3).toFixed(2).replace(".", ",")} sem juros</option>
+                    <option value="2">2 x de R$ {(totalValue / 2).toFixed(2).replace(".", ",")} com juros</option>
+                    <option value="3">3 x de R$ {(totalValue / 3).toFixed(2).replace(".", ",")} com juros</option>
                 </Form.Select>
             </Row>
         </Form>

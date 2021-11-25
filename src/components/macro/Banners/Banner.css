@@ -1,9 +1,5 @@
 .container-banner{
     padding: 0 !important;
-    border-top: 7px outset;
-    border-bottom: 7px outset;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to left, #28004f, #fd4712);
 }
 
 .banner{

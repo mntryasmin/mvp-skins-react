@@ -1,0 +1,87 @@
+
+.myAccountForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.error{
+    color: #FD4712;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.alter-gender{
+    background-color: transparent;
+    color: #28004f;
+    border: none;
+    text-transform: none;
+    font-weight: unset;
+}
+
+.alter-gender:hover{
+    outline: none;
+    color: #FD4712;
+}
+
+.box-to-read{
+    background-color: transparent !important;
+    height: 45px !important;
+    width: 100% !important;
+}
+
+.form-select:disabled{
+    background-color: transparent !important;
+}
+
+.box-update{
+    background-color: white !important;
+    height: 45px;
+    width: 100%;
+    
+}
+
+.input {
+    display: flex;
+    align-items: center;
+}
+
+.gender {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+
+}
+
+/* SM */
+@media (min-width: 540px) and (max-width: 767.98px) {
+
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* XL  */
+@media (min-width: 1200px) { 
+
+}

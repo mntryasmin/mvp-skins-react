@@ -1,0 +1,255 @@
+.sidebar {
+    color: #000000;
+    font-size: 14px;
+    border-radius: 0 8px 8px 0;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-image: url(/src/assets/images/banners/sidebar-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.nav-title {
+    justify-content: center;
+}
+
+.sidebar li {
+    display: flex;
+    justify-content: left;
+}
+
+.sidebar .nav-link {
+    color: #000000;
+    text-decoration: none;
+    text-align: left;
+
+}
+
+.sidebar .nav-link:hover {
+    color: #FD4712;
+}
+
+.sidebarIcon {
+    display: flex !important;
+    justify-content: left;
+}
+
+.sidebarIcon::before {
+    content:"";
+    background-size: 20px;
+    width:20px;
+    height:20px;
+    margin-right: 1vw;
+}
+
+.shop::before{
+    background-image: url(../../../../assets/images/icones/icon-sacola.png);
+}
+
+.my-account-tile::before{
+    background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+}
+
+.nav-image {
+    justify-content: center;
+}
+
+.nav-image img {
+    width: 6vw;
+}
+
+.nav-options {
+    background-color: #efefef;
+    border-radius: 8px;
+    justify-content: center;
+}
+
+.nav-contact {
+    display: flex;
+    align-items: bottom;
+    background-color: #efefef;
+    justify-content: center;
+}
+
+.nav-contact a {
+    color: #181818;
+}
+
+.nav-contact a:hover {
+    color: #FD4712;
+}
+
+.form-check-input:checked {
+    background-color: #FD4712 !important;
+}
+
+
+/* MEDIAS QUERIES */
+
+/* XS */
+@media (max-width: 575.98px) {
+    .sidebar {
+        border-radius: 8px;
+        margin-bottom: 5vh !important;
+    }
+
+    .nav-list {
+        padding: 0 4vw 3vh 7vw !important;
+    }
+
+    .name-client {
+        padding: 4vh 0 2vh 0  !important;
+    }
+
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
+}
+
+/* SM */
+@media (min-width: 540px) and (max-width: 767.98px) {
+    .sidebar {
+        border-radius: 8px;
+        margin-bottom: 5vh !important;
+    }
+
+    .nav-list {
+        padding: 0 4vw 3vh 7vw !important;
+    }
+
+    .name-client {
+        padding: 4vh 0 2vh 0  !important;
+    }
+
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
+}
+
+/* MD  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .sidebar {
+        border-radius: 8px;
+        margin-bottom: 5vh !important;
+    }
+
+    .nav-list {
+        padding: 0 3vw 2vh 6vw !important;
+    }
+
+    .name-client {
+        padding: 3vh 0 1vh 0  !important;
+    }
+
+    .nav-contact {
+        display: none !important;
+    }
+
+    .nav-list-title {
+        display: none !important;
+    }
+
+    .personal-data::before{
+        background-image: url(../../../../assets/images/icones/icon-pessoa.png);
+    }
+
+    .change-password::before{
+        background-image: url(../../../../assets/images/icones/icon-key.png);
+    }
+
+    .purchases-historic::before{
+        background-image: url(../../../../assets/images/icones/icon-sacola.png);
+    }
+}
+
+/* LG  */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .sidebar {
+        margin-bottom: 0 !important;
+    }
+
+    .nav-list {
+        padding: 0 0 2vh .2vw !important;
+    }
+
+    .name-client {
+        padding: 2.5vh .5vw 0 .5vw  !important;
+    }
+
+    .nav-options {
+        background-color: #efefef;
+        border-radius: 0 8px 0 0;
+        justify-content: center;
+    }
+    
+    .nav-contact {
+        display: flex;
+        align-items: bottom;
+        background-color: #efefef;
+        border-radius: 0 0 8px 0;
+        justify-content: center;
+    }
+
+}
+
+/* XL  */
+@media (min-width: 1200px) {
+    .sidebar {
+        margin-bottom: 0 !important;
+    }
+
+    .nav-list {
+        padding: 0 0 2vh .2vw !important;
+    }
+
+    .name-client {
+        padding: 2.5vh .5vw 0 .5vw  !important;
+    }
+
+    .nav-options {
+        border-radius: 0 8px 0 0;
+    }
+    
+    .nav-contact {
+        border-radius: 0 0 8px 0;
+        justify-content: center;
+    }
+
+}

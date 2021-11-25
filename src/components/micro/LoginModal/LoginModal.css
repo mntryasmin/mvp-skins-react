@@ -17,15 +17,16 @@
     padding: 0;
 }
 
-.modal-layout{
-    max-width: 500px !important;
-}
-
 .footer-link{
     color:#ffffff;
     text-decoration: none;
     font-size: 12px !important;
     font-weight: normal;
+}
+
+.modal-layout{
+    max-width: 500px !important;
+    
 }
 
 .footer-link:hover{
@@ -47,9 +48,6 @@
 }
 
 .no-account {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     font-size: 14px;
     text-align: right;
 }
@@ -61,12 +59,4 @@
 
 .layout-button{
     width: 100%;
-}
-
-.link-header button:hover {
-    color:#FD4712;
-}
-
-.seus-dados-sidebar {
-    color: #EFEFEF !important;
 }

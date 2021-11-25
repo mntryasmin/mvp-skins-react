@@ -1,37 +1,3 @@
-.sidebar-menu {
-    width: 20vw;
-    background-color: #EFEFEF;
-}
-
 .title-menu {
-    text-align: center;
     color:#FD4712 !important;
-}
-
-.sidebar-menu a:hover {
-    background-color: #28004f !important;
-    border-radius: 3px;
-    border: none;
-    color: #EFEFEF !important;
-}
-
-.sidebar-menu a {
-    display: flex;
-    align-items: center;
-    height: 6.5vh;
-    color: #181818;
-    width: 100% !important;
-}
-
-.button-login-sidebar button {
-    width: 100%;
-}
-
-.sidebar-menu-icon, .btn-close {
-    border: 2px solid transparent;
-    box-shadow: none !important;
-}
-
-.sidebar-menu-icon:hover {
-    border: 2px solid #FD4712;
 }

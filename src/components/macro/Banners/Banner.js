@@ -3,7 +3,7 @@ import './Banner.css'
 import { Carousel, CarouselItem, Container } from 'react-bootstrap'
 import Banner1 from '../../../assets/images/banners/destaque_1.png'
 import Banner2 from '../../../assets/images/banners/destaque_2.png'
-import Banner3 from '../../../assets/images/banners/destaque_3.png'
+import Banner3 from '../../../assets/images/banners/destaque_3.gif'
 import BannerEventos1 from '../../../assets/images/banners/eventos_1.jpg'
 import BannerEventos2 from '../../../assets/images/banners/eventos_2.gif'
 
