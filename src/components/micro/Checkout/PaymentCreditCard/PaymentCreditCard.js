@@ -17,6 +17,7 @@ function PaymentCreditCard(props) {
     const [cpf, setCpf] = useState('')
     const [installments, setInstallments] = useState('')
     const [dtCard, setDtCard] = useState('')
+    const [flag, setFlag] = useState('')
     
     const totalValue = props.vlTotal
     
@@ -63,9 +64,6 @@ function PaymentCreditCard(props) {
         .replace(/\D/g, "")
         .replace(/(\d{3})(\d{0})(\d)/, "$1")
     }
-
-
-
 
     return (
         <Form className="payment-form p-0 m-0">

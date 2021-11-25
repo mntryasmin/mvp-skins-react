@@ -20,10 +20,10 @@ function Categories(props) {
     
     return categories.map(item => {
         return (
-        <>
-            <ListGroup.Item key={item.codigoCategoria}>
-                <Link to={'/category/'+item.codigoCategoria}  className="link-header ">{item.descricao}</Link>
-            </ListGroup.Item>
+            <>
+            {/* <ListGroup.Item key={item.codigoCategoria}> */}
+                <Link key={item.codigoCategoria} to={'/category/'+item.codigoCategoria}  className="link-header px-2">{item.descricao}</Link>
+            {/* </ListGroup.Item> */}
         </>
         )
     })
