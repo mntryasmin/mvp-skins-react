@@ -19,6 +19,11 @@
     font-weight: 600;
 }
 
+.box-disabled{
+    background-color: grey !important;
+    color: white !important;
+}
+
 .payment-span {
     display: flex;
     justify-content: space-between;

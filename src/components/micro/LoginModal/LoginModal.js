@@ -34,37 +34,43 @@ function LoginModal(props) {
         if (props.linkFavorite) {
             return (
                 <>
-                    <div className='link-header items-nav'>
+                    <div className='d-flex align-items-center justify-content-center'>
+                        <Button onclick={handleShow} class='link-header ' label='Favoritos' />
                         <img src={Fav} width="30" height="30" />
-                        <Button onclick={handleShow} class='button-navigation' label='Favoritos' />
                     </div>
                 </>
             )
         }
         if (props.linkCart) {
+            // return (
+                // <>
+                //     <div className='d-flex align-items-center justify-content-center'>
+                //         <Button onclick={handleShow} class='link-header ' label='Carrinho' />
+                //         <img src={Car} width="30" height="30" />
+                //     </div>
+                // </>
+            // )
             return (
-                <>
-                    <div className='d-flex align-items-center justify-content-center'>
-                        <img src={Car} width="30" height="30" />
-                        <Button onclick={handleShow} class='link-header ' label='Carrinho' />
-                    </div>
-                </>
+                <Button label="Finalizar compra"
+                        class="btn-primary-mvp" 
+                        onclick={handleShow}>
+                </Button>
             )
         }
         if (props.linkDash) {
-            return <Button onclick={handleShow} class='btn-mvp-orange-clean' label='Faça Login' />
+            return <Button onclick={handleShow} class='link-header link-menu ' label='Faça Login' />
         }
         if (props.link) {
             if (localStorage.getItem("Authorization")) {
-                return (<Button onclick={Logout} class='footer-link col-4' label='Logout'></Button>)
+                return (<Button onclick={Logout} class='footer-link' label='Logout'></Button>)
             }
             return (<Button onclick={handleShow} class='footer-link' label='Login'></Button>)
         }
         if (localStorage.getItem("Authorization")) {
-            return (<Button onclick={Logout} class='btn-mvp-orange-clean col-4' label='logout'></Button>)
+            return (<Button onclick={Logout} class='btn-primary-mvp layout-btn-login' label='logout'></Button>)
 
         }
-        return (<Button onclick={handleShow} class='btn-mvp-orange-clean' label='login'></Button>)
+        return (<Button onclick={handleShow} class='btn-primary-mvp layout-btn-login' label='login'></Button>)
 
     }
 
@@ -81,7 +87,7 @@ function LoginModal(props) {
     const authorize = (data) => {
 
         localStorage.setItem("Authorization", data)
-
+        
         if (location == 'http://localhost:3000/register') {
             window.location.href = 'http://localhost:3000/'
         }
@@ -95,9 +101,11 @@ function LoginModal(props) {
         axios.post(`${URL}`, { username: email, password: password })
             .then(async (response) => {
                 const token = await response.data.token
-                authorize(token)
-            }).catch((error) => {
-                setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
+                if (token){
+                    authorize(token)
+                }else {
+                    setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
+                }
             })
     }
 
@@ -114,9 +122,9 @@ function LoginModal(props) {
             {typeButton()}
             <div className='d-flex justify-content-center modal-layout'>
                 <Modal show={show} onHide={handleClose} className='d-flex'>
-                    <Modal.Header closeButton className="px-4">
+                    <Modal.Header closeButton >
                         <Modal.Title>
-                            <h5 className="login-title m-0 p-0">
+                            <h5 className="login-title">
                                 FAÇA LOGIN
                             </h5>
                         </Modal.Title>
@@ -135,14 +143,19 @@ function LoginModal(props) {
                         </Form>
 
                     </Modal.Body>
-                    <Modal.Footer className='d-flex justify-content-between mx-2'>
-                        <Button onclick={handleClose} class='btn-mvp-orange-clean' label='cancelar' />
-                        <LoginForm Button onclick={(event) => submit(event)} />
+                    <Modal.Footer className='d-flex justify-content-between'>
+                        <Col sm={5} className='d-flex'>
+                            <Button onclick={handleClose} class='btn-secundary-mvp mx-3 layou-button layout-button' label='cancelar' />
+                        </Col>
+
+                        <Col sm={6} className='d-flex'>
+                            <LoginForm Button onclick={(event) => submit(event)} />
+                        </Col>
                         <Col sm={12} >
-                            <div className="no-account mx-3 mt-2">
-                                <p className="mx-2"> Não possui conta? </p>
+                            <div className="no-account mx-4">
+                                Não possui conta?
                                 <Link to='/register' className="links-login" onClick={handleClose}>
-                                    <p>Cadastre-se</p>
+                                    Cadastre-se
                                 </Link>
                             </div>
                         </Col>

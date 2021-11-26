@@ -6,7 +6,6 @@ import axios from 'axios'
 // ESTILO
 import './../../assets/css/Style.css'
 import './Cart.css'
-
 // PÁGINAS/COMPONENTES
 import ProductListCart from '../../components/micro/Cart/CartItemsList/CartItemsList'
 import Button from '../../components/micro/Button/Button'
@@ -85,7 +84,6 @@ function Cart(props) {
 
     function setValue(promotion) {
         if (promotion) {
-            console.log(promotion)
             if (promotion.valorDesconto != 0) {
                 setValueDiscount(promotion.valorDesconto)
             } else {
@@ -102,34 +100,60 @@ function Cart(props) {
             <Container fluid className="cart p-0 content-container">
                 <Col lg={3} xl={3} className="mx-4 my-5 cart-container cart-banner">
                 </Col>
-
                 <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-4 my-5 pt-3 cart-container">
-                    <ProductListCart functionTotalPrice={getTotalPrice}/>
+                    <ProductListCart functionTotalPrice={getTotalPrice} />
 
                     <Container className="py-1 my-4 price">
+                        <Col className="col-7 py-2 px-1 mt-2 discount-coupon-cart">
+                            <Container className="discount-container px-0">
+                                <Form className="py-2 discount-coupon">
+                                    <p className="mx-3"> Cupom de desconto </p>
+
+                                    <Container className="discount px-0">
+                                        <FormControl
+                                            type="text"
+                                            name="coupon"
+                                            className="discount-input mx-3 py-3"
+                                            onChange={(event) => { setCoupon(event.target.value); }}
+                                            placeholder="Digite o código"
+                                            value={coupon}
+                                        />
+                                        <Button label='Aplicar' class="btn-secundary-mvp  mx-2" onclick={(event) => Submit(event)}></Button>
+                                    </Container>
+                                </Form>
+                                <p className="response-coupon"> {validation}</p>
+                            </Container>
+                        </Col>
+
                         <Row className="col-5 p-0 mt-2 price-cart">
-                            <Col className="cart-values">
+                            <Col md={4} className="cart-values my-2">
                                 <p className="m-0"> Cupom </p>
-                                <p className="m-0 mt-1">R$  </p>
+                                <p className="m-0 mt-1"> R$ {(valueDiscount).toFixed(2).replace(".", ",")}</p>
                             </Col>
-                            <Col className="cart-values">
+                            <Col md={4} className="cart-values my-2">
                                 <p className="m-0"> Subtotal </p>
-                                <p className="m-0 mt-1"> R$ {(price).toFixed(2)} </p>
+                                <p className="m-0 mt-1"> R$ {price.toFixed(2).replace(".", ",")} </p>
                             </Col>
+                            <Col md={4} className=" my-2">
+                                <p className="m-0"> Total </p>
+                                <p className="m-0 mt-1"> R$ {(price - valueDiscount).toFixed(2).replace(".", ",")} </p>
+                            </Col>
+
                         </Row>
                     </Container>
-
                     <Container className="py-4 my-0 pb-5 cart-buttons">
                         <Button label="Continuar comprando" route="/home" class="btn-mvp btn-mvp-orange-solid" navigation></Button>
 
-                        <Button label="Finalizar compra"
-                        class="btn-mvp btn-mvp-orange-solid" 
-                        onclick={()=>createOrder()}></Button>
+                        {localStorage.getItem("Authorization") ?
+                            <Button label="Finalizar compra"
+                                class="btn-primary-mvp"
+                                onclick={() => createOrder()}></Button> :
+                            <LoginModal linkCart />
+                        }
                     </Container>
                 </Container>
             </Container>
         </>
     )
 }
-
 export default Cart

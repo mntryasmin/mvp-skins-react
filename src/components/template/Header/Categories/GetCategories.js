@@ -22,7 +22,7 @@ function Categories(props) {
         return (
             <>
             {/* <ListGroup.Item key={item.codigoCategoria}> */}
-                <Link key={item.codigoCategoria} to={'/category/'+item.codigoCategoria}  className="link-header px-2">{item.descricao}</Link>
+                <a key={item.codigoCategoria} href={'/category/' + item.codigoCategoria} className="link-header px-2">{item.descricao}</a>
             {/* </ListGroup.Item> */}
         </>
         )

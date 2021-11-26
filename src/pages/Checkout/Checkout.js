@@ -31,7 +31,6 @@ function Checkout(props) {
         setOrder(JSON.parse(localStorage.getItem("order")))
     }, [])
 
-    const [validation, setValidation] = useState('')
 
     function postOrder() {
 
@@ -57,7 +56,7 @@ function Checkout(props) {
                         console.log("Ocorreu um erro :" + error)
                     })
             } else {
-                setValidation('Cartão inválido!')
+                setValidation('Há algo de errado com cartão, cheque se está tudo preenchido corretamente!')
                 setClassTerm('validation-term p-2')
             }
         } else {
@@ -90,32 +89,14 @@ function Checkout(props) {
 
 
     const ValideCard = (card) => {
-        if (card.name == '') {
+        if (card.validation != ''){
             return false
-        } if (card.cardNumber == "") {
-            return false
+        }else{
+            return true
         }
-        if (card.cvv == '') {
-            return false
-        }
-        if (card.cpf == '') {
-            return false
-        }
-        if (card.installments == '') {
-            return false
-        }
-        if (card.dtCard == '') {
-            return false
-        }
-        if (card.flag == '') {
-            return false
-        }
-
-        return true
     }
 
     const GetCard = (cardReceiver) => {
-
         setCard({
             name: cardReceiver.name,
             cardNumber: cardReceiver.cardNumber,
@@ -123,8 +104,8 @@ function Checkout(props) {
             cpf: cardReceiver.cpf,
             installments: cardReceiver.installments,
             dtCard: cardReceiver.dtCard,
-            flag: cardReceiver.flag
-
+            flag: cardReceiver.flag,
+            validation : cardReceiver.validation
         })
 
     }
@@ -150,17 +131,17 @@ function Checkout(props) {
                             <Row className="p-2 mt-3 checkout-price-container">
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
-                                    <p> R$ {order.valorBruto}</p>
+                                    <p> R$ {grossValue}</p>
                                 </Row>
 
                                 <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
-                                    <p> -</p>
+                                    <p> R$ {discountValue}</p>
                                 </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
-                                    <p> R$ {order.valorBruto}</p>
+                                    <p> R$ {totalValue}</p>
                                 </Row>
                             </Row>
                         </Container>
@@ -170,7 +151,7 @@ function Checkout(props) {
 
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-5 py-4 mx-1 checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
-                    <PaymentCreditCard val={validation} func={GetCard} vlTotal={order.valorBruto} />
+                    <PaymentCreditCard func={GetCard} vlTotal={order.valorBruto} />
                 </Col>
 
 
