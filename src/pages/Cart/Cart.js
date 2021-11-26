@@ -122,9 +122,12 @@ function Cart(props) {
                     <Container className="py-4 my-0 pb-5 cart-buttons">
                         <Button label="Continuar comprando" route="/home" class="btn-mvp btn-mvp-orange-solid" navigation></Button>
 
-                        <Button label="Finalizar compra"
-                        class="btn-mvp btn-mvp-orange-solid" 
-                        onclick={()=>createOrder()}></Button>
+                        {localStorage.getItem("Authorization") ?
+                            <Button label="Finalizar compra"
+                                class="btn-primary-mvp"
+                                onclick={() => createOrder()}></Button> :
+                            <LoginModal linkCart />
+                        }
                     </Container>
                 </Container>
             </Container>
