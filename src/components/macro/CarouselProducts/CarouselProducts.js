@@ -8,7 +8,6 @@ export default function CarouselProducts(props) {
     
     const products = props.productList;
     
-    console.log(products)
     while(products == undefined){
         return(
             <>

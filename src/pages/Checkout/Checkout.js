@@ -50,12 +50,12 @@ function Checkout(props) {
                         sendOrderItems(orderItems, response.data)
 
                         window.location.replace('http://localhost:3000/success')
-                })
-                .catch((error) => {
-                    console.log("Ocorreu um erro :" + error)
-                })
+                    })
+                    .catch((error) => {
+                        console.log("Ocorreu um erro :" + error)
+                    })
             } else {
-                setValidationOfTerms('Há algo de errado com cartão, cheque se está tudo preenchido corretamente')
+                setValidationOfTerms('Há algo de errado com cartão, verifique se está tudo preenchido corretamente')
             }
         } else {
             setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
@@ -83,14 +83,38 @@ function Checkout(props) {
         })
     }
 
-
+    function isEmpty(obj) {
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
+        return true;
+    }
 
     const ValideCard = (card) => {
-        if (card.validation != ''){
+        
+        if (!isEmpty(card)){
+            if (card.name.length < 3) {
+                return false
+            } else if (card.cardNumber.length < 19) {
+                return false
+            } else if (card.cvv.length < 3) {
+                return false
+            } else if (card.cpf.length < 14) {
+                return false
+            } else if (card.installments == 0) {
+                return false
+            } else if (card.dtCard < 7) {
+                return false
+            } else if (card.flag == '' || card.flag == 'INVÁLIDO') {
+                return false
+            } else {
+                return true
+            }
+        }else {
             return false
-        }else{
-            return true
         }
+    
     }
 
     const GetCard = (cardReceiver) => {
@@ -102,7 +126,6 @@ function Checkout(props) {
             installments: cardReceiver.installments,
             dtCard: cardReceiver.dtCard,
             flag: cardReceiver.flag,
-            validation : cardReceiver.validation
         })
 
     }

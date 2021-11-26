@@ -15,7 +15,7 @@ function PaymentCreditCard(props) {
     const [cardNumber, setCardNumber] = useState('')
     const [cvv, setCvv] = useState('')
     const [cpf, setCpf] = useState('')
-    const [installments, setInstallments] = useState('')
+    const [installments, setInstallments] = useState(0)
     const [dtCard, setDtCard] = useState('')
     const [flag, setFlag] = useState('')
     const [validation, setValidation] = useState('')
@@ -29,9 +29,8 @@ function PaymentCreditCard(props) {
         installments: installments,
         dtCard: dtCard,
         flag: flag,
-        validation : validation
+        validation: validation
     }
-
 
     const maskOnlyLetters = (value) => {
         return value.replace(/[0-9!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
@@ -86,8 +85,10 @@ function PaymentCreditCard(props) {
     const validateName = () => {
         if (name.length < 3) {
             setValidation('Nome inválido.')
+            props.func(card);
         } else {
             setValidation('')
+            props.func(card);
         }
     }
 
@@ -95,10 +96,13 @@ function PaymentCreditCard(props) {
         if (cardNumber.length < 19) {
             setValidation('Cartão inválido.')
             setFlag('INVÁLIDO')
+            props.func(card);
         } else if (flag == 'INVÁLIDO') {
             setValidation('No momento só aceitamos as bandeiras MasterCard e Visa.')
+            props.func(card);
         } else {
             setValidation('')
+            props.func(card);
         }
     }
 
@@ -106,44 +110,62 @@ function PaymentCreditCard(props) {
         const mounth = dtCard.substring(0, 2)
         const year = dtCard.substring(3)
         var date = new Date()
-        var currentMounth  = String(date.getMonth() + 1).padStart(2, '0');
+        var currentMounth = String(date.getMonth() + 1).padStart(2, '0');
         var currentYear = date.getFullYear();
 
-        if (dtCard.length < 7){
+        if (dtCard.length < 7) {
             setValidation('A data de vencimento está num formato inválido (Tente esse formato: MM/AAAA)')
-        }else if (mounth < currentMounth && year <= currentYear){
+            props.func(card);
+        } else if (year < currentYear) {
             setValidation('Data de vencimento inválida')
-            console.log(year)
-        }else if (mounth > 12 || mounth < 1){
+            props.func(card);
+        } else if (mounth < currentMounth) {
+            if (year > currentYear) {
+                setValidation('')
+                props.func(card);
+            } else {
+                setValidation('Data de vencimento inválida')
+                props.func(card);
+            }
+        } else if (mounth > 12 || mounth < 1) {
             setValidation('Data de vencimento inválida')
-        }else if (year > currentYear+5){
+            props.func(card);
+        } else if (year > currentYear + 5) {
             setValidation('Data de vencimento inválida')
-        }else{
+            props.func(card);
+        } else {
             setValidation('')
+            props.func(card);
         }
     }
 
     const validateCvv = () => {
-        if (cvv.length < 3){
+        if (cvv.length < 3) {
             setValidation('CVV inválido')
-        }else {
+            props.func(card);
+        } else {
             setValidation('')
+            props.func(card);
         }
     }
 
     const validateCpf = () => {
-        if (cpf.length < 14){
+        if (cpf.length < 14) {
             setValidation('cpf inválido')
-        }else {
+            props.func(card);
+        } else {
             setValidation('')
+            props.func(card);
         }
     }
 
     const validateInstallments = () => {
-        if (installments == 0){
+        if (installments == 0) {
             setValidation('Selecione uma forma de parcelamento')
-        }else {
+            props.func(card);
+        } else if (installments != 0) {
             setValidation('')
+            props.func(card);
         }
     }
 
@@ -156,25 +178,31 @@ function PaymentCreditCard(props) {
 
             <Row>
                 <Form.Label className="mt-3"> Nome do titular </Form.Label>
-                <Form.Control className="box-payment" type="text" name="name" value={name} onBlur={() => validateName()} onChange={(event) => {
-                    setName(maskOnlyLetters(event.target.value));
-                    props.func(card);
-                }}
+                <Form.Control className="box-payment" type="text" name="name" value={name} onBlur={() => validateName()}
+                    onChange={(event) => {
+                        setName(maskOnlyLetters(event.target.value));
+                        props.func(card);
+                    }}
                     placeholder="Digite seu nome" />
             </Row>
 
             <Row className="px-0 payment-span">
                 <Col md={7} className='mx-1 p-0'>
                     <Form.Label className="mt-3"> Número do cartão </Form.Label>
-                    <Form.Control type="text" name="number" placeholder="Digite o número do cartão" value={cardNumber} onBlur={() => validateCard()} onChange={(event) => {
-                        setCardNumber(maskCard(event.target.value));
-                        changeFlag(cardNumber)
-                        props.func(card);
-                    }} />
+                    <Form.Control type="text" name="number" placeholder="Digite o número do cartão" value={cardNumber} onBlur={() => validateCard()}
+                        onChange={(event) => {
+                            setCardNumber(maskCard(event.target.value));
+                            changeFlag(cardNumber)
+                            props.func(card);
+                        }} />
                 </Col>
                 <Col md={4} className='px-0 mx-0'>
                     <Form.Label className="mt-3 px-2"> Bandeira </Form.Label>
-                    <Form.Control className='box-disabled' disabled type="text" name="number" value={flag} onChange={(event) => { setFlag(event.target.value); props.func(card) }} />
+                    <Form.Control className='box-disabled' disabled type="text" name="number" value={flag}
+                        onChange={(event) => {
+                            setFlag(event.target.value);
+                            props.func(card);
+                        }} />
                 </Col>
 
             </Row>
@@ -182,23 +210,39 @@ function PaymentCreditCard(props) {
             <Row className="px-0 payment-span">
                 <Col className="mx-0 px-0 col-7">
                     <Form.Label className="px-2 mt-3"> Validade(MM/AAAA) </Form.Label>
-                    <Form.Control type="text" name="validade" placeholder='MM/AAAA' value={dtCard} onBlur={() => validateDate()} onChange={(event) => { setDtCard(maskDate(event.target.value)); props.func(card) }} />
+                    <Form.Control type="text" name="validade" placeholder='MM/AAAA' value={dtCard} onBlur={() => validateDate()}
+                        onChange={(event) => {
+                            setDtCard(maskDate(event.target.value));
+                            props.func(card);
+                        }} />
                 </Col>
 
                 <Col className="col-4">
                     <Form.Label className="mt-3"> CVV </Form.Label>
-                    <Form.Control type="text" name="cvv" placeholder="Digite o CVV" value={cvv} onBlur={() => validateCvv()} onChange={(event) => { setCvv(maskCVV(event.target.value)); props.func(card) }} />
+                    <Form.Control type="text" name="cvv" placeholder="Digite o CVV" value={cvv} onBlur={() => validateCvv()}
+                        onChange={(event) => {
+                            setCvv(maskCVV(event.target.value));
+                            props.func(card);
+                        }} />
                 </Col>
             </Row>
 
             <Row>
                 <Form.Label className="mt-3"> CPF do titular </Form.Label>
-                <Form.Control type="text" name="cpf" placeholder="Digite o CPF" value={cpf} onBlur={() => validateCpf()} onChange={(event) => { setCpf(maskCPF(event.target.value)); props.func(card) }} />
+                <Form.Control type="text" name="cpf" placeholder="Digite o CPF" value={cpf} onBlur={() => validateCpf()}
+                    onChange={(event) => {
+                        setCpf(maskCPF(event.target.value));
+                        props.func(card);
+                    }} />
             </Row>
 
             <Row className="px-0 payment-form">
                 <Form.Label className="mt-3"> Parcelas </Form.Label>
-                <Form.Select aria-label="parcelas" onBlur={() => validateInstallments()} onChange={(event) => {changeInstallments(event.target.value); props.func(card) }}>
+                <Form.Select aria-label="parcelas" onBlur={() => validateInstallments()}
+                    onChange={(event) => {
+                        changeInstallments(event.target.value);
+                        props.func(card);
+                    }}>
                     <option value="0">Selecione as parcelas</option>
                     <option value="1">1 x de R$ {(totalValue)} sem juros</option>
                     <option value="2">2 x de R$ {(totalValue / 2).toFixed(2).replace(".", ",")} sem juros</option>

@@ -20,9 +20,16 @@ function Header(props) {
     const URL = "http://localhost:8080/cliente/token/"
     const token = localStorage.getItem("Authorization")
     const [client, setClient] = useState({})
-
+    const [numberCart, setNumberCart] = useState('')
 
     useEffect((() => {
+
+        if (localStorage.getItem("cart")){
+            const number = (JSON.parse(localStorage.getItem("cart")).length)
+            setNumberCart(number)
+            console.log(numberCart)
+        }
+
         if (localStorage.getItem("Authorization")) {
             const tokenToSearch = token.replace("Bearer ", "")
             getClient(tokenToSearch)
@@ -62,9 +69,19 @@ function Header(props) {
         }
     }
 
+    const loadCartNumber = () => {
+        const number = (JSON.parse(localStorage.getItem("cart")).length)
+        if (number == 0){
+            return <></>
+        }else{
+            return number
+        }
+    }
+
     const btnCart = () => {
         return (
         <Nav.Link href="/cart" className="link-header items-nav">
+            {loadCartNumber()}
             <img src={Car} width="30" height="30" />
             Carrinho
         </Nav.Link>
