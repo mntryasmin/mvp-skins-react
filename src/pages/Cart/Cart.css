@@ -10,10 +10,6 @@
     color: #EFEFEF
 }
 
-.cart-values{
-    border-right: 1px solid white;
-}
-
 .cart-banner {
     background-image: url(/src/assets/images/banners/sidebar-banner.jpg);
     background-repeat: no-repeat;
@@ -52,10 +48,6 @@
     justify-content: space-between;
 }
 
-.loginmodal-btn-cart{
-    justify-content: end;
-}
-
 /* MEDIAS QUERIES */
 
 /* XS */
@@ -63,21 +55,12 @@
     .cart-banner{
         display: none;
     }
-
-    .cart-values{
-        border-right: none;
-        border-bottom: 1px solid white;
-    }
 }
 
 /* SM */
 @media (min-width: 540px) and (max-width: 767.98px) {
     .cart-banner{
         display: none;
-    }
-    .cart-values{
-        border-right: none;
-        border-bottom: 1px solid white;
     }
 }
 

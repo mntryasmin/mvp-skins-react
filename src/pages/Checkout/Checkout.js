@@ -149,17 +149,17 @@ function Checkout(props) {
                             <Row className="p-2 mt-3 checkout-price-container">
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
-                                    <p> R$ {(grossValue / 1).toFixed(2).replace(".", ",")}</p>
+                                    <p> R$ {order.valorBruto}</p>
                                 </Row>
 
                                 <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
-                                    <p> R$ {(discountValue/ 1).toFixed(2).replace(".", ",")}</p>
+                                    <p> -</p>
                                 </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
-                                    <p> {totalValue.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                                    <p> R$ {order.valorBruto}</p>
                                 </Row>
                             </Row>
                         </Container>
@@ -198,7 +198,7 @@ function Checkout(props) {
                         {validationOfTerms}
                     </div>
 
-                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" onclick={() => postOrder(card)}></Button>
+                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" onclick={() => postOrder()}></Button>
                 </Col>
             </Container>
         </>

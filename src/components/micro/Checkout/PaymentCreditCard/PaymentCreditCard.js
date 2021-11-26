@@ -19,7 +19,6 @@ function PaymentCreditCard(props) {
     const [dtCard, setDtCard] = useState('')
     const [flag, setFlag] = useState('')
     const [validation, setValidation] = useState('')
-
     const totalValue = props.vlTotal
 
     const card = {
