@@ -19,6 +19,11 @@
     border-radius: 10px;
 }
 
+.box-disabled{
+    background-color: grey !important;
+    color: white !important;
+}
+
 .payment-span {
     display: flex;
     justify-content: space-between;

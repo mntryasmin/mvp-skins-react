@@ -14,7 +14,7 @@ function Menu() {
 
     const LinkDash = () => {
         if(localStorage.getItem("Authorization")){
-            return <Link to='/dashboard'
+            return <Link to='/myaccount'
                 className='btn-mvp btn-mvp-orange-clean seus-dados-sidebar'>
                 Seus dados
                 </Link>
@@ -36,7 +36,7 @@ function Menu() {
                 
                 <Offcanvas.Body className="sidebar-menu-body">
                     <ListGroup variant="flush">
-                        <Categories />
+                        <Categories/>
                         <div className="py-3 button-login-sidebar">
                         {LinkDash()}
                         </div>
