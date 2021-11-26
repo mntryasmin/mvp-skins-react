@@ -52,7 +52,7 @@ function Header(props) {
                     <div className='welcome my-2 col-12'>
                         Olá, {client.nomeCliente}. Seja bem-vindo!
                     </div>
-                    <Button navigation route='/dashboard' class='btn-mvp-orange-clean' label='MINHA ÁREA' />
+                    <Button navigation route='/myaccount' class='btn-mvp-orange-clean' label='MINHA ÁREA' />
                 </>
             )
         } else {
