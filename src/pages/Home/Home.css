@@ -1,6 +1,9 @@
 .home {
+    display: flex;
+    flex-direction: column;
     background-color: #28004f !important;
     padding: 0 !important;
+    justify-content: center !important;
 }
 
 .title-banner, .title-carousel {
@@ -10,11 +13,6 @@
 .row-banner{
     max-width: 100%;
     margin: 0 !important;
-}
-
-.home-carousel {
-    display: flex;
-    flex-direction: column;
 }
 
 /* MEDIAS QUERIES */

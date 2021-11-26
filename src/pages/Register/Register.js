@@ -179,7 +179,7 @@ function Register(props) {
 
     return (
         <>
-            <div className="registration-container">
+            <div className="registration-container content-container">
                 <Col className="registration-banner col-2">
 
                 </Col>

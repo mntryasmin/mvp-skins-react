@@ -3,7 +3,7 @@
 * {
     box-sizing: border-box !important;
     font-size: .9rem;
-    font-family: 'Saira', sans-serif
+    font-family: 'Saira', sans-serif;
 }
 
 textarea, input, select {

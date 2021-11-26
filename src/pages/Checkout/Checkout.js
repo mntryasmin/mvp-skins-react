@@ -2,8 +2,6 @@
 import React, { useState, useEffect, Modal } from 'react'
 import axios from 'axios'
 import { Container, Col, Row, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-
 
 // ESTILO
 import './../../assets/css/Style.css'
@@ -20,6 +18,7 @@ function Checkout(props) {
     const [card, setCard] = useState({})
     const [termAcepted, setTermAcepted] = useState(false)
     const [validationOfTerms, setValidationOfTerms] = useState('')
+    const [classTerm, setClassTerm] = useState('')
 
 
     const [order, setOrder] = useState({});
@@ -53,15 +52,17 @@ function Checkout(props) {
                         window.location.replace('http://localhost:3000/success')
                         setValidation('CVV inválido, veja se a digitação está correta')
 
-                })
-                .catch((error) => {
-                    console.log("Ocorreu um erro :" + error)
-                })
+                    })
+                    .catch((error) => {
+                        console.log("Ocorreu um erro :" + error)
+                    })
             } else {
                 setValidation('Cartão inválido!')
+                setClassTerm('validation-term p-2')
             }
         } else {
             setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
+            setClassTerm('validation-term p-2')
         }
 
     }
@@ -189,16 +190,17 @@ function Checkout(props) {
                                     } else {
                                         setTermAcepted(true)
                                         setValidationOfTerms('')
+                                        setClassTerm('')
                                     }
 
                                 }} />
                         </Form.Group>
                     </Form>
-                    <div className='validation-card'>
+                    <div className={classTerm}>
                         {validationOfTerms}
                     </div>
 
-                    <Button label="Finalizar a compra" route="/success" class="btn-primary-mvp" onclick={() => postOrder()}></Button>
+                    <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
                 </Col>
             </Container>
         </>

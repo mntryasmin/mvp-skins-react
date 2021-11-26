@@ -12,11 +12,12 @@
 }
 
 .order-num{
-    font-size: 20px !important;
-    color: white;
-    font-weight: bold;
     background-color: #28004f;
-    border-radius: 8px;
+    color: #EFEFEF;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: .1vw;
 }
 
 .sucess-button {
