@@ -14,44 +14,7 @@ function Comp(props) {
                 </div>
                 <Form>
                     <ListGroup variant="flush" className='filter-list'>
-                        <ListGroup.Item >PREÇOS</ListGroup.Item>
-                        <Form.Check
-                            type="radio"
-                            label="Todos"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios1"
-                            className='check-box'
-                        />
-                        <Form.Check
-                            type="radio"
-                            label="De R$100,00 à R$200,00"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios2"
-                            className='check-box'
-                        />
-                        <Form.Check
-                            type="radio"
-                            label="De R$200,00 à R$300,00"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios3"
-                            className='check-box'
-                        />
-                        <Form.Check
-                            type="radio"
-                            label="De R$300,00 à R$400,00"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios4"
-                            className='check-box'
-                        />
-                        <Form.Check
-                            type="radio"
-                            label="De R$400,00 à R$500,00"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios5"
-                            className='check-box'
-                        />
-                        <br />
-                        <ListGroup.Item>EXTERIOR</ListGroup.Item>
+                        <ListGroup.Item className="categoryfilter-item">EXTERIOR</ListGroup.Item>
                         <Form.Check
                             type="radio"
                             label="Nova de Fábrica (Factory New)"
@@ -93,7 +56,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'exterior=5'}}
                         />
                         <br />
-                        <ListGroup.Item>RARIDADE</ListGroup.Item>
+                        <ListGroup.Item className="categoryfilter-item">RARIDADE</ListGroup.Item>
                         <Form.Check
                             type="radio"
                             label="Azul"

@@ -13,14 +13,31 @@
     margin-bottom: 10px !important;
 }
 
+.check-box:hover{
+    font-weight: 600;
+    color:#FD4712;
+
+}
+
 .form-check-input:checked{
     background-color: #FD4712 !important;
 }
 
 .form-check-input{
     background-color: #28004f !important;
+    display: none;
 }
 
 .filter-list{
     margin-top: 20px;
+}
+
+.categoryfilter-item{
+    margin-bottom: 10px;
+}
+
+@media (max-width: 992px){
+    .filter-column{
+        display: none;
+    }
 }

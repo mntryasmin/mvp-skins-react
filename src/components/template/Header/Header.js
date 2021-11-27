@@ -137,6 +137,10 @@ function Header(props) {
                     </Col>
                     <Col md={11} xs={11}>
                         <Nav>
+                            <Nav.Link href="/category/0" className="link-header items-nav items-nav-all col-2">
+                                TODAS AS SKINS
+                            </Nav.Link>
+
                             <Nav.Link href="/category/1" className="link-header items-nav col-2">
                                 <img src={Arma} width="30" height="30" />
                                 Armas
@@ -157,8 +161,8 @@ function Header(props) {
                                 Agentes
                             </Nav.Link>
 
-                            <Col md={4} xs={6} className="favor-cart-header px-3">
-                                {btnFavorites()}
+                            <Col md={2} xs={6} className="favor-cart-header px-3">
+                                {/* {btnFavorites()} */}
                                 {btnCart()}
                             </Col>
                         </Nav>
