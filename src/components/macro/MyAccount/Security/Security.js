@@ -1,15 +1,16 @@
 // REACT
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Container, Form, Button } from 'react-bootstrap'
+import { Container, Form } from 'react-bootstrap'
 import ReactDOM from "react-dom";
 
 // ESTILO
 import '../../../../assets/css/Style.css'
 import './Security.css'
+import swal from 'sweetalert';
 
 // COMPONENTES
-// import Button from '../../../micro/Button/Button'
+import Button from '../../../micro/Button/Button'
 
 export default class Security extends Component {
     constructor(props) {
@@ -133,7 +134,14 @@ export default class Security extends Component {
         return (
             axios.put(`http://localhost:8080/cliente/${this.state.client.codigoCliente}`, this.state.update)
                 .then((response) => {
-                    alert("Senha alterada com sucesso!");
+                    swal({
+                        title: "Senha alterada com sucesso!",
+                        button: {
+                            text: "Ok",
+                            closeModal: false,
+                        },
+                        showCloseButton: true,
+                      });
                     this.validInput = false;
                     this.validPass = false;
                 })
@@ -159,21 +167,21 @@ export default class Security extends Component {
                         <Form.Group lg={6} xl={6} className="security-form-org ">
                             <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
                             <Form.Control value={this.state.oldPassword} onChange={this.handleChangeOP} className="py-2" type="" name="oldPassword" />
-                            <p> {this.state.messageInput1} </p>
+                            <p className="error-message-security"> {this.state.messageInput1} </p>
                         </Form.Group>
 
                         <Form.Group lg={6} xl={6} className="security-form-org ">
                             <Form.Label className="py-2">Digite a senha nova</Form.Label>
                             <Form.Control value={this.state.newPassword} onChange={this.handleChangeNP} className="py-2" type="" name="newPassword" />
-                            <p> {this.state.messageInput2}</p>
+                            <p className="error-message-security"> {this.state.messageInput2}</p>
 
                             <Form.Label className="py-2">Repita a senha nova</Form.Label>
                             <Form.Control value={this.state.newPasswordConfirm} onChange={this.handleChangeNPC} className="py-2" type="" name="newPasswordConfirm" />
-                            <p> {this.state.messageInput3}</p>
+                            <p className="error-message-security"> {this.state.messageInput3}</p>
                         </Form.Group>
 
                         <Form.Group className="button-save">
-                            <Button onClick={this.handleSubmit} type="submit" className="btn btn-mvp btn-primario-mvp">Salvar</Button>
+                            <Button onclick={this.handleSubmit} class="btn-mvp btn-mvp-orange-clean" label="Salvar"/>
                         </Form.Group>
                     </Form>
                 </Container>

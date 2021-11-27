@@ -49,14 +49,14 @@ function Checkout(props) {
                         sendOrderItems(orderItems, response.data)
 
                         window.location.replace('http://localhost:3000/success')
-                        setValidation('CVV inválido, veja se a digitação está correta')
+                        setValidationOfTerms('CVV inválido, veja se a digitação está correta')
 
                     })
                     .catch((error) => {
                         console.log("Ocorreu um erro :" + error)
                     })
             } else {
-                setValidation('Há algo de errado com cartão, cheque se está tudo preenchido corretamente!')
+                setValidationOfTerms('Há algo de errado com cartão, cheque se está tudo preenchido corretamente!')
                 setClassTerm('validation-term p-2')
             }
         } else {
