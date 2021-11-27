@@ -7,6 +7,8 @@ import Title from '../../components/micro/Title/Title'
 import Button from '../../components/micro/Button/Button'
 import axios from 'axios'
 import { useParams } from 'react-router'
+import swal from 'sweetalert';
+
 
 function ResetPassword(props) {
 
@@ -28,11 +30,23 @@ function ResetPassword(props) {
     //Valida se as senhas inseridas são iguais
     function validateForm() {
         if (newPassword.senha == '') {
-            alert("SENHA INVÁLIDA")
+            swal({
+                title: "Senha inválida!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (newPassword.senha != confirmPassword) {
-            alert("AS SENHAS DEVEM SER IGUAIS")
+            swal({
+                title: "As senhas devem ser iguais!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         return true;
@@ -43,7 +57,13 @@ function ResetPassword(props) {
         if(validateForm()){
             axios.post(`http://localhost:8080/cliente/mudar-senha?token=${token}`, newPassword)
             .then((response)=>{
-                alert("Senha alterada com sucesso")
+                swal({
+                    title: "Senha alterada com sucesso!",
+                    button: {
+                        text: "Ok",
+                        closeModal: true,
+                    },
+                  });
                 window.location.href='http://localhost:3000/'
             })
             .catch((error)=>{
@@ -71,7 +91,7 @@ function ResetPassword(props) {
                     </Row>
                     <Row className="justify-content-center">
                         <Col sm={10} lg={6} className="resetpassword-box-input">
-                            <Button class='btn-primary-mvp mt-5 p-2' label='salvar' onclick={(event)=>submitPassword(event)}/>
+                            <Button class='btn-mvp btn-mvp-orange-clean mt-5 p-2' label='salvar' onclick={(event)=>submitPassword(event)}/>
                         </Col>
                     </Row>
                 </Form>

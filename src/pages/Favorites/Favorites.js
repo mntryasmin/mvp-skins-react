@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import './Favorites.css'
 import { Row, Container, Col, Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
 import favorite from '../../assets/images/icones/icon-coracao-produto.png'
-import addCart from '../../assets/images/icones/icon-add-cart.png'
 import Card from '../../components/micro/CardProduct/CardProduct'
 import Title from '../../components/micro/Title/Title'
 import product from '../../assets/images/PRODUTOS/luva-abate.png'
@@ -39,39 +38,35 @@ function Favorites(props) {
 
 
     return (
+        <>
+                <div className="div-favoritos1">
+                    <Col xs={2} md={2} className="mb-1"></Col>
+                    <Title title="SKINS FAVORITAS" />
+                    <Row className="justify-content-center"></Row>
+                </div>
 
-        <React.Fragment>
+                <div className="py-3 px-3 mb-0 fav container-fluid d-flex">
 
-            <div className="div-favoritos1">
-                <Col xs={2} md={2} className="mb-1"></Col>
-                <Title title="SKINS FAVORITAS" />
-                <Row className="justify-content-center"></Row>
-            </div>
-
-            <div className="py-3 px-3 mb-0 fav container-fluid d-flex">
-
-                <Row className="fav-row">
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    
-                                    
-                </Row>
-
-                <Row className="fav-row">
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                </Row>
-
-            </div>
+                    <Row className="fav-row">
+                        <Card />
+                        <Card />
+                        <Card />
+                        <Card />
+                        <Card />
 
 
-        </React.Fragment >
+                    </Row>
+
+                    <Row className="fav-row">
+                        <Card />
+                        <Card />
+                        <Card />
+                        <Card />
+                        <Card />
+                    </Row>
+
+                </div>
+        </ >
     )
 }
 export default Favorites

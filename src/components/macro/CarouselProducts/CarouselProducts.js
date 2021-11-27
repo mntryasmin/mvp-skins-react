@@ -23,29 +23,21 @@ export default function CarouselProducts(props) {
                     <Card idProduct={products[2].id}/>
                     <Card idProduct={products[3].id}/>
                     <Card idProduct={products[4].id}/>
+                    <Card idProduct={products[5].id}/>
                 </div>
             </Carousel.Item>:
             <></>}
             {products.length>=10?<Carousel.Item>
                 <div  className="carousel-cards">
-                    <Card idProduct={products[5].id}/>
                     <Card idProduct={products[6].id}/>
                     <Card idProduct={products[7].id}/>
                     <Card idProduct={products[8].id}/>
                     <Card idProduct={products[9].id}/>
+                    <Card idProduct={products[3].id}/>
+                    <Card idProduct={products[6].id}/>
                 </div>
             </Carousel.Item>:
             <></>}
-            
-            {/* <Carousel.Item>
-            <div  className="carousel-cards">
-                    <Card idProduct={products[10].id}/>
-                    <Card idProduct={products[11].id}/>
-                    <Card idProduct={products[12].id}/>
-                    <Card idProduct={products[13].id}/>
-                    <Card idProduct={products[14].id}/>
-                </div>
-            </Carousel.Item> */}
         </Carousel>
     );
 }

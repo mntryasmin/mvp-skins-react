@@ -8,6 +8,7 @@ import Title from '../../components/micro/Title/Title'
 import { Link } from 'react-router-dom';
 import If from '../../components/micro/If/If';
 import LoginModal from '../../components/micro/LoginModal/LoginModal';
+import swal from 'sweetalert';
 
 function Register(props) {
 
@@ -111,43 +112,104 @@ function Register(props) {
         const age = idade(year, mouth, day)
 
         if (client.nomeCliente == '') {
-            alert("NOME INVÁLIDO")
+            swal({
+                title: "Nome inválido!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (client.emailCliente == '' || !regexEmail.test(client.emailCliente)) {
-            alert("EMAIL INVÁLIDO")
+            swal({
+                title: "Email inválido!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (phoneInt == '' || phoneInt.length < 10) {
-            alert("TELEFONE INVÁLIDO")
+            swal({
+                title: "Telefone inválido!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (client.tradeLink == '') {
-            alert("TRADELINK INVÁLIDO")
+            swal({
+                title: "Tradelink inválido!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (client.genero.codigoGenero == '' || client.genero.codigoGenero == 'Selecione o gênero') {
-            alert("GÊNERO DEVE SER PREENCHIDO")
+            swal({
+                title: "A identidade de gênero deve ser preenchida!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (client.dataNascimento == '') {
-            alert("DATA DE NASCIMENTO INÁLIDA")
+            swal({
+                title: "Data de nascimento inválida!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (client.dataNascimento.length > 10 || client.dataNascimento.length < 10){
-            alert("DATA DE NASCIMENTO ESTÁ EM UM FORMATO INVÁLIDO")
+            
+            swal({
+                title: "A data de nascimento está em um formato inválido!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (age < 18){
-            alert("SÓ É PERMITIDO CADASTRAR-SE CASO SEJA MAIOR DE IDADE")
+            swal({
+                title: "Cadastro permitido apenas para miores de 18 anos!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         if (client.senhaCliente == '') {
-            alert("SENHA INVÁLIDA")
+            swal({
+                title: "Senha inválida!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });          
             return false;
         }
         if (client.senhaCliente != confirmPassword) {
-            alert("AS SENHAS DEVEM SER IGUAIS")
+            swal({
+                title: "As senhas devem ser iguais!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             return false;
         }
         return true;
@@ -166,7 +228,13 @@ function Register(props) {
                 })
             formValidated = true;
             console.log(formValidated)
-            alert("CLIENTE CADASTRADO COM SUCESSO")
+            swal({
+                title: "Cliente cadastrado com sucesso!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
             // return(
             //     <>
             //     <div>
@@ -179,7 +247,7 @@ function Register(props) {
 
     return (
         <>
-            <div className="registration-container">
+            <div className="registration-container content-container">
                 <Col className="registration-banner col-2">
 
                 </Col>

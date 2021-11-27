@@ -11,6 +11,7 @@ import Button from '../../../micro/Button/Button'
 import RegisterForm from '../../Forms/Register/RegisterForm'
 import axios from 'axios'
 import InputMask from "react-input-mask"
+import swal from 'sweetalert';
 
 export default function MyAccount() {
 
@@ -139,7 +140,13 @@ export default function MyAccount() {
         axios.put("http://localhost:8080/cliente/" + client.codigoCliente, clientUpdate)
             .then((response) => {
                 localStorage.setItem("client", JSON.stringify(response.data))
-                alert("Dados Atualizados!");
+                swal({
+                    title: "Dados atualizados com sucesso!",
+                    button: {
+                        text: "Ok",
+                        closeModal: true,
+                    },
+                  });
                 window.location.reload(true)
             }).catch((error) => {
                 console.log(clientUpdate)
@@ -190,7 +197,7 @@ export default function MyAccount() {
                     </Col>
 
                     <Form.Group className="col-12 button">
-                        <Button label="Salvar" onclick={(event) => submit(event)} class="btn-primary-mvp mt-3"></Button>
+                        <Button label="Salvar" onclick={(event) => submit(event)} class="btn-mvp btn-mvp-orange-clean mt-3"></Button>
                     </Form.Group>
                 </Form>
             </Container>

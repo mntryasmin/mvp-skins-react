@@ -1,6 +1,5 @@
 import React from 'react';
 import './ImagesProduct.css'
-import './ImagesProductCard.css'
 
 function Images(props) {
 

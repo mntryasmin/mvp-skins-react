@@ -118,7 +118,7 @@ function Cart(props) {
                                             placeholder="Digite o código"
                                             value={coupon}
                                         />
-                                        <Button label='Aplicar' class="btn-secundary-mvp  mx-2" onclick={(event) => Submit(event)}></Button>
+                                        <Button label='Aplicar' class="btn-mvp btn-mvp-orange-solid mx-2" onclick={(event) => Submit(event)}></Button>
                                     </Container>
                                 </Form>
                                 <p className="response-coupon"> {validation}</p>
@@ -146,7 +146,7 @@ function Cart(props) {
 
                         {localStorage.getItem("Authorization") ?
                             <Button label="Finalizar compra"
-                                class="btn-primary-mvp"
+                                class="btn-mvp btn-mvp-orange-solid"
                                 onclick={() => createOrder()}></Button> :
                             <LoginModal linkCart />
                         }

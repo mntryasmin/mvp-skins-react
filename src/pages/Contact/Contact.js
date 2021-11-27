@@ -23,7 +23,7 @@ function Contact(props) {
                 </Row>
 
                 <Row className="pb-5 contact-container">
-                    <Col xs={12} sm={8} md={4} lg={4} xl={3} className="contact-infos px-5">
+                    <Col xs={12} sm={8} md={4} lg={4} xl={4} className="contact-infos px-4 border-contact">
                         <img className="py-2 contact-icon" src={email} alt="" />
                         <p>E-mail</p>
                         <p className="contact-info-description">Tem alguma dúvida? Mande um e-mail para a nossa equipe!</p>
@@ -31,14 +31,14 @@ function Contact(props) {
 
                     </Col>
 
-                    <Col xs={12} sm={8} md={4} lg={4} xl={3} className="contact-infos px-5">
+                    <Col xs={12} sm={8} md={4} lg={4} xl={4} className="contact-infos px-4 border-contact">
                         <img className="py-2 contact-icon" src={tel} alt="" />
                         <p>WhatsApp</p>
                         <p className="contact-info-description">Você pode nos enviar mensagem a qualquer hora.</p>
                         <a href="#" className="contact-link"><p>(11) 95151-5151</p></a>
                     </Col>
 
-                    <Col xs={12} sm={8} md={4} lg={4} xl={3} className="contact-infos px-5">
+                    <Col xs={12} sm={8} md={4} lg={4} xl={4} className="contact-infos px-4">
                         <img className="py-2 contact-icon" src={discord} alt="" />
                         <p>Discord</p>
                         <p className="contact-info-description">Entre em nosso servidor para ter acesso à mais informações.</p>
