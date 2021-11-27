@@ -3,7 +3,7 @@
 * {
     box-sizing: border-box !important;
     font-size: .9rem;
-    font-family: 'Saira', sans-serif
+    font-family: 'Saira', sans-serif;
 }
 
 textarea, input, select {
@@ -69,4 +69,39 @@ ul {
 a {
     text-decoration: none !important;
 
+}
+
+
+.swal-modal {
+    background-color: #EFEFEF;
+}
+
+.swal-title {
+    color: #28004f;
+    font-weight: 500;
+    font-size: 1.1rem !important;
+    font-family: 'Saira', sans-serif !important;
+    text-transform: uppercase;
+}
+
+.swal-button {
+    height: 6vh;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: .9rem;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 2px solid #28004f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #28004f;
+    color: #EFEFEF !important; 
+}
+
+.swal-button:hover {
+    background-color: transparent !important; 
+    color: #28004f !important;
+    border-color: #28004f !important;
 }

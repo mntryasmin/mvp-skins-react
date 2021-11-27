@@ -1,20 +1,16 @@
-.link-error{
-    text-decoration: none;
-}
-
-.text-error{
-    background-color: black;
-    color: white !important;
-}
-
-.text-error:hover{
-    color: #FD4712 !important;
-}
-
 .background-page{
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .title{
-    color: #FD4712;
+    color: #EFEFEF;
 }
+
+.text-error{
+    color: #EFEFEF !important;
+}
+
+

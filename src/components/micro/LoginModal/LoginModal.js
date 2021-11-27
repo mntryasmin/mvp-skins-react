@@ -34,9 +34,9 @@ function LoginModal(props) {
         if (props.linkFavorite) {
             return (
                 <>
-                    <div className='d-flex align-items-center justify-content-center'>
-                        <Button onclick={handleShow} class='link-header ' label='Favoritos' />
+                    <div className='link-header items-nav nav-link'>
                         <img src={Fav} width="30" height="30" />
+                        <Button onclick={handleShow} class='button-navigation ' label='Favoritos' />
                     </div>
                 </>
             )
@@ -145,7 +145,7 @@ function LoginModal(props) {
                     </Modal.Body>
                     <Modal.Footer className='d-flex justify-content-between'>
                         <Col sm={5} className='d-flex'>
-                            <Button onclick={handleClose} class='btn-secundary-mvp mx-3 layou-button layout-button' label='cancelar' />
+                            <Button onclick={handleClose} class='btn-mvp btn-mvp-orange-clean mx-3' label='cancelar' />
                         </Col>
 
                         <Col sm={6} className='d-flex'>

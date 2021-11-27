@@ -1,3 +1,9 @@
+.pages-container {
+    overflow-x: hidden !important;
+    width: 98.7vw;
+}
+
+
 @media screen and (min-width:768px){
     .content-container{
     min-height: 67vh;

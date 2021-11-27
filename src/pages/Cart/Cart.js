@@ -118,7 +118,7 @@ function Cart(props) {
                                             placeholder="Digite o código"
                                             value={coupon}
                                         />
-                                        <Button label='Aplicar' class="btn-mvp btn-mvp-purple-clean  mx-2" onclick={(event) => Submit(event)}></Button>
+                                        <Button label='Aplicar' class="btn-mvp btn-mvp-orange-solid mx-2" onclick={(event) => Submit(event)}></Button>
                                     </Container>
                                 </Form>
                                 <p className="response-coupon"> {validation}</p>

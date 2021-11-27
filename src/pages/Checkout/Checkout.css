@@ -10,7 +10,6 @@
     border-top: 1px solid #28004f;
 }
 
-
 .checkout-list-items-scroll {
     display: flex;
     align-content: flex-start;
@@ -41,7 +40,7 @@
 .checkout-containers {
     background-color: #766289;
     border-radius: 8px;
-    height: 90vh;
+    /* height: 90vh; */
 }
 
 .checkout-price-container {
@@ -93,6 +92,15 @@
     background-color: #28004f;
     width: 100%;
     opacity: .3 !important;
+}
+
+.validation-term {
+    background-color: #28004f;
+    border: 2px solid #fd4712;
+    color: #EFEFEF;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
 }
 
 /* MEDIAS QUERIES */
