@@ -70,7 +70,9 @@ function Header(props) {
     }
 
     const loadCartNumber = () => {
-        const number = (JSON.parse(localStorage.getItem("cart")).length)
+        const number =  localStorage.getItem("cart")
+                        ?(JSON.parse(localStorage.getItem("cart")).length)
+                        :0
         if (number == 0){
             return <></>
         }else{
@@ -141,9 +143,9 @@ function Header(props) {
                                 TODAS AS SKINS
                             </Nav.Link>
 
-                            <Nav.Link href="/category/1" className="link-header items-nav col-2">
+                            <Nav.Link href="/category/3" className="link-header items-nav col-2">
                                 <img src={Arma} width="30" height="30" />
-                                Armas
+                                Rifles
                             </Nav.Link>
 
                             <Nav.Link href="/category/6" className="link-header items-nav col-2">
