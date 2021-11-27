@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import './Favorites.css'
-import { Row, Container, Col, Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
+import { Row, Container, Col, Breadcrumb, BreadcrumbItem, PopoverBody, Popover } from 'react-bootstrap'
 import favorite from '../../assets/images/icones/icon-coracao-produto.png'
 import addCart from '../../assets/images/icones/icon-add-cart.png'
 import Card from '../../components/micro/CardProduct/CardProduct'
@@ -9,6 +9,8 @@ import Title from '../../components/micro/Title/Title'
 import product from '../../assets/images/PRODUTOS/luva-abate.png'
 import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts'
 import axios from 'axios'
+import Button from '../../components/micro/Button/Button'
+
 
 
 
@@ -28,6 +30,7 @@ function Favorites(props) {
             })
 
     }, []);
+    
     //Funcao para adicionar o produto aos favoritos//
     function addFavorite(productFavorite) {
         let favoriteProductList = localStorage.getItem("favorite") ? JSON.parse(localStorage.getItem("favorite")) : [];
@@ -36,6 +39,13 @@ function Favorites(props) {
         localStorage.setItem("favorite", favoriteProductString)
         window.location.href = 'http://localhost:3000/favorites'
     }
+    
+    const messageAddFavorite = (
+        <Popover id ="popover-basic">
+            <Popover.Body>Item adicionado aos favoritos</Popover.Body>
+        </Popover>
+    )
+
 
 
     return (
