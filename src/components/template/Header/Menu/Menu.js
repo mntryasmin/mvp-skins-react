@@ -37,6 +37,8 @@ function Menu() {
                 <Offcanvas.Body className="sidebar-menu-body">
                     <ListGroup variant="flush">
                         <Categories/>
+                        <a href='/category/0' 
+                        className="link-header px-2">TODAS AS SKINS</a>
                         <div className="py-3 button-login-sidebar">
                         {LinkDash()}
                         </div>

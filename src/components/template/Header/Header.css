@@ -92,6 +92,11 @@
     width: auto;
 }
 
+.items-nav-all{
+    font-size: 18px;
+    font-weight: 700;
+}
+
 .link-header:hover{
     color:#FD4712 !important;
 }

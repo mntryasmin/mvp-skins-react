@@ -52,7 +52,7 @@ function LoginModal(props) {
             // )
             return (
                 <Button label="Finalizar compra"
-                        class="btn-primary-mvp" 
+                        class="btn-mvp btn-mvp-orange-solid" 
                         onclick={handleShow}>
                 </Button>
             )
@@ -67,10 +67,10 @@ function LoginModal(props) {
             return (<Button onclick={handleShow} class='footer-link' label='Login'></Button>)
         }
         if (localStorage.getItem("Authorization")) {
-            return (<Button onclick={Logout} class='btn-primary-mvp layout-btn-login' label='logout'></Button>)
+            return (<Button onclick={Logout} class='btn-mvp btn-mvp-orange-clean layout-btn-login' label='logout'></Button>)
 
         }
-        return (<Button onclick={handleShow} class='btn-primary-mvp layout-btn-login' label='login'></Button>)
+        return (<Button onclick={handleShow} class='btn-mvp btn-mvp-orange-clean layout-btn-login' label='login'></Button>)
 
     }
 
