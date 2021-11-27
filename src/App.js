@@ -13,12 +13,13 @@ function App() {
 
   return (
    <>
+   <div className="pages-container">
     <Router>
     <Header/>
      <Routes/>
      <Footer/>
    </Router>
-   
+   </div>
 </> 
   );
 }

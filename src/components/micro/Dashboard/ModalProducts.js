@@ -1,7 +1,7 @@
 // REACT
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Nav, Col, Button, Container, Modal } from 'react-bootstrap'
+import { Nav, Col} from 'react-bootstrap'
 
 // PÁGINAS/COMPONENTES
 import Image from '../Images/Images'

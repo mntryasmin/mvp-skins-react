@@ -20,6 +20,7 @@ function PaymentCreditCard(props) {
     const [flag, setFlag] = useState('')
     const [validation, setValidation] = useState('')
     const totalValue = props.vlTotal
+    const [classTerm, setClassTerm] = useState('')
 
     const card = {
         name: name,
@@ -31,7 +32,6 @@ function PaymentCreditCard(props) {
         flag: flag,
         validation : validation
     }
-
 
     const maskOnlyLetters = (value) => {
         return value.replace(/[0-9!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
@@ -86,17 +86,21 @@ function PaymentCreditCard(props) {
     const validateName = () => {
         if (name.length < 3) {
             setValidation('Nome inválido.')
-        } else {
+            setClassTerm('validation-term p-2')
+        }else {
             setValidation('')
+            setClassTerm('')
         }
     }
 
     const validateCard = () => {
         if (cardNumber.length < 19) {
             setValidation('Cartão inválido.')
+            setClassTerm('validation-card py-1')
             setFlag('INVÁLIDO')
         } else if (flag == 'INVÁLIDO') {
             setValidation('No momento só aceitamos as bandeiras MasterCard e Visa.')
+            setClassTerm('validation-card py-1')
         } else {
             setValidation('')
         }
@@ -144,13 +148,14 @@ function PaymentCreditCard(props) {
             setValidation('Selecione uma forma de parcelamento')
         }else {
             setValidation('')
+            setClassTerm('')
         }
     }
 
     return (
 
-        <Form className="payment-form p-0 m-0">
-            <div className='validation-card'>
+        <Form className="payment-form">
+            <div className={classTerm}>
                 {validation}
             </div>
 

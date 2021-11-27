@@ -40,7 +40,7 @@ function Footer(props) {
 
                     {/* <!-- metodos de pagamento --> */}
                     <Col className="bandeiras-pagamento-container col-3">
-                        <FooterText text="Métodos de Pagamento" class="div-lg mb-2" />
+                        <FooterText text="Métodos de pagamento" class="div-lg mb-2" />
                         <Row className="bandeiras-pagamento">
                             <img src={Mastercard} alt="ícone do mastercard" className="icon-footer" />
                             <img src={Visa} alt="ícone da visa" className="icon-footer" />

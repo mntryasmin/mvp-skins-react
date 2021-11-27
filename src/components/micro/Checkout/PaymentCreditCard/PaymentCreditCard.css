@@ -12,11 +12,11 @@
 
 .validation-card{
     background-color: #28004f;
-    color: #FD4712;
-    text-transform: uppercase;
-    font-weight: bold;
+    border: 2px solid #fd4712;
+    color: #EFEFEF;
+    border-radius: 6px;
     text-align: center;
-    border-radius: 10px;
+    font-weight: 600;
 }
 
 .box-disabled{

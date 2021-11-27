@@ -7,22 +7,16 @@ function Error() {
 
     return (
         <>
-            <Container fluid className="background-page  content-container">
-                <Container className="d-flex justify-content-center text-center">
-                    <Row>
-                        <h1 className="title">
-                            Houve algum engano...
-                            <br />
-                            Essa página não existe, tente outra URL
-                        </h1>
-                        <img src={Erro} height='490' className='img-error' />
-                        <a href="/" className="link-error">
-                            <h1 className='text-error'>
-                                Retornar para Home
-                            </h1>
-                        </a>
-                    </Row>
-                </Container>
+            <Container fluid className="background-page content-container m-0 p-5">
+                <h1 className="title">
+                    Ops... houve algum engano.
+                    <br />
+                    Essa página não existe. Tente novamente.
+                </h1>
+                <img src={Erro} height='490' className='img-error' />
+                <a href="/" className="btn-mvp btn-mvp-orange-clean mx-5">
+                    Voltar para a home
+                </a>
             </Container>
 
 
