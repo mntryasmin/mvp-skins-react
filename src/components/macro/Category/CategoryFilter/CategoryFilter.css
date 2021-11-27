@@ -25,7 +25,7 @@
 
 .form-check-input{
     background-color: #28004f !important;
-    display: none;
+    /* display: none; */
 }
 
 .filter-list{

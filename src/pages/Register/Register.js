@@ -184,7 +184,7 @@ function Register(props) {
         }
         if (age < 18){
             swal({
-                title: "Cadastro permitido apenas para miores de 18 anos!",
+                title: "Cadastro permitido apenas para maiores de 18 anos!",
                 button: {
                     text: "Ok",
                     closeModal: true,
@@ -221,20 +221,29 @@ function Register(props) {
             axios.post("http://localhost:8080/cliente", client)
                 .then((response) => {
                     console.log(response.data)
-                    window.location.href = 'http://localhost:3000'
+                    swal({
+                        title: "Cliente cadastrado com sucesso!",
+                        button: {
+                            text: "Ok",
+                            closeModal: true,
+                        },
+                      });
+                    setTimeout(()=>{
+                        window.location.href = 'http://localhost:3000'
+                    }, 3000)
                 })
                 .catch((erro) => {
+                    swal({
+                        title: "Email já cadastrado!",
+                        button: {
+                            text: "Ok",
+                            closeModal: true,
+                        },
+                      });
                     console.log("Ocorreu um erro " + erro)
                 })
             formValidated = true;
             console.log(formValidated)
-            swal({
-                title: "Cliente cadastrado com sucesso!",
-                button: {
-                    text: "Ok",
-                    closeModal: true,
-                },
-              });
             // return(
             //     <>
             //     <div>
