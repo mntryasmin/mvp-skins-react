@@ -70,3 +70,17 @@
 .seus-dados-sidebar {
     color: #EFEFEF !important;
 }
+
+.login-modal-buttons {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+}
+
+.login-modal-buttons button {
+    width: 30%;
+    margin: 0 !important;
+    padding: 0;
+}

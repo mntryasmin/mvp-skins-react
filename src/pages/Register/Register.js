@@ -311,7 +311,7 @@ function Register(props) {
                         </Row>
                         <Row className='row-input mx-4'>
                             <Col xs={12} sm={6} className="btn-cancel">
-                                <ButtonCustom navigation route='/' class='btn-mvp-orange-solid layout-btn' label='cancelar' />
+                                <ButtonCustom navigation route='/' class='btn-mvp btn-mvp-orange-solid' label='cancelar' />
                             </Col>
                             <Col xs={12} sm={6} className="btn-submit">
                                 <ButtonCustom class='btn-mvp-orange-clean layout-btn' label='cadastrar' onclick={(event) => submitClient(event)} />

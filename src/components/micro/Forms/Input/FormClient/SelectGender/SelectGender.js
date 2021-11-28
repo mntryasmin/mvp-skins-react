@@ -28,7 +28,7 @@ function SelectGender(props) {
                 <>
                     <Form.Select
                         aria-label="Default select example"
-                        className="box-insert-register d-flex"
+                        className="box-insert-register"
                         onChange={(event) => { setGender(event.target.value) }}
                         value={gender}>
                         <option >Selecione o gênero</option>

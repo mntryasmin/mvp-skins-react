@@ -51,7 +51,7 @@ function LoginForm(props) {
 
     const ButtonLogin = () => {
         return (
-            <Button onclick={props.onclick} class='btn-mvp-orange-clean' label='fazer login' />
+            <Button onclick={props.onclick} class='btn-mvp btn-mvp-orange-clean mx-2' label='fazer login' />
         )
     }
 

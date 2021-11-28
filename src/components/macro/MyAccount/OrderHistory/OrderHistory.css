@@ -26,6 +26,17 @@
     box-shadow: none !important;
 }
 
+.btn-close-produtos-pedidos {
+    position: absolute;
+    padding-right: 35px !important;
+    /* right: 5; */
+}
+
+.request-products-title {
+    display: flex;
+    justify-content: right;
+}
+
 /* .request-button {
     border: 1.3px solid #fd4712 !important;
 } */

@@ -153,7 +153,7 @@ export default class OrderHistory extends Component {
                         </Col>
                     </Nav>
                     <Modal show={this.state.show} onClick={this.hideModal}>
-                        <Nav className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
+                        <Nav className="list-group flex-row request-style request-products-title py-1" defaultActiveKey="/home" as="ul">
 
                             <Col className="col-4" >
                                 <Nav.Item as="li"> Produto </Nav.Item>
@@ -166,6 +166,9 @@ export default class OrderHistory extends Component {
                             <Col className="col-3 requests-resp">
                                 <Nav.Item as="li"> Preço </Nav.Item>
                             </Col>
+
+                            <button type="button" class="btn-close btn-close-produtos-pedidos" aria-label="Close"></button>
+
                         </Nav>
 
                         {this.handleMapProducts(request.id)}

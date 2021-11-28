@@ -34,7 +34,8 @@
 .lupa {
     border: 1px solid #fd49123d;
     border-radius: 0 3px 3px 0;
-    width: 4vw;
+    width: 45px;
+    height: 35px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -48,7 +49,7 @@
 }
 
 .lupa img{
-    height: 5vh;
+    height: 25px;
 }
 
 .button-register {

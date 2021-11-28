@@ -5,6 +5,7 @@
 .box-insert {
     background-color: #EFEFEF !important;
     opacity: 0.8 !important;
+    height: 60px !important;
 }
 
 .box-insert:focus {

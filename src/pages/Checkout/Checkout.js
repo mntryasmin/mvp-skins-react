@@ -203,7 +203,7 @@ function Checkout(props) {
                         {validationOfTerms}
                     </div>
 
-                    <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
+                    <Button label="Finalizar a compra" route="/success" class="mt-3 btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
                 </Col>
             </Container>
         </>
