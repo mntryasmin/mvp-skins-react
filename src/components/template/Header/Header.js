@@ -110,20 +110,20 @@ function Header(props) {
         <>
             <header className="m-0 p-0">
                 {/* PARTE DE CIMA DO HEADER */}
-                <Row className='m-0 p-2 py-3 top-header'>
+                <Row className='m-0 p-3 top-header'>
                     {/* LOGO */}
-                    <Col xs={4} md={2} lg={1} className="logo mx-3">
+                    <Col xs={3} sm={3} md={3} lg={1} xl={1} className="logo mx-0 px-0">
                         <Link to='/home'>
                             <img src={logoClean} alt="MVP" />
                         </Link>
                     </Col>
 
                     {/* BARRA DE PESQUISA */}
-                    <Col xs={8} md={6} lg={6} className="input-box">
+                    <Col xs={8} sm={8} md={8} lg={6} xl={6} className="input-box mx-0 px-0">
                         <SearchForm />
                     </Col>
 
-                    <Col xs={6} md={4} lg={4} className="button-register">
+                    <Col xs={12} sm={12} md={12} lg={3} xl={3} className="button-register mx-0 px-0">
                         {/* BOTÃO DE CADASTRO */}
                         {btnCadastrar()}
                         <LoginModal />
@@ -131,39 +131,39 @@ function Header(props) {
                 </Row>
 
                 {/* NAVBAR */}
-                <Navbar bg="light" variant="light" className='nav-main px-2' >
-                    <Col md={1} xs={1}>
+                <Navbar bg="light" variant="light" className='bottom-header px-2' >
+                    <Col xs={1} sm={1} md={1} lg={1} xl={1}>
                         <Navbar.Brand href="#" className="link-header">
                             <Menu />
                         </Navbar.Brand>
                     </Col>
-                    <Col md={11} xs={11}>
-                        <Nav>
-                            <Nav.Link href="/category/0" className="link-header items-nav items-nav-all col-2">
+                    <Col xs={11} sm={11} md={11} lg={11} xl={11}>
+                        <Nav className="bottom-header-links">
+                            <Nav.Link xs={4} sm={4} md={2} lg={2} xl={2} href="/category/0" className="link-header items-nav items-nav-all">
                                 TODAS AS SKINS
                             </Nav.Link>
 
-                            <Nav.Link href="/category/3" className="link-header items-nav col-2">
+                            <Nav.Link md={2} lg={2} xl={2} href="/category/3" className="link-header link-header-resp items-nav">
                                 <img src={Arma} width="30" height="30" />
                                 Rifles
                             </Nav.Link>
 
-                            <Nav.Link href="/category/6" className="link-header items-nav col-2">
+                            <Nav.Link md={2} lg={2} xl={2} href="/category/6" className="link-header link-header-resp items-nav">
                                 <img src={Faca} width="30" height="30" />
                                 Facas
                             </Nav.Link>
 
-                            <Nav.Link href="/category/7" className="link-header items-nav col-2">
+                            <Nav.Link md={2} lg={2} xl={2} href="/category/7" className="link-header link-header-resp items-nav">
                                 <img src={Luva} width="30" height="30" />
                                 Luvas
                             </Nav.Link>
 
-                            <Nav.Link href="/category/4" className="link-header items-nav col-2">
+                            <Nav.Link md={2} lg={2} xl={2} href="/category/4" className="link-header link-header-resp items-nav">
                                 <img src={Agente} width="30" height="30" />
                                 Agentes
                             </Nav.Link>
 
-                            <Col md={2} xs={6} className="favor-cart-header px-3">
+                            <Col xs={4} sm={4} md={2} lg={2} xl={2} className="favor-cart-header px-3">
                                 {/* {btnFavorites()} */}
                                 {btnCart()}
                             </Col>
