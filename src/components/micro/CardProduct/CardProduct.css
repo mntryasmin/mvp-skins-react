@@ -1,6 +1,6 @@
 .card-link {
-    height: 50vh;
-    width: 13.5vw;
+    height: 300px;
+    width: 170px;
     background-color: #766289 !important;
     color: #EFEFEF;
     border-radius: 8px;
@@ -60,7 +60,7 @@
 }
 
 .card-product {
-    height: 45vh;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .card-price-container {
-    height: 35vh;
+    height: 45px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -92,7 +92,7 @@
 }
 
 .card-description{
-    height: 7vh;
+    height: 45px;
     overflow-y: hidden;
     text-transform: capitalize !important;
     font-weight: 400;
@@ -100,14 +100,14 @@
 }
 
 .card-price {
-    height: 3vh;
+    height: 20px;
     font-weight: 200;
     font-size: 11px;
     text-decoration: line-through;
 }
 
 .card-price-final {
-    height: 3vh;
+    height: 5px;
     font-weight: 500;
     font-size: 15px;
 }
@@ -115,135 +115,33 @@
 /* MEDIAS QUERIES */
 
 /* XS */
-/* @media (max-width: 575.98px) {
-    .card-hover {
-        opacity: 1;
-        display: flex;
-    }
-
-    .card-link:hover .card-hover {
-        box-shadow: none;
-    }
-
-    .card-link .card-line {
-        background-color: transparent;
-        border: 1.3px solid transparent !important;
+@media (max-width: 575.98px) {
+    .card-link {
+        width: 160px !important;
+        height: 300px !important;
     }
 
     .card-image img {
-        width: 250px;
+        height: 100px;
     }
-
-    .card-icon {
-        width: 33px;
-    }
-
-    .card-link, .card-product {
-        width: 125px !important;
-        height: 228px !important;
-    }
-
-    .card-description{
-        font-size: 10.4px;
-    }
-    
-    .card-price {
-        font-size: 8.8px;
-    }
-    
-    .card-price-final {
-        font-size: 13.6px;
-    }
-} */
+}
 
 /* SM */
-/* @media (min-width: 540px) and (max-width: 767.98px) {
-    .card-image img {
-        width: 300px;
-    }
+@media (min-width: 540px) and (max-width: 767.98px) {
 
-    .card-icon {
-        width: 35px;
-    }
-
-    .card-link, .card-product {
-        width: 125px !important;
-        height: 218px !important;
-    }
-
-    .card-description{
-        font-size: 10.4px;
-    }
-    
-    .card-price {
-        font-size: 8.8px;
-    }
-    
-    .card-price-final {
-        font-size: 13.6px;
-    }
-} */
+}
 
 /* MD  */
-/* @media (min-width: 768px) and (max-width: 991.98px) {
-    .card-image img {
-        width: 300px;
-    }
+@media (min-width: 768px) and (max-width: 991.98px) {
 
-    .card-link, .card-product {
-        width: 130px !important;
-        height: 228px !important;
-    }
-
-    .card-description{
-        font-size: 11.4px;
-    }
-    
-    .card-price {
-        font-size: 9.8px;
-    }
-    
-    .card-price-final {
-        font-size: 14.6px;
-    }
-} */
+}
 
 /* LG  */
-/* @media (min-width: 992px) and (max-width: 1199.98px) {
-    .card-link, .card-product {
-        width: 150px !important;
-        height: 248px !important;
-    }
+@media (min-width: 992px) and (max-width: 1199.98px) {
 
-    .card-description{
-        font-size: 11.4px;
-    }
-    
-    .card-price {
-        font-size: 9.8px;
-    }
-    
-    .card-price-final {
-        font-size: 14.6px;
-    }
-} */
+}
 
 /* XL  */
-/* @media (min-width: 1200px) {
-    .card-link, .card-product {
-        width: 155px !important;
-        height: 258px !important;
-    }
+@media (min-width: 1200px) {
 
-    .card-description{
-        font-size: 12.4px;
-    }
-    
-    .card-price {
-        font-size: 10.8px;
-    }
-    
-    .card-price-final {
-        font-size: 14.6px;
-    }
-} */ 
+}
