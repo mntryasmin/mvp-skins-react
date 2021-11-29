@@ -23,7 +23,7 @@ function InputTradeLink(props) {
                 <InputMask 
                 className='box-insert-register py-3'
                 formatChars={formatChars}
-                mask="****************************************************************************************************" 
+                
                 maskChar=""
                 type="text"
                 value={tradeLink}
