@@ -30,6 +30,12 @@ export default function MyAccount(props) {
         }
     };
 
+    useEffect(() => {
+        if (props.sucess){
+            setComponentClick(3)
+        }
+    })
+
     return (
         <>
             <Container fluid className="row m-0 py-5 px-0 dashboard-container content-container">

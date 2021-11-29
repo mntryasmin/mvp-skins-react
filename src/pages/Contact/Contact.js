@@ -29,7 +29,7 @@ function Contact(props) {
                         <img className="py-2 contact-icon" src={email} alt="" />
                         <p>E-mail</p>
                         <p className="contact-info-description">Tem alguma dúvida? Mande um e-mail para a nossa equipe!</p>
-                        <a href="#" className="contact-link"><p>mvpskins@gmail.com</p></a>
+                        <a className="contact-link"><p>mvpskins@gmail.com</p></a>
 
                     </Col>
 
@@ -37,7 +37,7 @@ function Contact(props) {
                         <img className="py-2 contact-icon" src={tel} alt="" />
                         <p>WhatsApp</p>
                         <p className="contact-info-description">Você pode nos enviar mensagem a qualquer hora.</p>
-                        <a href="#" className="contact-link"><p>(11) 95151-5151</p></a>
+                        <a className="contact-link"><p>(11) 95151-5151</p></a>
                     </Col>
 
                     <Col xs={12} sm={8} md={4} lg={4} xl={4} className="contact-infos px-4">

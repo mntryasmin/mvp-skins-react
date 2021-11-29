@@ -265,6 +265,13 @@ function Register(props) {
                     })
                     .catch((error)=>{
                         console.log("Erro ao enviar email "+error)
+                        swal({
+                            title: "Email inválido",
+                            button: {
+                                text: "Ok",
+                                closeModal: true,
+                            },
+                          });
                     })
                 })
                 .catch((erro) => {
