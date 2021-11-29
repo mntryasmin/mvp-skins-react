@@ -149,7 +149,7 @@ export default function MyAccount() {
                   });
                 window.location.reload(true)
             }).catch((error) => {
-                console.log(clientUpdate)
+                setValidation('Esse e-mail já existe no nosso sistema, tente um diferente')
                 console.log('deu ruim' + error)
             })
     }

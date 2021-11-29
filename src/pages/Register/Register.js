@@ -30,7 +30,6 @@ function Register(props) {
 
     function setPasswordConfirmation(passwordConfirmation) {
         confirmPassword = passwordConfirmation;
-        console.log(confirmPassword)
     }
 
     function createClient(input, description) {
@@ -182,9 +181,30 @@ function Register(props) {
               });
             return false;
         }
+        if (age == 0){
+            swal({
+                title: "Data de nascimento inválida",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
+            return false;
+        }
         if (age < 18){
+           
             swal({
                 title: "Cadastro permitido apenas para maiores de 18 anos!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });
+            return false;
+        }
+        if (age >= 100){
+            swal({
+                title: "data de nascimento inválida",
                 button: {
                     text: "Ok",
                     closeModal: true,
@@ -195,6 +215,16 @@ function Register(props) {
         if (client.senhaCliente == '') {
             swal({
                 title: "Senha inválida!",
+                button: {
+                    text: "Ok",
+                    closeModal: true,
+                },
+              });          
+            return false;
+        }
+        if (client.senhaCliente.length < 6) {
+            swal({
+                title: "A senha deve possuir ao menos 6 caracteres",
                 button: {
                     text: "Ok",
                     closeModal: true,

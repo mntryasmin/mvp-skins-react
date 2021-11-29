@@ -85,7 +85,10 @@ function Header(props) {
         <Nav.Link href="/cart" className="link-header items-nav">
             {loadCartNumber()}
             <img src={Car} width="30" height="30" />
+            
+
             Carrinho
+            
         </Nav.Link>
         )
     }

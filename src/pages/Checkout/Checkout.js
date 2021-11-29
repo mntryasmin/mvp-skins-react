@@ -93,22 +93,88 @@ function Checkout(props) {
         return true;
     }
 
+    const validateName = () => {
+        if (card.name.length < 3) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    const validateCard = () => {
+        if (card.cardNumber.length < 19) {
+            return false
+        } else if (card.flag == 'INVÁLIDO' || card.flag == '') {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    const validateDate = () => {
+        const mounth = card.dtCard.substring(0, 2)
+        const year = card.dtCard.substring(3)
+        var date = new Date()
+        var currentMounth = String(date.getMonth() + 1).padStart(2, '0');
+        var currentYear = date.getFullYear();
+
+        if (card.dtCard.length < 7) {
+            return false
+        } else if (year < currentYear) {
+            return false
+        } else if (mounth < currentMounth) {
+            if (year > currentYear) {
+                return true
+            } else {
+                return false
+            }
+        } else if (mounth > 12 || mounth < 1) {
+            return false
+        } else if (year > currentYear + 5) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    const validateCvv = () => {
+        if (card.cvv.length < 3) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    const validateCpf = () => {
+        if (card.cpf.length < 14) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    const validateInstallments = () => {
+        if (card.installments == 0) {
+            return false
+        } else if (card.installments != 0) {
+            return true
+        }
+    }
+
     const ValideCard = (card) => {
         
         if (!isEmpty(card)){
-            if (card.name.length < 3) {
+            if (!validateName()) {
                 return false
-            } else if (card.cardNumber.length < 19) {
+            } else if (!validateCard()) {
                 return false
-            } else if (card.cvv.length < 3) {
+            } else if (!validateDate()) {
                 return false
-            } else if (card.cpf.length < 14) {
+            }else if (!validateCvv()) {
                 return false
-            } else if (card.installments == 0) {
+            } else if (!validateCpf()) {
                 return false
-            } else if (card.dtCard < 7) {
-                return false
-            } else if (card.flag == '' || card.flag == 'INVÁLIDO') {
+            } else if (!validateInstallments()) {
                 return false
             } else {
                 return true

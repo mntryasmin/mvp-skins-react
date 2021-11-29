@@ -106,6 +106,8 @@ function LoginModal(props) {
                 }else {
                     setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
                 }
+            }).catch((error) => {
+                setValidation("Algo deu errado, confira se você digitou o e-mail e senha corretamente")
             })
     }
 
