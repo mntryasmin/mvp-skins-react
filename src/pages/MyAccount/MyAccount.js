@@ -21,7 +21,7 @@ export default function MyAccount(props) {
     const [componentClick, setComponentClick] = useState('');
 
     function rendMyAccount()  {
-        if (componentClick == 1) {
+        if (componentClick == 1 || componentClick == '') {
             return (<MyAccountData />);
         } else if (componentClick == 2) {
             return (<Security />);

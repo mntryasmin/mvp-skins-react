@@ -137,6 +137,8 @@ function Checkout(props) {
     const totalValue = (grossValue - discountValue)
 
     return (
+        document.title = `SKINS CS:GO | Pagamento`,
+        
         <>
             <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
                 <h1 className="mb-3 card-title-mvp checkout-title"> Checkout </h1>

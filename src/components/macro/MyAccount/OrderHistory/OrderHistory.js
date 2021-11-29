@@ -185,6 +185,8 @@ export default class OrderHistory extends Component {
 
     render() {
         return (
+        document.title = `SKINS CS:GO | Histórico de compras`,
+
             <>
                 < h1 className="mb-4 card-title-mvp" > Histórico de compras</h1 >
                 <Container className="mx-0 pb-5">

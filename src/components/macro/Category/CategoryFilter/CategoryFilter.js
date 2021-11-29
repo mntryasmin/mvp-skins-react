@@ -15,7 +15,7 @@ function Comp(props) {
                     <ListGroup variant="flush" className='py-3'>
                         <ListGroup.Item className="categoryfilter-item mx-0 my-2">EXTERIOR</ListGroup.Item>
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Nova de Fábrica &emsp; &emsp; (Factory New)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios7"
@@ -23,7 +23,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'exterior=1'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Pouco Usada &emsp; &emsp; &emsp; &emsp; (Minimal Wear)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios8"
@@ -31,7 +31,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'exterior=2'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Testada em Campo &emsp; &emsp; (Field-Tested)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios9"
@@ -39,7 +39,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'exterior=3'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Bem Desgastada &emsp; &emsp; &emsp; &emsp; (Well-Worn)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios10"
@@ -47,7 +47,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'exterior=4'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Veterana de Guerra &emsp; &emsp; (Batle-Scarred)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios11"
@@ -57,7 +57,7 @@ function Comp(props) {
                         <br />
                         <ListGroup.Item className="categoryfilter-item mx-0 my-2">RARIDADE</ListGroup.Item>
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Azul"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios13"
@@ -65,7 +65,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'rarity=1'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Roxo"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios14"
@@ -73,7 +73,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'rarity=2'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Pink"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios15"
@@ -81,7 +81,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'rarity=3'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Vermelho"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios16"
@@ -89,7 +89,7 @@ function Comp(props) {
                             onClick={()=>{window.location.href=url+'rarity=4'}}
                         />
                         <Form.Check
-                            type="hidden"
+                            type="radio"
                             label="Faca/Luva"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios17"

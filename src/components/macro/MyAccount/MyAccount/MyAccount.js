@@ -155,6 +155,8 @@ export default function MyAccount() {
     }
 
     return (
+        document.title = `SKINS CS:GO | Minha conta`,
+
         <>
             <Container className="my-account pt-1">
                 <h1 className="card-title-mvp">Minha conta</h1>
