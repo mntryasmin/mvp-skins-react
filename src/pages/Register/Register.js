@@ -102,7 +102,7 @@ function Register(props) {
 
     function validateForm() {
         const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
+        const regexTrade = /(?:https?:\/\/)?steamcommunity\.com\/(?:profiles|id)\/[a-zA-Z0-9]+/
         const phoneInt = replacePhone(client.numeroTelefone)
 
         const year = client.dataNascimento.substr(0,4)
@@ -141,7 +141,7 @@ function Register(props) {
               });
             return false;
         }
-        if (client.tradeLink == '') {
+        if (client.tradeLink == '' || !regexTrade.test(client.tradeLink)) {
             swal({
                 title: "Tradelink inválido!",
                 button: {

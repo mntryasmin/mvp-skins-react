@@ -104,6 +104,7 @@ export default function MyAccount() {
         event.preventDefault()
 
         const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const regexTrade = /(?:https?:\/\/)?steamcommunity\.com\/(?:profiles|id)\/[a-zA-Z0-9]+/
 
         const phoneInt = replacePhone(phone)
         if (name == '') {
@@ -127,6 +128,10 @@ export default function MyAccount() {
         }
         else if (trade == '') {
             setValidation('O campo "Trade Link" deve ser preenchido!')
+        }
+        else if(!regexTrade.test(trade)){
+            console.log(regexTrade)
+            setValidation('Trade Link inválido!')
         }
         else if (idGender == '' ) {
             setValidation('Você deve selecionar um gênero caso queira altera-lo!')
