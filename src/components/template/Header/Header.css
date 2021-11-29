@@ -1,5 +1,7 @@
 .top-header {
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
     align-items: center;
     background-color: #181818;
 }
@@ -10,13 +12,10 @@
     justify-content: center;
 }
 
-.logo img {
-    height: 13vh;
-}
-
 .input-box{
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 7vh;
 }
 
@@ -54,18 +53,10 @@
 
 .button-register {
     display: flex;
-    flex-direction: row;
+    flex-direction: row !important;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-}
-
-.button-login {
-    height: 14vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
 }
 
 .welcome {
@@ -76,21 +67,18 @@
 
 /* --------------------------------------------------- */
 
-.nav-main{
+.bottom-header {
     background-color: #EFEFEF !important;
-    height: 9vh;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .items-nav{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.items-nav img {
-    margin-right: 0.5vw;
-    height: 5vh;
-    width: auto;
 }
 
 .items-nav-all{
@@ -113,49 +101,134 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     .top-header {
-        padding: 2vh 0;
         height: auto;
+        flex-wrap: wrap;
     }
 
     .logo img {
-        width: 75px;
-        height: 66px;
+        width: 80px;
+        height: auto;
     }
 
-    .category{
+    .button-register {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .link-header-resp {
         display: none;
+    }
+
+    .bottom-header-links {
+        justify-content: flex-end;
+    }
+
+    .bottom-header-links img {
+        margin-right: 0.5vw;
+        height: 30px;
+        width: auto;
     }
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 576) and (max-width: 767.98px) {
     .top-header {
-        padding: 2vh 0;
         height: auto;
+        flex-wrap: wrap;
     }
 
     .logo img {
-        width: 75px;
-        height: 66px;
+        width: 90px;
+        height: auto;
     }
 
-    .category{
+    .button-register {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .link-header-resp {
         display: none;
     }
-    
+
+    .bottom-header-links {
+        justify-content: space-around;
+    }
+
+    .bottom-header-links img {
+        margin-right: 0.5vw;
+        height: 30px;
+        width: auto;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 994.98px) { 
-    
+    .top-header {
+        height: auto;
+    }
+
+    .logo img {
+        width: 100px;
+        height: auto;
+    }
+
+    .button-register {
+        flex-wrap: nowrap;
+        justify-content: c;
+    }
+
+    .bottom-header-links {
+        justify-content: space-around;
+    }
+
+    .bottom-header-links img {
+        margin-right: 0.5vw;
+        height: 30px;
+        width: auto;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 1050px) and (max-width: 1199.98px) { 
+@media (min-width: 995px) and (max-width: 1199.98px) { 
+    .top-header {
+        height: auto;
+    }
 
+    .logo img {
+        width: 110px;
+        height: auto;
+    }
+
+    .bottom-header-links {
+        justify-content: space-evenly;
+    }
+
+    .bottom-header-links img {
+        margin-right: 0.5vw;
+        height: 30px;
+        width: auto;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
+    .top-header {
+        height: auto;
+    }
 
+    .logo img {
+        width: 120px;
+        height: auto;
+    }
+
+    .bottom-header-links {
+        justify-content: space-evenly;
+    }
+
+    .bottom-header-links img {
+        margin-right: 0.5vw;
+        height: 30px;
+        width: auto;
+    }
 }

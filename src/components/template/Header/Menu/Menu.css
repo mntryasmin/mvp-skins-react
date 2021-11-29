@@ -1,5 +1,5 @@
 .sidebar-menu {
-    width: 20vw;
+    width: 280px;
     background-color: #EFEFEF;
 }
 
@@ -18,7 +18,7 @@
 .sidebar-menu a {
     display: flex;
     align-items: center;
-    height: 6.5vh;
+    height: 40px;
     color: #181818;
     width: 100% !important;
 }
@@ -34,4 +34,39 @@
 
 .sidebar-menu-icon:hover {
     border: 2px solid #FD4712;
+}
+
+
+/* MEDIAS QUERIES  */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .sidebar-menu {
+        width: 230px;
+    }
+    
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576) and (max-width: 767.98px) {
+    .sidebar-menu {
+        width: 230px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 994.98px) { 
+    .sidebar-menu {
+        width: 250px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 995px) and (max-width: 1199.98px) { 
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
 }

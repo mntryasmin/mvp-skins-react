@@ -3,13 +3,12 @@ import { Carousel, Container } from 'react-bootstrap'
 import './CarouselProducts.css'
 import Card from '../../micro/CardProduct/CardProduct'
 
-
 export default function CarouselProducts(props) {
-    
+
     const products = props.productList;
-    
-    while(products == undefined){
-        return(
+
+    while (products == undefined) {
+        return (
             <>
             </>
         )

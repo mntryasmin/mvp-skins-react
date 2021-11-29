@@ -1,34 +1,18 @@
 .footer{
-    padding-top: 10px;
+    height: auto;
     background-color: #181818;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-lg{
-    display:none;
-    width: 100%;
-}
-
-.container-footer{
-    margin: 0;
-    display: flex;
-    width: 100%;
-}
-
-.div-lg{
-    display:none;
-}
-
-.footer-links-container {
-    justify-content: space-between;
-}
-
-.footer-links{
+    color: #EFEFEF;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -36,14 +20,11 @@
     display: none;
 }
 
-.footer-login-modal{
-    display: block;
-}
-
 .bandeiras-pagamento-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .bandeiras-pagamento {
@@ -66,22 +47,36 @@
 
 .dados-empresa p {
     text-align: center;
-    font-size: 4px !important;
+    font-size: 12px !important;
 }
 
 
-@media screen and (min-width:992px){
-    .footer-lg{
-        display:flex;
-        width: 100%;
-    }
 
-    .linha-hr{
-        display: block;
-        margin: 10px 10px;
-    }
+/* MEDIAS QUERIES  */
 
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576) and (max-width: 767.98px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 994.98px) { 
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 995px) and (max-width: 1199.98px) { 
     .div-lg{
         display: block;
     }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
 }
