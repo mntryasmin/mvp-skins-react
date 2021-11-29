@@ -25,7 +25,7 @@ function Footer(props) {
         <>
             {/* inicio footer */}
             <footer className="footer pb-1">
-                <Row className="footer-links-container py-2">
+                <Row className="footer-links-container py-2 m-0">
                     <Col className="footer-links col-3">
                         <LoginModal link customClass="footer-login-modal" />
                         {btnCadastrar()}

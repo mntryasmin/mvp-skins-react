@@ -220,17 +220,22 @@ function Register(props) {
         if (validateForm()) {
             axios.post("http://localhost:8080/cliente", client)
                 .then((response) => {
-                    console.log(response.data)
-                    swal({
-                        title: "Cliente cadastrado com sucesso!",
-                        button: {
-                            text: "Ok",
-                            closeModal: true,
-                        },
-                      });
-                    setTimeout(()=>{
-                        window.location.href = 'http://localhost:3000'
-                    }, 3000)
+                    axios.post("http://localhost:8080/cliente/email/cadastro", response.data)
+                    .then((response)=>{
+                        swal({
+                            title: "Cliente cadastrado com sucesso!",
+                            button: {
+                                text: "Ok",
+                                closeModal: true,
+                            },
+                          });
+                        setTimeout(()=>{
+                            window.location.href = 'http://localhost:3000'
+                        }, 3000)
+                    })
+                    .catch((error)=>{
+                        console.log("Erro ao enviar email "+error)
+                    })
                 })
                 .catch((erro) => {
                     swal({
