@@ -110,3 +110,15 @@ input, select {
     color: #28004f !important;
     border-color: #28004f !important;
 }
+
+/* INICIO Estilos de todos os checkbox */
+.form-check-input:checked{
+    background-color: #FD4712 !important;
+}
+
+.form-check-input{
+    background-color: #28004f !important;
+    height: 17px !important;
+    width: 17px !important;
+}
+/* FIM Estilos de todos os checkbox */

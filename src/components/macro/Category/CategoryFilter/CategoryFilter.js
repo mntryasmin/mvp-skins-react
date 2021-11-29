@@ -19,7 +19,7 @@ function Comp(props) {
                             label="Nova de Fábrica &emsp; &emsp; (Factory New)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios7"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'exterior=1'}}
                         />
                         <Form.Check
@@ -27,7 +27,7 @@ function Comp(props) {
                             label="Pouco Usada &emsp; &emsp; &emsp; &emsp; (Minimal Wear)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios8"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'exterior=2'}}
                         />
                         <Form.Check
@@ -35,7 +35,7 @@ function Comp(props) {
                             label="Testada em Campo &emsp; &emsp; (Field-Tested)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios9"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'exterior=3'}}
                         />
                         <Form.Check
@@ -43,7 +43,7 @@ function Comp(props) {
                             label="Bem Desgastada &emsp; &emsp; &emsp; &emsp; (Well-Worn)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios10"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'exterior=4'}}
                         />
                         <Form.Check
@@ -51,7 +51,7 @@ function Comp(props) {
                             label="Veterana de Guerra &emsp; &emsp; (Batle-Scarred)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios11"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'exterior=5'}}
                         />
                         <br />
@@ -61,7 +61,7 @@ function Comp(props) {
                             label="Azul"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios13"
-                            className='check-box  py-2'
+                            className='check-box  py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'rarity=1'}}
                         />
                         <Form.Check
@@ -69,7 +69,7 @@ function Comp(props) {
                             label="Roxo"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios14"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'rarity=2'}}
                         />
                         <Form.Check
@@ -77,7 +77,7 @@ function Comp(props) {
                             label="Pink"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios15"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'rarity=3'}}
                         />
                         <Form.Check
@@ -85,7 +85,7 @@ function Comp(props) {
                             label="Vermelho"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios16"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'rarity=4'}}
                         />
                         <Form.Check
@@ -93,7 +93,7 @@ function Comp(props) {
                             label="Faca/Luva"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios17"
-                            className='check-box py-2'
+                            className='check-box py-2 filter-check-box'
                             onClick={()=>{window.location.href=url+'rarity=5'}}
                         />
                         <br />

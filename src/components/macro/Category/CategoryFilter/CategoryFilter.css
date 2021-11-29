@@ -21,8 +21,13 @@
     color:#FD4712;
 }
 
+
 .categoryfilter-item{
     width: 100%;
+}
+
+.filter-check-box .form-check-input{
+    display: none;
 }
 
 @media (max-width: 992px){
