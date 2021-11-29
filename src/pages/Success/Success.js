@@ -49,7 +49,7 @@ function Sucess(props) {
             deleteOrder()
         })
         .catch((error)=>{
-            console.log("Ocorreu um erro: "+error)
+            console.log("Ocorreu um erro: " + error)
         })
         
     }

@@ -44,7 +44,10 @@ function CartItems(props) {
                 </Col>
 
                 <Col className="col-3" >
-                    <Nav.Item as="li"> R$ {price.toFixed(2).replace(".", ",")} </Nav.Item>
+                    <Nav.Item as="li"> R$ {(price).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </Nav.Item>
                 </Col>
 
                 <Col className="col-2" >

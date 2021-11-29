@@ -133,9 +133,18 @@ function Cart(props) {
                                 <p className="my-2"> Total </p>
                             </Col>
                             <Col md={6} className="cart-values-prices">
-                                <p className="my-2"> R$ {price.toFixed(2).replace(".", ",")} </p>
-                                <p className="my-2"> R$ {(valueDiscount).toFixed(2).replace(".", ",")}</p>
-                                <p className="my-2"> R$ {(price - valueDiscount).toFixed(2).replace(".", ",")} </p>
+                                <p className="my-2"> R$ {(price).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
+                                <p className="my-2"> R$ {(valueDiscount).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
+                                <p className="my-2"> R$ {(price - valueDiscount).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                             </Col>
 
                         </Row>

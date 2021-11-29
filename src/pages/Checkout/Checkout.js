@@ -153,17 +153,26 @@ function Checkout(props) {
                             <Row className="p-2 mt-3 checkout-price-container">
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
-                                    <p> R$ {grossValue}</p>
+                                    <p> R$ {(grossValue).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
-                                    <p> R$ {discountValue}</p>
+                                    <p> R$ {(discountValue).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
-                                    <p> R$ {totalValue}</p>
+                                    <p> R$ {(totalValue).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                                 </Row>
                             </Row>
                         </Container>

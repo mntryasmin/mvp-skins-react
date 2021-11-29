@@ -160,8 +160,14 @@ function CardProduct(props) {
 
                         <Col className="px-2 card-body card-price-container">
                             <p className="mb-3 card-description">{cardTitle(product.subcategoria.descricao, product.descricao)}</p>
-                            <p className="my-0 card-price">de R${(preco * 1.08).toFixed(2)}</p>
-                            <p className="my-0 card-price-final">por {preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                            <p className="my-0 card-price">de R$ {(preco * 1.08).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
+                            <p className="my-0 card-price-final">por {(preco).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                         </Col>
                     </Container>
                 </div>

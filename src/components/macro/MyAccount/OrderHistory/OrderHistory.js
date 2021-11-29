@@ -113,7 +113,10 @@ export default class OrderHistory extends Component {
                         </Col>
 
                         <Col className="col-3" >
-                            <Nav.Item as="li"> R$ {(product.valorLiquido.toFixed(2)).toString().replace(".", ",")} </Nav.Item>
+                            <Nav.Item as="li"> R$ {(product.valorLiquido).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })}</Nav.Item>
                         </Col>
                     </Nav>
                 </>
@@ -139,7 +142,10 @@ export default class OrderHistory extends Component {
                         </Col>
 
                         <Col className="col-2 requests-resp" >
-                            <Nav.Item as="li"> R$ {(request.valorLiquido.toFixed(2)).toString().replace(".", ",")} </Nav.Item>
+                            <Nav.Item as="li"> R$ {(request.valorLiquido).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </Nav.Item>
                         </Col>
 
                         <Col className="col-2 requests-resp" >

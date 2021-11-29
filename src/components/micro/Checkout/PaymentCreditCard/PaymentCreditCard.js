@@ -188,6 +188,16 @@ function PaymentCreditCard(props) {
         }
     }
 
+    const calcInstallments = (x) => {
+        const parc = totalValue / x;
+        return (
+            parc.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })
+        )
+    }
+
     return (
 
         <Form className="payment-form">
@@ -263,9 +273,9 @@ function PaymentCreditCard(props) {
                         props.func(card);
                     }}>
                     <option value="0">Selecione as parcelas</option>
-                    <option value="1">1 x de R$ {(totalValue)} sem juros</option>
-                    <option value="2">2 x de R$ {(totalValue / 2).toFixed(2).replace(".", ",")} sem juros</option>
-                    <option value="3">3 x de R$ {(totalValue / 3).toFixed(2).replace(".", ",")} sem juros</option>
+                    <option value="1">1 x de R$ {calcInstallments(1)} sem juros</option>
+                    <option value="2">2 x de R$ {calcInstallments(2)} sem juros</option>
+                    <option value="3">3 x de R$ {calcInstallments(3)} sem juros</option>
                 </Form.Select>
             </Row>
         </Form>
