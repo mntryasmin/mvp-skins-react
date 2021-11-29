@@ -28,7 +28,8 @@ function CardProduct(props) {
             })
             .catch((error) => {
                 console.log('Ocorreu um erro: ' + error)
-            })
+            }
+        )
     }
 
     //Função para recuperar preço ao carregar componente
@@ -40,7 +41,8 @@ function CardProduct(props) {
             })
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)
-            })
+            }
+        )
     }
 
     //Função para verificar estoque do produto
@@ -52,7 +54,8 @@ function CardProduct(props) {
             })
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)
-            })
+            }
+        )
     }
 
     useEffect(() => {
@@ -105,13 +108,10 @@ function CardProduct(props) {
             let productCartString = JSON.stringify(productCartList)
             localStorage.setItem("cart", productCartString)
             window.location.reload(true)
-        }else {
+        } else {
             setMessageCard('Esse item já está no carrinho!')
-            
+
         }
-
-
-
     }
 
     const boxMessage = () => {
@@ -125,12 +125,10 @@ function CardProduct(props) {
         return boxMessage
     }
 
-
-
     if (inventory == true) {
         return (
             <>
-                <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-{0 my-3 card card-link">
+                <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-0 my-3 card card-link">
                     <Container className="py-2 px-0 card-hover">
                         <Row className="mb-4 cart-icon-card-container">
                             <a onClick={() => addProductToCart(product)}
@@ -139,7 +137,6 @@ function CardProduct(props) {
                                     placement="top"
                                     overlay={boxMessage()}
                                     rootClose>
-                                    {/* setTimeOut, setInterval */}
                                     <img className="p-2 card-icon"
                                         src={addCart}
                                         alt="Adicionar produto ao carrinho" />
@@ -161,13 +158,13 @@ function CardProduct(props) {
                         <Col className="px-2 card-body card-price-container">
                             <p className="mb-3 card-description">{cardTitle(product.subcategoria.descricao, product.descricao)}</p>
                             <p className="my-0 card-price">de R$ {(preco * 1.08).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            })} </p>
                             <p className="my-0 card-price-final">por {(preco).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            })} </p>
                         </Col>
                     </Container>
                 </div>

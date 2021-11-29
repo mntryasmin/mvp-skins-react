@@ -132,12 +132,12 @@ function Header(props) {
 
                 {/* NAVBAR */}
                 <Navbar bg="light" variant="light" className='bottom-header px-2' >
-                    <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+                    <Col xs={2} sm={2} md={2} lg={1} xl={1}>
                         <Navbar.Brand href="#" className="link-header">
                             <Menu />
                         </Navbar.Brand>
                     </Col>
-                    <Col xs={11} sm={11} md={11} lg={11} xl={11}>
+                    <Col xs={10} sm={10} md={10} lg={11} xl={11}>
                         <Nav className="bottom-header-links">
                             <Nav.Link xs={4} sm={4} md={2} lg={2} xl={2} href="/category/0" className="link-header items-nav items-nav-all">
                                 TODAS AS SKINS

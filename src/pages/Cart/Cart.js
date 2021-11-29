@@ -109,7 +109,7 @@ function Cart(props) {
                     <ProductListCart functionTotalPrice={getTotalPrice} />
 
                     <Container className="my-4 price">
-                        <Col className="col-7 p-2 discount-coupon-cart">
+                        <Col className="col-6 p-2 discount-coupon-cart">
                             <p className="p-0 px-3 m-0"> Cupom de desconto </p>
 
                             <Form className="my-3 discount-coupon">
@@ -127,7 +127,7 @@ function Cart(props) {
                             <p className={styleValidation}>{validation}</p>
                         </Col>
 
-                        <Row className="col-5 px-2 price-cart">
+                        <Col className="col-5 p-2 price-cart">
                             <Col md={6} className="cart-values-title">
                                 <p className="my-2"> Subtotal </p>
                                 <p className="my-2"> Cupom </p>
@@ -148,7 +148,7 @@ function Cart(props) {
                                 })} </p>
                             </Col>
 
-                        </Row>
+                        </Col>
                     </Container>
                     <Row className="p-4 my-0 pb-5 cart-buttons">
                         <Button label="Continuar comprando" route="/home" class="btn-mvp btn-mvp-orange-solid"></Button>
