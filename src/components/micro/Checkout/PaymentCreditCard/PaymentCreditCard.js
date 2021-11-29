@@ -86,8 +86,8 @@ function PaymentCreditCard(props) {
     const validateName = () => {
         if (name.length < 3) {
             setValidation('Nome inválido.')
-            props.func(card);
             setClassTerm('validation-term p-2')
+            props.func(card);
         } else {
             setValidation('')
             setClassTerm('')
@@ -103,10 +103,11 @@ function PaymentCreditCard(props) {
             props.func(card);
         } else if (flag == 'INVÁLIDO') {
             setValidation('No momento só aceitamos as bandeiras MasterCard e Visa.')
-            props.func(card);
             setClassTerm('validation-card py-1')
+            props.func(card);
         } else {
             setValidation('')
+            setClassTerm('')
             props.func(card);
         }
     }
@@ -120,26 +121,33 @@ function PaymentCreditCard(props) {
 
         if (dtCard.length < 7) {
             setValidation('A data de vencimento está num formato inválido (Tente esse formato: MM/AAAA)')
+            setClassTerm('validation-term p-2')
             props.func(card);
         } else if (year < currentYear) {
             setValidation('Data de vencimento inválida')
+            setClassTerm('validation-term p-2')
             props.func(card);
         } else if (mounth < currentMounth) {
             if (year > currentYear) {
                 setValidation('')
+                setClassTerm('')
                 props.func(card);
             } else {
                 setValidation('Data de vencimento inválida')
+                setClassTerm('validation-term p-2')
                 props.func(card);
             }
         } else if (mounth > 12 || mounth < 1) {
             setValidation('Data de vencimento inválida')
+            setClassTerm('validation-term p-2')
             props.func(card);
         } else if (year > currentYear + 5) {
             setValidation('Data de vencimento inválida')
+            setClassTerm('validation-term p-2')
             props.func(card);
         } else {
             setValidation('')
+            setClassTerm('')
             props.func(card);
         }
     }
@@ -147,19 +155,23 @@ function PaymentCreditCard(props) {
     const validateCvv = () => {
         if (cvv.length < 3) {
             setValidation('CVV inválido')
+            setClassTerm('validation-term p-2')
             props.func(card);
         } else {
             setValidation('')
+            setClassTerm('')
             props.func(card);
         }
     }
 
     const validateCpf = () => {
         if (cpf.length < 14) {
-            setValidation('cpf inválido')
+            setValidation('CPF inválido')
+            setClassTerm('validation-term p-2')
             props.func(card);
         } else {
             setValidation('')
+            setClassTerm('')
             props.func(card);
         }
     }
@@ -167,12 +179,23 @@ function PaymentCreditCard(props) {
     const validateInstallments = () => {
         if (installments == 0) {
             setValidation('Selecione uma forma de parcelamento')
+            setClassTerm('validation-term p-2')
             props.func(card);
         } else if (installments != 0) {
             setValidation('')
-            props.func(card);
             setClassTerm('')
+            props.func(card);
         }
+    }
+
+    const calcInstallments = (x) => {
+        const parc = totalValue / x;
+        return (
+            parc.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })
+        )
     }
 
     return (
@@ -250,9 +273,9 @@ function PaymentCreditCard(props) {
                         props.func(card);
                     }}>
                     <option value="0">Selecione as parcelas</option>
-                    <option value="1">1 x de R$ {(totalValue)} sem juros</option>
-                    <option value="2">2 x de R$ {(totalValue / 2).toFixed(2).replace(".", ",")} sem juros</option>
-                    <option value="3">3 x de R$ {(totalValue / 3).toFixed(2).replace(".", ",")} sem juros</option>
+                    <option value="1">1 x de R$ {calcInstallments(1)} sem juros</option>
+                    <option value="2">2 x de R$ {calcInstallments(2)} sem juros</option>
+                    <option value="3">3 x de R$ {calcInstallments(3)} sem juros</option>
                 </Form.Select>
             </Row>
         </Form>

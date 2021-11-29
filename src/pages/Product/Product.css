@@ -1,7 +1,15 @@
-.product-breadcrumb a{
+.product-breadcrumb a, .product-description-breadcrumb{
     color: #EFEFEF !important;
-    text-decoration: none;
+    text-transform:  capitalize !important;
 }
+
+.product-breadcrumb a:hover {
+    text-decoration: underline !important;
+}
+
+.breadcrumb-item.active {
+    color:  #EFEFEF !important;
+} 
 
 .product-btn{
     margin: 30px !important;

@@ -15,6 +15,8 @@ import discord from '../../assets/images/icones/icon-discord-contato.png'
 function Contact(props) {
 
     return (
+        document.title = `SKINS CS:GO | Fale conosco`,
+
         <>
             <Container className="contact content-container">
                 <Row className="pt-5">

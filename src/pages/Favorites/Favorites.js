@@ -48,6 +48,7 @@ function Favorites(props) {
 
 
     return (
+        document.title = `SKINS CS:GO | Meus favoritos`,
         <>
                 <div className="div-favoritos1">
                     <Col xs={2} md={2} className="mb-1"></Col>

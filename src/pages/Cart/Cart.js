@@ -15,6 +15,7 @@ function Cart(props) {
     const [price, setPrice] = useState(0.0)
     const [valueDiscount, setValueDiscount] = useState(0)
     const [validation, setValidation] = useState('')
+    const [styleValidation, setStyleValidation] = useState('')
     const [coupon, setCoupon] = useState('')
 
     let finalPrice = 0;
@@ -48,6 +49,7 @@ function Cart(props) {
 
     const validePromotion = (value) => {
         if (price == 0) {
+            setStyleValidation('')
             setValidation('Insira itens no carrinho antes de aplicar um cupom')
             setValueDiscount(0)
         } else {
@@ -55,9 +57,11 @@ function Cart(props) {
                 .then(async (response) => {
                     const v = await response.data
                     if (v) {
+                        setStyleValidation('cupomValido')
                         setValidation('Cupom válido')
                         getPromotion()
                     } else {
+                        setStyleValidation('cupomInvalido')
                         setValidation('Cupom inválido')
                         setValueDiscount(0)
                     }
@@ -96,6 +100,7 @@ function Cart(props) {
     }
 
     return (
+        document.title = 'SKINS CS:GO | Carrinho ',
         <>
             <Container fluid className="cart p-0 content-container">
                 <Col lg={3} xl={3} className="mx-4 my-5 cart-container cart-banner">
@@ -103,46 +108,50 @@ function Cart(props) {
                 <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-4 my-5 pt-3 cart-container">
                     <ProductListCart functionTotalPrice={getTotalPrice} />
 
-                    <Container className="py-1 my-4 price">
-                        <Col className="col-7 py-2 px-1 mt-2 discount-coupon-cart">
-                            <Container className="discount-container px-0">
-                                <Form className="py-2 discount-coupon">
-                                    <p className="mx-3"> Cupom de desconto </p>
+                    <Container className="my-4 price">
+                        <Col className="col-7 p-2 discount-coupon-cart">
+                            <p className="p-0 px-3 m-0"> Cupom de desconto </p>
 
-                                    <Container className="discount px-0">
-                                        <FormControl
-                                            type="text"
-                                            name="coupon"
-                                            className="discount-input mx-3 py-3"
-                                            onChange={(event) => { setCoupon(event.target.value); }}
-                                            placeholder="Digite o código"
-                                            value={coupon}
-                                        />
-                                        <Button label='Aplicar' class="btn-mvp btn-mvp-orange-solid mx-2" onclick={(event) => Submit(event)}></Button>
-                                    </Container>
-                                </Form>
-                                <p className="response-coupon"> {validation}</p>
-                            </Container>
+                            <Form className="my-3 discount-coupon">
+                                <FormControl
+                                    type="text"
+                                    name="coupon"
+                                    className="discount-input mx-2"
+                                    onChange={(event) => { setCoupon(event.target.value); }}
+                                    placeholder="Digite o código"
+                                    value={coupon}
+                                />
+                                <Button label='Aplicar' class="mx-2 btn-mvp btn-mvp-orange-clean" onclick={(event) => Submit(event)}></Button>
+                            </Form>
+
+                            <p className={styleValidation}>{validation}</p>
                         </Col>
 
-                        <Row className="col-5 p-0 mt-2 price-cart">
-                            <Col md={4} className="cart-values my-2">
-                                <p className="m-0"> Cupom </p>
-                                <p className="m-0 mt-1"> R$ {(valueDiscount).toFixed(2).replace(".", ",")}</p>
+                        <Row className="col-5 px-2 price-cart">
+                            <Col md={6} className="cart-values-title">
+                                <p className="my-2"> Subtotal </p>
+                                <p className="my-2"> Cupom </p>
+                                <p className="my-2"> Total </p>
                             </Col>
-                            <Col md={4} className="cart-values my-2">
-                                <p className="m-0"> Subtotal </p>
-                                <p className="m-0 mt-1"> R$ {price.toFixed(2).replace(".", ",")} </p>
-                            </Col>
-                            <Col md={4} className=" my-2">
-                                <p className="m-0"> Total </p>
-                                <p className="m-0 mt-1"> R$ {(price - valueDiscount).toFixed(2).replace(".", ",")} </p>
+                            <Col md={6} className="cart-values-prices">
+                                <p className="my-2"> R$ {(price).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
+                                <p className="my-2"> R$ {(valueDiscount).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
+                                <p className="my-2"> R$ {(price - valueDiscount).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                             </Col>
 
                         </Row>
                     </Container>
-                    <Container className="py-4 my-0 pb-5 cart-buttons">
-                        <Button label="Continuar comprando" route="/home" class="btn-mvp btn-mvp-orange-solid" navigation></Button>
+                    <Row className="p-4 my-0 pb-5 cart-buttons">
+                        <Button label="Continuar comprando" route="/home" class="btn-mvp btn-mvp-orange-solid"></Button>
 
                         {localStorage.getItem("Authorization") ?
                             <Button label="Finalizar compra"
@@ -150,7 +159,7 @@ function Cart(props) {
                                 onclick={() => createOrder()}></Button> :
                             <LoginModal linkCart />
                         }
-                    </Container>
+                    </Row>
                 </Container>
             </Container>
         </>

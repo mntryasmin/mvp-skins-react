@@ -6,6 +6,7 @@ import "./CategoryContainer.css"
 
 function CategoryContainer(props) {
 
+    const [title, setTitle] = useState('');
     const [product, setProduct] = useState([]);
     const idCategory = props.idCategory;
     // const idRarity = props.idRarity;
@@ -53,8 +54,6 @@ function CategoryContainer(props) {
     // }
     
 
-
- 
     useEffect(()=>{
         axios.get(url)
         .then((response)=>{
@@ -119,6 +118,8 @@ function CategoryContainer(props) {
     }
 
     return(
+            document.title = `SKINS CS:GO | ${title}`,
+
         <>
             <Container fluid>
                 <div className='title-category'>

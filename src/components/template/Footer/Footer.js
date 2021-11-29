@@ -1,10 +1,8 @@
 import React from 'react'
 import './Footer.css';
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import FooterText from './FooterText/FooterText'
 import FooterLink from './FooterLink/FooterLink'
-import Amex from '../../../assets/images/icones/icon-amex.png'
-import Paypal from '../../../assets/images/icones/icon-paypal.png'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
 import LoginModal from '../../micro/LoginModal/LoginModal'
@@ -44,8 +42,6 @@ function Footer(props) {
                         <Row className="bandeiras-pagamento">
                             <img src={Mastercard} alt="ícone do mastercard" className="icon-footer" />
                             <img src={Visa} alt="ícone da visa" className="icon-footer" />
-                            <img src={Amex} alt="ícone da amex" className="icon-footer" />
-                            <img src={Paypal} alt="ícone da paypal" className="icon-footer" />
                         </Row>
                     </Col>
                 </Row>

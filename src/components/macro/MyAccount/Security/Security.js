@@ -156,6 +156,8 @@ export default class Security extends Component {
 
     render() {
         return (
+            document.title = `SKINS CS:GO | Segurança`,
+
             <>
                 <Container className="security pt-1">
                     <h1 className="card-title-mvp">Segurança</h1>

@@ -70,7 +70,7 @@ function ProductListCart(props) {
       return(
         <>
           <h1 className="card-title-mvp pt-4">Meus produtos</h1>
-            <Nav className="pt-3 pb-2 px-0 product-list-cart card-caption-mvp" defaultActiveKey="/home" as="ul">
+            {/* <Nav className="pt-3 pb-2 px-0 product-list-cart card-caption-mvp" defaultActiveKey="/home" as="ul">
                 <Col className="col-3">
                     <Nav.Item as="li"> Produto </Nav.Item>
                 </Col>
@@ -86,8 +86,8 @@ function ProductListCart(props) {
                 <Col className="col-2" >
                     <Nav.Item as="li"> Remover </Nav.Item>
                 </Col>
-            </Nav>
-            <div className="cart-empty">Seu carrinho está vazio</div>
+            </Nav> */}
+            <div className="cart-empty">Ops... seu carrinho está vazio</div>
         </>
       )
     }

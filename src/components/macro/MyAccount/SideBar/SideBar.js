@@ -1,5 +1,5 @@
 // REACT
-import React, { Component, LinkContainer } from 'react'
+import React, { Component } from 'react'
 import { Nav, Col, Row } from 'react-bootstrap'
 
 // ESTILO
@@ -8,13 +8,14 @@ import './SideBar.css'
 
 // PÁGINAS/COMPONENTES
 import contact from '../../../../assets/images/icones/icon-contato.png'
-import Dashboard from '../../../../pages/MyAccount/MyAccount'
+import MyAccount from '../../../../pages/MyAccount/MyAccount'
+import Button from '../../../micro/Button/Button'
 
 export default class SideBar extends Component {
-
     render() {
         const client = JSON.parse(localStorage.getItem("client"))
         const nameClient = client.nomeCliente
+
         return (
             <>
                 <Col xs={9} sm={9} md={9} lg={2} xl={2} className="p-0 sidebar">
@@ -25,13 +26,15 @@ export default class SideBar extends Component {
                             <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon my-account-tile nav-list-title">
                                 Dados Pessoais
                             </Nav.Item>
+
+                            <Button onclick={() => this.clickMyAccount(1)} class='button-navigation' label='Dados da conta'/>
                             
                             <Nav.Item  as="li"className="p-0 nav-link">
-                                <Nav.Link strict onClick={<Dashboard/>} className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
+                                <Nav.Link onClick={this.clickMyAccount(1)} className="px-0 personal-data sidebarIcon">Dados da conta</Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item as="li" className="p-0 nav-link">
-                                <Nav.Link onClick={<Dashboard/>} className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
+                                <Nav.Link onClick={this.clickMyAccount(2)} className="px-0 change-password sidebarIcon">Alterar senha</Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item as="li" className="mt-4 mb-2 px-2 sidebarIcon shop nav-list-title">
@@ -39,7 +42,7 @@ export default class SideBar extends Component {
                             </Nav.Item>
 
                             <Nav.Item as="li" className="p-0 nav-link">
-                                <Nav.Link onClick={<Dashboard/>} className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
+                                <Nav.Link onClick={this.clickMyAccount(3)} className="px-0 purchases-historic sidebarIcon">Histórico de Compras</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Row>

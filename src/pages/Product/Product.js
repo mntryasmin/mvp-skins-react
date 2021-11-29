@@ -76,9 +76,9 @@ function Product() {
                         <Row className="justify-content-center">
                             <Breadcrumb bsPrefix="breadcrumb" className="mt-2">
                                 <Breadcrumb.Item href="/" className="product-breadcrumb">Home</Breadcrumb.Item>
-                                <Breadcrumb.Item href="/category" className="product-breadcrumb">Categoria</Breadcrumb.Item>
-                                <Breadcrumb.Item href="/category" className="product-breadcrumb">Subcategoria</Breadcrumb.Item>
-                                <Breadcrumb.Item active>Produto</Breadcrumb.Item>
+                                <Breadcrumb.Item href="/category" className="product-breadcrumb">{(product.categoria.descricao).toLowerCase()}</Breadcrumb.Item>
+                                <Breadcrumb.Item href="/category" className="product-breadcrumb">{(product.subcategoria.descricao).toLowerCase()}</Breadcrumb.Item>
+                                <Breadcrumb.Item active>{product.colecao.descricao}</Breadcrumb.Item>
                             </Breadcrumb>
                             <ProductContainer id={product.id} urlImagem={product.urlImagem}>
                                 <ProductText category="CATEGORIA :" description={product.categoria.descricao} class="product-text-category" />

@@ -137,6 +137,8 @@ function Checkout(props) {
     const totalValue = (grossValue - discountValue)
 
     return (
+        document.title = `SKINS CS:GO | Pagamento`,
+        
         <>
             <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
                 <h1 className="mb-3 card-title-mvp checkout-title"> Checkout </h1>
@@ -153,17 +155,26 @@ function Checkout(props) {
                             <Row className="p-2 mt-3 checkout-price-container">
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
-                                    <p> R$ {grossValue}</p>
+                                    <p> R$ {(grossValue).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
-                                    <p> R$ {discountValue}</p>
+                                    <p> R$ {(discountValue).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
-                                    <p> R$ {totalValue}</p>
+                                    <p> R$ {(totalValue).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </p>
                                 </Row>
                             </Row>
                         </Container>
@@ -203,7 +214,7 @@ function Checkout(props) {
                         {validationOfTerms}
                     </div>
 
-                    <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
+                    <Button label="Finalizar a compra" route="/success" class="mt-3 btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
                 </Col>
             </Container>
         </>

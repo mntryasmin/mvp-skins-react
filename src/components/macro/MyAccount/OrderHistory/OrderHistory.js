@@ -113,7 +113,10 @@ export default class OrderHistory extends Component {
                         </Col>
 
                         <Col className="col-3" >
-                            <Nav.Item as="li"> R$ {(product.valorLiquido.toFixed(2)).toString().replace(".", ",")} </Nav.Item>
+                            <Nav.Item as="li"> R$ {(product.valorLiquido).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })}</Nav.Item>
                         </Col>
                     </Nav>
                 </>
@@ -139,7 +142,10 @@ export default class OrderHistory extends Component {
                         </Col>
 
                         <Col className="col-2 requests-resp" >
-                            <Nav.Item as="li"> R$ {(request.valorLiquido.toFixed(2)).toString().replace(".", ",")} </Nav.Item>
+                            <Nav.Item as="li"> R$ {(request.valorLiquido).toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} </Nav.Item>
                         </Col>
 
                         <Col className="col-2 requests-resp" >
@@ -153,7 +159,7 @@ export default class OrderHistory extends Component {
                         </Col>
                     </Nav>
                     <Modal show={this.state.show} onClick={this.hideModal}>
-                        <Nav className="list-group flex-row request-style py-1" defaultActiveKey="/home" as="ul">
+                        <Nav className="list-group flex-row request-style request-products-title py-1" defaultActiveKey="/home" as="ul">
 
                             <Col className="col-4" >
                                 <Nav.Item as="li"> Produto </Nav.Item>
@@ -166,6 +172,9 @@ export default class OrderHistory extends Component {
                             <Col className="col-3 requests-resp">
                                 <Nav.Item as="li"> Preço </Nav.Item>
                             </Col>
+
+                            <button type="button" class="btn-close btn-close-produtos-pedidos" aria-label="Close"></button>
+
                         </Nav>
 
                         {this.handleMapProducts(request.id)}
@@ -176,6 +185,8 @@ export default class OrderHistory extends Component {
 
     render() {
         return (
+        document.title = `SKINS CS:GO | Histórico de compras`,
+
             <>
                 < h1 className="mb-4 card-title-mvp" > Histórico de compras</h1 >
                 <Container className="mx-0 pb-5">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './LoginModal.css'
-import { Modal, Form, FormGroup, Col } from 'react-bootstrap'
+import { Modal, Form, FormGroup, Col, Row } from 'react-bootstrap'
 import Collapse from './Collapse/Collapse.js'
 import LoginForm from '../../macro/Forms/Login/LoginForm'
 import { Link } from 'react-router-dom'
@@ -144,17 +144,14 @@ function LoginModal(props) {
 
                     </Modal.Body>
                     <Modal.Footer className='d-flex justify-content-between'>
-                        <Col sm={5} className='d-flex'>
-                            <Button onclick={handleClose} class='btn-mvp btn-mvp-orange-clean mx-3' label='cancelar' />
-                        </Col>
-
-                        <Col sm={6} className='d-flex'>
+                        <Row className='login-modal-buttons'>
+                            <Button onclick={handleClose} class='btn-mvp btn-mvp-orange-clean' label='cancelar' />
                             <LoginForm Button onclick={(event) => submit(event)} />
-                        </Col>
+                        </Row>
                         <Col sm={12} >
                             <div className="no-account mx-4">
-                                Não possui conta?
-                                <Link to='/register' className="links-login" onClick={handleClose}>
+                                Não possui conta?  
+                                <Link to='/register' className="mx-1 links-login" onClick={handleClose}>
                                     Cadastre-se
                                 </Link>
                             </div>

@@ -1,39 +1,28 @@
 .filter-column{
     background-color: #EFEFEF;
-    margin-top: 200px;
+    width: 20vw !important;
+    height: 140vh;
+    border-radius: 0 0 6px 0;
 }
 
 .filter-title{
     color: #FD4712;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 15px;
+    text-align: center;
 }
 
-.check-box{
-    margin-bottom: 10px !important;
+.check-box {
+    padding-right: 1vw;
 }
 
 .check-box:hover{
-    font-weight: 600;
+    font-weight: 500;
     color:#FD4712;
-
-}
-
-.form-check-input:checked{
-    background-color: #FD4712 !important;
-}
-
-.form-check-input{
-    background-color: #28004f !important;
-    /* display: none; */
-}
-
-.filter-list{
-    margin-top: 20px;
 }
 
 .categoryfilter-item{
-    margin-bottom: 10px;
+    width: 100%;
 }
 
 @media (max-width: 992px){

@@ -68,6 +68,7 @@ function Home(props) {
         )
     }
     return (
+        document.title = 'SKINS CS:GO | Home',
         <>
             <Container fluid className="pb-5 home content-container">
                 {/* BANNERS  */}

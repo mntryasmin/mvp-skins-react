@@ -71,6 +71,11 @@ a {
 
 }
 
+input, select {
+    height: 35px !important;
+    font-size: 15px !important;
+}
+
 
 .swal-modal {
     background-color: #EFEFEF;
