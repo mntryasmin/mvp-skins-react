@@ -59,12 +59,12 @@ function Header(props) {
                     <div className='welcome my-2 col-12'>
                         Olá, {client.nomeCliente}. Seja bem-vindo!
                     </div>
-                    <Button navigation route='/myaccount' class='btn-mvp-orange-clean' label='MINHA ÁREA' />
+                    <Button navigation route='/myaccount' class='btn-mvp btn-mvp-orange-clean create-register-button col-4' label='MINHA ÁREA' />
                 </>
             )
         } else {
             return (
-                <Button navigation route='/register' class='btn-mvp-orange-clean' label='CADASTRE-SE' />
+                <Button navigation route='/register' class='btn-mvp btn-mvp-orange-clean create-register-button col-4' label='CADASTRE-SE' />
             )
         }
     }

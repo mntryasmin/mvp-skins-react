@@ -33,34 +33,30 @@
 /* XS */
 @media (max-width: 575.98px) {
     .security-form, .security-form-org {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-content: center;
     }
-}
-
-error-message-security {
-
 }
 
 /* SM */
 @media (min-width: 540px) and (max-width: 767.98px) {
     .security-form, .security-form-org {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-content: center;
     }
 }
 
 /* MD  */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .security-form, .security-form-org {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-content: center;
     }
 }
 
