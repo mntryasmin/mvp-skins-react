@@ -6,7 +6,7 @@
     font-size: 11px;
     border-radius: 3px;
     text-decoration: none;
-    border: 1px solid;
+    border: 2px solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,25 +83,35 @@
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-
+    .btn-mvp{
+        width: 180px !important;
+    }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-
+    .btn-mvp{
+        width: 180px !important;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 994.98px) { 
-
+    .btn-mvp{
+        width: 180px !important;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 1050px) and (max-width: 1199.98px) { 
-
+    .btn-mvp{
+        width: 130px !important;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
-
+    .btn-mvp{
+        width: 130px !important;
+    }
 }

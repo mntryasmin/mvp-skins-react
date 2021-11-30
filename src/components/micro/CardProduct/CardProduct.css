@@ -118,7 +118,24 @@
 @media (max-width: 575.98px) {
     .card-link {
         width: 160px !important;
-        height: 300px !important;
+        height: 270px !important;
+    }
+
+    .card-product {
+        height: 250px;
+    }
+
+    .cart-icon-card-container a {
+        width: 22%;
+        height: auto;
+    }
+
+    .card-icon {
+        width: 31px;
+    }
+
+    .carousel-home-resp .btn-ver-mais {
+        width: 110px !important;
     }
 
     .card-image img {
@@ -128,12 +145,60 @@
 
 /* SM */
 @media (min-width: 540px) and (max-width: 767.98px) {
+    .card-link {
+        width: 160px !important;
+        height: 270px !important;
+    }
 
+    .card-product {
+        height: 250px;
+    }
+
+    .cart-icon-card-container a {
+        width: 22%;
+        height: auto;
+    }
+
+    .card-icon {
+        width: 31px;
+    }
+
+    .carousel-home-resp .btn-ver-mais {
+        width: 110px !important;
+    }
+
+    .card-image img {
+        height: 100px;
+    }
 }
 
 /* MD  */
 @media (min-width: 768px) and (max-width: 991.98px) {
+    .card-link {
+        width: 160px !important;
+        height: 270px !important;
+    }
 
+    .card-product {
+        height: 250px;
+    }
+
+    .cart-icon-card-container a {
+        width: 22%;
+        height: auto;
+    }
+
+    .card-icon {
+        width: 31px;
+    }
+
+    .carousel-home-resp .btn-ver-mais {
+        width: 110px !important;
+    }
+
+    .card-image img {
+        height: 100px;
+    }
 }
 
 /* LG  */

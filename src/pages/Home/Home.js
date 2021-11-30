@@ -11,6 +11,8 @@ import './Home.css'
 import Banners from '../../components/macro/Banners/Banner'
 import CarouselProducts from '../../components/macro/CarouselProducts/CarouselProducts'
 import Title from '../../components/micro/Title/Title'
+import CardProduct from '../../components/micro/CardProduct/CardProduct'
+
 function Home(props) {
 
     const [productSubcategory, setProductSubcategory] = useState([])
@@ -84,20 +86,58 @@ function Home(props) {
                 </Row>
 
                 {/* CAROUSEL'S DE PRODUTOS  */}
-                <Row className=''>
+                <Row className='carousel-home'>
                     <p className="mt-5 mb-0 title-carousel card-caption-mvp">Rifles</p>
                     <CarouselProducts productList={productSubcategory} />
                 </Row>
 
 
-                <Row className=''>
+                <Row className='carousel-home'>
                     <p className="mt-5 mb-0 title-carousel card-caption-mvp">Agentes</p>
                     <CarouselProducts productList={productSubcategoryB} />
                 </Row>
 
-                <Row className=''>
+                <Row className='carousel-home'>
                     <p className="mt-5 mb-0 title-carousel card-caption-mvp">Pistolas</p>
                     <CarouselProducts productList={productSubcategoryC} />
+                </Row>
+
+
+                {/* PRODUTOS PARA FORMATO RESPONSIVO  */}
+                <Row className='carousel-home-resp'>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Rifles</p>
+                    <CardProduct idProduct={24}/>
+                    <CardProduct idProduct={28}/>
+                    <CardProduct idProduct={29}/>
+                    <CardProduct idProduct={27}/>
+                    <CardProduct idProduct={35}/>
+                    <CardProduct idProduct={32}/>
+                </Row>
+
+
+                <Row className='carousel-home-resp'>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Agentes</p>
+                    <CardProduct idProduct={32}/>
+                    <CardProduct idProduct={40}/>
+                    <CardProduct idProduct={41}/>
+                    <CardProduct idProduct={36}/>
+                    <CardProduct idProduct={38}/>
+                    <CardProduct idProduct={34}/>
+                </Row>
+
+                
+                <Row className='carousel-home-resp'>
+                    <p className="mt-5 mb-0 title-carousel card-caption-mvp">Pistolas</p>
+                    <CardProduct idProduct={2}/>
+                    <CardProduct idProduct={8}/>
+                    <CardProduct idProduct={9}/>
+                    <CardProduct idProduct={7}/>
+                    <CardProduct idProduct={6}/>
+                    <CardProduct idProduct={5}/>
+
+
+                    {console.log(productSubcategoryC)}
+                    
                 </Row>
             </Container>
         </>

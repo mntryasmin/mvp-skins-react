@@ -166,13 +166,13 @@ export default class Security extends Component {
                     <a href="https://www.alura.com.br/artigos/como-criar-uma-boa-senha?gclid=CjwKCAiAv_KMBhAzEiwAs-rX1ABtLVaJNHAYEsJMdjZKvaV-mi2tRMQBjztVG9D3l9NdOYsia-S2fBoCB-oQAvD_BwE" target="_blank" className='link-password'>Como criar uma boa senha?</a> </p>
 
                     <Form className="security-form">
-                        <Form.Group lg={6} xl={6} className="security-form-org ">
+                        <Form.Group xs={12} sm={12} md={12} lg={6} xl={6} className="security-form-org ">
                             <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
                             <Form.Control value={this.state.oldPassword} onChange={this.handleChangeOP} className="py-2" type="" name="oldPassword" />
                             <p className="error-message-security"> {this.state.messageInput1} </p>
                         </Form.Group>
 
-                        <Form.Group lg={6} xl={6} className="security-form-org ">
+                        <Form.Group xs={12} sm={12} md={12} lg={6} xl={6}  className="security-form-org ">
                             <Form.Label className="py-2">Digite a senha nova</Form.Label>
                             <Form.Control value={this.state.newPassword} onChange={this.handleChangeNP} className="py-2" type="" name="newPassword" />
                             <p className="error-message-security"> {this.state.messageInput2}</p>
@@ -182,7 +182,7 @@ export default class Security extends Component {
                             <p className="error-message-security"> {this.state.messageInput3}</p>
                         </Form.Group>
 
-                        <Form.Group className="button-save">
+                        <Form.Group xs={12} sm={12} md={12} lg={6} xl={6}  className="button-save">
                             <Button onclick={this.handleSubmit} class="btn-mvp btn-mvp-orange-clean" label="Salvar"/>
                         </Form.Group>
                     </Form>

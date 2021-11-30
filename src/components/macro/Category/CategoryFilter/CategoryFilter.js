@@ -16,7 +16,7 @@ function Comp(props) {
                         <ListGroup.Item className="categoryfilter-item mx-0 my-2">EXTERIOR</ListGroup.Item>
                         <Form.Check
                             type="radio"
-                            label="Nova de Fábrica &emsp; &emsp; (Factory New)"
+                            label="Nova de Fábrica (Factory New)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios7"
                             className='check-box py-2 filter-check-box'
@@ -24,7 +24,7 @@ function Comp(props) {
                         />
                         <Form.Check
                             type="radio"
-                            label="Pouco Usada &emsp; &emsp; &emsp; &emsp; (Minimal Wear)"
+                            label="Pouco Usada (Minimal Wear)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios8"
                             className='check-box py-2 filter-check-box'
@@ -32,7 +32,7 @@ function Comp(props) {
                         />
                         <Form.Check
                             type="radio"
-                            label="Testada em Campo &emsp; &emsp; (Field-Tested)"
+                            label="Testada em Campo (Field-Tested)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios9"
                             className='check-box py-2 filter-check-box'
@@ -40,7 +40,7 @@ function Comp(props) {
                         />
                         <Form.Check
                             type="radio"
-                            label="Bem Desgastada &emsp; &emsp; &emsp; &emsp; (Well-Worn)"
+                            label="Bem Desgastada (Well-Worn)"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios10"
                             className='check-box py-2 filter-check-box'
@@ -48,7 +48,7 @@ function Comp(props) {
                         />
                         <Form.Check
                             type="radio"
-                            label="Veterana de Guerra &emsp; &emsp; (Batle-Scarred)"
+                            label='Veterana de Guerra (Batle-Scarred)'
                             name="formHorizontalRadios"
                             id="formHorizontalRadios11"
                             className='check-box py-2 filter-check-box'
