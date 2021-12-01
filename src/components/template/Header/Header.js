@@ -166,8 +166,8 @@ function Header(props) {
                                 Agentes
                             </Nav.Link>
 
-                            <Col xs={4} sm={4} md={2} lg={2} xl={2} className="favor-cart-header px-3">
-                                {/* {btnFavorites()} */}
+                            <Col xs={4} sm={4} md={2} lg={2} xl={2} className="favor-cart-header px-2">
+                                {btnFavorites()}
                                 {btnCart()}
                             </Col>
                         </Nav>

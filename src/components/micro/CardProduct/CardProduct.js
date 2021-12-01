@@ -15,7 +15,8 @@ import Image from '../Images/Images'
 
 function CardProduct(props) {
 
-    const [messageCard, setMessageCard] = useState('Item adicionado ao Carrinho!')
+    const [messageCard, setMessageCard] = useState('Item adicionado ao carrinho!')
+    const [messageFavorite, setMessageFavorite] = useState('Item adicionado aos favoritos!')
     const [showMessage, setShowMessage] = useState(false)
 
     const idProduct = props.idProduct
@@ -55,7 +56,7 @@ function CardProduct(props) {
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)
             }
-        )
+            )
     }
 
     useEffect(() => {
@@ -125,6 +126,53 @@ function CardProduct(props) {
         return boxMessage
     }
 
+
+
+
+    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+    // PARA CHECAR E ADICIONAR OS FAVORITOS TEM QUE PUXAR DO BANCO, AQUI ESTÁ PUXANDO DO LOCALHOST 
+    const checkItemsFav = (productFav) => {
+        const productFavList = localStorage.getItem("fav") ?
+            JSON.parse(localStorage.getItem("fav")) :
+            [];
+
+        for (var i = 0; i < productFavList.length; i++) {
+            if (productFav.id == productFavList[i].id) {
+                productFavList.splice((i), 1);
+                return false
+            }
+        }
+        return true
+    }
+
+    //Adiciona o produto à página de favoritos
+    function addProductToFavorite(productCart) {
+        axios.post(`http://localhost:8080/fav/`, {
+            headers: {
+                Authorization: localStorage.getItem('Authorization')
+            }
+        })
+            .then((response) => {
+                console.log("Produto adicionado")
+            })
+            .catch((erro) => {
+                console.log("Não foi possível adicionar o produto aos favoritos do cliente: " + erro)
+            });
+    }
+
+    const favoriteBoxMessage = () => {
+
+        let boxMessage = (<Popover id="popover-basic">
+            <Popover.Body>
+                {messageFavorite}
+            </Popover.Body>
+        </Popover>)
+
+        return boxMessage
+    }
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
     if (inventory == true) {
         return (
             <>
@@ -142,6 +190,18 @@ function CardProduct(props) {
                                         alt="Adicionar produto ao carrinho" />
                                 </OverlayTrigger>
                             </a>
+
+                            <a onClick={() => addProductToFavorite(product)}
+                                className="cart-icon-card mx-2">
+                                <OverlayTrigger trigger="click"
+                                    placement="top"
+                                    overlay={favoriteBoxMessage()}
+                                    rootClose>
+                                    <img className="p-2 card-icon"
+                                        src={favorite}
+                                        alt="Adicionar produto aos favoritos" />
+                                </OverlayTrigger>
+                            </a>
                         </Row>
                         <Row>
                             <Button label="Ver mais" class="mt-5 btn-mvp btn-mvp-orange-solid btn-ver-mais" route={'/product/' + idProduct} navigation></Button>
@@ -156,7 +216,7 @@ function CardProduct(props) {
                         <hr className="p-0 m-0 card-line" />
 
                         <Col className="px-2 card-body card-price-container">
-                            <p className="mb-3 card-description">{cardTitle(product.subcategoria.descricao, product.descricao)}</p>
+                            <p className="mb-2 card-description">{cardTitle(product.subcategoria.descricao, product.descricao)}</p>
                             <p className="my-0 card-price">de R$ {(preco * 1.08).toLocaleString('pt-BR', {
                                 minimumFractionDigits: 2,
                                 maximumFractionDigits: 2

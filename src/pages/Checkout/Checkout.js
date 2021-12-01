@@ -10,6 +10,7 @@ import './Checkout.css'
 // PÁGINAS/COMPONENTES
 import Products from '../../components/micro/Checkout/CheckoutItems/CheckoutItems'
 import PaymentCreditCard from '../../components/micro/Checkout/PaymentCreditCard/PaymentCreditCard'
+import AdressPayment from '../../components/micro/Checkout/AdressPayment/AdressPayment'
 import Button from '../../components/micro/Button/Button'
 
 
@@ -86,8 +87,8 @@ function Checkout(props) {
     }
 
     function isEmpty(obj) {
-        for(var prop in obj) {
-            if(obj.hasOwnProperty(prop))
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop))
                 return false;
         }
         return true;
@@ -162,15 +163,15 @@ function Checkout(props) {
     }
 
     const ValideCard = (card) => {
-        
-        if (!isEmpty(card)){
+
+        if (!isEmpty(card)) {
             if (!validateName()) {
                 return false
             } else if (!validateCard()) {
                 return false
             } else if (!validateDate()) {
                 return false
-            }else if (!validateCvv()) {
+            } else if (!validateCvv()) {
                 return false
             } else if (!validateCpf()) {
                 return false
@@ -179,10 +180,10 @@ function Checkout(props) {
             } else {
                 return true
             }
-        }else {
+        } else {
             return false
         }
-    
+
     }
 
     const GetCard = (cardReceiver) => {
@@ -204,12 +205,12 @@ function Checkout(props) {
 
     return (
         document.title = `SKINS CS:GO | Pagamento`,
-        
+
         <>
             <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
-                <h1 className="mb-3 card-title-mvp checkout-title"> Checkout </h1>
+                <h1 className="mb-3 card-title-mvp checkout-title"> Pagamento </h1>
 
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 mx-1 checkout-containers checkout-request checkout-respons">
+                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-1 mx-1 checkout-containers checkout-request checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
                     <Container >
 
@@ -222,25 +223,25 @@ function Checkout(props) {
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
                                     <p> R$ {(grossValue).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
                                     <p> R$ {(discountValue).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
                                     <p> R$ {(totalValue).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })} </p>
                                 </Row>
                             </Row>
                         </Container>
@@ -248,14 +249,21 @@ function Checkout(props) {
                 </Col>
 
 
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-5 py-4 mx-1 checkout-containers checkout-respons">
+                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-4 py-4 checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
                     <PaymentCreditCard func={GetCard} vlTotal={order.valorBruto} />
                 </Col>
 
 
-                <Col xs={12} sm={12} md={12} lg={3} xl={3} className="py-4 px-4 mx-1 checkout-term checkout-containers checkout-respons">
-                    <h1 className="mb-3 card-caption-mvp checkout-title"> Termos de serviço </h1>
+                
+                <Col xs={12} sm={12} md={12} lg={3} xl={3} className="py-4 px-3 mx-1 checkout-containers">
+                    <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
+                    <AdressPayment/>
+                </Col>
+
+
+                <Col xs={12} sm={12} md={12} lg={12} xl={12} className="py-4 px-4 mx-1 my-4 checkout-term checkout-containers checkout-respons">
+                    <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
                     <p className="pt-3">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
                         realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
                         perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.
