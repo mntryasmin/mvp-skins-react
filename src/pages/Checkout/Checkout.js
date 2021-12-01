@@ -10,6 +10,7 @@ import './Checkout.css'
 // PÁGINAS/COMPONENTES
 import Products from '../../components/micro/Checkout/CheckoutItems/CheckoutItems'
 import PaymentCreditCard from '../../components/micro/Checkout/PaymentCreditCard/PaymentCreditCard'
+import AdressPayment from '../../components/micro/Checkout/AdressPayment/AdressPayment'
 import Button from '../../components/micro/Button/Button'
 import Ticket from '../../components/micro/Checkout/Ticket/Ticket'
 import Pix from '../../components/micro/Checkout/Pix/Pix'
@@ -312,9 +313,9 @@ function Checkout(props) {
 
         <>
             <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
-                <h1 className="mb-3 card-title-mvp checkout-title"> Checkout </h1>
+                <h1 className="mb-3 card-title-mvp checkout-title"> Pagamento </h1>
 
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 mx-1 checkout-containers checkout-request checkout-respons">
+                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-1 mx-1 checkout-containers checkout-request checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
                     <Container >
 
@@ -353,7 +354,7 @@ function Checkout(props) {
                 </Col>
 
 
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-5 py-4 mx-1 checkout-containers checkout-respons">
+                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-4 py-4 checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
                     <Form.Label className="mt-3"> Forma de pagamento </Form.Label>
                     {showPaymentSelect()}
@@ -361,8 +362,15 @@ function Checkout(props) {
                 </Col>
 
 
-                <Col xs={12} sm={12} md={12} lg={3} xl={3} className="py-4 px-4 mx-1 checkout-term checkout-containers checkout-respons">
-                    <h1 className="mb-3 card-caption-mvp checkout-title"> Termos de serviço </h1>
+                
+                <Col xs={12} sm={12} md={12} lg={3} xl={3} className="py-4 px-3 mx-1 checkout-containers">
+                    <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
+                    <AdressPayment/>
+                </Col>
+
+
+                <Col xs={12} sm={12} md={12} lg={12} xl={12} className="py-4 px-4 mx-1 my-4 checkout-term checkout-containers checkout-respons">
+                    <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
                     <p className="pt-3">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
                         realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
                         perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.

@@ -1,0 +1,11 @@
+.form-endereco-cobranca {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.adress-payment-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
