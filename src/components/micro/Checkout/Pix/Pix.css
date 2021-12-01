@@ -1,0 +1,16 @@
+.pix-img{
+    width: 100% !important;
+    
+}
+.QR-Code{
+    width: 200px !important;
+    height: 200px !important;
+}
+.container-pix{
+    background-color: white;
+    border-radius: 8px;
+}
+.box-key{
+    text-align: center;
+    color: black
+}

@@ -11,20 +11,29 @@ import './Checkout.css'
 import Products from '../../components/micro/Checkout/CheckoutItems/CheckoutItems'
 import PaymentCreditCard from '../../components/micro/Checkout/PaymentCreditCard/PaymentCreditCard'
 import Button from '../../components/micro/Button/Button'
+import Ticket from '../../components/micro/Checkout/Ticket/Ticket'
+import Pix from '../../components/micro/Checkout/Pix/Pix'
 
 
 function Checkout(props) {
 
-    const [card, setCard] = useState({})
+
     const [termAcepted, setTermAcepted] = useState(false)
     const [validationOfTerms, setValidationOfTerms] = useState('')
     const [classTerm, setClassTerm] = useState('')
+    const [paymentForm, setPaymentForm] = useState(1)
+    const [pixKey, setPixKey] = useState('')
+
+    const [card, setCard] = useState({})
+    const [paymentTicket, setPaymentTicket] = useState({})
+    const [paymentPix, setPaymentPix] = useState(false)
 
 
     const [order, setOrder] = useState({});
     const [orderItems, setOrderItems] = useState([])
     useEffect(() => {
         setOrderItems(JSON.parse(localStorage.getItem("cart")))
+        setPixKey(Math.random().toString(36).replace(/[^a-zA-Z0-9]+/g, ''))
     }, [])
 
     useEffect(() => {
@@ -35,7 +44,7 @@ function Checkout(props) {
     function postOrder() {
 
         if (termAcepted) {
-            if (ValideCard(card)) {
+            if (validePayment()) {
                 const order = JSON.parse(localStorage.getItem("order"))
 
                 axios.post(`http://localhost:8080/pedidos`, order)
@@ -55,7 +64,7 @@ function Checkout(props) {
                         console.log("Ocorreu um erro :" + error)
                     })
             } else {
-                setValidationOfTerms('Há algo de errado com cartão, verifique se está tudo preenchido corretamente')
+                setValidationOfTerms('Há algo de errado com o pagamento, verifique se está tudo preenchido corretamente')
                 setClassTerm('validation-term p-2')
             }
         } else {
@@ -86,8 +95,8 @@ function Checkout(props) {
     }
 
     function isEmpty(obj) {
-        for(var prop in obj) {
-            if(obj.hasOwnProperty(prop))
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop))
                 return false;
         }
         return true;
@@ -138,7 +147,13 @@ function Checkout(props) {
     }
 
     const validateCvv = () => {
-        if (card.cvv.length < 3) {
+        if (card.flag == 'AMEX'){
+            if (card.cvv.length != 4){
+                return false
+            }else {
+                return true
+            }
+        }else if (card.cvv.length != 3) {
             return false
         } else {
             return true
@@ -162,15 +177,15 @@ function Checkout(props) {
     }
 
     const ValideCard = (card) => {
-        
-        if (!isEmpty(card)){
+
+        if (!isEmpty(card)) {
             if (!validateName()) {
                 return false
             } else if (!validateCard()) {
                 return false
             } else if (!validateDate()) {
                 return false
-            }else if (!validateCvv()) {
+            } else if (!validateCvv()) {
                 return false
             } else if (!validateCpf()) {
                 return false
@@ -179,10 +194,10 @@ function Checkout(props) {
             } else {
                 return true
             }
-        }else {
+        } else {
             return false
         }
-    
+
     }
 
     const GetCard = (cardReceiver) => {
@@ -195,7 +210,97 @@ function Checkout(props) {
             dtCard: cardReceiver.dtCard,
             flag: cardReceiver.flag,
         })
+    }
 
+    const ChangePaymentForm = (value) => {
+        setValidationOfTerms('')
+        setClassTerm('')
+        setPaymentForm(value)
+    }
+
+    const ShowPaymentForm = () => {
+        if (paymentForm == 1) {
+            return (
+                <PaymentCreditCard func={GetCard} vlTotal={order.valorBruto} />
+            )
+        } else if (paymentForm == 2) {
+            return (
+                <Ticket func={getTicket} />
+            )
+        } else {
+            return (
+                <>
+                    <Pix pixKey={pixKey} func={getPix} />
+                </>
+            )
+        }
+    }
+
+    const validePayment = () => {
+        if (paymentForm == 1) {
+            if (ValideCard(card)) {
+                return true
+            }
+        } else if (paymentForm == 2) {
+            if (ValideTicket(paymentTicket)) {
+                return true
+            }
+        } else if (paymentForm == 3) {
+            if (paymentPix) {
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+
+    const getPix = (pix) => {
+        setPaymentPix(pix)
+        console.log(paymentPix)
+    }
+
+    const getTicket = (ticket) => {
+        setPaymentTicket({
+            name: ticket.name,
+            cpf: ticket.cpf
+        })
+    }
+
+    const ValideTicket = (ticket) => {
+        if (!isEmpty(ticket)) {
+            if (ticket.name.length < 3) {
+                return false
+            } else if (ticket.cpf.length < 14) {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+
+    const showPaymentSelect = () => {
+        if (paymentPix) {
+            return (
+                <Form.Select disabled aria-label="Forma de pagamento"
+                    onChange={(event) => ChangePaymentForm(event.target.value)}>
+                    <option value="1">Cartão de crédito - Até 3x sem juros</option>
+                    <option value="2">Boleto - À vista</option>
+                    <option value="3">PIX - À vista</option>
+                </Form.Select>
+            )
+
+        } else {
+            return (
+                <Form.Select aria-label="Forma de pagamento"
+                    onChange={(event) => ChangePaymentForm(event.target.value)}>
+                    <option value="1">Cartão de crédito - Até 3x sem juros</option>
+                    <option value="2">Boleto - À vista</option>
+                    <option value="3">PIX - À vista</option>
+                </Form.Select>
+            )
+        }
     }
 
     const grossValue = (JSON.parse(localStorage.getItem("order")).valorBruto)
@@ -204,7 +309,7 @@ function Checkout(props) {
 
     return (
         document.title = `SKINS CS:GO | Pagamento`,
-        
+
         <>
             <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
                 <h1 className="mb-3 card-title-mvp checkout-title"> Checkout </h1>
@@ -222,25 +327,25 @@ function Checkout(props) {
                                 <Row className="my-1 py-1 checkout-price ">
                                     <p className="checkout-price-title"> Produtos </p>
                                     <p> R$ {(grossValue).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1 checkout-price checkout-line">
                                     <p className="checkout-price-title"> Desconto </p>
                                     <p> R$ {(discountValue).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })} </p>
                                 </Row>
 
                                 <Row className="my-1 py-1  checkout-price checkout-line">
                                     <p className="checkout-price-title"> Total </p>
                                     <p> R$ {(totalValue).toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })} </p>
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })} </p>
                                 </Row>
                             </Row>
                         </Container>
@@ -250,7 +355,9 @@ function Checkout(props) {
 
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-5 py-4 mx-1 checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
-                    <PaymentCreditCard func={GetCard} vlTotal={order.valorBruto} />
+                    <Form.Label className="mt-3"> Forma de pagamento </Form.Label>
+                    {showPaymentSelect()}
+                    {ShowPaymentForm()}
                 </Col>
 
 

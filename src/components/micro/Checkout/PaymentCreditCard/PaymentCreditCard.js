@@ -62,9 +62,17 @@ function PaymentCreditCard(props) {
     };
 
     const maskCVV = (value) => {
-        return value
-            .replace(/\D/g, "")
-            .replace(/(\d{3})(\d{0})(\d)/, "$1")
+        if (flag == 'AMEX') {
+            return value
+                .replace(/\D/g, "")
+                .replace(/(\d{4})(\d{0})(\d)/, "$1")
+        }
+        else {
+            return value
+                .replace(/\D/g, "")
+                .replace(/(\d{3})(\d{0})(\d)/, "$1")
+        }
+
     }
 
     const changeInstallments = (value) => {
@@ -72,12 +80,15 @@ function PaymentCreditCard(props) {
     }
 
     const changeFlag = (cardNumber) => {
-        var cardInitial = cardNumber.substring(0, 1)
+        var cardInitial1 = cardNumber.substring(0, 1)
+        var cardInitial2 = cardNumber.substring(0, 2)
 
-        if (cardInitial == 4) {
+        if (cardInitial1 == 4) {
             setFlag('VISA')
-        } else if (cardInitial == 5) {
-            setFlag('MASTERCARD')
+        } else if (cardInitial2 > 50 && cardInitial2 < 56) {
+            setFlag('MASTER')
+        } else if (cardInitial2 == 34 || cardInitial2 == 37) {
+            setFlag('AMEX')
         } else {
             setFlag('INVÁLIDO')
         }
@@ -102,7 +113,7 @@ function PaymentCreditCard(props) {
             setFlag('INVÁLIDO')
             props.func(card);
         } else if (flag == 'INVÁLIDO') {
-            setValidation('No momento só aceitamos as bandeiras MasterCard e Visa.')
+            setValidation('No momento só aceitamos as bandeiras MasterCard, Visa E AMEX.')
             setClassTerm('validation-card py-1')
             props.func(card);
         } else {
@@ -153,7 +164,18 @@ function PaymentCreditCard(props) {
     }
 
     const validateCvv = () => {
-        if (cvv.length < 3) {
+        if (flag == 'AMEX') {
+            if (cvv.length != 4) {
+                setValidation('CVV inválido')
+                setClassTerm('validation-term p-2')
+                props.func(card);
+            }
+            else {
+                setValidation('')
+                setClassTerm('')
+                props.func(card);
+            }
+        } else if (cvv.length != 3) {
             setValidation('CVV inválido')
             setClassTerm('validation-term p-2')
             props.func(card);
@@ -199,6 +221,7 @@ function PaymentCreditCard(props) {
     }
 
     return (
+
 
         <Form className="payment-form">
             <div className={classTerm}>
