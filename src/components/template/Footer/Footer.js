@@ -5,7 +5,9 @@ import FooterText from './FooterText/FooterText'
 import FooterLink from './FooterLink/FooterLink'
 import Mastercard from '../../../assets/images/icones/icon-mastercard.png'
 import Visa from '../../../assets/images/icones/icon-visa.png'
-import LoginModal from '../../micro/LoginModal/LoginModal'
+import Amex from '../../../assets/images/icones/icon-amex.png'
+import Pix from '../../../assets/images/icones/icon-pix.png'
+import CodigoBarra from '../../../assets/images/icones/icon-codigo-de-barras.png'
 
 function Footer(props) {
 
@@ -26,7 +28,7 @@ function Footer(props) {
             {/* inicio footer */}
             <footer className="footer">
                 <Col xs={12} sm={12} md={3} lg={3} xl={3} className="footer-links my-3">
-                    <LoginModal link customClass="footer-login-modal" />
+                    
                     {btnCadastrar()}
                     <FooterLink label="Fale conosco" route="/contact" />
                 </Col>
@@ -37,6 +39,9 @@ function Footer(props) {
                     <Row className="bandeiras-pagamento">
                         <img src={Mastercard} alt="ícone do mastercard" className="icon-footer" />
                         <img src={Visa} alt="ícone da visa" className="icon-footer" />
+                        <img src={Amex} alt="ícone do AMEX" className="icon-footer" />
+                        <img src={Pix} alt="ícone do Pix" className="icon-footer" />
+                        <img src={CodigoBarra} alt="ícone do Código de barras" className="icon-footer" />
                     </Row>
                 </Col>
 
