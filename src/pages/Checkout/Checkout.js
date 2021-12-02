@@ -47,6 +47,14 @@ function Checkout(props) {
         if (termAcepted) {
             if (validePayment()) {
                 const order = JSON.parse(localStorage.getItem("order"))
+                order.formaPagamento.id = paymentForm
+
+                //Seta o parcelamento da compra
+                if(paymentForm==1){
+                    order.parcelas = card.installments;
+                } else {
+                    order.parcelas = 1;
+                }
 
                 axios.post(`http://localhost:8080/pedidos`, order)
                     .then((response) => {
@@ -59,7 +67,7 @@ function Checkout(props) {
                         sendOrderItems(orderItems, response.data)
 
                         window.location.replace('http://localhost:3000/success')
-
+                        
                     })
                     .catch((error) => {
                         console.log("Ocorreu um erro :" + error)
@@ -222,9 +230,9 @@ function Checkout(props) {
     const ShowPaymentForm = () => {
         if (paymentForm == 1) {
             return (
-                <PaymentCreditCard func={GetCard} vlTotal={order.valorBruto} />
+                <PaymentCreditCard func={GetCard} vlTotal={totalValue} />
             )
-        } else if (paymentForm == 2) {
+        } else if (paymentForm == 3) {
             return (
                 <Ticket func={getTicket} />
             )
@@ -242,11 +250,11 @@ function Checkout(props) {
             if (ValideCard(card)) {
                 return true
             }
-        } else if (paymentForm == 2) {
+        } else if (paymentForm == 3) {
             if (ValideTicket(paymentTicket)) {
                 return true
             }
-        } else if (paymentForm == 3) {
+        } else if (paymentForm == 2) {
             if (paymentPix) {
                 return true
             }
@@ -287,8 +295,8 @@ function Checkout(props) {
                 <Form.Select disabled aria-label="Forma de pagamento"
                     onChange={(event) => ChangePaymentForm(event.target.value)}>
                     <option value="1">Cartão de crédito - Até 3x sem juros</option>
-                    <option value="2">Boleto - À vista</option>
-                    <option value="3">PIX - À vista</option>
+                    <option value="3">Boleto - À vista</option>
+                    <option value="2">PIX - À vista</option>
                 </Form.Select>
             )
 
@@ -297,8 +305,8 @@ function Checkout(props) {
                 <Form.Select aria-label="Forma de pagamento"
                     onChange={(event) => ChangePaymentForm(event.target.value)}>
                     <option value="1">Cartão de crédito - Até 3x sem juros</option>
-                    <option value="2">Boleto - À vista</option>
-                    <option value="3">PIX - À vista</option>
+                    <option value="3">Boleto - À vista</option>
+                    <option value="2">PIX - À vista</option>
                 </Form.Select>
             )
         }

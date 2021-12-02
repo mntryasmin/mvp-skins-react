@@ -20,13 +20,29 @@ function Sucess(props) {
             Authorization: localStorage.getItem('Authorization')
             }
         }
-
-    console.log(config)
+    
+    const nf = {
+        pedido : order,
+        tipoNF : {
+            id : 1
+        },
+        empresa : {
+            id : 1
+        },
+        chaveAcesso : "194734897294",
+        flagNF : false
+    }
 
     useEffect(()=>{
         
         if(order!=null && order.id!=null){
-            sendOrderEmail()
+            if(order.formaPagamento.id==1 || order.formaPagamento.id==2){
+                sendOrderEmail()
+                sendPaymentApprovedEmail()
+                
+            } else {
+                sendOrderEmail()
+            }
         } else {
             swal({
                 showCancelButton : true,
@@ -51,12 +67,25 @@ function Sucess(props) {
         .catch((error)=>{
             console.log("Ocorreu um erro: " + error)
         })
-        
     }
 
     function deleteOrder(){
         localStorage.removeItem('order')
     }
+
+    function sendPaymentApprovedEmail(){
+        axios.post(`http://localhost:8080/nf`, nf, config)
+        .then((response)=>{
+            axios.post(`http://localhost:8080/nf/email/${response.data.numeroNF}`, {}, config)
+            .catch((error)=>{
+                console.log("Ocorreu um erro ao aprovar o pagamento: " + error)
+            })
+        })
+        .catch((error)=>{
+            console.log("Ocorreu um erro ao criar a NF: " + error)
+        })
+    }
+
 
     while(order==undefined){
         return null;
