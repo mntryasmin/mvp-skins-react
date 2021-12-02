@@ -18,7 +18,7 @@ function Contact(props) {
         document.title = `SKINS CS:GO | Fale conosco`,
 
         <>
-            <Container className="contact content-container">
+            <Container fluid className="contact content-container">
                 <Row className="pt-5">
                     <h1 className="contact-h1">Como podemos te ajudar?</h1>
                     <p className="pb-5">Entre em contato por uma das redes abaixo</p>

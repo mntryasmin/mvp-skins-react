@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CardProduct from '../../../components/micro/CardProduct/CardProduct'
-import { Container, ListGroup, Row} from 'react-bootstrap'
+import { Container, ListGroup, Row, Col } from 'react-bootstrap'
 import "./CategoryContainer.css"
 
 function CategoryContainer(props) {
@@ -13,21 +13,21 @@ function CategoryContainer(props) {
     // const idExterior = props.idExterior;
     // const idColection = props.idColection;
     let url = '';
-    if(idCategory==0){
+    if (idCategory == 0) {
 
         url = `http://localhost:8080/produtos`
 
-    } else if (idCategory.includes('search=')){
+    } else if (idCategory.includes('search=')) {
 
         var idCategorySearch = idCategory.substring('search='.length)
-        url = 'http://localhost:8080/produtos/search/'+idCategorySearch
+        url = 'http://localhost:8080/produtos/search/' + idCategorySearch
 
-    } else if(idCategory.includes('rarity=')){
+    } else if (idCategory.includes('rarity=')) {
 
         var idRarity = idCategory.substring('rarity='.length)
-        url =`http://localhost:8080/produtos/rarity/${idRarity}`
+        url = `http://localhost:8080/produtos/rarity/${idRarity}`
 
-    } else if(idCategory.includes('exterior=')){
+    } else if (idCategory.includes('exterior=')) {
 
         var idExterior = idCategory.substring('exterior='.length)
         url = `http://localhost:8080/produtos/exterior/${idExterior}`
@@ -52,32 +52,33 @@ function CategoryContainer(props) {
     // else {
     //     url = `http://localhost:8080/produtos/colection/${idColection}`
     // }
-    
 
-    useEffect(()=>{
+
+    useEffect(() => {
         axios.get(url)
-        .then((response)=>{
-            setProduct(response.data)
-        })
-        .catch((error)=>{
-            console.log('Ocorreu um erro: '+error)
-        })
-    },[])
+            .then((response) => {
+                setProduct(response.data)
+            })
+            .catch((error) => {
+                console.log('Ocorreu um erro: ' + error)
+            })
+    }, [])
 
-    function getProductsCards(){
-        return product.map(p =>{
-            return(
+    function getProductsCards() {
+        return product.map(p => {
+            console.log(p)
+            return (
                 <>
-                    <ListGroup.Item className='item'>
-                        <CardProduct idProduct={p.id}/>
+                    <ListGroup.Item className='item p-0'>
+                        <CardProduct idProduct={p.id} />
                     </ListGroup.Item>
                 </>
             )
         })
     }
 
-    while(product[0] == undefined && props.search){
-        return(
+    while (product[0] == undefined && props.search) {
+        return (
             <>
                 <Container fluid>
                     <div className='search-category'>
@@ -88,20 +89,20 @@ function CategoryContainer(props) {
         )
     }
 
-    while(product[0] == undefined){
-        return(
+    while (product[0] == undefined) {
+        return (
             <>
                 <Container fluid>
                     <div className='search-category'>
-                        
+
                     </div>
                 </Container>
             </>
         )
     }
 
-    if(props.search){
-        return(
+    if (props.search) {
+        return (
             <>
                 <Container fluid>
                     <div className='search-category'>
@@ -117,22 +118,25 @@ function CategoryContainer(props) {
         )
     }
 
-    return(
-            document.title = `SKINS CS:GO | ${title}`,
+    return (
+        document.title = `SKINS CS:GO | ${idCategory == 0 || idCategory.includes('rarity=') || idCategory.includes('exterior=')
+            ? 'SKINS'
+            : product[0].categoria.descricao}`,
 
         <>
-            <Container fluid>
+            <Row>
                 <div className='title-category'>
-                    {idCategory==0 || idCategory.includes('rarity=') ||idCategory.includes('exterior=') 
-                    ?'SKINS'
-                    :product[0].categoria.descricao}
+                    {idCategory == 0 || idCategory.includes('rarity=') || idCategory.includes('exterior=')
+                        ? 'SKINS'
+                        : product[0].categoria.descricao}
                 </div>
-                <Row >
-                    <ListGroup horizontal className='cards'>
-                        {getProductsCards()}
-                    </ListGroup>
-                </Row>
-            </Container>
+
+                <ListGroup horizontal className='cards'>
+                    {getProductsCards()}
+                </ListGroup>
+
+
+            </Row>
         </>
     )
 }

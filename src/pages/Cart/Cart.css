@@ -7,14 +7,14 @@
 .cart-container {
     background-color: #766289;
     border-radius: 6px;
-    color: #181818
+    color: #181818;
 }
 
 .cart-banner {
     background-image: url(/src/assets/images/banners/sidebar-banner.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size:cover;
 }
 
 .price {
@@ -132,6 +132,8 @@
         justify-content: space-between;
         align-items: center;
     }
+
+    
 }
 
 /* SM */
@@ -144,6 +146,13 @@
         height: 250px;
         flex-direction: column;
         justify-content: space-around;
+    }
+
+    .cart-buttons {
+        height: 160px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .price div {

@@ -1,8 +1,10 @@
 .filter-column{
     background-color: #EFEFEF;
-    width: 20vw !important;
-    height: 140vh;
+    width: 100% !important;
     border-radius: 0 0 6px 0;
+    flex-direction: row;
+    border: solid #28004f 5px ;
+    border-radius: 10px;
 }
 
 .filter-title{
@@ -10,24 +12,30 @@
     font-weight: 500;
     font-size: 15px;
     text-align: center;
+    
 }
 
 .check-box {
     padding-right: 1vw;
+    
 }
 
 .check-box:hover{
     font-weight: 500;
     color:#FD4712;
+    border-radius: 5px ;
+    background-color: #28004f;
 }
 
 
 .categoryfilter-item{
     width: 100%;
+    text-align: center;
 }
 
 .filter-check-box .form-check-input{
     display: none;
+    cursor: pointer !important;
 }
 
 .filter-check-box label {
@@ -35,7 +43,5 @@
 }
 
 @media (max-width: 992px){
-    .filter-column{
-        display: none;
-    }
+    
 }

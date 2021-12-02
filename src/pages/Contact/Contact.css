@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    color: white;
+    background-color: #28004f;
 }
 
 .border-contact {
@@ -11,6 +13,7 @@
 
 .contact-h1 {
     font-size: 1.8rem !important;
+    color: white;
 }
 
 .contact-container {
@@ -18,10 +21,13 @@
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
+    color: white;
+    
 }
 
 .contact-infos {
-    text-align: left;
+    text-align: center;
+    
 }
 
 .contact-icon {
@@ -36,7 +42,7 @@
 .contact-link {
     text-decoration: none;
     font-weight: 500;
-    color: #181818;
+    color: white;
 }
 
 .contact-link:hover {
@@ -49,6 +55,10 @@
 @media (max-width: 575.98px) { 
     .contact-h1 {
         font-size: 1.4rem !important;
+    }
+
+    .border-contact{
+        border: none;
     }
 
     .contact-infos p {
@@ -69,6 +79,10 @@
 @media (min-width: 576px) and (max-width: 767.98px) {
     .contact-infos img {
         width: 7vw;
+    }
+
+    .border-contact{
+        border: none;
     }
 
 }

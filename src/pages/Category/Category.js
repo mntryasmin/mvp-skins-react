@@ -10,7 +10,7 @@ function Category(props) {
     const { id } = useParams();
     var idCategory = id
 
-    function setId(id){
+    function setId(id) {
         idCategory = id;
         console.log(idCategory)
     }
@@ -18,17 +18,18 @@ function Category(props) {
     return (
         <>
             <Container fluid className='background content-container'>
+
+                {id == 0 || id.includes('rarity=') || id.includes('exterior')
+                    ? <CategoryFilter link={setId} />
+                    : <></>}
                 <Row>
-                    {id==0 || id.includes('rarity=') || id.includes('exterior')
-                    ?<CategoryFilter link={setId}/>
-                    :<></>}
-                    <Col>
-                        {id.includes('search=') ?
-                            <CategoryContainer idCategory={idCategory} search /> :
-                            <CategoryContainer idCategory={idCategory} />
-                        }
-                    </Col>
+                    {id.includes('search=') ?
+                        <CategoryContainer idCategory={idCategory} search /> :
+                        <CategoryContainer idCategory={idCategory} />
+                    }
                 </Row>
+
+
             </Container>
 
         </>

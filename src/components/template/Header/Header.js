@@ -126,7 +126,7 @@ function Header(props) {
                         <SearchForm />
                     </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={3} xl={3} className="button-register mx-0 px-0">
+                    <Col md={12} lg={4} className="button-register mx-0 px-0">
                         {/* BOTÃO DE CADASTRO */}
                         {btnCadastrar()}
                         <LoginModal />
@@ -135,38 +135,38 @@ function Header(props) {
 
                 {/* NAVBAR */}
                 <Navbar bg="light" variant="light" className='bottom-header px-2' >
-                    <Col xs={2} sm={2} md={2} lg={1} xl={1}>
-                        <Navbar.Brand href="#" className="link-header">
+                    <Col xs={2} md={1} >
+                        <Navbar.Brand href="#" className="link-header p-0 m-0">
                             <Menu />
                         </Navbar.Brand>
                     </Col>
-                    <Col xs={10} sm={10} md={10} lg={11} xl={11}>
+                    <Col xs={10} md={11} >
                         <Nav className="bottom-header-links">
-                            <Nav.Link xs={4} sm={4} md={2} lg={2} xl={2} href="/category/0" className="link-header items-nav items-nav-all">
+                            <Nav.Link md={1} lg={2} href="/category/0" className="link-header link-header-resp items-nav items-nav-all p-0">
                                 TODAS AS SKINS
                             </Nav.Link>
 
-                            <Nav.Link md={2} lg={2} xl={2} href="/category/3" className="link-header link-header-resp items-nav">
+                            <Nav.Link md={1} lg={2} href="/category/3" className="link-header link-header-resp items-nav p-0">
                                 <img src={Arma} width="30" height="30" />
                                 Rifles
                             </Nav.Link>
 
-                            <Nav.Link md={2} lg={2} xl={2} href="/category/6" className="link-header link-header-resp items-nav">
+                            <Nav.Link md={1} lg={2} href="/category/6" className="link-header link-header-resp items-nav p-0">
                                 <img src={Faca} width="30" height="30" />
                                 Facas
                             </Nav.Link>
 
-                            <Nav.Link md={2} lg={2} xl={2} href="/category/7" className="link-header link-header-resp items-nav">
+                            <Nav.Link md={1} lg={2} href="/category/7" className="link-header link-header-resp items-nav p-0">
                                 <img src={Luva} width="30" height="30" />
                                 Luvas
                             </Nav.Link>
 
-                            <Nav.Link md={2} lg={2} xl={2} href="/category/4" className="link-header link-header-resp items-nav">
+                            <Nav.Link md={1} lg={2} href="/category/4" className="link-header link-header-resp items-nav p-0">
                                 <img src={Agente} width="30" height="30" />
                                 Agentes
                             </Nav.Link>
 
-                            <Col xs={4} sm={4} md={2} lg={2} xl={2} className="favor-cart-header px-2">
+                            <Col xs={10} md={4} className="favor-cart-header px-2 d-flex justify-content-around p-0">
                                 {btnFavorites()}
                                 {btnCart()}
                             </Col>

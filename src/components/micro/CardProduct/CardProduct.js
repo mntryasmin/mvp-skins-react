@@ -176,7 +176,7 @@ function CardProduct(props) {
     if (inventory == true) {
         return (
             <>
-                <div xs={6} sm={4} md={3} lg={2} xl={2} className="p-0 my-3 card card-link">
+                <div xs={6} sm={4} md={3} lg={2} xl={2} className="mx-3 my-3 card card-link">
                     <Container className="py-2 px-0 card-hover">
                         <Row className="mb-4 cart-icon-card-container">
                             <a onClick={() => addProductToCart(product)}
@@ -231,7 +231,10 @@ function CardProduct(props) {
             </>
         )
     } else {
-        return null
+        return (
+            <>
+            </>
+        )
     }
 }
 

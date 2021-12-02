@@ -102,10 +102,10 @@ function Cart(props) {
     return (
         document.title = 'SKINS CS:GO | Carrinho ',
         <>
-            <Container fluid className="cart p-0 content-container">
-                <Col lg={3} xl={3} className="mx-4 my-5 cart-container cart-banner">
+            <Container fluid className="cart p-0 content-container d-flex justify-content-center">
+                <Col lg={2} className="mx-4 my-5 cart-banner cart-container">
                 </Col>
-                <Container xs={12} sm={12} md={12} lg={8} xl={8} className="mx-4 my-5 pt-3 cart-container">
+                <Col xs={11} lg={9} className="mx-4 my-5 pt-3  cart-container">
                     <ProductListCart functionTotalPrice={getTotalPrice} />
 
                     <Container className="my-4 price">
@@ -151,7 +151,7 @@ function Cart(props) {
                         </Col>
                     </Container>
                     <Row className="p-4 my-0 pb-5 cart-buttons">
-                        <Button label="Continuar comprando" route="/home" class="btn-mvp btn-mvp-orange-solid"></Button>
+                        <Button label="Continuar comprando" onclick={() => window.history.back()} class="btn-mvp btn-mvp-orange-solid"></Button>
 
                         {localStorage.getItem("Authorization") ?
                             <Button label="Finalizar compra"
@@ -160,7 +160,7 @@ function Cart(props) {
                             <LoginModal linkCart />
                         }
                     </Row>
-                </Container>
+                </Col>
             </Container>
         </>
     )

@@ -100,18 +100,18 @@
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
+
     .top-header {
         height: auto;
         flex-wrap: wrap;
     }
 
     .logo img {
-        width: 80px !important;
-        height: auto;
+        width: 100px !important;
     }
 
     .button-register {
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .link-header-resp {
@@ -130,19 +130,19 @@
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576) and (max-width: 767.98px) {
+@media (min-width: 576px) and (max-width: 767.98px) {
     .top-header {
         height: auto;
         flex-wrap: wrap;
     }
 
     .logo img {
-        width: 90px !important;
-        height: auto;
+        width: 100px !important;
+        
     }
 
     .button-register {
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .link-header-resp {
@@ -150,7 +150,8 @@
     }
 
     .bottom-header-links {
-        justify-content: space-around;
+        
+        justify-content: flex-end;
     }
 
     .bottom-header-links img {
@@ -161,9 +162,9 @@
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 994.98px) { 
+@media (min-width: 768px) and (max-width: 993px) { 
     .top-header {
-        height: auto;
+        flex-wrap: wrap;
     }
 
     .logo img {
@@ -176,7 +177,7 @@
     }
 
     .bottom-header-links {
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .bottom-header-links img {
@@ -187,10 +188,7 @@
 }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 995px) and (max-width: 1199.98px) { 
-    .top-header {
-        height: auto;
-    }
+@media (min-width: 993px) and (max-width: 1199.98px) { 
 
     .logo img {
         width: 110px !important;
@@ -198,8 +196,9 @@
     }
 
     .bottom-header-links {
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
+
 
     .bottom-header-links img {
         margin-right: 0.5vw;
