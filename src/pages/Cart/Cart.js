@@ -35,10 +35,11 @@ function Cart(props) {
             const order = {
                 cliente: client,
                 formaPagamento: {
-                    id: 1
+                    id: 0
                 },
                 descontoProduto: valueDiscount,
-                valorBruto: price
+                valorBruto: price,
+                parcelas: 0
             }
 
             var orderString = JSON.stringify(order)
