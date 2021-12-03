@@ -11,25 +11,92 @@ import './AdressPayment.css'
 import Button from '../../Button/Button'
 
 export default function AdressPayment(props) {
-    const[ID, setID] = useState('');
-    const[pedido, setPedido] = useState({});
-    const[CEP, setCEP] = useState('');
-    const[logradouro, setLogradouro] = useState('');
-    const[numero, setNumero] = useState('');
-    const[complemento, setComplemento] = useState('');
-    const[bairro, setBairro] = useState('');
-    const[cidade, setCidade] = useState('');
-    const[estado, setEstado] = useState('');
 
-    const[adressResult, setAdressResult] = useState('');
-    const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode salvar esse novamente ou alterar e, em seguida, salvar.'
+    const client = JSON.parse(localStorage.getItem("client"));
+    const [endereco, setEndereco] = useState({});
+    const [listRequests, setListRequests] = useState([]);
+
+    useEffect(() => { 
+        console.log(client);
+        axios.get(`http://localhost:8080/pedidos/order-history/${client.codigoCliente}`, {
+            headers: {
+                Authorization: localStorage.getItem('Authorization')
+            }
+        })
+            .then((response) => {
+                console.log(response.data);
+                setListRequests(response.data);
+            })
+            .catch((erro) => {
+                console.log("Não foi possível buscar os pedidos do cliente: " + erro)
+            }
+            );
+    }, []);
+
+
+    useEffect(() => {
+        console.log(listRequests);
+
+        axios.get(`http://localhost:8080/billing-address/request/${2}`, {
+            headers: {
+                Authorization: localStorage.getItem('Authorization')
+            }
+        })
+            .then((response) => {
+                if (response.data) {
+                    setEndereco(response.data);
+                    setAdressResult(addressFound);
+                } else {
+                    setAdressResult(adressNotFound);
+                }
+            })
+            .catch((erro) => {
+                console.log("Não foi possível buscar o último endereço do cliente: " + erro)
+            }
+            );
+    }, []);
+
+    const [CEP, setCEP] = useState(endereco.cep);
+    const [logradouro, setLogradouro] = useState(endereco.logradouro);
+    const [numero, setNumero] = useState(endereco.numero);
+    const [complemento, setComplemento] = useState(endereco.complemento);
+    const [bairro, setBairro] = useState(endereco.bairro);
+    const [cidade, setCidade] = useState(endereco.cidade);
+    const [estado, setEstado] = useState(endereco.estado);
+
+    const [adressResult, setAdressResult] = useState('');
+    const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
     const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
-
+    const [changeAdress, setChangeAdress] = useState('input-disabled');
 
     const maskCEP = (value) => {
         return value
-            .replace(/^[\d]{2}.[\d]{3}-[\d]{3}/)
+            .replace(/\D/g, "")
+            .replace(/(\d{5})(\d{1,2})/, "$1-$2")
+            .replace(/(-\d{3})\d+?$/, "$1");
     };
+
+    const maskTextNumber = (value) => {
+        return value.replace(/[!@#¨$%^&*)}",|?;{(+=._-]+/g, "");
+    }
+
+    const maskNumber = (value) => {
+        return value.replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
+    }
+
+    const maskUF = (value) => {
+        return value
+            .replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "")
+            .replace(/(\d{2})(\d{0})(\d)/, "$1")
+    }
+
+    const changeDisabled = () => {
+        document.getElementsByClassName("input-disabled").disabled = false;
+    }
+
+    const validAdress = () => {
+        document.getElementsByClassName('input-disabled').disabled = true;
+    }
 
     return (
         <>
@@ -37,8 +104,7 @@ export default function AdressPayment(props) {
                 <p>{adressResult}</p>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
-                    {/* <Form.Control type="text" name="cvv" placeholder="Digite o CEP" value={cep} onBlur={() => validateCvv()} */}
-                    <Form.Control type="text" name="cep" placeholder="Digite o CEP" value={CEP}
+                    <Form.Control className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={CEP}
                         onChange={(event) => {
                             setCEP(maskCEP(event.target.value));
                         }} />
@@ -46,69 +112,84 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Logradouro </Form.Label>
-                    {/* <Form.Control type="text" name="cvv" placeholder="Digite o CEP" value={cep} onBlur={() => validateCvv()} */}
-                    <Form.Control type="text" name="logradouro" placeholder="Digite o nome da rua"
+                    <Form.Control className={changeAdress} type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
                         onChange={(event) => {
-                            // setCep(maskCVV(event.target.value));
-                            setLogradouro(event.target.value);
+                            setLogradouro(maskTextNumber(event.target.value));
                         }} />
                 </Col>
 
                 <Col className="col-3">
                     <Form.Label className="mt-3"> Nº </Form.Label>
-                    {/* <Form.Control type="text" name="cvv" placeholder="Digite o CEP" value={cep} onBlur={() => validateCvv()} */}
-                    <Form.Control type="text" name="numero" placeholder="Digite o nº da residência"
+                    <Form.Control className={changeAdress} type="text" name="numero" placeholder="Digite o nº da residência" value={numero}
                         onChange={(event) => {
-                            // setCep(maskCVV(event.target.value));
-                            setNumero(event.target.value);
+                            setNumero(maskNumber(event.target.value));
                         }} />
                 </Col>
 
                 <Col className="col-8">
                     <Form.Label className="mt-3"> Complemento </Form.Label>
-                    {/* <Form.Control type="text" name="cvv" placeholder="Digite o CEP" value={cep} onBlur={() => validateCvv()} */}
-                    <Form.Control type="text" name="complemento" placeholder="Digite o complemento"
+                    <Form.Control className={changeAdress} type="text" name="complemento" placeholder="Digite o complemento" value={complemento}
                         onChange={(event) => {
-                            // setCep(maskCVV(event.target.value));
-                            setComplemento(event.target.value);
+                            setComplemento(maskTextNumber(event.target.value));
                         }} />
                 </Col>
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Bairro</Form.Label>
-                    {/* <Form.Control type="text" name="cvv" placeholder="Digite o CEP" value={cep} onBlur={() => validateCvv()} */}
-                    <Form.Control type="text" name="bairro" placeholder="Digite o bairro"
+                    <Form.Control className={changeAdress} type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
                         onChange={(event) => {
-                            // setCep(maskCVV(event.target.value));
-                            setBairro(event.target.value);
-                        }} />
-                </Col>
-                
-                <Col className="col-8">
-                    <Form.Label className="mt-3"> Cidade </Form.Label>
-                    {/* <Form.Control type="text" name="cvv" placeholder="Digite o CEP" value={cep} onBlur={() => validateCvv()} */}
-                    <Form.Control type="text" name="cidade" placeholder="Digite a cidade"
-                        onChange={(event) => {
-                            // setCep(maskCVV(event.target.value));
-                            setCidade(event.target.value);
+                            setBairro(maskTextNumber(event.target.value));
                         }} />
                 </Col>
 
-                <Col className="col-3">
-                    <Form.Label className="mt-3"> UF </Form.Label>
-                    {/* <Form.Control type="text" name="cvv" placeholder="Digite o CEP" value={cep} onBlur={() => validateCvv()} */}
-                    <Form.Control type="text" name="uf" placeholder="Digite a UF"
+                <Col className="col-12">
+                    <Form.Label className="mt-3"> Cidade </Form.Label>
+                    <Form.Control className={changeAdress} type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
                         onChange={(event) => {
-                            // setCep(maskCVV(event.target.value));
-                            setEstado(event.target.value);
+                            setCidade(maskTextNumber(event.target.value));
                         }} />
+                </Col>
+
+                <Col className="col-12">
+                    <Form.Label className="mt-3"> Estado </Form.Label>
+                    <Form.Select className={changeAdress} aria-label="Default select example" value={estado} onChange={(event) => {
+                        setEstado(maskUF(event.target.value))
+                    }}>
+                        <option>Selecione um estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </Form.Select>
                 </Col>
             </Form>
 
             <Col className="adress-payment-buttons">
-            {/* <Button label="Manter" route="/success" class="mt-3 btn-mvp btn-mvp-purple-solid" onclick={() => postOrder()}></Button> */}
-            <Button label="Manter" route="/success" class="mt-3 btn-mvp btn-mvp-purple-solid col-4"/>
-            <Button label="Alterar" route="/success" class="mt-3 btn-mvp btn-mvp-purple-solid col-4"/>
+                <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4" />
+                <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
             </Col>
         </>
     )

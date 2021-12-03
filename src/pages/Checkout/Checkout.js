@@ -29,6 +29,7 @@ function Checkout(props) {
     const [paymentTicket, setPaymentTicket] = useState({})
     const [paymentPix, setPaymentPix] = useState(false)
 
+    const [adress, setAdress] = useState({})
 
     const [order, setOrder] = useState({});
     const [orderItems, setOrderItems] = useState([])
@@ -45,7 +46,7 @@ function Checkout(props) {
     function postOrder() {
 
         if (termAcepted) {
-            if (validePayment()) {
+            if (validePayment() && validAdress()) {
                 const order = JSON.parse(localStorage.getItem("order"))
                 order.formaPagamento.id = paymentForm
 
@@ -73,7 +74,7 @@ function Checkout(props) {
                         console.log("Ocorreu um erro :" + error)
                     })
             } else {
-                setValidationOfTerms('Há algo de errado com o pagamento, verifique se está tudo preenchido corretamente')
+                setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
                 setClassTerm('validation-term p-2')
             }
         } else {
@@ -156,13 +157,13 @@ function Checkout(props) {
     }
 
     const validateCvv = () => {
-        if (card.flag == 'AMEX'){
-            if (card.cvv.length != 4){
+        if (card.flag == 'AMEX') {
+            if (card.cvv.length != 4) {
                 return false
-            }else {
+            } else {
                 return true
             }
-        }else if (card.cvv.length != 3) {
+        } else if (card.cvv.length != 3) {
             return false
         } else {
             return true
@@ -263,6 +264,45 @@ function Checkout(props) {
         }
     }
 
+    const GetAdress = (adressClient) => {
+        setCard({
+            pedido: order,
+            cep: adressClient.cep,
+            logradouro: adressClient.logradouro,
+            numero: adressClient.numero,
+            complemento: adressClient.complemento,
+            bairro: adressClient.bairro,
+            cidade: adressClient.cidade,
+            uf: adressClient.uf,
+        })
+    }
+
+    const validAdress = () => {
+        console.log(adress)
+        console.log(order)
+        if (!isEmpty(adress)) {
+            if (isEmpty(adress.pedido)) {
+                return false
+            } else if (isEmpty(adress.cep)) {
+                return false
+            } else if (isEmpty(adress.logradouro)) {
+                return false
+            } else if (isEmpty(adress.numero)) {
+                return false
+            } else if (isEmpty(adress.bairro)) {
+                return false
+            } else if (isEmpty(adress.cidade)) {
+                return false
+            } else if (isEmpty(adress.uf)) {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+
     const getPix = (pix) => {
         setPaymentPix(pix)
         console.log(paymentPix)
@@ -320,10 +360,10 @@ function Checkout(props) {
         document.title = `SKINS CS:GO | Pagamento`,
 
         <>
-            <Container fluid className="row px-2 py-5 mx-0 checkout content-container">
+            <Container fluid className="row px-3 py-5 mx-0 checkout content-container">
                 <h1 className="mb-3 card-title-mvp checkout-title"> Pagamento </h1>
 
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-1 mx-1 checkout-containers checkout-request checkout-respons">
+                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-1 checkout-containers checkout-request checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
                     <Container >
 
@@ -370,40 +410,42 @@ function Checkout(props) {
                 </Col>
 
 
-                
-                <Col xs={12} sm={12} md={12} lg={3} xl={3} className="py-4 px-3 mx-1 checkout-containers">
+
+                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-3 checkout-containers">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
-                    <AdressPayment/>
+                    <AdressPayment />
                 </Col>
 
 
-                <Col xs={12} sm={12} md={12} lg={12} xl={12} className="py-4 px-4 mx-1 my-4 checkout-term checkout-containers checkout-respons">
+                <Col className="col-12 p-3 checkout-term checkout-containers checkout-respons">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
-                    <p className="pt-3">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
+                    <p className="p-4">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
                         realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
                         perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.
                     </p>
 
-                    <Form>
-                        <Form.Group className="mb-3 checkout-checkbox" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Eu aceito os termos e condições."
-                                value={termAcepted} onClick={() => {
-                                    if (termAcepted) {
-                                        setTermAcepted(false)
-                                    } else {
-                                        setTermAcepted(true)
-                                        setValidationOfTerms('')
-                                        setClassTerm('')
-                                    }
+                    <Col className="col-12 px-3 submit-payment">
+                        <Form>
+                            <Form.Group className="checkout-checkbox" controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Eu aceito os termos e condições."
+                                    value={termAcepted} onClick={() => {
+                                        if (termAcepted) {
+                                            setTermAcepted(false)
+                                        } else {
+                                            setTermAcepted(true)
+                                            setValidationOfTerms('')
+                                            setClassTerm('')
+                                        }
 
-                                }} />
-                        </Form.Group>
-                    </Form>
-                    <div className={classTerm}>
-                        {validationOfTerms}
-                    </div>
+                                    }} />
+                            </Form.Group>
+                        </Form>
+                        <div className={classTerm}>
+                            {validationOfTerms}
+                        </div>
 
-                    <Button label="Finalizar a compra" route="/success" class="mt-3 btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
+                        <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
+                    </Col>
                 </Col>
             </Container>
         </>

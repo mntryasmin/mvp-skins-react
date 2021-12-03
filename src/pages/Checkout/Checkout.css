@@ -39,8 +39,8 @@
 
 .checkout-containers {
     background-color: #766289;
-    border-radius: 8px;
-    /* height: 90vh; */
+    border-radius: 10px;
+    border: 7px solid #28004f;
 }
 
 .checkout-price-container {
@@ -101,6 +101,18 @@
     border-radius: 6px;
     text-align: center;
     font-weight: 600;
+}
+
+
+.submit-payment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-payment button {
+    width: 200px !important;
 }
 
 
