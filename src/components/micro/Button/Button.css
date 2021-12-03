@@ -78,6 +78,30 @@
     border-color: #EFEFEF !important;
 }
 
+/* BOTÃO CARD */
+.btn-card{
+    height: 33px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #FD4712;
+    background-color: #FD4712;
+    color:#EFEFEF;
+}
+
+.btn-card:hover{
+    border-color: #FD4712;
+    background-color: #FD4712;
+    color: #EFEFEF !important;
+    border-color: #EFEFEF !important;
+}
 
 /* MEDIAS QUERIES  */
 
@@ -86,12 +110,19 @@
     .btn-mvp{
         width: 180px !important;
     }
+    .btn-card{
+        width: 100px !important;
+    }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .btn-mvp{
         width: 180px !important;
+    }
+    
+    .btn-card{
+        width: 120px !important;
     }
 }
 
@@ -100,6 +131,10 @@
     .btn-mvp{
         width: 180px !important;
     }
+    
+    .btn-card{
+        width: 140px !important;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -107,11 +142,19 @@
     .btn-mvp{
         width: 130px !important;
     }
+    
+    .btn-card{
+        width: 140px !important;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
     .btn-mvp{
         width: 130px !important;
+    }
+    
+    .btn-card{
+        width: 140px !important;
     }
 }
