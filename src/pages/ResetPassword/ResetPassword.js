@@ -80,7 +80,11 @@ function ResetPassword(props) {
                     <Row className="justify-content-center">
                         <Col sm={10} lg={6} className="resetpassword-box-input">
                             <FormLabel className='formlabel-resetpassword'>Crie uma nova senha</FormLabel>
+                            
                             <InputPassword function={setPassword}/>
+                            
+                          
+                            
                         </Col>
                     </Row>
                     <Row className="justify-content-center">

@@ -29,7 +29,7 @@ function InputName(props) {
                 type="text"
                 value={nameDescription} 
                 onChange={(event)=>{setNameDescription(event.target.value)}}
-                placeholder="Digite seu nome"/>
+                placeholder="Digite seu nome completo"/>
                 {props.function("name", nameDescription)}
             </>
         )

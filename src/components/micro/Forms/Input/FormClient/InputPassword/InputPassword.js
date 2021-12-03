@@ -31,7 +31,7 @@ function InputPassword(props) {
             type="password"
             value={password}
             onChange={(event) =>{setPassword(event.target.value)}}
-            placeholder="Digite a senha"/>
+            placeholder="Digite a senha"/> 
             {props.function("password", password)}
             </>
         )
