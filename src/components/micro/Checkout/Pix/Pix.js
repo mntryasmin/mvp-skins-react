@@ -42,7 +42,7 @@ export default function Pix(props) {
                     <img src={PixImg} className='pix-img mt-2' />
                 </Row>
                 <Row className='d-flex justify-content-center'>
-                    <img src={QRCode} className=' QR-Code' onClick={() => {changePaymentStatus(); }} />
+                    <img src={QRCode} className=' QR-Code' onClick={() => { changePaymentStatus(); }} />
                 </Row>
                 <Row>
                     <p className='box-key' onClick={() => changePaymentStatus()}>
@@ -55,11 +55,7 @@ export default function Pix(props) {
                     <p className='box-key'> {checkPayment()} </p>
                 </Row>
             </div>
-
-
-
-
-
         </>
     )
+
 }
