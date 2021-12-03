@@ -42,6 +42,9 @@ function Checkout(props) {
         setOrder(JSON.parse(localStorage.getItem("order")))
     }, [])
 
+    function getAdress(adress){
+        setAdress(adress)
+    }
 
     function postOrder() {
 
@@ -264,26 +267,25 @@ function Checkout(props) {
         }
     }
 
-    const GetAdress = (adressClient) => {
-        setCard({
-            pedido: order,
-            cep: adressClient.cep,
-            logradouro: adressClient.logradouro,
-            numero: adressClient.numero,
-            complemento: adressClient.complemento,
-            bairro: adressClient.bairro,
-            cidade: adressClient.cidade,
-            uf: adressClient.uf,
-        })
-    }
+    // const GetAdress = (adressClient) => {
+    //     setCard({
+    //         pedido: order,
+    //         cep: adressClient.cep,
+    //         logradouro: adressClient.logradouro,
+    //         numero: adressClient.numero,
+    //         complemento: adressClient.complemento,
+    //         bairro: adressClient.bairro,
+    //         cidade: adressClient.cidade,
+    //         uf: adressClient.uf,
+    //     })
+    // }
 
     const validAdress = () => {
         console.log(adress)
         console.log(order)
+        console.log(isEmpty(adress.numero))
         if (!isEmpty(adress)) {
-            if (isEmpty(adress.pedido)) {
-                return false
-            } else if (isEmpty(adress.cep)) {
+            if (isEmpty(adress.cep)) {
                 return false
             } else if (isEmpty(adress.logradouro)) {
                 return false
@@ -413,7 +415,7 @@ function Checkout(props) {
 
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-3 checkout-containers">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
-                    <AdressPayment />
+                    <AdressPayment func={getAdress}/>
                 </Col>
 
 

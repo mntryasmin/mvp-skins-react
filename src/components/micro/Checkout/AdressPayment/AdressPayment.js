@@ -10,6 +10,7 @@ import './AdressPayment.css'
 // PÁGINAS/COMPONENTES
 import Button from '../../Button/Button'
 
+
 export default function AdressPayment(props) {
 
     const client = JSON.parse(localStorage.getItem("client"));
@@ -56,6 +57,20 @@ export default function AdressPayment(props) {
             );
     }, []);
 
+    function consultarCEP(cep){
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((response)=>{
+            setEndereco(response.data)
+            setCEP(response.data.cep)
+            setLogradouro(response.data.logradouro)
+            setBairro(response.data.bairro)
+            setCidade(response.data.localidade)
+            setEstado(response.data.uf)
+        })
+        .catch((error)=>{
+            console.log("Deu ruim ao consultar o cep")
+        })
+    }
     const [CEP, setCEP] = useState(endereco.cep);
     const [logradouro, setLogradouro] = useState(endereco.logradouro);
     const [numero, setNumero] = useState(endereco.numero);
@@ -63,6 +78,7 @@ export default function AdressPayment(props) {
     const [bairro, setBairro] = useState(endereco.bairro);
     const [cidade, setCidade] = useState(endereco.cidade);
     const [estado, setEstado] = useState(endereco.estado);
+    
 
     const [adressResult, setAdressResult] = useState('');
     const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
@@ -104,10 +120,15 @@ export default function AdressPayment(props) {
                 <p>{adressResult}</p>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
-                    <Form.Control className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={CEP}
-                        onChange={(event) => {
-                            setCEP(maskCEP(event.target.value));
-                        }} />
+                    <Form.Control className="input-disabled" 
+                    type="text" 
+                    name="cep" 
+                    placeholder="Digite o CEP" 
+                    value={CEP}
+                    onBlur={()=>{consultarCEP(CEP)}}
+                    onChange={(event) => {
+                        setCEP(maskCEP(event.target.value));
+                    }} />
                 </Col>
 
                 <Col className="col-12">
@@ -191,6 +212,8 @@ export default function AdressPayment(props) {
                 <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4" />
                 <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
             </Col>
+            {props.func(endereco)}
+            {console.log(endereco)}
         </>
     )
 }
