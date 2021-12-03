@@ -46,15 +46,36 @@ function Checkout(props) {
         setAdress(adress)
     }
 
+    // async function postAdressPayment() {
+    //     const adressC = {
+    //         pedido: order,
+    //         cep: adress.cep,
+    //         logradouro: adress.logradouro,
+    //         numero: adress.numero,
+    //         complemento: adress.complemento,
+    //         bairro: adress.bairro,
+    //         cidade: adress.cidade,
+    //         estado: adress.estado
+    //     };
+
+    //     console.log('E-MAIL GRAVADO!!!')
+    //     console.log(adressC);
+
+    // }
+
     function postOrder() {
 
+        console.log(order);
+        console.log(adress);
+
         if (termAcepted) {
+            console.log(validAdress())
             if (validePayment() && validAdress()) {
                 const order = JSON.parse(localStorage.getItem("order"))
                 order.formaPagamento.id = paymentForm
 
                 //Seta o parcelamento da compra
-                if(paymentForm==1){
+                if (paymentForm == 1) {
                     order.parcelas = card.installments;
                 } else {
                     order.parcelas = 1;
@@ -62,7 +83,6 @@ function Checkout(props) {
 
                 axios.post(`http://localhost:8080/pedidos`, order)
                     .then((response) => {
-
                         var orderString = JSON.stringify(response.data)
                         localStorage.setItem("order", orderString)
 
@@ -70,12 +90,30 @@ function Checkout(props) {
 
                         sendOrderItems(orderItems, response.data)
 
+                        adress.pedido = response.data;
+
+                        console.log(adress);
+
+                        axios.post(`http://localhost:8080/billing-address`, adress, {
+                        headers: {
+                            Authorization: localStorage.getItem('Authorization')
+                        }
+                        })
+                        .then((response) => {
+                            console.log(response.data);
+                        })
+                        .catch((error) => {
+                            console.log("Ocorreu um erro :" + error);
+                        })
+
                         window.location.replace('http://localhost:3000/success')
-                        
+
                     })
                     .catch((error) => {
                         console.log("Ocorreu um erro :" + error)
                     })
+
+                // postAdressPayment();
             } else {
                 setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
                 setClassTerm('validation-term p-2')
@@ -249,6 +287,18 @@ function Checkout(props) {
         }
     }
 
+    const GetAdress = (adressClient) => {
+        setAdress({
+            cep: adressClient.CEP,
+            logradouro: adressClient.logradouro,
+            numero: adressClient.numero,
+            complemento: adressClient.complemento,
+            bairro: adressClient.bairro,
+            cidade: adressClient.cidade,
+            estado: adressClient.estado,
+        })
+    }
+
     const validePayment = () => {
         if (paymentForm == 1) {
             if (ValideCard(card)) {
@@ -267,35 +317,33 @@ function Checkout(props) {
         }
     }
 
-    // const GetAdress = (adressClient) => {
-    //     setCard({
-    //         pedido: order,
-    //         cep: adressClient.cep,
-    //         logradouro: adressClient.logradouro,
-    //         numero: adressClient.numero,
-    //         complemento: adressClient.complemento,
-    //         bairro: adressClient.bairro,
-    //         cidade: adressClient.cidade,
-    //         uf: adressClient.uf,
-    //     })
-    // }
+
 
     const validAdress = () => {
-        console.log(adress)
-        console.log(order)
-        console.log(isEmpty(adress.numero))
-        if (!isEmpty(adress)) {
-            if (isEmpty(adress.cep)) {
+        if (adress != null) {
+            console.log('1')
+            if (adress.cep == null) {
+                console.log('3')
                 return false
-            } else if (isEmpty(adress.logradouro)) {
+            } else if (adress.logradouro == null) {
+                console.log('4')
+
                 return false
-            } else if (isEmpty(adress.numero)) {
+            } else if (adress.numero == null) {
+                console.log('5')
+
                 return false
-            } else if (isEmpty(adress.bairro)) {
+            } else if (adress.bairro == null) {
+                console.log('6')
+
                 return false
-            } else if (isEmpty(adress.cidade)) {
+            } else if (adress.cidade == null) {
+                console.log('7')
+
                 return false
-            } else if (isEmpty(adress.uf)) {
+            } else if (adress.estado == null) {
+                console.log('8')
+
                 return false
             } else {
                 return true
@@ -415,7 +463,7 @@ function Checkout(props) {
 
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-3 checkout-containers">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
-                    <AdressPayment func={getAdress}/>
+                    <AdressPayment func={GetAdress} />
                 </Col>
 
 
