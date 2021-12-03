@@ -10,12 +10,13 @@ import './AdressPayment.css'
 // PÁGINAS/COMPONENTES
 import Button from '../../Button/Button'
 
+
 export default function AdressPayment(props) {
 
     const client = JSON.parse(localStorage.getItem("client"));
     const [listRequests, setListRequests] = useState([]);
 
-    const [CEP, setCEP] = useState('');
+    const [cep, setcep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
@@ -24,7 +25,7 @@ export default function AdressPayment(props) {
     const [estado, setEstado] = useState('');
 
     const endereco = {
-        CEP: CEP,
+        cep: cep,
         logradouro: logradouro,
         numero: numero,
         complemento: complemento,
@@ -61,6 +62,7 @@ export default function AdressPayment(props) {
             );
     }, []);
 
+    //Função para recuperar o último endereço de cobrança do cliente
     function getLastAdressClient() {
         console.log(listRequests);
 
@@ -78,28 +80,49 @@ export default function AdressPayment(props) {
                 console.log("Não foi possível buscar o último endereço do cliente: " + erro)
             }
             );
+    };
+
+    //Recupera o endereço através do CEP (usando a API do viacep)
+    function consultarcep(cep){
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((response)=>{
+            // setEndereco(response.data)
+            setcep(response.data.cep)
+            setLogradouro(response.data.logradouro)
+            setBairro(response.data.bairro)
+            setCidade(response.data.localidade)
+            setEstado(response.data.uf)
+        })
+        .catch((error)=>{
+            console.log("Deu ruim ao consultar o cep")
+        })
     }
 
-    const maskCEP = (value) => {
+    //Regex CEP
+    const maskcep = (value) => {
         return value
             .replace(/\D/g, "")
             .replace(/(\d{5})(\d{1,2})/, "$1-$2")
             .replace(/(-\d{3})\d+?$/, "$1");
     };
 
+    //Regex para Textos e Números 
     const maskTextNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}",|?;{(+=._-]+/g, "");
     }
 
+    //Regex número
     const maskNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
     }
 
+    //Regex UF
     const maskUF = (value) => {
         return value
             .replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "")
             .replace(/(\d{2})(\d{0})(\d)/, "$1")
     }
+
 
     const changeDisabled = () => {
         document.getElementsByClassName("input-disabled").disabled = false;
@@ -117,10 +140,15 @@ export default function AdressPayment(props) {
                 <p>{adressResult}</p>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
-                    <Form.Control className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={CEP}
-                        onChange={(event) => {
-                            setCEP(maskCEP(event.target.value));
-                        }} />
+                    <Form.Control className="input-disabled" 
+                    type="text" 
+                    name="cep" 
+                    placeholder="Digite o CEP" 
+                    value={cep}
+                    onBlur={()=>{consultarcep(cep)}}
+                    onChange={(event) => {
+                        setcep(maskcep(event.target.value));
+                    }} />
                 </Col>
 
                 <Col className="col-12">
@@ -204,6 +232,8 @@ export default function AdressPayment(props) {
                 <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4" />
                 <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
             </Col>
+            {props.func(endereco)}
+            {/* {console.log(endereco)} */}
         </>
     )
 }

@@ -28,8 +28,16 @@ function Checkout(props) {
     const [card, setCard] = useState({})
     const [paymentTicket, setPaymentTicket] = useState({})
     const [paymentPix, setPaymentPix] = useState(false)
-
-    const [adress, setAdress] = useState({})
+    
+    var adress = {
+        cep: '',
+        logradouro: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        cidade: '',
+        estado: ''
+    } 
 
     const [order, setOrder] = useState({});
     const [orderItems, setOrderItems] = useState([])
@@ -41,24 +49,6 @@ function Checkout(props) {
     useEffect(() => {
         setOrder(JSON.parse(localStorage.getItem("order")))
     }, [])
-
-
-    // async function postAdressPayment() {
-    //     const adressC = {
-    //         pedido: order,
-    //         cep: adress.cep,
-    //         logradouro: adress.logradouro,
-    //         numero: adress.numero,
-    //         complemento: adress.complemento,
-    //         bairro: adress.bairro,
-    //         cidade: adress.cidade,
-    //         estado: adress.estado
-    //     };
-
-    //     console.log('E-MAIL GRAVADO!!!')
-    //     console.log(adressC);
-
-    // }
 
     function postOrder() {
 
@@ -77,7 +67,8 @@ function Checkout(props) {
                 } else {
                     order.parcelas = 1;
                 }
-
+                
+                //Salva o pedido no banco
                 axios.post(`http://localhost:8080/pedidos`, order)
                     .then((response) => {
                         var orderString = JSON.stringify(response.data)
@@ -90,7 +81,8 @@ function Checkout(props) {
                         adress.pedido = response.data;
 
                         console.log(adress);
-
+                        
+                        //Salva o endereço de cobrança no banco 
                         axios.post(`http://localhost:8080/billing-address`, adress, {
                         headers: {
                             Authorization: localStorage.getItem('Authorization')
@@ -122,6 +114,7 @@ function Checkout(props) {
 
     }
 
+    //Salva os itens do pedido no banco
     function sendOrderItems(orderItems, order) {
         orderItems.forEach((o) => {
             var orderItem = {
@@ -150,6 +143,7 @@ function Checkout(props) {
         return true;
     }
 
+    //Função para validar o nome
     const validateName = () => {
         if (card.name.length < 3) {
             return false
@@ -158,6 +152,7 @@ function Checkout(props) {
         }
     }
 
+    //Função para validar o número do cartão
     const validateCard = () => {
         if (card.cardNumber.length < 19) {
             return false
@@ -168,6 +163,7 @@ function Checkout(props) {
         }
     }
 
+    //Função para validar a data de validade do cartão
     const validateDate = () => {
         const mounth = card.dtCard.substring(0, 2)
         const year = card.dtCard.substring(3)
@@ -194,6 +190,7 @@ function Checkout(props) {
         }
     }
 
+    //Função para validar o CVV do cartão
     const validateCvv = () => {
         if (card.flag == 'AMEX') {
             if (card.cvv.length != 4) {
@@ -208,6 +205,7 @@ function Checkout(props) {
         }
     }
 
+    //Função para validar o CPF
     const validateCpf = () => {
         if (card.cpf.length < 14) {
             return false
@@ -216,6 +214,7 @@ function Checkout(props) {
         }
     }
 
+    //Função para validar as parcelas
     const validateInstallments = () => {
         if (card.installments == 0) {
             return false
@@ -224,6 +223,7 @@ function Checkout(props) {
         }
     }
 
+    //Função que valida o cartão como um todo
     const ValideCard = (card) => {
 
         if (!isEmpty(card)) {
@@ -248,6 +248,7 @@ function Checkout(props) {
 
     }
 
+    //Salva o cartão no componente de estado controlado
     const GetCard = (cardReceiver) => {
         setCard({
             name: cardReceiver.name,
@@ -260,12 +261,14 @@ function Checkout(props) {
         })
     }
 
+    //Função para trocar a forma de Pagamento 
     const ChangePaymentForm = (value) => {
         setValidationOfTerms('')
         setClassTerm('')
         setPaymentForm(value)
     }
 
+    //Função para renderizar a forma de pagamento
     const ShowPaymentForm = () => {
         if (paymentForm == 1) {
             return (
@@ -284,17 +287,21 @@ function Checkout(props) {
         }
     }
 
+    //Retorna um endereço através de um componente filho 
     const GetAdress = (adressClient) => {
-        setAdress({
-            cep: adressClient.CEP,
-            logradouro: adressClient.logradouro,
-            numero: adressClient.numero,
-            complemento: adressClient.complemento,
-            bairro: adressClient.bairro,
-            cidade: adressClient.cidade,
-            estado: adressClient.estado,
-        })
+        
+            adress.cep = adressClient.cep
+            adress.logradouro = adressClient.logradouro
+            adress.numero = adressClient.numero
+            adress.complemento = adressClient.complemento
+            adress.bairro = adressClient.bairro
+            adress.cidade =  adressClient.cidade
+            adress.estado = adressClient.estado
+
+            console.log(adress)
+       
     }
+
 
     const validePayment = () => {
         if (paymentForm == 1) {
@@ -315,7 +322,7 @@ function Checkout(props) {
     }
 
 
-
+    //Função para validar o endereço
     const validAdress = () => {
         if (adress != null) {
             console.log('1')
@@ -350,6 +357,7 @@ function Checkout(props) {
         }
     }
 
+
     const getPix = (pix) => {
         setPaymentPix(pix)
         console.log(paymentPix)
@@ -376,6 +384,7 @@ function Checkout(props) {
         }
     }
 
+    //Retorna o select das Formas de pagamento e caso seja PIX o campo fica disabled
     const showPaymentSelect = () => {
         if (paymentPix) {
             return (

@@ -13,7 +13,7 @@ function Error() {
                     <br />
                     Essa página não existe. Tente novamente.
                 </h1>
-                <img src={Erro} height='490' className='img-error' />
+                <img src={Erro} className='img-error' />
                 <a href="/" className="btn-mvp btn-mvp-orange-clean mx-5">
                     Voltar para a home
                 </a>
