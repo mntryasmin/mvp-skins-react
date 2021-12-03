@@ -24,7 +24,6 @@ function Product() {
         axios.get(`${URL}` + id)
             .then((response) => {
                 setProduct(response.data)
-                console.log('carregado')
                 setTimeout(() => {
                     console.log(product)
                 }, 5000)

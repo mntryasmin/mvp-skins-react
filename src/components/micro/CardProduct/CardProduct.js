@@ -204,7 +204,7 @@ function CardProduct(props) {
                             </a>
                         </Row>
                         <Row>
-                            <Button label="Ver mais" class="mt-5 btn-mvp btn-mvp-orange-solid btn-ver-mais" route={'/product/' + idProduct} navigation></Button>
+                            <Button label="Ver mais" class="mt-5 btn-card" route={'/product/' + idProduct} navigation></Button>
                         </Row>
                     </Container>
 
