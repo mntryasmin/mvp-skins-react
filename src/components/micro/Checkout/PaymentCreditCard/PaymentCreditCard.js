@@ -222,7 +222,6 @@ function PaymentCreditCard(props) {
 
     return (
 
-
         <Form className="payment-form">
             <div className={classTerm}>
                 {validation}

@@ -9,3 +9,8 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.input-disabled:disabled {
+    background-color: #00000026 !important;
+    color: #EFEFEF !important;
+}
