@@ -176,12 +176,14 @@ export default class Security extends Component {
                         <Form.Group xs={12} sm={12} md={12} lg={6} xl={6} className="security-form-org ">
                             <Form.Label className="py-2">Digite sua senha antiga</Form.Label>
                             <Form.Control value={this.state.oldPassword} onChange={this.handleChangeOP} className="py-2" type="password" name="oldPassword" />
+                            
                             <p className="error-message-security"> {this.state.messageInput1} </p>
                         </Form.Group>
 
                         <Form.Group xs={12} sm={12} md={12} lg={6} xl={6}  className="security-form-org ">
                             <Form.Label className="py-2">Digite a senha nova</Form.Label>
                             <Form.Control value={this.state.newPassword} onChange={this.handleChangeNP} className="py-2" type="password" name="newPassword" />
+                            <p>A nova senha deve conter no minimo 6 caracteres.</p>
                             <p className="error-message-security"> {this.state.messageInput2}</p>
 
                             <Form.Label className="py-2">Repita a senha nova</Form.Label>
