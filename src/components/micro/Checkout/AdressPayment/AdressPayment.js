@@ -16,7 +16,7 @@ export default function AdressPayment(props) {
     const client = JSON.parse(localStorage.getItem("client"));
     const [listRequests, setListRequests] = useState([]);
 
-    const [CEP, setCEP] = useState('');
+    const [cep, setcep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
@@ -25,7 +25,7 @@ export default function AdressPayment(props) {
     const [estado, setEstado] = useState('');
 
     const endereco = {
-        CEP: CEP,
+        cep: cep,
         logradouro: logradouro,
         numero: numero,
         complemento: complemento,
@@ -62,6 +62,7 @@ export default function AdressPayment(props) {
             );
     }, []);
 
+    //Função para recuperar o último endereço de cobrança do cliente
     function getLastAdressClient() {
         console.log(listRequests);
 
@@ -81,11 +82,12 @@ export default function AdressPayment(props) {
             );
     };
 
-    function consultarCEP(cep){
+    //Recupera o endereço através do CEP (usando a API do viacep)
+    function consultarcep(cep){
         axios.get(`https://viacep.com.br/ws/${cep}/json/`)
         .then((response)=>{
-            setEndereco(response.data)
-            setCEP(response.data.cep)
+            // setEndereco(response.data)
+            setcep(response.data.cep)
             setLogradouro(response.data.logradouro)
             setBairro(response.data.bairro)
             setCidade(response.data.localidade)
@@ -95,40 +97,32 @@ export default function AdressPayment(props) {
             console.log("Deu ruim ao consultar o cep")
         })
     }
-    const [CEP, setCEP] = useState(endereco.cep);
-    const [logradouro, setLogradouro] = useState(endereco.logradouro);
-    const [numero, setNumero] = useState(endereco.numero);
-    const [complemento, setComplemento] = useState(endereco.complemento);
-    const [bairro, setBairro] = useState(endereco.bairro);
-    const [cidade, setCidade] = useState(endereco.cidade);
-    const [estado, setEstado] = useState(endereco.estado);
-    
 
-    const [adressResult, setAdressResult] = useState('');
-    const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
-    const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
-    const [changeAdress, setChangeAdress] = useState('input-disabled');
-
-    const maskCEP = (value) => {
+    //Regex CEP
+    const maskcep = (value) => {
         return value
             .replace(/\D/g, "")
             .replace(/(\d{5})(\d{1,2})/, "$1-$2")
             .replace(/(-\d{3})\d+?$/, "$1");
     };
 
+    //Regex para Textos e Números 
     const maskTextNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}",|?;{(+=._-]+/g, "");
     }
 
+    //Regex número
     const maskNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
     }
 
+    //Regex UF
     const maskUF = (value) => {
         return value
             .replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "")
             .replace(/(\d{2})(\d{0})(\d)/, "$1")
     }
+
 
     const changeDisabled = () => {
         document.getElementsByClassName("input-disabled").disabled = false;
@@ -150,10 +144,10 @@ export default function AdressPayment(props) {
                     type="text" 
                     name="cep" 
                     placeholder="Digite o CEP" 
-                    value={CEP}
-                    onBlur={()=>{consultarCEP(CEP)}}
+                    value={cep}
+                    onBlur={()=>{consultarcep(cep)}}
                     onChange={(event) => {
-                        setCEP(maskCEP(event.target.value));
+                        setcep(maskcep(event.target.value));
                     }} />
                 </Col>
 
@@ -239,7 +233,7 @@ export default function AdressPayment(props) {
                 <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
             </Col>
             {props.func(endereco)}
-            {console.log(endereco)}
+            {/* {console.log(endereco)} */}
         </>
     )
 }
