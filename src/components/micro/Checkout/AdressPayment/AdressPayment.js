@@ -13,10 +13,32 @@ import Button from '../../Button/Button'
 export default function AdressPayment(props) {
 
     const client = JSON.parse(localStorage.getItem("client"));
-    const [endereco, setEndereco] = useState({});
     const [listRequests, setListRequests] = useState([]);
 
-    useEffect(() => { 
+    const [CEP, setCEP] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [numero, setNumero] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('');
+
+    const endereco = {
+        CEP: CEP,
+        logradouro: logradouro,
+        numero: numero,
+        complemento: complemento,
+        bairro: bairro,
+        cidade: cidade,
+        estado: estado
+    };
+
+    const [adressResult, setAdressResult] = useState('');
+    const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
+    const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
+    const [changeAdress, setChangeAdress] = useState('input-disabled');
+
+    useEffect(() => {
         console.log(client);
         axios.get(`http://localhost:8080/pedidos/order-history/${client.codigoCliente}`, {
             headers: {
@@ -26,6 +48,12 @@ export default function AdressPayment(props) {
             .then((response) => {
                 console.log(response.data);
                 setListRequests(response.data);
+                if (listRequests.length > 0) {
+                    getLastAdressClient();
+                } else {
+                    setAdressResult(adressNotFound);
+                    props.func(endereco);
+                }
             })
             .catch((erro) => {
                 console.log("Não foi possível buscar os pedidos do cliente: " + erro)
@@ -33,41 +61,24 @@ export default function AdressPayment(props) {
             );
     }, []);
 
-
-    useEffect(() => {
+    function getLastAdressClient() {
         console.log(listRequests);
 
-        axios.get(`http://localhost:8080/billing-address/request/${2}`, {
+        axios.get(`http://localhost:8080/billing-address/request/${listRequests[listRequests.length - 1]}`, {
             headers: {
                 Authorization: localStorage.getItem('Authorization')
             }
         })
             .then((response) => {
-                if (response.data) {
-                    setEndereco(response.data);
-                    setAdressResult(addressFound);
-                } else {
-                    setAdressResult(adressNotFound);
-                }
+                console.log(response.data);
+                endereco = response.data;
+                setAdressResult(addressFound);
             })
             .catch((erro) => {
                 console.log("Não foi possível buscar o último endereço do cliente: " + erro)
             }
             );
-    }, []);
-
-    const [CEP, setCEP] = useState(endereco.cep);
-    const [logradouro, setLogradouro] = useState(endereco.logradouro);
-    const [numero, setNumero] = useState(endereco.numero);
-    const [complemento, setComplemento] = useState(endereco.complemento);
-    const [bairro, setBairro] = useState(endereco.bairro);
-    const [cidade, setCidade] = useState(endereco.cidade);
-    const [estado, setEstado] = useState(endereco.estado);
-
-    const [adressResult, setAdressResult] = useState('');
-    const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
-    const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
-    const [changeAdress, setChangeAdress] = useState('input-disabled');
+    }
 
     const maskCEP = (value) => {
         return value
@@ -94,8 +105,10 @@ export default function AdressPayment(props) {
         document.getElementsByClassName("input-disabled").disabled = false;
     }
 
-    const validAdress = () => {
+    function validAdress () {
+        console.log(endereco);
         document.getElementsByClassName('input-disabled').disabled = true;
+        props.func(endereco);
     }
 
     return (
