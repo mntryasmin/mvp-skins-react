@@ -204,7 +204,7 @@ export default function MyAccount() {
                     </Col>
 
                     <Form.Group className="col-12 button">
-                        <Button label="Salvar" onclick={(event) => submit(event)} class="btn-mvp btn-mvp-orange-clean mt-3"></Button>
+                        <Button label="Salvar" onclick={(event) => submit(event)} class="btn-mvp btn-mvp-orange-clean btn-myaccount mt-3"></Button>
                     </Form.Group>
                 </Form>
             </Container>
