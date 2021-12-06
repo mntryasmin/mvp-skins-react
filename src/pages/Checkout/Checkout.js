@@ -17,8 +17,6 @@ import Pix from '../../components/micro/Checkout/Pix/Pix'
 
 
 function Checkout(props) {
-
-
     const [termAcepted, setTermAcepted] = useState(false)
     const [validationOfTerms, setValidationOfTerms] = useState('')
     const [classTerm, setClassTerm] = useState('')
@@ -74,16 +72,16 @@ function Checkout(props) {
                         console.log(adress);
 
                         axios.post(`http://localhost:8080/billing-address`, adress, {
-                        headers: {
-                            Authorization: localStorage.getItem('Authorization')
-                        }
+                            headers: {
+                                Authorization: localStorage.getItem('Authorization')
+                            }
                         })
-                        .then((response) => {
-                            console.log(response.data);
-                        })
-                        .catch((error) => {
-                            console.log("Ocorreu um erro :" + error);
-                        })
+                            .then((response) => {
+                                console.log(response.data);
+                            })
+                            .catch((error) => {
+                                console.log("Ocorreu um erro :" + error);
+                            })
 
                         window.location.replace('http://localhost:3000/success')
 
@@ -294,8 +292,6 @@ function Checkout(props) {
             return false
         }
     }
-
-
 
     const validAdress = () => {
         if (adress != null) {

@@ -28,7 +28,7 @@ export default function AdressPayment(props) {
 
     // var lastRequest = null;
 
-    async function getRequestsClient() {
+    async function GetRequestsClient() {
         let response = await axios.get(
             `http://localhost:8080/pedidos/order-history/${cliente.codigoCliente}`, {
             headers: {
@@ -68,7 +68,7 @@ export default function AdressPayment(props) {
     }
 
     useEffect(() => {
-        getRequestsClient();
+        GetRequestsClient();
     }, []);
 
     const maskCEP = (value) => {
