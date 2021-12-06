@@ -95,7 +95,7 @@ function ResetPassword(props) {
                     </Row>
                     <Row className="justify-content-center">
                         <Col sm={10} lg={6} className="resetpassword-box-input">
-                            <Button class='btn-mvp btn-mvp-orange-clean mt-5 p-2' label='salvar' onclick={(event)=>submitPassword(event)}/>
+                            <Button class='btn-mvp btn-mvp-orange-clean mt-5 p-2 btn-reset' label='salvar' onclick={(event)=>submitPassword(event)}/>
                         </Col>
                     </Row>
                 </Form>
