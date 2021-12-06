@@ -56,24 +56,39 @@
     flex-wrap: wrap;
     justify-content: left;
 }
-
+.btn-myaccount {
+    width:130px !important;
+    justify-content: center !important;
+    
+}
 
 
 /* MEDIAS QUERIES */
 
 /* XS */
 @media (max-width: 575.98px) {
+.myAccountForm{
+    flex-wrap: wrap;
+    align-items: center;
+}
 
 }
 
+
 /* SM */
 @media (min-width: 540px) and (max-width: 767.98px) {
-
+    .myAccountForm{
+    flex-wrap: wrap;
+    align-items: center !important;
+    }
+   
 }
 
 /* MD  */
 @media (min-width: 768px) and (max-width: 991.98px) {
-
+    .myAccountForm{
+        flex-wrap: wrap !important;
+    }
 }
 
 /* LG  */

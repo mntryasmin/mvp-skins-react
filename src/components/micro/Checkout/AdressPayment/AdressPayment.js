@@ -13,6 +13,13 @@ import Button from '../../Button/Button'
 export default function AdressPayment(props) {
     const cliente = JSON.parse(localStorage.getItem("client"));
 
+
+
+    const client = JSON.parse(localStorage.getItem("client"));
+    const [listRequests, setListRequests] = useState([]);
+
+    const [validation, setValidation] = useState('')
+    const [classTerm, setClassTerm] = useState('')
     const [cep, setCep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
@@ -27,7 +34,11 @@ export default function AdressPayment(props) {
     const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.';
     const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.';
 
-    async function GetRequestsClient() {
+    useEffect(() => {
+        getRequestsClient();
+    }, []);
+
+    async function getRequestsClient() {
         let response = await axios.get(
             `http://localhost:8080/pedidos/order-history/${cliente.codigoCliente}`, {
             headers: {
@@ -63,9 +74,36 @@ export default function AdressPayment(props) {
         }
     }
 
-    useEffect(() => {
-        GetRequestsClient();
-    }, []);
+    //Recupera o endereço através do CEP (usando a API do viacep)
+    function consultarcep(cep) {
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            .then((response) => {
+                // setEndereco(response.data)
+                if (response.data.erro) {
+                    setLogradouro('')
+                    setBairro('')
+                    setCidade('')
+                    setEstado('')
+                    validateCep(false)
+                } else {
+                    setCep(response.data.cep)
+                    setLogradouro(response.data.logradouro)
+                    setBairro(response.data.bairro)
+                    setCidade(response.data.localidade)
+                    setEstado(response.data.uf)
+                    validateCep(true)
+                }
+
+            })
+            .catch((error) => {
+                console.log("Ocorreu um erro ao consultar o cep " + error)
+                setLogradouro('')
+                setBairro('')
+                setCidade('')
+                setEstado('')
+                validateCep(false)
+            })
+    }
 
     const maskCEP = (value) => {
         return value
@@ -109,21 +147,42 @@ export default function AdressPayment(props) {
         props.save(save);
     }
 
+    function validateCep(cepBoolean) {
+        if (cepBoolean == false) {
+            setValidation('CEP inválido')
+            setClassTerm('validation-term p-2')
+        } else {
+            setValidation('')
+            setClassTerm('')
+        }
+    }
+
     return (
         <>
             <Form className="col-12 form-endereco-cobranca">
                 <p>{adressResult}</p>
+                <div className={classTerm}>
+                    {validation}
+                </div>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
-                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={cep}
-                        onChange={(event) => {
-                            setCep(maskCEP(event.target.value));
-                        }} />
+                    <Form.Control 
+                    disabled={disabled} 
+                    className="input-disabled" 
+                    type="text" 
+                    name="cep" 
+                    placeholder="Digite o CEP" 
+                    value={cep}
+                    onBlur={()=>{consultarcep(cep)}}
+                    onChange={(event) => {
+                        setCep(maskCEP(event.target.value));
+                    }} />
                 </Col>
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Logradouro </Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
+
                         onChange={(event) => {
                             setLogradouro(maskTextNumber(event.target.value));
                         }} />
@@ -148,6 +207,7 @@ export default function AdressPayment(props) {
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Bairro</Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
+
                         onChange={(event) => {
                             setBairro(maskTextNumber(event.target.value));
                         }} />
@@ -156,6 +216,7 @@ export default function AdressPayment(props) {
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Cidade </Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
+
                         onChange={(event) => {
                             setCidade(maskTextNumber(event.target.value));
                         }} />
@@ -166,7 +227,7 @@ export default function AdressPayment(props) {
                     <Form.Select disabled={disabled} className="input-disabled" aria-label="Default select example" value={estado} onChange={(event) => {
                         setEstado(maskUF(event.target.value))
                     }}>
-                        <option>Selecione um estado</option>
+                        <option>Estado</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -204,4 +265,5 @@ export default function AdressPayment(props) {
             </Col>
         </>
     )
+    
 }
