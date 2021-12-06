@@ -57,6 +57,8 @@ function Checkout(props) {
 
         if (termAcepted) {
             console.log(validAdress())
+            console.log(validePayment())
+            console.log(paymentTicket)
             if (validePayment() && validAdress()) {
                 const order = JSON.parse(localStorage.getItem("order"))
                 order.formaPagamento.id = paymentForm
@@ -326,26 +328,26 @@ function Checkout(props) {
     const validAdress = () => {
         if (adress != null) {
             console.log('1')
-            if (adress.cep == null) {
+            if (adress.cep == null || adress.cep.length!=9) {
                 console.log('3')
                 return false
-            } else if (adress.logradouro == null) {
+            } else if (adress.logradouro == null || adress.logradouro == "") {
                 console.log('4')
 
                 return false
-            } else if (adress.numero == null) {
+            } else if (adress.numero == null || adress.numero == "") {
                 console.log('5')
 
                 return false
-            } else if (adress.bairro == null) {
+            } else if (adress.bairro == null || adress.bairro == "") {
                 console.log('6')
 
                 return false
-            } else if (adress.cidade == null) {
+            } else if (adress.cidade == null || adress.cidade == "") {
                 console.log('7')
 
                 return false
-            } else if (adress.estado == null) {
+            } else if (adress.estado == null || adress.estado == "") {
                 console.log('8')
 
                 return false
@@ -371,6 +373,7 @@ function Checkout(props) {
     }
 
     const ValideTicket = (ticket) => {
+        console.log(isEmpty(ticket))
         if (!isEmpty(ticket)) {
             if (ticket.name.length < 3) {
                 return false

@@ -174,7 +174,7 @@ export default function MyAccount() {
 
                     <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                         <Form.Label className="mt-3"> Nome </Form.Label>
-                        <Form.Control type="text" name="name" value={name} onClick={() => setValidation('')} onChange={(event) => { setName(maskOnlyLetters(event.target.value)); }} className="box-update"  disabled />
+                        <Form.Control type="text" name="name" value={name} onClick={() => setValidation('')} onChange={(event) => { setName(maskOnlyLetters(event.target.value)); }} className="box-update"   readOnly className="box-to-read" />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={3} xl={3}>
@@ -184,7 +184,7 @@ export default function MyAccount() {
 
                     <Col xs={12} sm={12} md={12} lg={8} xl={8}>
                         <Form.Label className="mt-3"> E-mail </Form.Label>
-                        <Form.Control type="email" name="email" className="box-update" onClick={() => setValidation('')} onChange={(event) => { setEmail(event.target.value); }} value={email} disabled />
+                        <Form.Control type="email" name="email" className="box-update" onClick={() => setValidation('')} onChange={(event) => { setEmail(event.target.value); }} value={email}  readOnly className="box-to-read" />
                     </Col>
 
                     <Col xs={12} sm={12} md={12} lg={3} xl={3}>

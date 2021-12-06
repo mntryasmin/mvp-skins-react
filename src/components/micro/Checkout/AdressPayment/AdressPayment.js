@@ -13,9 +13,12 @@ import Button from '../../Button/Button'
 
 export default function AdressPayment(props) {
 
+
     const client = JSON.parse(localStorage.getItem("client"));
     const [listRequests, setListRequests] = useState([]);
 
+    const [validation, setValidation] = useState('')
+    const [classTerm, setClassTerm] = useState('')
     const [cep, setcep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
@@ -87,14 +90,29 @@ export default function AdressPayment(props) {
         axios.get(`https://viacep.com.br/ws/${cep}/json/`)
         .then((response)=>{
             // setEndereco(response.data)
-            setcep(response.data.cep)
-            setLogradouro(response.data.logradouro)
-            setBairro(response.data.bairro)
-            setCidade(response.data.localidade)
-            setEstado(response.data.uf)
+            if(response.data.erro){
+                setLogradouro('')
+                setBairro('')
+                setCidade('')
+                setEstado('')
+                validateCep(false)
+            } else {
+                setcep(response.data.cep)
+                setLogradouro(response.data.logradouro)
+                setBairro(response.data.bairro)
+                setCidade(response.data.localidade)
+                setEstado(response.data.uf)
+                validateCep(true)
+            }
+            
         })
         .catch((error)=>{
-            console.log("Deu ruim ao consultar o cep")
+            console.log("Ocorreu um erro ao consultar o cep "+ error)
+            setLogradouro('')
+            setBairro('')
+            setCidade('')
+            setEstado('')
+            validateCep(false)
         })
     }
 
@@ -134,10 +152,23 @@ export default function AdressPayment(props) {
         props.func(endereco);
     }
 
+    function validateCep(cepBoolean){
+        if(cepBoolean == false){
+            setValidation('CEP inválido')
+            setClassTerm('validation-term p-2')
+        } else {
+            setValidation('')
+            setClassTerm('')
+        }
+    }
+
     return (
         <>
             <Form className="col-12 form-endereco-cobranca">
                 <p>{adressResult}</p>
+                <div className={classTerm}>
+                    {validation}
+                </div>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
                     <Form.Control className="input-disabled" 
@@ -153,7 +184,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Logradouro </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
+                    <Form.Control className={changeAdress} type="text" name="logradouro" placeholder="Logradouro" value={logradouro}
                         onChange={(event) => {
                             setLogradouro(maskTextNumber(event.target.value));
                         }} />
@@ -177,7 +208,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Bairro</Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
+                    <Form.Control className={changeAdress} type="text" name="bairro" placeholder="Bairro" value={bairro}
                         onChange={(event) => {
                             setBairro(maskTextNumber(event.target.value));
                         }} />
@@ -185,7 +216,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Cidade </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
+                    <Form.Control className={changeAdress} type="text" name="cidade" placeholder="Cidade" value={cidade}
                         onChange={(event) => {
                             setCidade(maskTextNumber(event.target.value));
                         }} />
@@ -196,7 +227,7 @@ export default function AdressPayment(props) {
                     <Form.Select className={changeAdress} aria-label="Default select example" value={estado} onChange={(event) => {
                         setEstado(maskUF(event.target.value))
                     }}>
-                        <option>Selecione um estado</option>
+                        <option>Estado</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
