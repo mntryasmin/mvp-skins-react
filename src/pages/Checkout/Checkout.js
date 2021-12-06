@@ -46,7 +46,6 @@ function Checkout(props) {
         console.log(adress);
 
         if (termAcepted) {
-            console.log(validAdress())
             if (validePayment() && validAdress()) {
                 const order = JSON.parse(localStorage.getItem("order"))
                 order.formaPagamento.id = paymentForm
@@ -68,8 +67,6 @@ function Checkout(props) {
                         sendOrderItems(orderItems, response.data)
 
                         adress.pedido = response.data;
-
-                        console.log(adress);
 
                         axios.post(`http://localhost:8080/billing-address`, adress, {
                             headers: {
@@ -204,7 +201,6 @@ function Checkout(props) {
     }
 
     const ValideCard = (card) => {
-
         if (!isEmpty(card)) {
             if (!validateName()) {
                 return false
@@ -273,6 +269,14 @@ function Checkout(props) {
             cidade: adressClient.cidade,
             estado: adressClient.estado,
         })
+    }
+
+    const Save = (save) => {
+        if(save) {
+            console.log(save)
+        } else {
+            setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
+        }
     }
 
     const validePayment = () => {
@@ -432,7 +436,10 @@ function Checkout(props) {
 
                 <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-3 checkout-containers">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
-                    <AdressPayment func={GetAdress} />
+                    <AdressPayment 
+                        func={GetAdress}
+                        save={Save} 
+                    />
                 </Col>
 
 

@@ -20,13 +20,12 @@ export default function AdressPayment(props) {
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
+    const [save, setSave] = useState(false);
 
     const [disabled, setDisabled] = useState(false);
     const [adressResult, setAdressResult] = useState('');
-    const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
-    const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
-
-    // var lastRequest = null;
+    const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.';
+    const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.';
 
     async function GetRequestsClient() {
         let response = await axios.get(
@@ -58,9 +57,6 @@ export default function AdressPayment(props) {
 
                 setDisabled(true);
                 setAdressResult(addressFound);
-
-                console.log('ENDEREÇO: V')
-                console.log(responseAdress.data.cep)
             } 
         } else {
             setAdressResult(adressNotFound);
@@ -107,9 +103,10 @@ export default function AdressPayment(props) {
             estado: estado,
         };
 
-        console.log(endereco);
         setDisabled(true);
+        setSave(true);
         props.func(endereco);
+        props.save(save);
     }
 
     return (
