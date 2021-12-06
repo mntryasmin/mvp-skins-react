@@ -15,17 +15,11 @@
     margin: 0 !important;
 }
 
-.carousel-home-resp {
-    display: none !important;
-}
 
 /* MEDIAS QUERIES */
 
 /* XS */
 @media (max-width: 575.98px) {
-    .carousel-home {
-        display: none !important;
-    }
 
     .carousel-home-resp {
         display: flex !important;
@@ -36,9 +30,6 @@
 
 /* SM */
 @media (min-width: 530px) and (max-width: 767.98px) {
-    .carousel-home {
-        display: none !important;
-    }
 
     .carousel-home-resp {
         display: flex !important;
@@ -49,9 +40,6 @@
 
 /* MD  */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .carousel-home {
-        display: none !important;
-    }
 
     .carousel-home-resp {
         display: flex !important;
