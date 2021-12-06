@@ -47,9 +47,6 @@ function Checkout(props) {
         console.log(adress);
 
         if (termAcepted) {
-            console.log(validAdress())
-            console.log(validePayment())
-            console.log(paymentTicket)
             if (validePayment() && validAdress()) {
                 const order = JSON.parse(localStorage.getItem("order"))
                 order.formaPagamento.id = paymentForm
@@ -63,51 +60,42 @@ function Checkout(props) {
                     order.parcelas = 1;
                 }
 
-                axios.post(`http://localhost:8080/pedidos`, order)
-                    .then((response) => {
-                        var orderString = JSON.stringify(response.data)
-                        localStorage.setItem("order", orderString)
+                if (paymentForm == 2 && !paymentPix) {
+                    setGenerateQR(true)
+                    console.log(paymentPix)
+                } else {
+                    console.log(order)
+                    axios.post(`http://localhost:8080/pedidos`, order)
+                        .then((response) => {
+                            console.log(response.data)
+                            var orderString = JSON.stringify(response.data)
+                            localStorage.setItem("order", orderString)
 
-                        if (paymentForm == 2 && !paymentPix) {
-                            setGenerateQR(true)
-                            console.log(paymentPix)
-                        } else {
-                            console.log(order)
-                            axios.post(`http://localhost:8080/pedidos`, order)
+                            localStorage.removeItem("cart")
+
+                            sendOrderItems(orderItems, response.data)
+
+                            adress.pedido = response.data;
+
+                            axios.post(`http://localhost:8080/billing-address`, adress, {
+                                headers: {
+                                    Authorization: localStorage.getItem('Authorization')
+                                }
+                            })
                                 .then((response) => {
-                                    console.log(response.data)
-                                    var orderString = JSON.stringify(response.data)
-                                    localStorage.setItem("order", orderString)
-
-                                    localStorage.removeItem("cart")
-
-                                    sendOrderItems(orderItems, response.data)
-
-                                    adress.pedido = response.data;
-
-                                    axios.post(`http://localhost:8080/billing-address`, adress, {
-                                        headers: {
-                                            Authorization: localStorage.getItem('Authorization')
-                                        }
-                                    })
-                                        .then((response) => {
-                                            console.log(response.data);
-                                        })
-                                        .catch((error) => {
-                                            console.log("Ocorreu um erro :" + error);
-                                        })
-
-                                    window.location.replace('http://localhost:3000/success')
-
+                                    console.log(response.data);
                                 })
                                 .catch((error) => {
-                                    console.log("Ocorreu um erro :" + error)
+                                    console.log("Ocorreu um erro :" + error);
                                 })
-                        }
-                    })
-                    .catch((error) => {
-                        console.log('algo deu errado' + error)
-                    })
+
+                            window.location.replace('http://localhost:3000/success')
+
+                        })
+                        .catch((error) => {
+                            console.log("Ocorreu um erro :" + error)
+                        })
+                }
             } else {
                 setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
                 setClassTerm('validation-term p-2')
@@ -222,7 +210,6 @@ function Checkout(props) {
     }
 
     const ValideCard = (card) => {
-
         if (!isEmpty(card)) {
             if (!validateName()) {
                 return false
@@ -294,6 +281,14 @@ function Checkout(props) {
             estado: adressClient.estado,
         })
     }
+
+    // const Save = (save) => {
+    //     if(save) {
+    //         console.log(save)
+    //     } else {
+    //         setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
+    //     }
+    // }
 
     const validePayment = () => {
         if (paymentForm == 1) {
