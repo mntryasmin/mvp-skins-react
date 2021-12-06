@@ -27,7 +27,7 @@ export default function AdressPayment(props) {
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
-    const [save, setSave] = useState(false);
+    // const [save, setSave] = useState(false);
 
     const [disabled, setDisabled] = useState(false);
     const [adressResult, setAdressResult] = useState('');
@@ -142,9 +142,9 @@ export default function AdressPayment(props) {
         };
 
         setDisabled(true);
-        setSave(true);
+        // setSave(true);
         props.func(endereco);
-        props.save(save);
+        // props.save(save);
     }
 
     function validateCep(cepBoolean) {
