@@ -11,74 +11,116 @@ import './AdressPayment.css'
 import Button from '../../Button/Button'
 
 export default function AdressPayment(props) {
+    const cliente = JSON.parse(localStorage.getItem("client"));
 
-    const client = JSON.parse(localStorage.getItem("client"));
-    const [listRequests, setListRequests] = useState([]);
-
-    const [CEP, setCEP] = useState('');
+    const [cep, setCEP] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
+    const [endereco, setEndereco] = useState({});
     const [complemento, setComplemento] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
 
-    const endereco = {
-        CEP: CEP,
-        logradouro: logradouro,
-        numero: numero,
-        complemento: complemento,
-        bairro: bairro,
-        cidade: cidade,
-        estado: estado
-    };
-
+    const [disabled, setDisabled] = useState(false);
     const [adressResult, setAdressResult] = useState('');
     const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
     const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
-    const [changeAdress, setChangeAdress] = useState('input-disabled');
+
+    const [requestsClient, setRequestsClient] = useState([]);
+    const [lastRequest, setLastRequest] = useState({});
+    const [lastAdress, setLastAdress] = useState({});
+
+    async function getRequestsClient() {
+        let response = await axios.get(
+            `http://localhost:8080/pedidos/order-history/${cliente.codigoCliente}`, {
+            headers: {
+                Authorization: localStorage.getItem('Authorization')
+            }
+        });
+
+        setRequestsClient(response.data);
+        setLastRequest(requestsClient[requestsClient.length - 1]);
+        console.log(lastRequest);
+    }
+
+    async function getLastAdress() {
+        let response = await axios.get(
+            `http://localhost:8080/billing-address/request/${lastRequest.id}`, {
+            headers: {
+                Authorization: localStorage.getItem('Authorization')
+            } 
+        })
+
+        setLastAdress(response.data);
+        console.log(lastAdress);
+
+        setEndereco(lastAdress.data);
+        setCEP(lastAdress.cep);
+        setLogradouro(lastAdress.logradouro);
+        setNumero(lastAdress.numero);
+        setComplemento(lastAdress.complemento);
+        setBairro(lastAdress.bairro);
+        setCidade(lastAdress.cidade);
+        setEstado(lastAdress.estado);
+
+        setDisabled(true);
+        setAdressResult(addressFound);
+    }
+
 
     useEffect(() => {
-        console.log(client);
-        axios.get(`http://localhost:8080/pedidos/order-history/${client.codigoCliente}`, {
-            headers: {
-                Authorization: localStorage.getItem('Authorization')
-            }
-        })
-            .then((response) => {
-                console.log(response.data);
-                setListRequests(response.data);
-                if (listRequests.length > 0) {
-                    getLastAdressClient();
-                } else {
-                    setAdressResult(adressNotFound);
-                    props.func(endereco);
-                }
-            })
-            .catch((erro) => {
-                console.log("Não foi possível buscar os pedidos do cliente: " + erro)
-            }
-            );
+        getLastAdress();
+        getRequestsClient();
     }, []);
 
-    function getLastAdressClient() {
-        console.log(listRequests);
+    // setRequestsClient(requests);
 
-        axios.get(`http://localhost:8080/billing-address/request/${listRequests[listRequests.length - 1]}`, {
-            headers: {
-                Authorization: localStorage.getItem('Authorization')
-            }
-        })
-            .then((response) => {
-                console.log(response.data);
-                endereco = response.data;
-                setAdressResult(addressFound);
-            })
-            .catch((erro) => {
-                console.log("Não foi possível buscar o último endereço do cliente: " + erro)
-            }
-            );
-    }
+    // .then((response) => {
+    //     if (response.data.length > 0) {
+    //         const LR = response.data[response.data.length - 1];
+    //         setLastRequest( LR);
+
+    //         console.log(lastRequest);
+    //         console.log(lastRequest.id);
+
+    //                     axios.get(`http://localhost:8080/billing-address/request/${lastRequest.id}`, {
+    //                         headers: {
+    //                             Authorization: localStorage.getItem('Authorization')
+    //                         }
+    //                     })
+    //                         .then((response) => {
+    //                             setEndereco(response.data);
+    //                             setCEP(endereco.cep);
+    //                             setLogradouro(endereco.logradouro);
+    //                             setNumero(endereco.numero);
+    //                             setComplemento(endereco.complemento);
+    //                             setBairro(endereco.bairro);
+    //                             setCidade(endereco.cidade);
+    //                             setEstado(endereco.estado);
+
+    //                             setDisabled(true);
+    //                             setAdressResult(addressFound);
+    //                         })
+    //                         .catch((erro) => {
+    //                             console.log("Não foi possível buscar o último endereço do cliente: " + erro)
+    //                         }
+    //                         );
+
+    //                 } else {
+    //                     setAdressResult(adressNotFound);
+    //                     props.func(endereco);
+    //                 }
+    //             })
+    //             .catch((erro) => {
+    //                 console.log("Não foi possível buscar os pedidos do cliente: " + erro)
+    //             }
+    //             );
+
+    //     }
+
+    //     getDates()
+    // }, []);
 
     const maskCEP = (value) => {
         return value
@@ -102,12 +144,12 @@ export default function AdressPayment(props) {
     }
 
     const changeDisabled = () => {
-        document.getElementsByClassName("input-disabled").disabled = false;
+        setDisabled(false);
     }
 
-    function validAdress () {
+    function validAdress() {
         console.log(endereco);
-        document.getElementsByClassName('input-disabled').disabled = true;
+        setDisabled(true);
         props.func(endereco);
     }
 
@@ -117,7 +159,7 @@ export default function AdressPayment(props) {
                 <p>{adressResult}</p>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
-                    <Form.Control className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={CEP}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={cep}
                         onChange={(event) => {
                             setCEP(maskCEP(event.target.value));
                         }} />
@@ -125,7 +167,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Logradouro </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
                         onChange={(event) => {
                             setLogradouro(maskTextNumber(event.target.value));
                         }} />
@@ -133,7 +175,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-3">
                     <Form.Label className="mt-3"> Nº </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="numero" placeholder="Digite o nº da residência" value={numero}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="numero" placeholder="Digite o nº da residência" value={numero}
                         onChange={(event) => {
                             setNumero(maskNumber(event.target.value));
                         }} />
@@ -141,7 +183,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-8">
                     <Form.Label className="mt-3"> Complemento </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="complemento" placeholder="Digite o complemento" value={complemento}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="complemento" placeholder="Digite o complemento" value={complemento}
                         onChange={(event) => {
                             setComplemento(maskTextNumber(event.target.value));
                         }} />
@@ -149,7 +191,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Bairro</Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
                         onChange={(event) => {
                             setBairro(maskTextNumber(event.target.value));
                         }} />
@@ -157,7 +199,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Cidade </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
                         onChange={(event) => {
                             setCidade(maskTextNumber(event.target.value));
                         }} />
@@ -165,7 +207,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Estado </Form.Label>
-                    <Form.Select className={changeAdress} aria-label="Default select example" value={estado} onChange={(event) => {
+                    <Form.Select disabled={disabled} className="input-disabled" aria-label="Default select example" value={estado} onChange={(event) => {
                         setEstado(maskUF(event.target.value))
                     }}>
                         <option>Selecione um estado</option>

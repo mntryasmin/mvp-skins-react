@@ -42,24 +42,6 @@ function Checkout(props) {
         setOrder(JSON.parse(localStorage.getItem("order")))
     }, [])
 
-
-    // async function postAdressPayment() {
-    //     const adressC = {
-    //         pedido: order,
-    //         cep: adress.cep,
-    //         logradouro: adress.logradouro,
-    //         numero: adress.numero,
-    //         complemento: adress.complemento,
-    //         bairro: adress.bairro,
-    //         cidade: adress.cidade,
-    //         estado: adress.estado
-    //     };
-
-    //     console.log('E-MAIL GRAVADO!!!')
-    //     console.log(adressC);
-
-    // }
-
     function postOrder() {
 
         console.log(order);
@@ -110,7 +92,6 @@ function Checkout(props) {
                         console.log("Ocorreu um erro :" + error)
                     })
 
-                // postAdressPayment();
             } else {
                 setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
                 setClassTerm('validation-term p-2')
@@ -286,7 +267,7 @@ function Checkout(props) {
 
     const GetAdress = (adressClient) => {
         setAdress({
-            cep: adressClient.CEP,
+            cep: adressClient.cep,
             logradouro: adressClient.logradouro,
             numero: adressClient.numero,
             complemento: adressClient.complemento,
@@ -324,23 +305,18 @@ function Checkout(props) {
                 return false
             } else if (adress.logradouro == null) {
                 console.log('4')
-
                 return false
             } else if (adress.numero == null) {
                 console.log('5')
-
                 return false
             } else if (adress.bairro == null) {
                 console.log('6')
-
                 return false
             } else if (adress.cidade == null) {
                 console.log('7')
-
                 return false
             } else if (adress.estado == null) {
                 console.log('8')
-
                 return false
             } else {
                 return true
