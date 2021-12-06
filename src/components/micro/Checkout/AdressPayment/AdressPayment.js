@@ -13,7 +13,14 @@ import Button from '../../Button/Button'
 export default function AdressPayment(props) {
     const cliente = JSON.parse(localStorage.getItem("client"));
 
-    const [cep, setCep] = useState('');
+
+
+    const client = JSON.parse(localStorage.getItem("client"));
+    const [listRequests, setListRequests] = useState([]);
+
+    const [validation, setValidation] = useState('')
+    const [classTerm, setClassTerm] = useState('')
+    const [cep, setcep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
@@ -58,13 +65,43 @@ export default function AdressPayment(props) {
 
                 setDisabled(true);
                 setAdressResult(addressFound);
-
                 console.log('ENDEREÇO: V')
                 console.log(responseAdress.data.cep)
             } 
         } else {
             setAdressResult(adressNotFound);
         }
+
+
+    //Recupera o endereço através do CEP (usando a API do viacep)
+    function consultarcep(cep){
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((response)=>{
+            // setEndereco(response.data)
+            if(response.data.erro){
+                setLogradouro('')
+                setBairro('')
+                setCidade('')
+                setEstado('')
+                validateCep(false)
+            } else {
+                setcep(response.data.cep)
+                setLogradouro(response.data.logradouro)
+                setBairro(response.data.bairro)
+                setCidade(response.data.localidade)
+                setEstado(response.data.uf)
+                validateCep(true)
+            }
+            
+        })
+        .catch((error)=>{
+            console.log("Ocorreu um erro ao consultar o cep "+ error)
+            setLogradouro('')
+            setBairro('')
+            setCidade('')
+            setEstado('')
+            validateCep(false)
+        })
     }
 
     useEffect(() => {
@@ -112,10 +149,23 @@ export default function AdressPayment(props) {
         props.func(endereco);
     }
 
+    function validateCep(cepBoolean){
+        if(cepBoolean == false){
+            setValidation('CEP inválido')
+            setClassTerm('validation-term p-2')
+        } else {
+            setValidation('')
+            setClassTerm('')
+        }
+    }
+
     return (
         <>
             <Form className="col-12 form-endereco-cobranca">
                 <p>{adressResult}</p>
+                <div className={classTerm}>
+                    {validation}
+                </div>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={cep}
@@ -127,6 +177,7 @@ export default function AdressPayment(props) {
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Logradouro </Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
+
                         onChange={(event) => {
                             setLogradouro(maskTextNumber(event.target.value));
                         }} />
@@ -151,6 +202,7 @@ export default function AdressPayment(props) {
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Bairro</Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
+
                         onChange={(event) => {
                             setBairro(maskTextNumber(event.target.value));
                         }} />
@@ -159,6 +211,7 @@ export default function AdressPayment(props) {
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Cidade </Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
+
                         onChange={(event) => {
                             setCidade(maskTextNumber(event.target.value));
                         }} />
@@ -169,7 +222,7 @@ export default function AdressPayment(props) {
                     <Form.Select disabled={disabled} className="input-disabled" aria-label="Default select example" value={estado} onChange={(event) => {
                         setEstado(maskUF(event.target.value))
                     }}>
-                        <option>Selecione um estado</option>
+                        <option>Estado</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
