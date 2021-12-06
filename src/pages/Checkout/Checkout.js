@@ -30,6 +30,7 @@ function Checkout(props) {
     const [paymentPix, setPaymentPix] = useState(false)
 
     const [adress, setAdress] = useState({})
+    const [generateQR, setGenerateQR] = useState(false)
 
     const [order, setOrder] = useState({});
     const [orderItems, setOrderItems] = useState([])
@@ -54,11 +55,13 @@ function Checkout(props) {
             if (validePayment() && validAdress()) {
                 const order = JSON.parse(localStorage.getItem("order"))
                 order.formaPagamento.id = paymentForm
+                console.log(order)
 
                 //Seta o parcelamento da compra
                 if (paymentForm == 1) {
                     order.parcelas = card.installments;
                 } else {
+                    console.log(order)
                     order.parcelas = 1;
                 }
 
@@ -67,33 +70,50 @@ function Checkout(props) {
                         var orderString = JSON.stringify(response.data)
                         localStorage.setItem("order", orderString)
 
-                        localStorage.removeItem("cart")
+                        if (paymentForm == 2 && !paymentPix) {
+                            setGenerateQR(true)
+                            console.log(paymentPix)
+                        } else {
+                            console.log(order)
+                            axios.post(`http://localhost:8080/pedidos`, order)
+                                .then((response) => {
+                                    console.log(response.data)
+                                    var orderString = JSON.stringify(response.data)
+                                    localStorage.setItem("order", orderString)
 
-                        sendOrderItems(orderItems, response.data)
+                                    localStorage.removeItem("cart")
 
-                        adress.pedido = response.data;
+                                    sendOrderItems(orderItems, response.data)
 
-                        console.log(adress);
+                                    adress.pedido = response.data;
 
-                        axios.post(`http://localhost:8080/billing-address`, adress, {
-                        headers: {
-                            Authorization: localStorage.getItem('Authorization')
+                                    console.log(adress.pedido);
+
+                                    console.log(adress);
+
+                                    axios.post(`http://localhost:8080/billing-address`, adress, {
+                                        headers: {
+                                            Authorization: localStorage.getItem('Authorization')
+                                        }
+                                    })
+                                        .then((response) => {
+                                            console.log(response.data);
+                                        })
+                                        .catch((error) => {
+                                            console.log("Ocorreu um erro :" + error);
+                                        })
+
+                                    window.location.replace('http://localhost:3000/success')
+
+                                })
+                                .catch((error) => {
+                                    console.log("Ocorreu um erro :" + error)
+                                })
                         }
-                        })
-                        .then((response) => {
-                            console.log(response.data);
-                        })
-                        .catch((error) => {
-                            console.log("Ocorreu um erro :" + error);
-                        })
-
-                        window.location.replace('http://localhost:3000/success')
-
                     })
                     .catch((error) => {
-                        console.log("Ocorreu um erro :" + error)
+                        console.log('algo deu errado' + error)
                     })
-
             } else {
                 setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
                 setClassTerm('validation-term p-2')
@@ -261,7 +281,9 @@ function Checkout(props) {
         } else {
             return (
                 <>
-                    <Pix pixKey={pixKey} func={getPix} />
+                    <div>
+                        PREENCHA OS DADOS E ACEITE OS TERMOS. O QR-CODE DA COMPRA SERÁ GERADO AO CLICAR EM "FINALIZAR COMPRA", NA PARTE INFERIOR DA PÁGINA
+                    </div>
                 </>
             )
         }
@@ -289,9 +311,7 @@ function Checkout(props) {
                 return true
             }
         } else if (paymentForm == 2) {
-            if (paymentPix) {
-                return true
-            }
+            return true
         } else {
             return false
         }
@@ -301,8 +321,7 @@ function Checkout(props) {
 
     const validAdress = () => {
         if (adress != null) {
-            console.log('1')
-            if (adress.cep == null || adress.cep.length!=9) {
+            if (adress.cep == null || adress.cep.length != 9) {
                 console.log('3')
                 return false
             } else if (adress.logradouro == null || adress.logradouro == "") {
@@ -329,8 +348,13 @@ function Checkout(props) {
     }
 
     const getPix = (pix) => {
-        setPaymentPix(pix)
+        setPaymentPix(true)
         console.log(paymentPix)
+
+        setTimeout(() => {
+            postOrder()
+        }, 3000)
+
     }
 
     const getTicket = (ticket) => {
@@ -378,6 +402,24 @@ function Checkout(props) {
         }
     }
 
+    const generateQRCode = () => {
+        if (generateQR) {
+            return (
+                <Col xs={5} className="p-3 checkout-term checkout-containers checkout-respons">
+                    <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento PIX </h1>
+                    <Pix func={getPix} />
+                </Col>
+            )
+        } else {
+            return (
+                <>
+
+                </>
+            )
+        }
+
+    }
+
     const grossValue = (JSON.parse(localStorage.getItem("order")).valorBruto)
     const discountValue = JSON.parse(localStorage.getItem("order")).descontoProduto
     const totalValue = (grossValue - discountValue)
@@ -389,90 +431,91 @@ function Checkout(props) {
             <Container fluid className="row px-3 py-5 mx-0 checkout content-container">
                 <h1 className="mb-3 card-title-mvp checkout-title"> Pagamento </h1>
 
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-1 checkout-containers checkout-request checkout-respons">
-                    <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
-                    <Container >
+                <Row>
+                    <Col xs={12} sm={12} md={12} lg={4} className="py-4 px-1 checkout-containers checkout-request checkout-respons">
+                        <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
+                        <Container >
 
-                        <Row className="px-2 checkout-list-items-scroll">
-                            <Products productList={orderItems} />
-                        </Row>
-
-                        <Container fluid className=' align-items-end container-price'>
-                            <Row className="p-2 mt-3 checkout-price-container">
-                                <Row className="my-1 py-1 checkout-price ">
-                                    <p className="checkout-price-title"> Produtos </p>
-                                    <p> R$ {(grossValue).toLocaleString('pt-BR', {
-                                        minimumFractionDigits: 2,
-                                        maximumFractionDigits: 2
-                                    })} </p>
-                                </Row>
-
-                                <Row className="my-1 py-1 checkout-price checkout-line">
-                                    <p className="checkout-price-title"> Desconto </p>
-                                    <p> R$ {(discountValue).toLocaleString('pt-BR', {
-                                        minimumFractionDigits: 2,
-                                        maximumFractionDigits: 2
-                                    })} </p>
-                                </Row>
-
-                                <Row className="my-1 py-1  checkout-price checkout-line">
-                                    <p className="checkout-price-title"> Total </p>
-                                    <p> R$ {(totalValue).toLocaleString('pt-BR', {
-                                        minimumFractionDigits: 2,
-                                        maximumFractionDigits: 2
-                                    })} </p>
-                                </Row>
+                            <Row className="px-2 checkout-list-items-scroll">
+                                <Products productList={orderItems} />
                             </Row>
+
+                            <Container fluid className=' align-items-end container-price'>
+                                <Row className="p-2 mt-3 checkout-price-container">
+                                    <Row className="my-1 py-1 checkout-price ">
+                                        <p className="checkout-price-title"> Produtos </p>
+                                        <p> R$ {(grossValue).toLocaleString('pt-BR', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2
+                                        })} </p>
+                                    </Row>
+
+                                    <Row className="my-1 py-1 checkout-price checkout-line">
+                                        <p className="checkout-price-title"> Desconto </p>
+                                        <p> R$ {(discountValue).toLocaleString('pt-BR', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2
+                                        })} </p>
+                                    </Row>
+
+                                    <Row className="my-1 py-1  checkout-price checkout-line">
+                                        <p className="checkout-price-title"> Total </p>
+                                        <p> R$ {(totalValue).toLocaleString('pt-BR', {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2
+                                        })} </p>
+                                    </Row>
+                                </Row>
+                            </Container>
                         </Container>
-                    </Container>
-                </Col>
-
-
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="px-4 py-4 checkout-containers checkout-respons">
-                    <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
-                    <Form.Label className="mt-3"> Forma de pagamento </Form.Label>
-                    {showPaymentSelect()}
-                    {ShowPaymentForm()}
-                </Col>
-
-
-
-                <Col xs={12} sm={12} md={12} lg={4} xl={4} className="py-4 px-3 checkout-containers">
-                    <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
-                    <AdressPayment func={GetAdress} />
-                </Col>
-
-
-                <Col className="col-12 p-3 checkout-term checkout-containers checkout-respons">
-                    <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
-                    <p className="p-4">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
-                        realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
-                        perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.
-                    </p>
-
-                    <Col className="col-12 px-3 submit-payment">
-                        <Form>
-                            <Form.Group className="checkout-checkbox" controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Eu aceito os termos e condições."
-                                    value={termAcepted} onClick={() => {
-                                        if (termAcepted) {
-                                            setTermAcepted(false)
-                                        } else {
-                                            setTermAcepted(true)
-                                            setValidationOfTerms('')
-                                            setClassTerm('')
-                                        }
-
-                                    }} />
-                            </Form.Group>
-                        </Form>
-                        <div className={classTerm}>
-                            {validationOfTerms}
-                        </div>
-
-                        <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
                     </Col>
-                </Col>
+
+                    <Col xs={12} sm={12} md={12} lg={4} className="px-4 py-4 checkout-containers checkout-respons">
+                        <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
+                        <Form.Label className="mt-3"> Forma de pagamento </Form.Label>
+                        {showPaymentSelect()}
+                        {ShowPaymentForm()}
+                    </Col>
+
+                    <Col xs={12} sm={12} md={12} lg={4} className="py-4 px-3 checkout-containers">
+                        <h1 className="mb-3 card-caption-mvp checkout-title"> Endereço de cobrança </h1>
+                        <AdressPayment func={GetAdress} />
+                    </Col>
+                </Row>
+
+                <Row className='justify-content-around'>
+                    <Col xs={5} className="p-3 checkout-term checkout-containers checkout-respons">
+                        <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
+                        <p className="p-4">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
+                            realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
+                            perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.
+                        </p>
+
+                        <div className="px-3 submit-payment">
+                            <Form>
+                                <Form.Group className="checkout-checkbox" controlId="formBasicCheckbox">
+                                    <Form.Check type="checkbox" label="Eu aceito os termos e condições."
+                                        value={termAcepted} onClick={() => {
+                                            if (termAcepted) {
+                                                setTermAcepted(false)
+                                            } else {
+                                                setTermAcepted(true)
+                                                setValidationOfTerms('')
+                                                setClassTerm('')
+                                            }
+
+                                        }} />
+                                </Form.Group>
+                            </Form>
+                            <div className={classTerm}>
+                                {validationOfTerms}
+                            </div>
+
+                            <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
+                        </div>
+                    </Col>
+                    {generateQRCode()}
+                </Row>
             </Container>
         </>
     )
