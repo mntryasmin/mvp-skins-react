@@ -1,10 +1,11 @@
 .filter-column{
     background-color: #EFEFEF;
-    width: 100% !important;
+    width: 70% !important;
     border-radius: 0 0 6px 0;
     flex-direction: row;
     border: solid #28004f 5px ;
     border-radius: 10px;
+    justify-self:center !important;
 }
 
 .filter-title{

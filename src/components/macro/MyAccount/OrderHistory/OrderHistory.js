@@ -55,7 +55,6 @@ export default class OrderHistory extends Component {
 
     handleClient() {
         this.client = JSON.parse(localStorage.getItem("client"));
-        console.log(this.client);
     }
 
     handleRequests() {
@@ -80,6 +79,7 @@ export default class OrderHistory extends Component {
             }
         })
             .then((response) => {
+                console.log(response.data);
                 this.setState({ products: response.data });
             })
             .catch((erro) => {
