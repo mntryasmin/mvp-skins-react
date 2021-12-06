@@ -44,7 +44,16 @@ function Sucess(props) {
                 sendOrderEmail()
             }
         } else {
-           console.log(order)
+            swal({
+                showCancelButton : true,
+                title: "Não há um pedido para ser finalizado!",
+                type: "warning",
+                closeOnConfirm: false,
+            }).then((closeOnConfirm) => {
+                if (closeOnConfirm) {
+                    window.location.href = 'http://localhost:3000';
+                }
+            })
         }
     })
     // window.location = 'http://localhost:3000',

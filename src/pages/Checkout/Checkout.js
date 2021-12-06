@@ -60,11 +60,13 @@ function Checkout(props) {
             if (validePayment() && validAdress()) {
                 const order = JSON.parse(localStorage.getItem("order"))
                 order.formaPagamento.id = paymentForm
+                console.log(order)
 
                 //Seta o parcelamento da compra
                 if (paymentForm == 1) {
                     order.parcelas = card.installments;
                 } else {
+                    console.log(order)
                     order.parcelas = 1;
                 }
 
@@ -72,8 +74,10 @@ function Checkout(props) {
                     setGenerateQR(true)
                     console.log(paymentPix)
                 } else {
+                    console.log(order)
                     axios.post(`http://localhost:8080/pedidos`, order)
                         .then((response) => {
+                            console.log(response.data)
                             var orderString = JSON.stringify(response.data)
                             localStorage.setItem("order", orderString)
 
@@ -83,19 +87,20 @@ function Checkout(props) {
 
                             adress.pedido = response.data;
 
-                            console.log(adress);
+                            console.log(adress.pedido);
 
-                            axios.post(`http://localhost:8080/billing-address`, adress, {
-                                headers: {
-                                    Authorization: localStorage.getItem('Authorization')
-                                }
+                            //Salva o endereço de cobrança no banco 
+                        axios.post(`http://localhost:8080/billing-address`, adress, {
+                            headers: {
+                                Authorization: localStorage.getItem('Authorization')
+                            }
                             })
-                                .then((response) => {
-                                    console.log(response.data);
-                                })
-                                .catch((error) => {
-                                    console.log("Ocorreu um erro :" + error);
-                                })
+                            .then((response) => {
+                                console.log(response.data);
+                            })
+                            .catch((error) => {
+                                console.log("Ocorreu um erro :" + error);
+                            })
 
                             window.location.replace('http://localhost:3000/success')
 
@@ -327,7 +332,7 @@ function Checkout(props) {
     //Função para validar o endereço
     const validAdress = () => {
         if (adress != null) {
-            console.log('1')
+            
             if (adress.cep == null) {
                 console.log('3')
                 return false
