@@ -10,15 +10,12 @@ import './AdressPayment.css'
 // PÁGINAS/COMPONENTES
 import Button from '../../Button/Button'
 
-
 export default function AdressPayment(props) {
     const cliente = JSON.parse(localStorage.getItem("client"));
-    const [listRequests, setListRequests] = useState([]);
 
-    const [cep, setcep] = useState('');
+    const [cep, setCep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
-    const [endereco, setEndereco] = useState({});
     const [complemento, setComplemento] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
@@ -29,9 +26,7 @@ export default function AdressPayment(props) {
     const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
     const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
 
-    const [requestsClient, setRequestsClient] = useState([]);
-    const [lastRequest, setLastRequest] = useState({});
-    const [lastAdress, setLastAdress] = useState({});
+    // var lastRequest = null;
 
     async function getRequestsClient() {
         let response = await axios.get(
@@ -41,88 +36,40 @@ export default function AdressPayment(props) {
             }
         });
 
-        setRequestsClient(response.data);
-        setLastRequest(requestsClient[requestsClient.length - 1]);
-        console.log(lastRequest);
-    }
+        if (response.data.length > 0) {
+            let lastRequest = response.data[response.data.length - 1].id;
 
-    async function getLastAdress() {
-        let response = await axios.get(
-            `http://localhost:8080/billing-address/request/${lastRequest.id}`, {
-            headers: {
-                Authorization: localStorage.getItem('Authorization')
+            let responseAdress = await axios.get(
+                `http://localhost:8080/billing-address/request/${lastRequest}`, {
+                headers: {
+                    Authorization: localStorage.getItem('Authorization')
+                }
+            })
+
+            if (responseAdress) {
+
+                setCep(responseAdress.data.cep);
+                setLogradouro(responseAdress.data.logradouro);
+                setNumero(responseAdress.data.numero);
+                setComplemento(responseAdress.data.complemento);
+                setBairro(responseAdress.data.bairro);
+                setCidade(responseAdress.data.cidade);
+                setEstado(responseAdress.data.estado);
+
+                setDisabled(true);
+                setAdressResult(addressFound);
+
+                console.log('ENDEREÇO: V')
+                console.log(responseAdress.data.cep)
             } 
-        })
-
-        setLastAdress(response.data);
-        console.log(lastAdress);
-
-        setEndereco(lastAdress.data);
-        setCEP(lastAdress.cep);
-        setLogradouro(lastAdress.logradouro);
-        setNumero(lastAdress.numero);
-        setComplemento(lastAdress.complemento);
-        setBairro(lastAdress.bairro);
-        setCidade(lastAdress.cidade);
-        setEstado(lastAdress.estado);
-
-        setDisabled(true);
-        setAdressResult(addressFound);
+        } else {
+            setAdressResult(adressNotFound);
+        }
     }
-
 
     useEffect(() => {
-        getLastAdress();
         getRequestsClient();
     }, []);
-
-    // setRequestsClient(requests);
-
-    // .then((response) => {
-    //     if (response.data.length > 0) {
-    //         const LR = response.data[response.data.length - 1];
-    //         setLastRequest( LR);
-
-    //         console.log(lastRequest);
-    //         console.log(lastRequest.id);
-
-    //                     axios.get(`http://localhost:8080/billing-address/request/${lastRequest.id}`, {
-    //                         headers: {
-    //                             Authorization: localStorage.getItem('Authorization')
-    //                         }
-    //                     })
-    //                         .then((response) => {
-    //                             setEndereco(response.data);
-    //                             setCEP(endereco.cep);
-    //                             setLogradouro(endereco.logradouro);
-    //                             setNumero(endereco.numero);
-    //                             setComplemento(endereco.complemento);
-    //                             setBairro(endereco.bairro);
-    //                             setCidade(endereco.cidade);
-    //                             setEstado(endereco.estado);
-
-    //                             setDisabled(true);
-    //                             setAdressResult(addressFound);
-    //                         })
-    //                         .catch((erro) => {
-    //                             console.log("Não foi possível buscar o último endereço do cliente: " + erro)
-    //                         }
-    //                         );
-
-    //                 } else {
-    //                     setAdressResult(adressNotFound);
-    //                     props.func(endereco);
-    //                 }
-    //             })
-    //             .catch((erro) => {
-    //                 console.log("Não foi possível buscar os pedidos do cliente: " + erro)
-    //             }
-    //             );
-
-    //     }
-
-    //     getDates()
-    // }, []);
 
     const maskCEP = (value) => {
         return value
@@ -131,29 +78,35 @@ export default function AdressPayment(props) {
             .replace(/(-\d{3})\d+?$/, "$1");
     };
 
-    //Regex para Textos e Números 
     const maskTextNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}",|?;{(+=._-]+/g, "");
     }
 
-    //Regex número
     const maskNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
     }
 
-    //Regex UF
     const maskUF = (value) => {
         return value
             .replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "")
             .replace(/(\d{2})(\d{0})(\d)/, "$1")
     }
 
-
     const changeDisabled = () => {
         setDisabled(false);
     }
 
     function validAdress() {
+        let endereco = {
+            cep: cep,
+            logradouro: logradouro,
+            numero: numero,
+            complemento: complemento,
+            bairro: bairro,
+            cidade: cidade,
+            estado: estado,
+        };
+
         console.log(endereco);
         setDisabled(true);
         props.func(endereco);
@@ -167,7 +120,7 @@ export default function AdressPayment(props) {
                     <Form.Label className="mt-3"> CEP </Form.Label>
                     <Form.Control disabled={disabled} className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={cep}
                         onChange={(event) => {
-                            setCEP(maskCEP(event.target.value));
+                            setCep(maskCEP(event.target.value));
                         }} />
                 </Col>
 
@@ -252,8 +205,6 @@ export default function AdressPayment(props) {
                 <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4" />
                 <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
             </Col>
-            {props.func(endereco)}
-            {/* {console.log(endereco)} */}
         </>
     )
 }
