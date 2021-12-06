@@ -38,7 +38,7 @@ export default function Pix(props) {
     return (
         <>
             <div className='container-pix mt-3'>
-                <Row>
+                <Row className='justify-content-center'> 
                     <img src={PixImg} className='pix-img mt-2' />
                 </Row>
                 <Row className='d-flex justify-content-center'>

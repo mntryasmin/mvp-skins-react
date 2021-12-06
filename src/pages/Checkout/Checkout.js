@@ -476,13 +476,14 @@ function Checkout(props) {
                 </Row>
 
                 <Row className='justify-content-around'>
+                    {generateQRCode()}
                     <Col xs={5} className="p-3 checkout-term checkout-containers checkout-respons">
                         <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
                         <p className="p-4">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
                             realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
                             perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.
                         </p>
-
+                        
                         <div className="px-3 submit-payment">
                             <Form>
                                 <Form.Group className="checkout-checkbox" controlId="formBasicCheckbox">
@@ -506,7 +507,7 @@ function Checkout(props) {
                             <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
                         </div>
                     </Col>
-                    {generateQRCode()}
+                    
                 </Row>
             </Container>
         </>
