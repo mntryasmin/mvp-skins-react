@@ -17,8 +17,6 @@ import Pix from '../../components/micro/Checkout/Pix/Pix'
 
 
 function Checkout(props) {
-
-
     const [termAcepted, setTermAcepted] = useState(false)
     const [validationOfTerms, setValidationOfTerms] = useState('')
     const [classTerm, setClassTerm] = useState('')
@@ -86,10 +84,6 @@ function Checkout(props) {
                                     sendOrderItems(orderItems, response.data)
 
                                     adress.pedido = response.data;
-
-                                    console.log(adress.pedido);
-
-                                    console.log(adress);
 
                                     axios.post(`http://localhost:8080/billing-address`, adress, {
                                         headers: {
@@ -316,8 +310,6 @@ function Checkout(props) {
             return false
         }
     }
-
-
 
     const validAdress = () => {
         if (adress != null) {

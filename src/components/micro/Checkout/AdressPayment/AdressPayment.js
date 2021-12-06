@@ -35,7 +35,7 @@ export default function AdressPayment(props) {
 
     // var lastRequest = null;
 
-    async function GetRequestsClient() {
+    async function getRequestsClient() {
         let response = await axios.get(
             `http://localhost:8080/pedidos/order-history/${cliente.codigoCliente}`, {
             headers: {
@@ -72,6 +72,9 @@ export default function AdressPayment(props) {
             setAdressResult(adressNotFound);
         }
 
+    useEffect(() => {
+        getRequestsClient();
+    }, []);
 
         //Recupera o endereço através do CEP (usando a API do viacep)
         function consultarcep(cep) {
