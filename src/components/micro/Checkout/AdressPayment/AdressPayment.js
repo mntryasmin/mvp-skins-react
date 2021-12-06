@@ -10,10 +10,12 @@ import './AdressPayment.css'
 // PÁGINAS/COMPONENTES
 import Button from '../../Button/Button'
 
+
 export default function AdressPayment(props) {
     const cliente = JSON.parse(localStorage.getItem("client"));
+    const [listRequests, setListRequests] = useState([]);
 
-    const [cep, setCEP] = useState('');
+    const [cep, setcep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [endereco, setEndereco] = useState({});
@@ -129,19 +131,23 @@ export default function AdressPayment(props) {
             .replace(/(-\d{3})\d+?$/, "$1");
     };
 
+    //Regex para Textos e Números 
     const maskTextNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}",|?;{(+=._-]+/g, "");
     }
 
+    //Regex número
     const maskNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
     }
 
+    //Regex UF
     const maskUF = (value) => {
         return value
             .replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "")
             .replace(/(\d{2})(\d{0})(\d)/, "$1")
     }
+
 
     const changeDisabled = () => {
         setDisabled(false);
@@ -246,6 +252,8 @@ export default function AdressPayment(props) {
                 <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4" />
                 <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
             </Col>
+            {props.func(endereco)}
+            {/* {console.log(endereco)} */}
         </>
     )
 }
