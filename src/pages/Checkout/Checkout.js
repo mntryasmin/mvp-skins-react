@@ -28,16 +28,8 @@ function Checkout(props) {
     const [card, setCard] = useState({})
     const [paymentTicket, setPaymentTicket] = useState({})
     const [paymentPix, setPaymentPix] = useState(false)
-    
-    var adress = {
-        cep: '',
-        logradouro: '',
-        numero: '',
-        complemento: '',
-        bairro: '',
-        cidade: '',
-        estado: ''
-    } 
+
+    const [adress, setAdress] = useState({})
 
     const [order, setOrder] = useState({});
     const [orderItems, setOrderItems] = useState([])
@@ -67,8 +59,7 @@ function Checkout(props) {
                 } else {
                     order.parcelas = 1;
                 }
-                
-                //Salva o pedido no banco
+
                 axios.post(`http://localhost:8080/pedidos`, order)
                     .then((response) => {
                         var orderString = JSON.stringify(response.data)
@@ -81,8 +72,7 @@ function Checkout(props) {
                         adress.pedido = response.data;
 
                         console.log(adress);
-                        
-                        //Salva o endereço de cobrança no banco 
+
                         axios.post(`http://localhost:8080/billing-address`, adress, {
                         headers: {
                             Authorization: localStorage.getItem('Authorization')
@@ -102,7 +92,6 @@ function Checkout(props) {
                         console.log("Ocorreu um erro :" + error)
                     })
 
-                // postAdressPayment();
             } else {
                 setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
                 setClassTerm('validation-term p-2')
@@ -114,7 +103,6 @@ function Checkout(props) {
 
     }
 
-    //Salva os itens do pedido no banco
     function sendOrderItems(orderItems, order) {
         orderItems.forEach((o) => {
             var orderItem = {
@@ -143,7 +131,6 @@ function Checkout(props) {
         return true;
     }
 
-    //Função para validar o nome
     const validateName = () => {
         if (card.name.length < 3) {
             return false
@@ -152,7 +139,6 @@ function Checkout(props) {
         }
     }
 
-    //Função para validar o número do cartão
     const validateCard = () => {
         if (card.cardNumber.length < 19) {
             return false
@@ -163,7 +149,6 @@ function Checkout(props) {
         }
     }
 
-    //Função para validar a data de validade do cartão
     const validateDate = () => {
         const mounth = card.dtCard.substring(0, 2)
         const year = card.dtCard.substring(3)
@@ -190,7 +175,6 @@ function Checkout(props) {
         }
     }
 
-    //Função para validar o CVV do cartão
     const validateCvv = () => {
         if (card.flag == 'AMEX') {
             if (card.cvv.length != 4) {
@@ -205,7 +189,6 @@ function Checkout(props) {
         }
     }
 
-    //Função para validar o CPF
     const validateCpf = () => {
         if (card.cpf.length < 14) {
             return false
@@ -214,7 +197,6 @@ function Checkout(props) {
         }
     }
 
-    //Função para validar as parcelas
     const validateInstallments = () => {
         if (card.installments == 0) {
             return false
@@ -223,7 +205,6 @@ function Checkout(props) {
         }
     }
 
-    //Função que valida o cartão como um todo
     const ValideCard = (card) => {
 
         if (!isEmpty(card)) {
@@ -248,7 +229,6 @@ function Checkout(props) {
 
     }
 
-    //Salva o cartão no componente de estado controlado
     const GetCard = (cardReceiver) => {
         setCard({
             name: cardReceiver.name,
@@ -261,14 +241,12 @@ function Checkout(props) {
         })
     }
 
-    //Função para trocar a forma de Pagamento 
     const ChangePaymentForm = (value) => {
         setValidationOfTerms('')
         setClassTerm('')
         setPaymentForm(value)
     }
 
-    //Função para renderizar a forma de pagamento
     const ShowPaymentForm = () => {
         if (paymentForm == 1) {
             return (
@@ -287,21 +265,17 @@ function Checkout(props) {
         }
     }
 
-    //Retorna um endereço através de um componente filho 
     const GetAdress = (adressClient) => {
-        
-            adress.cep = adressClient.cep
-            adress.logradouro = adressClient.logradouro
-            adress.numero = adressClient.numero
-            adress.complemento = adressClient.complemento
-            adress.bairro = adressClient.bairro
-            adress.cidade =  adressClient.cidade
-            adress.estado = adressClient.estado
-
-            console.log(adress)
-       
+        setAdress({
+            cep: adressClient.cep,
+            logradouro: adressClient.logradouro,
+            numero: adressClient.numero,
+            complemento: adressClient.complemento,
+            bairro: adressClient.bairro,
+            cidade: adressClient.cidade,
+            estado: adressClient.estado,
+        })
     }
-
 
     const validePayment = () => {
         if (paymentForm == 1) {
@@ -322,7 +296,7 @@ function Checkout(props) {
     }
 
 
-    //Função para validar o endereço
+
     const validAdress = () => {
         if (adress != null) {
             console.log('1')
@@ -331,23 +305,18 @@ function Checkout(props) {
                 return false
             } else if (adress.logradouro == null) {
                 console.log('4')
-
                 return false
             } else if (adress.numero == null) {
                 console.log('5')
-
                 return false
             } else if (adress.bairro == null) {
                 console.log('6')
-
                 return false
             } else if (adress.cidade == null) {
                 console.log('7')
-
                 return false
             } else if (adress.estado == null) {
                 console.log('8')
-
                 return false
             } else {
                 return true
@@ -356,7 +325,6 @@ function Checkout(props) {
             return false
         }
     }
-
 
     const getPix = (pix) => {
         setPaymentPix(pix)
@@ -384,7 +352,6 @@ function Checkout(props) {
         }
     }
 
-    //Retorna o select das Formas de pagamento e caso seja PIX o campo fica disabled
     const showPaymentSelect = () => {
         if (paymentPix) {
             return (

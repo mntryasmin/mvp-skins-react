@@ -10,13 +10,10 @@ import './AdressPayment.css'
 // PÁGINAS/COMPONENTES
 import Button from '../../Button/Button'
 
-
 export default function AdressPayment(props) {
+    const cliente = JSON.parse(localStorage.getItem("client"));
 
-    const client = JSON.parse(localStorage.getItem("client"));
-    const [listRequests, setListRequests] = useState([]);
-
-    const [cep, setcep] = useState('');
+    const [cep, setCep] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
@@ -24,113 +21,94 @@ export default function AdressPayment(props) {
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
 
-    const endereco = {
-        cep: cep,
-        logradouro: logradouro,
-        numero: numero,
-        complemento: complemento,
-        bairro: bairro,
-        cidade: cidade,
-        estado: estado
-    };
-
+    const [disabled, setDisabled] = useState(false);
     const [adressResult, setAdressResult] = useState('');
     const addressFound = 'No seu último pedido você utilizou o endereço abaixo. Você pode utilizá-lo novamente ou alterar e, em seguida, salvar.'
     const adressNotFound = 'Parece que esse é o seu primeiro pedido conosco. Por favor, informe um endereço para cobrança abaixo.'
-    const [changeAdress, setChangeAdress] = useState('input-disabled');
 
-    useEffect(() => {
-        console.log(client);
-        axios.get(`http://localhost:8080/pedidos/order-history/${client.codigoCliente}`, {
+    // var lastRequest = null;
+
+    async function getRequestsClient() {
+        let response = await axios.get(
+            `http://localhost:8080/pedidos/order-history/${cliente.codigoCliente}`, {
             headers: {
                 Authorization: localStorage.getItem('Authorization')
             }
-        })
-            .then((response) => {
-                console.log(response.data);
-                setListRequests(response.data);
-                if (listRequests.length > 0) {
-                    getLastAdressClient();
-                } else {
-                    setAdressResult(adressNotFound);
-                    props.func(endereco);
+        });
+
+        if (response.data.length > 0) {
+            let lastRequest = response.data[response.data.length - 1].id;
+
+            let responseAdress = await axios.get(
+                `http://localhost:8080/billing-address/request/${lastRequest}`, {
+                headers: {
+                    Authorization: localStorage.getItem('Authorization')
                 }
             })
-            .catch((erro) => {
-                console.log("Não foi possível buscar os pedidos do cliente: " + erro)
-            }
-            );
-    }, []);
 
-    //Função para recuperar o último endereço de cobrança do cliente
-    function getLastAdressClient() {
-        console.log(listRequests);
+            if (responseAdress) {
 
-        axios.get(`http://localhost:8080/billing-address/request/${listRequests[listRequests.length - 1]}`, {
-            headers: {
-                Authorization: localStorage.getItem('Authorization')
-            }
-        })
-            .then((response) => {
-                console.log(response.data);
-                endereco = response.data;
+                setCep(responseAdress.data.cep);
+                setLogradouro(responseAdress.data.logradouro);
+                setNumero(responseAdress.data.numero);
+                setComplemento(responseAdress.data.complemento);
+                setBairro(responseAdress.data.bairro);
+                setCidade(responseAdress.data.cidade);
+                setEstado(responseAdress.data.estado);
+
+                setDisabled(true);
                 setAdressResult(addressFound);
-            })
-            .catch((erro) => {
-                console.log("Não foi possível buscar o último endereço do cliente: " + erro)
-            }
-            );
-    };
 
-    //Recupera o endereço através do CEP (usando a API do viacep)
-    function consultarcep(cep){
-        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
-        .then((response)=>{
-            // setEndereco(response.data)
-            setcep(response.data.cep)
-            setLogradouro(response.data.logradouro)
-            setBairro(response.data.bairro)
-            setCidade(response.data.localidade)
-            setEstado(response.data.uf)
-        })
-        .catch((error)=>{
-            console.log("Deu ruim ao consultar o cep")
-        })
+                console.log('ENDEREÇO: V')
+                console.log(responseAdress.data.cep)
+            } 
+        } else {
+            setAdressResult(adressNotFound);
+        }
     }
 
-    //Regex CEP
-    const maskcep = (value) => {
+    useEffect(() => {
+        getRequestsClient();
+    }, []);
+
+    const maskCEP = (value) => {
         return value
             .replace(/\D/g, "")
             .replace(/(\d{5})(\d{1,2})/, "$1-$2")
             .replace(/(-\d{3})\d+?$/, "$1");
     };
 
-    //Regex para Textos e Números 
     const maskTextNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}",|?;{(+=._-]+/g, "");
     }
 
-    //Regex número
     const maskNumber = (value) => {
         return value.replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "");
     }
 
-    //Regex UF
     const maskUF = (value) => {
         return value
             .replace(/[!@#¨$%^&*)}'",|?;{(+=._-]+/g, "")
             .replace(/(\d{2})(\d{0})(\d)/, "$1")
     }
 
-
     const changeDisabled = () => {
-        document.getElementsByClassName("input-disabled").disabled = false;
+        setDisabled(false);
     }
 
-    function validAdress () {
+    function validAdress() {
+        let endereco = {
+            cep: cep,
+            logradouro: logradouro,
+            numero: numero,
+            complemento: complemento,
+            bairro: bairro,
+            cidade: cidade,
+            estado: estado,
+        };
+
         console.log(endereco);
-        document.getElementsByClassName('input-disabled').disabled = true;
+        setDisabled(true);
         props.func(endereco);
     }
 
@@ -140,20 +118,15 @@ export default function AdressPayment(props) {
                 <p>{adressResult}</p>
                 <Col className="col-12">
                     <Form.Label className="mt-3"> CEP </Form.Label>
-                    <Form.Control className="input-disabled" 
-                    type="text" 
-                    name="cep" 
-                    placeholder="Digite o CEP" 
-                    value={cep}
-                    onBlur={()=>{consultarcep(cep)}}
-                    onChange={(event) => {
-                        setcep(maskcep(event.target.value));
-                    }} />
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="cep" placeholder="Digite o CEP" value={cep}
+                        onChange={(event) => {
+                            setCep(maskCEP(event.target.value));
+                        }} />
                 </Col>
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Logradouro </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="logradouro" placeholder="Digite o nome da rua" value={logradouro}
                         onChange={(event) => {
                             setLogradouro(maskTextNumber(event.target.value));
                         }} />
@@ -161,7 +134,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-3">
                     <Form.Label className="mt-3"> Nº </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="numero" placeholder="Digite o nº da residência" value={numero}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="numero" placeholder="Digite o nº da residência" value={numero}
                         onChange={(event) => {
                             setNumero(maskNumber(event.target.value));
                         }} />
@@ -169,7 +142,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-8">
                     <Form.Label className="mt-3"> Complemento </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="complemento" placeholder="Digite o complemento" value={complemento}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="complemento" placeholder="Digite o complemento" value={complemento}
                         onChange={(event) => {
                             setComplemento(maskTextNumber(event.target.value));
                         }} />
@@ -177,7 +150,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Bairro</Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="bairro" placeholder="Digite o bairro" value={bairro}
                         onChange={(event) => {
                             setBairro(maskTextNumber(event.target.value));
                         }} />
@@ -185,7 +158,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Cidade </Form.Label>
-                    <Form.Control className={changeAdress} type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
+                    <Form.Control disabled={disabled} className="input-disabled" type="text" name="cidade" placeholder="Digite a cidade" value={cidade}
                         onChange={(event) => {
                             setCidade(maskTextNumber(event.target.value));
                         }} />
@@ -193,7 +166,7 @@ export default function AdressPayment(props) {
 
                 <Col className="col-12">
                     <Form.Label className="mt-3"> Estado </Form.Label>
-                    <Form.Select className={changeAdress} aria-label="Default select example" value={estado} onChange={(event) => {
+                    <Form.Select disabled={disabled} className="input-disabled" aria-label="Default select example" value={estado} onChange={(event) => {
                         setEstado(maskUF(event.target.value))
                     }}>
                         <option>Selecione um estado</option>
@@ -232,8 +205,6 @@ export default function AdressPayment(props) {
                 <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4" />
                 <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
             </Col>
-            {props.func(endereco)}
-            {/* {console.log(endereco)} */}
         </>
     )
 }
