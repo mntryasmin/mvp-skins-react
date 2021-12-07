@@ -22,7 +22,7 @@ function Sucess(props) {
         }
     
     const nf = {
-        pedido : order,
+        pedido : JSON.parse(localStorage.getItem('order')),
         tipoNF : {
             id : 1
         },
@@ -71,6 +71,9 @@ function Sucess(props) {
 
     function deleteOrder(){
         localStorage.removeItem('order')
+        setTimeout(() => {
+            setOrder(null)
+        }, 10000)
     }
 
     function sendPaymentApprovedEmail(){
