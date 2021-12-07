@@ -72,8 +72,8 @@ function Sucess(props) {
     function deleteOrder(){
         localStorage.removeItem('order')
         setTimeout(() => {
-            setOrder(null)
-        }, 10000)
+            window.location.href = 'http://localhost:3000'
+        }, 60000)
     }
 
     function sendPaymentApprovedEmail(){
