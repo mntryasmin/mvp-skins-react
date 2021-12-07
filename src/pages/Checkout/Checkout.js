@@ -43,68 +43,79 @@ function Checkout(props) {
 
     function postOrder() {
 
-        console.log(order);
-        console.log(adress);
-
         if (termAcepted) {
-            if (validePayment() && validAdress()) {
-                const order = JSON.parse(localStorage.getItem("order"))
-                order.formaPagamento.id = paymentForm
-                console.log(order)
+            if (saveAdress()) {
+                if (validePayment()) {
+                    setValidationOfTerms('')
+                    setClassTerm('')
 
-                //Seta o parcelamento da compra
-                if (paymentForm == 1) {
-                    order.parcelas = card.installments;
-                } else {
+                    const order = JSON.parse(localStorage.getItem("order"))
+                    order.formaPagamento.id = paymentForm
                     console.log(order)
-                    order.parcelas = 1;
-                }
 
-                if (paymentForm == 2 && !paymentPix) {
-                    setGenerateQR(true)
-                    console.log(paymentPix)
-                } else {
-                    console.log(order)
-                    axios.post(`http://localhost:8080/pedidos`, order)
-                        .then((response) => {
-                            console.log(response.data)
-                            var orderString = JSON.stringify(response.data)
-                            localStorage.setItem("order", orderString)
+                    //Seta o parcelamento da compra
+                    if (paymentForm == 1) {
+                        order.parcelas = card.installments;
+                    } else {
+                        console.log(order)
+                        order.parcelas = 1;
+                    }
 
-                            localStorage.removeItem("cart")
+                    if (paymentForm == 2 && !paymentPix) {
+                        setValidationOfTerms('Para prosseguir é necessário realizar o pagamento da compra.')
+                        setClassTerm('validation-term p-2 mt-2')
 
-                            sendOrderItems(orderItems, response.data)
+                        setGenerateQR(true)
+                        console.log(paymentPix)
+                    } else {
+                        setValidationOfTerms('')
+                        setClassTerm('')
 
-                            adress.pedido = response.data;
+                        console.log(order)
+                        axios.post(`http://localhost:8080/pedidos`, order)
+                            .then((response) => {
+                                console.log(response.data)
+                                var orderString = JSON.stringify(response.data)
+                                localStorage.setItem("order", orderString)
 
-                            axios.post(`http://localhost:8080/billing-address`, adress, {
-                                headers: {
-                                    Authorization: localStorage.getItem('Authorization')
-                                }
+                                localStorage.removeItem("cart")
+
+                                sendOrderItems(orderItems, response.data)
+
+                                adress.pedido = response.data;
+
+                                axios.post(`http://localhost:8080/billing-address`, adress, {
+                                    headers: {
+                                        Authorization: localStorage.getItem('Authorization')
+                                    }
+                                })
+                                    .then((response) => {
+                                        console.log(response.data);
+                                    })
+                                    .catch((error) => {
+                                        console.log("Ocorreu um erro :" + error);
+                                    })
+
+                                window.location.replace('http://localhost:3000/success')
+
                             })
-                                .then((response) => {
-                                    console.log(response.data);
-                                })
-                                .catch((error) => {
-                                    console.log("Ocorreu um erro :" + error);
-                                })
+                            .catch((error) => {
+                                console.log("Ocorreu um erro :" + error)
+                            })
+                    }
 
-                            window.location.replace('http://localhost:3000/success')
-
-                        })
-                        .catch((error) => {
-                            console.log("Ocorreu um erro :" + error)
-                        })
+                } else {
+                    setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
+                    setClassTerm('validation-term p-2 mt-2')
                 }
             } else {
-                setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
-                setClassTerm('validation-term p-2')
+                setValidationOfTerms('É preciso inserir e salvar o endereço de cobrança');
+                setClassTerm('validation-term p-2 mt-2')
             }
         } else {
             setValidationOfTerms('É preciso aceitar os termos para finalizar a compra')
-            setClassTerm('validation-term p-2')
+            setClassTerm('validation-term p-2 mt-2')
         }
-
     }
 
     function sendOrderItems(orderItems, order) {
@@ -245,8 +256,6 @@ function Checkout(props) {
     }
 
     const ChangePaymentForm = (value) => {
-        setValidationOfTerms('')
-        setClassTerm('')
         setPaymentForm(value)
     }
 
@@ -282,14 +291,6 @@ function Checkout(props) {
         })
     }
 
-    // const Save = (save) => {
-    //     if(save) {
-    //         console.log(save)
-    //     } else {
-    //         setValidationOfTerms('Por favor, para proseguir, preencha os formulários corretamente.')
-    //     }
-    // }
-
     const validePayment = () => {
         if (paymentForm == 1) {
             if (ValideCard(card)) {
@@ -306,31 +307,25 @@ function Checkout(props) {
         }
     }
 
-    const validAdress = () => {
+    const saveAdress = () => {
         if (adress != null) {
             if (adress.cep == null || adress.cep.length != 9) {
-                console.log('3')
                 return false
             } else if (adress.logradouro == null || adress.logradouro == "") {
-                console.log('4')
                 return false
             } else if (adress.numero == null || adress.numero == "") {
-                console.log('5')
                 return false
             } else if (adress.bairro == null || adress.bairro == "") {
-                console.log('6')
                 return false
             } else if (adress.cidade == null || adress.cidade == "") {
-                console.log('7')
                 return false
             } else if (adress.estado == null || adress.estado == "") {
-                console.log('8')
                 return false
             } else {
                 return true
             }
         } else {
-            return false
+            return false;
         }
     }
 
@@ -392,7 +387,7 @@ function Checkout(props) {
     const generateQRCode = () => {
         if (generateQR) {
             return (
-                <Col xs={5} className="p-3 checkout-term checkout-containers checkout-respons">
+                <Col className="p-3 checkout-term checkout-containers ">
                     <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento PIX </h1>
                     <Pix func={getPix} />
                 </Col>
@@ -419,7 +414,7 @@ function Checkout(props) {
                 <h1 className="mb-3 card-title-mvp checkout-title"> Pagamento </h1>
 
                 <Row>
-                    <Col xs={12} sm={12} md={12} lg={4} className="py-4 px-1 checkout-containers checkout-request checkout-respons">
+                    <Col xs={12} sm={12} md={12} lg={4} className="py-4 px-1 checkout-containers checkout-request ">
                         <h1 className="mb-3 card-caption-mvp checkout-title"> Resumo do pedido </h1>
                         <Container >
 
@@ -457,7 +452,7 @@ function Checkout(props) {
                         </Container>
                     </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={4} className="px-4 py-4 checkout-containers checkout-respons">
+                    <Col xs={12} sm={12} md={12} lg={4} className="px-4 py-4 checkout-containers ">
                         <h1 className="mb-3 card-caption-mvp checkout-title"> Pagamento </h1>
                         <Form.Label className="mt-3"> Forma de pagamento </Form.Label>
                         {showPaymentSelect()}
@@ -472,16 +467,14 @@ function Checkout(props) {
 
                 <Row className='justify-content-around'>
                     {generateQRCode()}
-                    <Col xs={12} lg={5} className="p-3 checkout-term checkout-containers checkout-respons">
+                    <Col className="p-3 checkout-term checkout-containers ">
+
                         <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
                         <p className="p-4">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
                             realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
                             perfil na MVP Skins, um trade link válido e atualizado para o recebimento da skin.
                         </p>
-                        
-                        <div className={classTerm}>
-                            {validationOfTerms}
-                        </div>
+
                         <div className="px-3 submit-payment">
                             <Form>
                                 <Form.Group className="checkout-checkbox" controlId="formBasicCheckbox">
@@ -491,16 +484,19 @@ function Checkout(props) {
                                                 setTermAcepted(false)
                                             } else {
                                                 setTermAcepted(true)
-                                                setValidationOfTerms('')
-                                                setClassTerm('')
                                             }
                                         }} />
                                 </Form.Group>
                             </Form>
-                            <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
+                            <div className={classTerm}>
+                                {validationOfTerms}
+                            </div>
+
+                            <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid mt-3" onclick={() => postOrder()}></Button>
+
                         </div>
                     </Col>
-                    
+
                 </Row>
             </Container>
         </>

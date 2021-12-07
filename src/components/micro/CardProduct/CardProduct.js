@@ -5,7 +5,7 @@ import { Container, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap'
 // ESTILO
 import '../../../assets/css/Style.css'
 import './CardProduct.css'
-import favorite from '../../../assets/images/icones/icon-coracao-produto.png'
+// import favorite from '../../../assets/images/icones/icon-coracao-produto.png'
 import addCart from '../../../assets/images/icones/icon-add-cart.png'
 
 // PÁGINAS/COMPONENTES
@@ -16,7 +16,7 @@ import Image from '../Images/Images'
 function CardProduct(props) {
 
     const [messageCard, setMessageCard] = useState('Item adicionado ao carrinho!')
-    const [messageFavorite, setMessageFavorite] = useState('Item adicionado aos favoritos!')
+    // const [messageFavorite, setMessageFavorite] = useState('Item adicionado aos favoritos!')
     const [showMessage, setShowMessage] = useState(false)
 
     const idProduct = props.idProduct
@@ -126,51 +126,45 @@ function CardProduct(props) {
         return boxMessage
     }
 
+    // const checkItemsFav = (productFav) => {
+    //     const productFavList = localStorage.getItem("fav") ?
+    //         JSON.parse(localStorage.getItem("fav")) :
+    //         [];
 
-
-
-    // VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-    // PARA CHECAR E ADICIONAR OS FAVORITOS TEM QUE PUXAR DO BANCO, AQUI ESTÁ PUXANDO DO LOCALHOST 
-    const checkItemsFav = (productFav) => {
-        const productFavList = localStorage.getItem("fav") ?
-            JSON.parse(localStorage.getItem("fav")) :
-            [];
-
-        for (var i = 0; i < productFavList.length; i++) {
-            if (productFav.id == productFavList[i].id) {
-                productFavList.splice((i), 1);
-                return false
-            }
-        }
-        return true
-    }
+    //     for (var i = 0; i < productFavList.length; i++) {
+    //         if (productFav.id == productFavList[i].id) {
+    //             productFavList.splice((i), 1);
+    //             return false
+    //         }
+    //     }
+    //     return true
+    // }
 
     //Adiciona o produto à página de favoritos
-    function addProductToFavorite(productCart) {
-        axios.post(`http://localhost:8080/fav/`, {
-            headers: {
-                Authorization: localStorage.getItem('Authorization')
-            }
-        })
-            .then((response) => {
-                console.log("Produto adicionado")
-            })
-            .catch((erro) => {
-                console.log("Não foi possível adicionar o produto aos favoritos do cliente: " + erro)
-            });
-    }
+    // function addProductToFavorite(productCart) {
+    //     axios.post(`http://localhost:8080/fav/`, {
+    //         headers: {
+    //             Authorization: localStorage.getItem('Authorization')
+    //         }
+    //     })
+    //         .then((response) => {
+    //             console.log("Produto adicionado")
+    //         })
+    //         .catch((erro) => {
+    //             console.log("Não foi possível adicionar o produto aos favoritos do cliente: " + erro)
+    //         });
+    // }
 
-    const favoriteBoxMessage = () => {
+    // const favoriteBoxMessage = () => {
 
-        let boxMessage = (<Popover id="popover-basic">
-            <Popover.Body>
-                {messageFavorite}
-            </Popover.Body>
-        </Popover>)
+    //     let boxMessage = (<Popover id="popover-basic">
+    //         <Popover.Body>
+    //             {messageFavorite}
+    //         </Popover.Body>
+    //     </Popover>)
 
-        return boxMessage
-    }
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //     return boxMessage
+    // }
 
 
     if (inventory == true) {
@@ -191,7 +185,7 @@ function CardProduct(props) {
                                 </OverlayTrigger>
                             </a>
 
-                            <a onClick={() => addProductToFavorite(product)}
+                            {/* <a onClick={() => addProductToFavorite(product)}
                                 className="cart-icon-card mx-2">
                                 <OverlayTrigger trigger="click"
                                     placement="top"
@@ -201,7 +195,7 @@ function CardProduct(props) {
                                         src={favorite}
                                         alt="Adicionar produto aos favoritos" />
                                 </OverlayTrigger>
-                            </a>
+                            </a> */}
                         </Row>
                         <Row>
                             <Button label="Ver mais" class="mt-5 btn-card" route={'/product/' + idProduct} navigation></Button>
