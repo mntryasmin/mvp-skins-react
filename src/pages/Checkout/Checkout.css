@@ -113,6 +113,10 @@
 
 .submit-payment button {
     width: 200px !important;
+    
+}
+.btn-finalizar{
+    width:200px !important;
 }
 
 

@@ -4,12 +4,20 @@
     justify-content: space-between;
 }
 
-.button-save {
+/* .button-save {
     width: 100vw;
     text-align: right;
     display: flex;
-    justify-content: right;
+    justify-content: left;
+    
+} */
+.btn-salvar{
+    width: 130px !important;
+    justify-content:center !important;
+    display: flex !important;
+
 }
+
 
 .link-password{
     color: #28004f;

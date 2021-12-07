@@ -472,7 +472,7 @@ function Checkout(props) {
 
                 <Row className='justify-content-around'>
                     {generateQRCode()}
-                    <Col xs={5} className="p-3 checkout-term checkout-containers checkout-respons">
+                    <Col xs={9} className="p-3 checkout-term checkout-containers checkout-respons">
                         <h1 className="mb-3 card-caption-mvp checkout-title"> Termo de serviços </h1>
                         <p className="p-4">Eu estou ciente de que a após o recebimento da skin terei que aguardar por 7 (sete) dias para
                             realizar outra troca com a skin adquirida nesta transação. Confirmo também que estou fornecendo, através do meu
@@ -499,7 +499,7 @@ function Checkout(props) {
                                 {validationOfTerms}
                             </div>
 
-                            <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid" onclick={() => postOrder()}></Button>
+                            <Button label="Finalizar a compra" route="/success" class="btn-mvp btn-mvp-orange-solid btn-finalizar" onclick={() => postOrder()}></Button>
                         </div>
                     </Col>
                     

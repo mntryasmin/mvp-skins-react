@@ -191,8 +191,8 @@ export default class Security extends Component {
                             <p className="error-message-security"> {this.state.messageInput3}</p>
                         </Form.Group>
 
-                        <Form.Group xs={12} sm={12} md={12} lg={6} xl={6}  className="button-save">
-                            <Button onclick={this.handleSubmit} class="btn-mvp btn-mvp-orange-clean" label="Salvar"/>
+                        <Form.Group className ="col-12 button" >
+                            <Button onclick={this.handleSubmit} class="btn-mvp btn-mvp-orange-clean btn-salvar mt-3" label="Salvar"/>
                         </Form.Group>
                     </Form>
                 </Container>
