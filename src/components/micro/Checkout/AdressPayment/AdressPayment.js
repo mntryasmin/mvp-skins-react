@@ -27,7 +27,6 @@ export default function AdressPayment(props) {
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
-    // const [save, setSave] = useState(false);
 
     const [disabled, setDisabled] = useState(false);
     const [adressResult, setAdressResult] = useState('');
@@ -142,9 +141,7 @@ export default function AdressPayment(props) {
         };
 
         setDisabled(true);
-        // setSave(true);
         props.func(endereco);
-        // props.save(save);
     }
 
     function validateCep(cepBoolean) {
@@ -259,10 +256,12 @@ export default function AdressPayment(props) {
                 </Col>
             </Form>
 
-            <Col className="adress-payment-buttons">
-                <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4 btn-alterar" />
-                <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4 btn-alterar" />
-            </Col>
+
+            <Row className="adress-payment-buttons">
+                <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid px-3" />
+                <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid px-3" />
+            </Row>
+
         </>
     )
     

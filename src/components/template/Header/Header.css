@@ -92,9 +92,8 @@
 
 .favor-cart-header {
     display: flex;
-    justify-content: space-around;
+    justify-content: right;
 }
-
 
 /* MEDIAS QUERIES  */
 
@@ -116,6 +115,10 @@
 
     .link-header-resp {
         display: none;
+    }
+
+    .items-nav{
+        justify-content: right;
     }
 
     .bottom-header-links {
@@ -150,8 +153,7 @@
     }
 
     .bottom-header-links {
-        
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 
     .bottom-header-links img {
@@ -196,7 +198,7 @@
     }
 
     .bottom-header-links {
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
 
@@ -219,7 +221,7 @@
     }
 
     .bottom-header-links {
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     .bottom-header-links img {

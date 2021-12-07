@@ -93,21 +93,21 @@ function Header(props) {
         )
     }
 
-    const btnFavorites = () => {
-        if (localStorage.getItem("Authorization")) {
+    // const btnFavorites = () => {
+    //     if (localStorage.getItem("Authorization")) {
 
-            return (
-                <Nav.Link href="/favorites" className="link-header items-nav">
-                    <img src={Fav} width="30" height="30" />
-                    Favoritos
-                </Nav.Link>
-            )
-        } else {
-            return (
-                <LoginModal linkFavorite />
-            )
-        }
-    }
+    //         return (
+    //             <Nav.Link href="/favorites" className="link-header items-nav">
+    //                 <img src={Fav} width="30" height="30" />
+    //                 Favoritos
+    //             </Nav.Link>
+    //         )
+    //     } else {
+    //         return (
+    //             <LoginModal linkFavorite />
+    //         )
+    //     }
+    // }
 
     return (
         <>
@@ -141,8 +141,8 @@ function Header(props) {
                         </Navbar.Brand>
                     </Col>
                     <Col xs={10} md={11} >
-                        <Nav className="bottom-header-links">
-                            <Nav.Link md={1} lg={2} href="/category/0" className="link-header link-header-resp items-nav items-nav-all p-0">
+                        <Nav className="bottom-header-links px-3">
+                            <Nav.Link md={1} lg={3} href="/category/0" className="link-header link-header-resp items-nav items-nav-all p-0">
                                 TODAS AS SKINS
                             </Nav.Link>
 
@@ -166,8 +166,8 @@ function Header(props) {
                                 Agentes
                             </Nav.Link>
 
-                            <Col xs={10} md={4} className="favor-cart-header px-2 d-flex justify-content-around p-0">
-                                {btnFavorites()}
+                            <Col xs={10} md={1} className="link-header items-nav p-0">
+                                {/* {btnFavorites()} */}
                                 {btnCart()}
                             </Col>
                         </Nav>
