@@ -106,7 +106,7 @@
 
 .submit-payment {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -124,10 +124,6 @@
         flex-direction: column;
     }
 
-    .checkout-respons {
-        margin: 2vh 0 2vh 0;
-    }
-
     .checkout-containers {
         height: auto;
     }
@@ -139,10 +135,6 @@
         flex-direction: column;
     }
 
-    .checkout-respons {
-        margin: 2vh 0 2vh 0;
-    }
-
     .checkout-containers {
         height: auto;
     }
@@ -152,10 +144,6 @@
 @media (min-width: 768px) and (max-width: 991.98px) {
     .checkout {
         flex-direction: column;
-    }
-
-    .checkout-respons {
-        margin: 2vh 0 2vh 0;
     }
 
     .checkout-containers {
