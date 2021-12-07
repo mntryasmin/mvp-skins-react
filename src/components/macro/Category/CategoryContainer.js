@@ -125,7 +125,7 @@ function CategoryContainer(props) {
 
         <>
             <Row>
-                <div className='title-category'>
+                <div className='title-category my-2'>
                     {idCategory == 0 || idCategory.includes('rarity=') || idCategory.includes('exterior=')
                         ? 'SKINS'
                         : product[0].categoria.descricao}

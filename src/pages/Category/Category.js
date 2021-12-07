@@ -17,12 +17,13 @@ function Category(props) {
 
     return (
         <>
-            <Container fluid className='background content-container'>
-
-                {id == 0 || id.includes('rarity=') || id.includes('exterior')
-                    ? <CategoryFilter link={setId} />
-                    : <></>}
-                <Row>
+            <Container fluid className='background content-container justify-content-center'>
+                <Row className='justify-content-center'>
+                    {id == 0 || id.includes('rarity=') || id.includes('exterior')
+                        ? <CategoryFilter link={setId} />
+                        : <></>}
+                </Row>
+                <Row className='mx-0 justify-content-center'>
                     {id.includes('search=') ?
                         <CategoryContainer idCategory={idCategory} search /> :
                         <CategoryContainer idCategory={idCategory} />

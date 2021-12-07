@@ -1,5 +1,8 @@
 .background{
     background-color: #28004f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
 }
 
 .item{

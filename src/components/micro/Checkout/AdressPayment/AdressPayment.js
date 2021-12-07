@@ -256,10 +256,10 @@ export default function AdressPayment(props) {
                 </Col>
             </Form>
 
-            <Col className="adress-payment-buttons">
-                <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid col-4" />
-                <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid col-4" />
-            </Col>
+            <Row className="adress-payment-buttons">
+                <Button label="Alterar" onclick={() => changeDisabled()} class="mt-3 btn-mvp btn-mvp-purple-solid px-3" />
+                <Button label="Salvar" onclick={() => validAdress()} class="mt-3 btn-mvp btn-mvp-orange-solid px-3" />
+            </Row>
         </>
     )
     
