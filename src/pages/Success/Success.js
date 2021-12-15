@@ -71,9 +71,7 @@ function Sucess(props) {
 
     function deleteOrder(){
         localStorage.removeItem('order')
-        setTimeout(() => {
-            setOrder(null)
-        }, 10000)
+        
     }
 
     function sendPaymentApprovedEmail(){

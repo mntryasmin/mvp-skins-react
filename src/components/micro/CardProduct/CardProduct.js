@@ -15,6 +15,7 @@ import Image from '../Images/Images'
 
 function CardProduct(props) {
 
+    const [show, setShow] = useState(false)
     const [messageCard, setMessageCard] = useState('Item adicionado ao carrinho!')
     // const [messageFavorite, setMessageFavorite] = useState('Item adicionado aos favoritos!')
     const [showMessage, setShowMessage] = useState(false)
@@ -30,7 +31,7 @@ function CardProduct(props) {
             .catch((error) => {
                 console.log('Ocorreu um erro: ' + error)
             }
-        )
+            )
     }
 
     //Função para recuperar preço ao carregar componente
@@ -43,7 +44,7 @@ function CardProduct(props) {
             .catch((erro) => {
                 console.log("Ocorreu um erro " + erro)
             }
-        )
+            )
     }
 
     //Função para verificar estoque do produto
@@ -101,6 +102,7 @@ function CardProduct(props) {
     //Adiciona o produto ao carrinho de compras
     function addProductToCart(productCart) {
         if (checkItems(productCart)) {
+            setShow(!show)
             let productCartList = localStorage.getItem("cart") ?
                 JSON.parse(localStorage.getItem("cart")) :
                 [];
@@ -108,10 +110,17 @@ function CardProduct(props) {
             productCartList.push(productCart);
             let productCartString = JSON.stringify(productCartList)
             localStorage.setItem("cart", productCartString)
-            window.location.reload(true)
+
+            setTimeout(() => {
+                setShow(false)
+                window.location.reload(true)
+            }, 3000)
         } else {
             setMessageCard('Esse item já está no carrinho!')
-
+            setShow(!show)
+            setTimeout(() => {
+                setShow(false)
+            }, 3000)
         }
     }
 
@@ -173,12 +182,14 @@ function CardProduct(props) {
                 <div xs={6} sm={4} md={3} lg={2} xl={2} className="mx-3 my-3 card card-link">
                     <Container className="py-2 px-0 card-hover">
                         <Row className="mb-4 cart-icon-card-container">
+                            
                             <a onClick={() => addProductToCart(product)}
                                 className="cart-icon-card mx-2">
                                 <OverlayTrigger trigger="click"
                                     placement="top"
                                     overlay={boxMessage()}
-                                    rootClose>
+                                    rootClose
+                                    show={show}>
                                     <img className="p-2 card-icon"
                                         src={addCart}
                                         alt="Adicionar produto ao carrinho" />
